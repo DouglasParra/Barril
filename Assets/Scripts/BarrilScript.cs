@@ -34,13 +34,25 @@ public class BarrilScript : MonoBehaviour {
     [HideInInspector]
     public Camera camera;
 
+    [Space(10)]
+    [Tooltip("Barril deve rotacionar de forma não definida pelo Animator?\nPS: Desligar o animator se usar")]
+    public bool rotatePosition;
+    [Tooltip("Gira em quantos graus por vez?")]
+    public int[] positionsVector;
+    private int positionsAux;
+
+    [Space(10)]
+    [Tooltip("Bola vai atirar automaticamente? ")]
+    public bool automaticShot;
+
     void Awake() {
         // Muda velocidade das animações
-        //GetComponent<Animator>().speed = 3;
+        // GetComponent<Animator>().speed = 1;
         atirar = false;
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         if (onEnterMove) canMove = false;
+        if (rotatePosition) positionsAux = 0;
     }
 
 	// Use this for initialization
@@ -51,6 +63,8 @@ public class BarrilScript : MonoBehaviour {
             prefab = Instantiate(Resources.Load("Orb"), transform.GetChild(0).position, Quaternion.Euler(0, 0, 0)) as GameObject;
             prefab.transform.parent = transform.GetChild(0);
         }
+
+        if (rotatePosition) InvokeRepeating("RotateBarrel", 1, 0.025f);
 	}
 	
 	// Update is called once per frame
@@ -62,6 +76,7 @@ public class BarrilScript : MonoBehaviour {
         }
 
         if(atirar) ShootBall();
+        if (automaticShot && transform.GetChild(0).childCount > 0) StartCoroutine(AutomaticShot());
 	}
 
     public void ShootBall(){
@@ -99,5 +114,20 @@ public class BarrilScript : MonoBehaviour {
                                                     Mathf.Lerp(camera.transform.position.y, Mathf.Clamp(transform.position.y, camera.GetComponent<CameraValuesScript>().getYMin(), camera.GetComponent<CameraValuesScript>().getYMax()), .25f),
                                                     -10);
         }
+    }
+
+    private void RotateBarrel()
+    {
+        transform.Rotate(new Vector3(0, 0, positionsVector[positionsAux]));
+
+        positionsAux += 1;
+        if (positionsAux >= positionsVector.Length) positionsAux = 0;
+    }
+
+    IEnumerator AutomaticShot()
+    {
+        yield return new WaitForSeconds(.5f);
+        ShootBall();
+        yield return new WaitForSeconds(.5f);
     }
 }
