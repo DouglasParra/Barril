@@ -64,7 +64,7 @@ public class BarrilScript : MonoBehaviour {
             prefab.transform.parent = transform.GetChild(0);
         }
 
-        if (rotatePosition) InvokeRepeating("RotateBarrel", 1, 0.025f);
+        if (rotatePosition) InvokeRepeating("RotateBarrel", 1, 1f);
 	}
 	
 	// Update is called once per frame
