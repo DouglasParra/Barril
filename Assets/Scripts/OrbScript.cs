@@ -47,5 +47,12 @@ public class OrbScript : MonoBehaviour {
                 obj.GetComponent<BarrilScript>().canMove = true;
             }
         }
+		if (obj.tag == "Barril_Final") {
+			victoryTutorial ();
+		}
     }
+
+	public void victoryTutorial () {
+		PlayerPrefs.SetInt ("tutorialDone", 1);
+	}
 }

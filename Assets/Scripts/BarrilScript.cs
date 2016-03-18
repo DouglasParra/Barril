@@ -31,6 +31,8 @@ public class BarrilScript : MonoBehaviour {
 
     public static bool atirar;
 
+	public float speedRotation = 1.0f;
+
     [HideInInspector]
     public Camera camera;
 
@@ -64,7 +66,7 @@ public class BarrilScript : MonoBehaviour {
             prefab.transform.parent = transform.GetChild(0);
         }
 
-        if (rotatePosition) InvokeRepeating("RotateBarrel", 1, 1f);
+		if (rotatePosition) InvokeRepeating("RotateBarrel", 1, speedRotation);
 	}
 	
 	// Update is called once per frame
