@@ -32,13 +32,10 @@ public class FieldMove : MonoBehaviour {
 				going = true;
 			}
 		}
-//		Debug.Log (transform.position + " ==== " + goPlacej);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll){
-		Debug.Log ("Colidiu");
 		if (coll.gameObject.tag == "MovePlace") {
-			Debug.Log ("MovePlace");
 			going = false;
 		}
 	}

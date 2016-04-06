@@ -34,7 +34,7 @@ public class BarrilScript : MonoBehaviour {
 	public float speedRotation = 1.0f;
 
     [HideInInspector]
-    public Camera camera;
+//    public Camera camera;
 
     [Space(10)]
     [Tooltip("Barril deve rotacionar de forma não definida pelo Animator?\nPS: Desligar o animator se usar")]
@@ -51,7 +51,7 @@ public class BarrilScript : MonoBehaviour {
         // Muda velocidade das animações
         // GetComponent<Animator>().speed = 1;
         atirar = false;
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+//        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         if (onEnterMove) canMove = false;
         if (rotatePosition) positionsAux = 0;
