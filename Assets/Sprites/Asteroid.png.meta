@@ -1,0 +1,1370 @@
+fileFormatVersion: 2
+guid: 3fe182d018946431a934cde445933e27
+timeCreated: 1460039054
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Asteroid_0
+    21300002: Asteroid_1
+    21300004: Asteroid_2
+    21300006: Asteroid_3
+    21300008: Asteroid_4
+    21300010: Asteroid_5
+    21300012: Asteroid_6
+    21300014: Asteroid_7
+    21300016: Asteroid_8
+    21300018: Asteroid_9
+    21300020: Asteroid_10
+    21300022: Asteroid_11
+    21300024: Asteroid_12
+    21300026: Asteroid_13
+    21300028: Asteroid_14
+    21300030: Asteroid_15
+    21300032: Asteroid_16
+    21300034: Asteroid_17
+    21300036: Asteroid_18
+    21300038: Asteroid_19
+    21300040: Asteroid_20
+    21300042: Asteroid_21
+    21300044: Asteroid_22
+    21300046: Asteroid_23
+    21300048: Asteroid_24
+    21300050: Asteroid_25
+    21300052: Asteroid_26
+    21300054: Asteroid_27
+    21300056: Asteroid_28
+    21300058: Asteroid_29
+    21300060: Asteroid_30
+    21300062: Asteroid_31
+    21300064: Asteroid_32
+    21300066: Asteroid_33
+    21300068: Asteroid_34
+    21300070: Asteroid_35
+    21300072: Asteroid_36
+    21300074: Asteroid_37
+    21300076: Asteroid_38
+    21300078: Asteroid_39
+    21300080: Asteroid_40
+    21300082: Asteroid_41
+    21300084: Asteroid_42
+    21300086: Asteroid_43
+    21300088: Asteroid_44
+    21300090: Asteroid_45
+    21300092: Asteroid_46
+    21300094: Asteroid_47
+    21300096: Asteroid_48
+    21300098: Asteroid_49
+    21300100: Asteroid_50
+    21300102: Asteroid_51
+    21300104: Asteroid_52
+    21300106: Asteroid_53
+    21300108: Asteroid_54
+    21300110: Asteroid_55
+    21300112: Asteroid_56
+    21300114: Asteroid_57
+    21300116: Asteroid_58
+    21300118: Asteroid_59
+    21300120: Asteroid_60
+    21300122: Asteroid_61
+    21300124: Asteroid_62
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Asteroid_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 917
+        width: 91
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41.5, y: 41.5}
+        - {x: -45.5, y: 31.5}
+        - {x: -45.5, y: -29.5}
+        - {x: -24.5, y: -41.5}
+        - {x: 34.5, y: -41.5}
+        - {x: 45.5, y: -37.5}
+        - {x: 45.5, y: 23.5}
+        - {x: 40.5, y: 41.5}
+    - name: Asteroid_1
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 915
+        width: 93
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 36.5, y: 45}
+        - {x: -44.5, y: 45}
+        - {x: -46.5, y: 34}
+        - {x: -46.5, y: -25}
+        - {x: -26.5, y: -45}
+        - {x: 32.5, y: -45}
+        - {x: 46.5, y: -28}
+        - {x: 46.5, y: 20}
+    - name: Asteroid_2
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 913
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 48}
+        - {x: -43, y: 38}
+        - {x: -48, y: 13}
+        - {x: -48, y: -32}
+        - {x: -35, y: -48}
+        - {x: 29, y: -48}
+        - {x: 48, y: -42}
+        - {x: 48, y: 37}
+        - {x: 24, y: 48}
+    - name: Asteroid_3
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 911
+        width: 97
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28.5, y: 50.5}
+        - {x: -14.5, y: 50.5}
+        - {x: -48.5, y: 41.5}
+        - {x: -48.5, y: -32.5}
+        - {x: -19.5, y: -50.5}
+        - {x: 25.5, y: -50.5}
+        - {x: 48.5, y: -35.5}
+        - {x: 48.5, y: 13.5}
+        - {x: 47.5, y: 19.5}
+    - name: Asteroid_4
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 910
+        width: 97
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 52}
+        - {x: -48.5, y: 36}
+        - {x: -48.5, y: -34}
+        - {x: -19.5, y: -52}
+        - {x: 43.5, y: -52}
+        - {x: 48.5, y: -47}
+        - {x: 48.5, y: 35}
+        - {x: 41.5, y: 52}
+    - name: Asteroid_5
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 910
+        width: 97
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48.5, y: -32}
+        - {x: -34.5, y: -53}
+        - {x: 34.5, y: -53}
+        - {x: 48.5, y: -48}
+        - {x: 48.5, y: 39}
+        - {x: 46.5, y: 49}
+        - {x: 35.5, y: 53}
+        - {x: -21.5, y: 53}
+        - {x: -48.5, y: 23}
+    - name: Asteroid_6
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 910
+        width: 96
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 52.5}
+        - {x: -17, y: 52.5}
+        - {x: -33, y: 39.5}
+        - {x: -48, y: 20.5}
+        - {x: -48, y: -17.5}
+        - {x: -25, y: -52.5}
+        - {x: 15, y: -52.5}
+        - {x: 37, y: -44.5}
+        - {x: 48, y: -27.5}
+        - {x: 48, y: 27.5}
+        - {x: 45, y: 48.5}
+    - name: Asteroid_7
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 910
+        width: 93
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.5, y: 51.5}
+        - {x: -42.5, y: 43.5}
+        - {x: -46.5, y: 35.5}
+        - {x: -46.5, y: -39.5}
+        - {x: -23.5, y: -51.5}
+        - {x: 24.5, y: -51.5}
+        - {x: 46.5, y: -30.5}
+        - {x: 46.5, y: 33.5}
+        - {x: 31.5, y: 51.5}
+    - name: Asteroid_8
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 779
+        width: 90
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33, y: 51}
+        - {x: -21, y: 51}
+        - {x: -45, y: 31}
+        - {x: -45, y: -42}
+        - {x: -21, y: -51}
+        - {x: 11, y: -51}
+        - {x: 37, y: -31}
+        - {x: 45, y: -17}
+        - {x: 45, y: 23}
+    - name: Asteroid_9
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 778
+        width: 90
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: 50}
+        - {x: -45, y: 34}
+        - {x: -45, y: -7}
+        - {x: -42, y: -27}
+        - {x: -33, y: -42}
+        - {x: -25, y: -50}
+        - {x: 28, y: -50}
+        - {x: 45, y: -32}
+        - {x: 45, y: 47}
+        - {x: 35, y: 50}
+    - name: Asteroid_10
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 779
+        width: 91
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 44.5, y: 33.5}
+        - {x: 26.5, y: 47.5}
+        - {x: -23.5, y: 47.5}
+        - {x: -41.5, y: 42.5}
+        - {x: -45.5, y: 40.5}
+        - {x: -45.5, y: -24.5}
+        - {x: -36.5, y: -47.5}
+        - {x: 5.5, y: -47.5}
+        - {x: 35.5, y: -29.5}
+        - {x: 45.5, y: -17.5}
+        - {x: 45.5, y: 21.5}
+    - name: Asteroid_11
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 781
+        width: 91
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.5, y: 47.5}
+        - {x: -45.5, y: 34.5}
+        - {x: -45.5, y: -8.5}
+        - {x: -39.5, y: -39.5}
+        - {x: -30.5, y: -47.5}
+        - {x: 16.5, y: -47.5}
+        - {x: 45.5, y: -33.5}
+        - {x: 45.5, y: 40.5}
+        - {x: 19.5, y: 47.5}
+    - name: Asteroid_12
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 785
+        width: 90
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: 46.5}
+        - {x: -45, y: 26.5}
+        - {x: -45, y: -28.5}
+        - {x: -44, y: -41.5}
+        - {x: -21, y: -46.5}
+        - {x: 30, y: -46.5}
+        - {x: 45, y: -42.5}
+        - {x: 45, y: 46.5}
+    - name: Asteroid_13
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 789
+        width: 89
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.5, y: 44.5}
+        - {x: -44.5, y: 30.5}
+        - {x: -44.5, y: -11.5}
+        - {x: -34.5, y: -44.5}
+        - {x: 21.5, y: -44.5}
+        - {x: 44.5, y: -30.5}
+        - {x: 44.5, y: 33.5}
+        - {x: 18.5, y: 44.5}
+    - name: Asteroid_14
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 793
+        width: 87
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29.5, y: 42.5}
+        - {x: -43.5, y: 20.5}
+        - {x: -43.5, y: -19.5}
+        - {x: -32.5, y: -39.5}
+        - {x: -20.5, y: -42.5}
+        - {x: 32.5, y: -42.5}
+        - {x: 43.5, y: -35.5}
+        - {x: 43.5, y: 21.5}
+        - {x: 14.5, y: 42.5}
+    - name: Asteroid_15
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 792
+        width: 88
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 43}
+        - {x: -44, y: 24}
+        - {x: -44, y: -25}
+        - {x: -25, y: -43}
+        - {x: 26, y: -43}
+        - {x: 44, y: -37}
+        - {x: 44, y: 32}
+        - {x: 17, y: 43}
+    - name: Asteroid_16
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 662
+        width: 92
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 43.5}
+        - {x: -30, y: 43.5}
+        - {x: -46, y: 23.5}
+        - {x: -46, y: -25.5}
+        - {x: -11, y: -43.5}
+        - {x: 42, y: -43.5}
+        - {x: 46, y: -34.5}
+        - {x: 46, y: 34.5}
+        - {x: 42, y: 37.5}
+    - name: Asteroid_17
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 660
+        width: 94
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 27, y: 45}
+        - {x: -28, y: 45}
+        - {x: -47, y: 17}
+        - {x: -47, y: -29}
+        - {x: -29, y: -45}
+        - {x: 34, y: -45}
+        - {x: 47, y: -29}
+        - {x: 47, y: 33}
+        - {x: 45, y: 41}
+    - name: Asteroid_18
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 659
+        width: 96
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 47}
+        - {x: -48, y: 28}
+        - {x: -48, y: -38}
+        - {x: -42, y: -47}
+        - {x: 36, y: -47}
+        - {x: 39, y: -46}
+        - {x: 48, y: -39}
+        - {x: 48, y: 47}
+    - name: Asteroid_19
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 658
+        width: 99
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 34.5, y: 48}
+        - {x: -36.5, y: 48}
+        - {x: -49.5, y: 21}
+        - {x: -49.5, y: -47}
+        - {x: -47.5, y: -48}
+        - {x: 32.5, y: -48}
+        - {x: 38.5, y: -47}
+        - {x: 49.5, y: -27}
+        - {x: 49.5, y: 18}
+        - {x: 39.5, y: 46}
+    - name: Asteroid_20
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 657
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 49}
+        - {x: -31, y: 49}
+        - {x: -49, y: 16}
+        - {x: -49, y: -40}
+        - {x: -38, y: -49}
+        - {x: 36, y: -49}
+        - {x: 49, y: -23}
+        - {x: 49, y: 34}
+    - name: Asteroid_21
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 658
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 48}
+        - {x: -48, y: 39}
+        - {x: -48, y: -45}
+        - {x: -41, y: -48}
+        - {x: 34, y: -48}
+        - {x: 48, y: -21}
+        - {x: 48, y: 38}
+        - {x: 8, y: 48}
+    - name: Asteroid_22
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 657
+        width: 92
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30, y: 47}
+        - {x: -46, y: 43}
+        - {x: -46, y: -47}
+        - {x: 30, y: -47}
+        - {x: 46, y: -34}
+        - {x: 46, y: 31}
+        - {x: 20, y: 47}
+    - name: Asteroid_23
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 658
+        width: 89
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.5, y: 45}
+        - {x: -44.5, y: 42}
+        - {x: -44.5, y: -32}
+        - {x: -27.5, y: -45}
+        - {x: 18.5, y: -45}
+        - {x: 28.5, y: -43}
+        - {x: 44.5, y: -33}
+        - {x: 44.5, y: 38}
+        - {x: 30.5, y: 45}
+    - name: Asteroid_24
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 532
+        width: 87
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -43.5, y: -43}
+        - {x: 32.5, y: -43}
+        - {x: 43.5, y: -38}
+        - {x: 43.5, y: 43}
+        - {x: -42.5, y: 43}
+        - {x: -43.5, y: 41}
+    - name: Asteroid_25
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 531
+        width: 91
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45.5, y: 45}
+        - {x: -45.5, y: -34}
+        - {x: -20.5, y: -45}
+        - {x: 16.5, y: -45}
+        - {x: 45.5, y: -34}
+        - {x: 45.5, y: 34}
+        - {x: 32.5, y: 45}
+    - name: Asteroid_26
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 531
+        width: 94
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: 45}
+        - {x: -36, y: 42}
+        - {x: -47, y: 35}
+        - {x: -47, y: -25}
+        - {x: -36, y: -45}
+        - {x: 20, y: -45}
+        - {x: 44, y: -31}
+        - {x: 47, y: -26}
+        - {x: 47, y: 35}
+        - {x: 40, y: 45}
+    - name: Asteroid_27
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 532
+        width: 95
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38.5, y: 45}
+        - {x: -47.5, y: 20}
+        - {x: -47.5, y: -29}
+        - {x: -18.5, y: -45}
+        - {x: 37.5, y: -45}
+        - {x: 47.5, y: -40}
+        - {x: 47.5, y: 45}
+    - name: Asteroid_28
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 533
+        width: 95
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 47.5, y: 36.5}
+        - {x: 32.5, y: 44.5}
+        - {x: -24.5, y: 44.5}
+        - {x: -30.5, y: 39.5}
+        - {x: -38.5, y: 30.5}
+        - {x: -47.5, y: 12.5}
+        - {x: -47.5, y: -22.5}
+        - {x: -16.5, y: -44.5}
+        - {x: 12.5, y: -44.5}
+        - {x: 28.5, y: -38.5}
+        - {x: 42.5, y: -29.5}
+        - {x: 47.5, y: -19.5}
+    - name: Asteroid_29
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 535
+        width: 93
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 43}
+        - {x: -46.5, y: 17}
+        - {x: -46.5, y: -18}
+        - {x: -27.5, y: -36}
+        - {x: -10.5, y: -43}
+        - {x: 24.5, y: -43}
+        - {x: 46.5, y: -31}
+        - {x: 46.5, y: 23}
+        - {x: 26.5, y: 43}
+    - name: Asteroid_30
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 535
+        width: 90
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25, y: 41.5}
+        - {x: -18, y: 41.5}
+        - {x: -29, y: 40.5}
+        - {x: -45, y: 17.5}
+        - {x: -45, y: -8.5}
+        - {x: -43, y: -16.5}
+        - {x: -20, y: -37.5}
+        - {x: -17, y: -41.5}
+        - {x: 33, y: -41.5}
+        - {x: 45, y: -37.5}
+        - {x: 45, y: 15.5}
+        - {x: 28, y: 39.5}
+    - name: Asteroid_31
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 533
+        width: 91
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 26.5, y: 41.5}
+        - {x: -32.5, y: 41.5}
+        - {x: -45.5, y: 15.5}
+        - {x: -45.5, y: -2.5}
+        - {x: -42.5, y: -14.5}
+        - {x: -29.5, y: -41.5}
+        - {x: 34.5, y: -41.5}
+        - {x: 45.5, y: -38.5}
+        - {x: 45.5, y: 12.5}
+        - {x: 29.5, y: 40.5}
+    - name: Asteroid_32
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 402
+        width: 83
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.5, y: 46}
+        - {x: -19.5, y: 46}
+        - {x: -41.5, y: 33}
+        - {x: -41.5, y: -23}
+        - {x: -39.5, y: -33}
+        - {x: -19.5, y: -46}
+        - {x: 39.5, y: -46}
+        - {x: 41.5, y: -30}
+        - {x: 41.5, y: 25}
+        - {x: 32.5, y: 36}
+    - name: Asteroid_33
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 400
+        width: 83
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 47}
+        - {x: -41.5, y: 30}
+        - {x: -41.5, y: -35}
+        - {x: -31.5, y: -47}
+        - {x: 25.5, y: -47}
+        - {x: 41.5, y: -37}
+        - {x: 41.5, y: 38}
+        - {x: 23.5, y: 47}
+    - name: Asteroid_34
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 402
+        width: 87
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 23.5, y: 47.5}
+        - {x: -24.5, y: 47.5}
+        - {x: -43.5, y: 28.5}
+        - {x: -43.5, y: -47.5}
+        - {x: 36.5, y: -47.5}
+        - {x: 43.5, y: -32.5}
+        - {x: 43.5, y: -6.5}
+        - {x: 39.5, y: 21.5}
+    - name: Asteroid_35
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 400
+        width: 87
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.5, y: 50}
+        - {x: -43.5, y: 30}
+        - {x: -43.5, y: -20}
+        - {x: -33.5, y: -50}
+        - {x: 15.5, y: -50}
+        - {x: 43.5, y: -36}
+        - {x: 43.5, y: 17}
+        - {x: 17.5, y: 50}
+    - name: Asteroid_36
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 397
+        width: 88
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10, y: 52.5}
+        - {x: -10, y: 52.5}
+        - {x: -44, y: 20.5}
+        - {x: -44, y: -39.5}
+        - {x: -27, y: -52.5}
+        - {x: 38, y: -52.5}
+        - {x: 44, y: -45.5}
+        - {x: 44, y: 16.5}
+        - {x: 22, y: 47.5}
+    - name: Asteroid_37
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 396
+        width: 89
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.5, y: 54}
+        - {x: -44.5, y: 20}
+        - {x: -44.5, y: -10}
+        - {x: -42.5, y: -19}
+        - {x: -35.5, y: -53}
+        - {x: -29.5, y: -54}
+        - {x: 44.5, y: -54}
+        - {x: 44.5, y: 29}
+        - {x: 38.5, y: 54}
+    - name: Asteroid_38
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 396
+        width: 88
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 55}
+        - {x: -11, y: 55}
+        - {x: -44, y: 25}
+        - {x: -44, y: -38}
+        - {x: -40, y: -55}
+        - {x: 24, y: -55}
+        - {x: 44, y: -42}
+        - {x: 44, y: 9}
+        - {x: 42, y: 24}
+    - name: Asteroid_39
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 398
+        width: 89
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32.5, y: 54}
+        - {x: -44.5, y: 21}
+        - {x: -44.5, y: -41}
+        - {x: -28.5, y: -54}
+        - {x: 15.5, y: -54}
+        - {x: 44.5, y: -39}
+        - {x: 44.5, y: 2}
+        - {x: 9.5, y: 54}
+    - name: Asteroid_40
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 273
+        width: 89
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22.5, y: 51.5}
+        - {x: -26.5, y: 50.5}
+        - {x: -44.5, y: 19.5}
+        - {x: -44.5, y: -21.5}
+        - {x: -34.5, y: -48.5}
+        - {x: -26.5, y: -51.5}
+        - {x: 22.5, y: -51.5}
+        - {x: 44.5, y: -39.5}
+        - {x: 44.5, y: 0.5}
+        - {x: 13.5, y: 51.5}
+    - name: Asteroid_41
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 273
+        width: 89
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.5, y: 51}
+        - {x: -23.5, y: 49}
+        - {x: -44.5, y: 31}
+        - {x: -44.5, y: -26}
+        - {x: -39.5, y: -49}
+        - {x: -35.5, y: -51}
+        - {x: 8.5, y: -51}
+        - {x: 40.5, y: -40}
+        - {x: 44.5, y: -36}
+        - {x: 44.5, y: 4}
+        - {x: 16.5, y: 51}
+    - name: Asteroid_42
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 270
+        width: 87
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.5, y: 52}
+        - {x: -43.5, y: 32}
+        - {x: -43.5, y: -26}
+        - {x: -22.5, y: -52}
+        - {x: 29.5, y: -52}
+        - {x: 43.5, y: -48}
+        - {x: 43.5, y: 32}
+        - {x: 6.5, y: 52}
+    - name: Asteroid_43
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 270
+        width: 86
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 50.5}
+        - {x: -43, y: 37.5}
+        - {x: -43, y: -43.5}
+        - {x: -31, y: -50.5}
+        - {x: 25, y: -50.5}
+        - {x: 43, y: -26.5}
+        - {x: 43, y: 24.5}
+        - {x: 20, y: 50.5}
+    - name: Asteroid_44
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 269
+        width: 84
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: 48.5}
+        - {x: -20, y: 48.5}
+        - {x: -42, y: 30.5}
+        - {x: -42, y: -22.5}
+        - {x: -20, y: -46.5}
+        - {x: -13, y: -48.5}
+        - {x: 15, y: -48.5}
+        - {x: 39, y: -27.5}
+        - {x: 42, y: -20.5}
+        - {x: 42, y: 19.5}
+    - name: Asteroid_45
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 269
+        width: 82
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 49}
+        - {x: -41, y: 24}
+        - {x: -41, y: -33}
+        - {x: -13, y: -49}
+        - {x: 27, y: -49}
+        - {x: 41, y: -35}
+        - {x: 41, y: 32}
+        - {x: 19, y: 49}
+    - name: Asteroid_46
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 271
+        width: 82
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: 47.5}
+        - {x: -41, y: 23.5}
+        - {x: -41, y: -25.5}
+        - {x: -18, y: -47.5}
+        - {x: 18, y: -47.5}
+        - {x: 41, y: -38.5}
+        - {x: 41, y: 23.5}
+        - {x: 21, y: 47.5}
+    - name: Asteroid_47
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 272
+        width: 85
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 46.5}
+        - {x: -42.5, y: 27.5}
+        - {x: -42.5, y: -26.5}
+        - {x: -28.5, y: -46.5}
+        - {x: 31.5, y: -46.5}
+        - {x: 42.5, y: -38.5}
+        - {x: 42.5, y: 21.5}
+        - {x: 30.5, y: 46.5}
+    - name: Asteroid_48
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 144
+        width: 88
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: 46}
+        - {x: -44, y: 35}
+        - {x: -44, y: -29}
+        - {x: -18, y: -46}
+        - {x: 21, y: -46}
+        - {x: 44, y: -33}
+        - {x: 44, y: 17}
+        - {x: 30, y: 46}
+    - name: Asteroid_49
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 145
+        width: 91
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40.5, y: 44}
+        - {x: -45.5, y: 34}
+        - {x: -45.5, y: -42}
+        - {x: -36.5, y: -44}
+        - {x: 45.5, y: -44}
+        - {x: 45.5, y: 22}
+        - {x: 23.5, y: 44}
+    - name: Asteroid_50
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 146
+        width: 94
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 45.5}
+        - {x: -47, y: 33.5}
+        - {x: -47, y: -17.5}
+        - {x: -23, y: -45.5}
+        - {x: 36, y: -45.5}
+        - {x: 47, y: -31.5}
+        - {x: 47, y: 14.5}
+        - {x: 16, y: 45.5}
+    - name: Asteroid_51
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 146
+        width: 98
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -42, y: 47.5}
+        - {x: -49, y: 44.5}
+        - {x: -49, y: -47.5}
+        - {x: 14, y: -47.5}
+        - {x: 49, y: -29.5}
+        - {x: 49, y: 3.5}
+        - {x: 17, y: 47.5}
+    - name: Asteroid_52
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 148
+        width: 101
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0.5, y: 47.5}
+        - {x: -29.5, y: 47.5}
+        - {x: -50.5, y: 23.5}
+        - {x: -50.5, y: -19.5}
+        - {x: -23.5, y: -47.5}
+        - {x: 18.5, y: -47.5}
+        - {x: 50.5, y: -31.5}
+        - {x: 50.5, y: -8.5}
+        - {x: 44.5, y: 24.5}
+    - name: Asteroid_53
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 150
+        width: 102
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51, y: 20}
+        - {x: -51, y: -20}
+        - {x: -25, y: -47}
+        - {x: 26, y: -47}
+        - {x: 51, y: -41}
+        - {x: 51, y: 15}
+        - {x: 48, y: 25}
+        - {x: 11, y: 47}
+        - {x: -36, y: 47}
+        - {x: -47, y: 33}
+    - name: Asteroid_54
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 151
+        width: 102
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 47}
+        - {x: -32, y: 47}
+        - {x: -48, y: 33}
+        - {x: -51, y: 21}
+        - {x: -51, y: -22}
+        - {x: -30, y: -47}
+        - {x: 45, y: -47}
+        - {x: 51, y: -37}
+        - {x: 51, y: 7}
+        - {x: 46, y: 22}
+    - name: Asteroid_55
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 149
+        width: 100
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: 48}
+        - {x: -50, y: 19}
+        - {x: -50, y: -12}
+        - {x: -29, y: -48}
+        - {x: 47, y: -48}
+        - {x: 50, y: -46}
+        - {x: 50, y: -3}
+        - {x: 30, y: 48}
+    - name: Asteroid_56
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 19
+        width: 98
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49, y: -19.5}
+        - {x: -19, y: -48.5}
+        - {x: 31, y: -48.5}
+        - {x: 49, y: -42.5}
+        - {x: 49, y: 7.5}
+        - {x: 29, y: 48.5}
+        - {x: -21, y: 48.5}
+        - {x: -49, y: 21.5}
+    - name: Asteroid_57
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 18
+        width: 95
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -42.5, y: 19}
+        - {x: -46.5, y: 12}
+        - {x: -47.5, y: 10}
+        - {x: -47.5, y: -18}
+        - {x: -20.5, y: -48}
+        - {x: 39.5, y: -48}
+        - {x: 47.5, y: -45}
+        - {x: 47.5, y: 11}
+        - {x: 26.5, y: 48}
+        - {x: -12.5, y: 48}
+        - {x: -21.5, y: 44}
+    - name: Asteroid_58
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 18
+        width: 90
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 19.5}
+        - {x: 16, y: 47.5}
+        - {x: -12, y: 47.5}
+        - {x: -45, y: 20.5}
+        - {x: -45, y: -15.5}
+        - {x: -28, y: -32.5}
+        - {x: -20, y: -39.5}
+        - {x: -8, y: -47.5}
+        - {x: 13, y: -47.5}
+        - {x: 31, y: -43.5}
+        - {x: 45, y: -24.5}
+        - {x: 45, y: -2.5}
+    - name: Asteroid_59
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 20
+        width: 91
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 45}
+        - {x: -45.5, y: 37}
+        - {x: -45.5, y: -29}
+        - {x: -17.5, y: -45}
+        - {x: 31.5, y: -45}
+        - {x: 45.5, y: -36}
+        - {x: 45.5, y: 10}
+        - {x: 26.5, y: 45}
+    - name: Asteroid_60
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 22
+        width: 90
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 43.5}
+        - {x: -45, y: 39.5}
+        - {x: -45, y: -38.5}
+        - {x: -33, y: -43.5}
+        - {x: 45, y: -43.5}
+        - {x: 45, y: 37.5}
+        - {x: 37, y: 43.5}
+    - name: Asteroid_61
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 22
+        width: 89
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 42.5}
+        - {x: -44.5, y: 40.5}
+        - {x: -44.5, y: -40.5}
+        - {x: -36.5, y: -42.5}
+        - {x: 44.5, y: -42.5}
+        - {x: 44.5, y: 36.5}
+        - {x: 40.5, y: 42.5}
+    - name: Asteroid_62
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 4
+        width: 232
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38, y: 53}
+        - {x: 31, y: 51}
+        - {x: 7, y: 27}
+        - {x: -42, y: 50}
+        - {x: -63, y: 53}
+        - {x: -101, y: 53}
+        - {x: -116, y: 42}
+        - {x: -116, y: -20}
+        - {x: -115, y: -26}
+        - {x: -94, y: -53}
+        - {x: 116, y: -53}
+        - {x: 116, y: -4}
+        - {x: 88, y: 53}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
