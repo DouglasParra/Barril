@@ -16,7 +16,7 @@ public class FieldFinal : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Robot") {
 			if (GameObject.Find ("GameManager")) {
-				GameObject.Find ("GameManager").SendMessage ("endGame");
+				GameObject.Find ("GameManager").SendMessage ("victoryGame");
 			}
 		}
 	}

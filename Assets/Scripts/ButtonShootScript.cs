@@ -2,12 +2,21 @@
 using System.Collections;
 
 public class ButtonShootScript : MonoBehaviour {
-    public void Atirar() {
-        BarrilScript.atirar = true;
-    }
+
+	private bool firstLaunch = true;
 
 	public void launchRobot () {
+		if (firstLaunch) {
+			startClockTime ();
+		}
 		GameObject.Find ("Robot").SendMessage ("launch");
+	}
+
+	void startClockTime () {
+		if (GameObject.Find ("ClockTime")) {
+			GameObject.Find ("ClockTime").SendMessage ("startTime");
+			firstLaunch = false;
+		}
 	}
 
 

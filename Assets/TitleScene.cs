@@ -15,10 +15,10 @@ public class TitleScene : MonoBehaviour {
 	}
 
 	public void changeScene() {
-		if (PlayerPrefs.GetInt ("tutorialDone") == 1) {
+		if (PlayerPrefs.HasKey("tutorialDone")) {
 			SceneManager.LoadScene ("StageSelect");
 		} else {
-			SceneManager.LoadScene ("Scene1");
+			SceneManager.LoadScene ("TutorialScene");
 		}
 	}
 }
