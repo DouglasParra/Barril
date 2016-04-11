@@ -17,6 +17,14 @@ public class GameSparksManager : MonoBehaviour
 
     public Canvas registerPlayerCanvas;
 
+    // Vetor de strings para guardar os tempos recebidos do GS
+    public static string[] records;
+    private int NUMERO_FASES = 10;
+
+    private string loadedID = "";
+    private string loadedTime = "";
+
+
     // Use this for initialization
     void Awake()
     {
@@ -32,6 +40,7 @@ public class GameSparksManager : MonoBehaviour
         }
         GS.GameSparksAvailable += GSAvailable;
         GameSparks.Api.Messages.AchievementEarnedMessage.Listener += AchievementEarnedListener;
+        
     }
 
     void GSAvailable(bool _isAvalable)
@@ -52,6 +61,7 @@ public class GameSparksManager : MonoBehaviour
                         // Conectou, prossegue mostrando o nome
                         Debug.Log("Account Details Found... - Olá, " + response.DisplayName);
 
+                        RetrieveRecords();
                         //string playerName = response.DisplayName; // we can get the display name
 
                         //username.text = "Olá, " + playerName + " - ";
@@ -71,6 +81,42 @@ public class GameSparksManager : MonoBehaviour
         {
             Debug.Log(">>>>>>>>>GS Disconnected<<<<<<<<");
         }
+    }
+
+    private void RetrieveRecords()
+    {
+        records = new string[NUMERO_FASES];
+
+        // Carrega o tempo da fase salvo
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("RETRIEVE_RECORDS")
+                .Send((response) =>
+                {
+
+                    if (!response.HasErrors)
+                    {
+                        Debug.Log("Recieved Player Data From GameSparks...");
+                        GSData data = response.ScriptData.GetGSData("player_Data");
+                        loadedID = "Player ID: " + data.GetString("playerID");
+
+                        // Por enquanto, apenas tempos das fases do mundo 1
+                        records[0] = data.GetString("playerTime_1_1");
+                        records[1] = data.GetString("playerTime_1_2");
+                        records[2] = data.GetString("playerTime_1_3");
+                        records[3] = data.GetString("playerTime_1_4");
+                        records[4] = data.GetString("playerTime_1_5");
+                        records[5] = data.GetString("playerTime_1_6");
+                        records[6] = data.GetString("playerTime_1_7");
+                        records[7] = data.GetString("playerTime_1_8");
+                        records[8] = data.GetString("playerTime_1_9");
+                        records[9] = data.GetString("playerTime_1_10");
+
+                    }
+                    else
+                    {
+                        Debug.Log("Error Loading Player Data...");
+                    }
+                });
     }
 
     //Achievement message  listener

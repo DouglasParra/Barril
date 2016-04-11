@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class StageSelectScript : MonoBehaviour {
 
+    public Text playerName;
+
 	// Use this for initialization
 	void Start () {
-	
+        playerName.text = PlayerPrefs.GetString("DisplayName");
 	}
 	
 	// Update is called once per frame
@@ -16,6 +19,16 @@ public class StageSelectScript : MonoBehaviour {
 
     public void StageSelect() {
         SceneManager.LoadScene(0);
+    }
+
+    public void StageSelect_Fases()
+    {
+        SceneManager.LoadScene("StageSelect");
+    }
+
+    public void RankScene()
+    {
+        SceneManager.LoadScene("RankScene");
     }
 
     public void scene1_1()

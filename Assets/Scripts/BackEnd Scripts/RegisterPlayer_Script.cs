@@ -7,7 +7,7 @@ public class RegisterPlayer_Script : MonoBehaviour
     public Canvas registerPlayerCanvas;
 
     // Username generator
-    private string characters = "0123456789abcdefghijklmnopqrstuvwxABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private string characters = "0123456789abcdefghijklmnopqrstuvwx";
     private int DESIRED_CODE_LENGTH = 8;
 
     public Text displayNameInput; // these are set through the editor
@@ -45,8 +45,10 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Player Registered \n User Name: " + response.DisplayName);
+                    Debug.Log("Player Registered \n Player Name: " + response.DisplayName);
                     registerPlayerCanvas.gameObject.SetActive(false);
+
+                    InitiateRecords();
                 }
                 else if (response.Errors.JSON.Equals("{\"USERNAME\":\"TAKEN\"}"))
                 {
@@ -57,6 +59,33 @@ public class RegisterPlayer_Script : MonoBehaviour
                     Debug.Log("Error Registering Player... \n " + response.Errors.JSON.ToString());
                 }
 
+            });
+    }
+
+    private void InitiateRecords() {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("INITIATE_RECORDS")
+            .SetEventAttribute("TIME_1_1", "99:99:99")
+            .SetEventAttribute("TIME_1_2", "99:99:99")
+            .SetEventAttribute("TIME_1_3", "99:99:99")
+            .SetEventAttribute("TIME_1_4", "99:99:99")
+            .SetEventAttribute("TIME_1_5", "99:99:99")
+            .SetEventAttribute("TIME_1_6", "99:99:99")
+            .SetEventAttribute("TIME_1_7", "99:99:99")
+            .SetEventAttribute("TIME_1_8", "99:99:99")
+            .SetEventAttribute("TIME_1_9", "99:99:99")
+            .SetEventAttribute("TIME_1_10", "99:99:99")
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Player records initiated to GameSparks...");
+                }
+                else
+                {
+                    Debug.Log("Error Saving Player Data...");
+                }
             });
     }
 
