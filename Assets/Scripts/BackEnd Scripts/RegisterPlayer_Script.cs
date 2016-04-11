@@ -83,6 +83,7 @@ public class RegisterPlayer_Script : MonoBehaviour
                     Debug.Log("Player records initiated to GameSparks...");
 
                     // Jogar pro records[] do GameManager
+                    GameSparksManager.records = new string[GameSparksManager.NUMERO_FASES];
                     for (int i=0; i < GameSparksManager.NUMERO_FASES; i++) {
                         GameSparksManager.records[i] = "99:99:99";
                     }

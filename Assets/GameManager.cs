@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour {
         {
             GameSparksManager.records[0] = clockTime.timestring;
 
+            // mudar no gs para ficar 1-1 e assim usar o nome da cena concatenado
             new GameSparks.Api.Requests.LogEventRequest()
                 .SetEventKey("SAVE_STAGE_1_1")
                 .SetEventAttribute("TIME_1_1", clockTime.timestring)
