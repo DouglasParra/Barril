@@ -81,6 +81,11 @@ public class RegisterPlayer_Script : MonoBehaviour
                 if (!response.HasErrors)
                 {
                     Debug.Log("Player records initiated to GameSparks...");
+
+                    // Jogar pro records[] do GameManager
+                    for (int i=0; i < GameSparksManager.NUMERO_FASES; i++) {
+                        GameSparksManager.records[i] = "99:99:99";
+                    }
                 }
                 else
                 {

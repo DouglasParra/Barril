@@ -75,10 +75,12 @@ public class GameManager : MonoBehaviour {
 	void saveTime () {
 		Debug.Log ("Venci - " + clockTime.timestring + " -- " + clockTime.timer);
 
-        if (SceneManager.GetActiveScene().name.Equals("1-1")) {
+        if (SceneManager.GetActiveScene().name.Equals("1-1")) 
+        {
             SalvarTempoGameSparks_1_1();
         }
-        else if (SceneManager.GetActiveScene().name.Equals("1-2")){
+        else if (SceneManager.GetActiveScene().name.Equals("1-2"))
+        {
             SalvarTempoGameSparks_1_2();
         }
         else if (SceneManager.GetActiveScene().name.Equals("1-3"))
@@ -122,6 +124,8 @@ public class GameManager : MonoBehaviour {
 
         // Se arg1 > arg2, compare==1
         // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
+
+        // switch para, dado o nome da fase, pegar o índice dela em records[]
         if (string.Compare(clockTime.timestring, GameSparksManager.records[0])==-1) 
         {
             GameSparksManager.records[0] = clockTime.timestring;
