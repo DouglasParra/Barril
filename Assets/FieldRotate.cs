@@ -3,32 +3,60 @@ using System.Collections;
 
 public class FieldRotate : MonoBehaviour {
 
-	public float angleGo;
+	public bool clockwise = false;
 
-	private float angleBack;
+	public bool rotateFull360 = false;
+
+	public float angleToGo;
+
+	private float angleToBack;
+
+	private static float VELOCITY = 1.5f;
 
 	private bool going = true;
 
+	private float clockwiseConstant;
+
 	// Use this for initialization
 	void Start () {
-//		InvokeRepeating("rotate", 1, 0.001f);
-		angleBack = transform.eulerAngles.z;
+		
+		angleToBack = Mathf.Floor(transform.eulerAngles.z);
+
+		if (clockwise) {
+			clockwiseConstant = -VELOCITY;
+		} else {
+			clockwiseConstant = VELOCITY;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		rotate ();
+	}
 
-		if (going == true) {
-			transform.Rotate(Vector3.forward, Time.deltaTime * 100, Space.Self);
-			if (transform.eulerAngles.z >= angleGo) {
-				going = false;
-			}
+	void rotate () {
+		if (rotateFull360) {
+			transform.Rotate (Vector3.forward, clockwiseConstant, Space.Self);
 		} else {
-			transform.Rotate(Vector3.forward, -Time.deltaTime * 100, Space.Self);
-			if ((angleBack == 0 && transform.eulerAngles.z < 4)|| transform.eulerAngles.z <= angleBack) {
-				going = true;
+			if (going == true) {
+				transform.Rotate (Vector3.forward, clockwiseConstant, Space.Self);
+
+				// Range do angleToGo ate angleToGo + 2
+				if (Mathf.Floor (transform.eulerAngles.z) >= angleToGo && Mathf.Floor (transform.eulerAngles.z) <= angleToGo + 2) {
+					going = false;
+				}
+			} else {
+				transform.Rotate (Vector3.forward, clockwiseConstant * -1, Space.Self);
+
+				// Range do angleToBack ate angleToBack + 2
+				if (Mathf.Floor (transform.eulerAngles.z) >= angleToBack && Mathf.Floor (transform.eulerAngles.z) <= angleToBack + 2) {
+					going = true;
+				}
 			}
 		}
-//		Debug.Log (transform.eulerAngles.z);	
 	}
+			
 }
+
+
+
