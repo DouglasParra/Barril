@@ -41,6 +41,8 @@ public class RankingScript : MonoBehaviour {
     private void resetMundialScores() {
         for (int i = 0; i < mundialTimeRecords.Length; i++)
         {
+            mundialRankRecords[i].text = "< N >";
+            mundialNameRecords[i].text = "< Jogador >";
             mundialTimeRecords[i].text = "--:--:--";
         }
     }
@@ -58,6 +60,7 @@ public class RankingScript : MonoBehaviour {
 
     public void GetLeaderboard()
     {
+        resetMundialScores();
         nomeFase.text = "Fase " + stageSelected;
 
         // m1[0] = String da cena antes do '-' ; m1[1] = String da cena depois do '-' ; 

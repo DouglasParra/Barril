@@ -16,6 +16,7 @@ public class GameSparksManager : MonoBehaviour
     public static GameSparksManager Instance() { return instance; }
 
     public Canvas registerPlayerCanvas;
+    public Canvas loadingInfoCanvas;
 
     // Vetor de strings para guardar os tempos recebidos do GS
     public static int[] records;
@@ -60,6 +61,7 @@ public class GameSparksManager : MonoBehaviour
                     {
                         // Conectou, prossegue mostrando o nome
                         Debug.Log("Account Details Found... - Olá, " + response.DisplayName);
+                        loadingInfoCanvas.gameObject.SetActive(false);
 
                         RetrieveRecords();
                         //string playerName = response.DisplayName; // we can get the display name
@@ -71,6 +73,7 @@ public class GameSparksManager : MonoBehaviour
                     {
                         // Não conectou a nenhuma conta, mostra tela de registro
                         Debug.Log("Error Retrieving Account Details...");
+                        loadingInfoCanvas.gameObject.SetActive(false);
 
                         registerPlayerCanvas.gameObject.SetActive(true);
                     }
