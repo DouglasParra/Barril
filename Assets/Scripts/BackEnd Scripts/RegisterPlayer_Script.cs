@@ -65,16 +65,16 @@ public class RegisterPlayer_Script : MonoBehaviour
     private void InitiateRecords() {
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("INITIATE_RECORDS")
-            .SetEventAttribute("TIME_1_1", "99:99:99")
-            .SetEventAttribute("TIME_1_2", "99:99:99")
-            .SetEventAttribute("TIME_1_3", "99:99:99")
-            .SetEventAttribute("TIME_1_4", "99:99:99")
-            .SetEventAttribute("TIME_1_5", "99:99:99")
-            .SetEventAttribute("TIME_1_6", "99:99:99")
-            .SetEventAttribute("TIME_1_7", "99:99:99")
-            .SetEventAttribute("TIME_1_8", "99:99:99")
-            .SetEventAttribute("TIME_1_9", "99:99:99")
-            .SetEventAttribute("TIME_1_10", "99:99:99")
+            .SetEventAttribute("TIME_1_1", 999999)
+            .SetEventAttribute("TIME_1_2", 999999)
+            .SetEventAttribute("TIME_1_3", 999999)
+            .SetEventAttribute("TIME_1_4", 999999)
+            .SetEventAttribute("TIME_1_5", 999999)
+            .SetEventAttribute("TIME_1_6", 999999)
+            .SetEventAttribute("TIME_1_7", 999999)
+            .SetEventAttribute("TIME_1_8", 999999)
+            .SetEventAttribute("TIME_1_9", 999999)
+            .SetEventAttribute("TIME_1_10", 999999)
             .Send((response) =>
             {
 
@@ -83,9 +83,9 @@ public class RegisterPlayer_Script : MonoBehaviour
                     Debug.Log("Player records initiated to GameSparks...");
 
                     // Jogar pro records[] do GameManager
-                    GameSparksManager.records = new string[GameSparksManager.NUMERO_FASES];
+                    GameSparksManager.records = new int[GameSparksManager.NUMERO_FASES];
                     for (int i=0; i < GameSparksManager.NUMERO_FASES; i++) {
-                        GameSparksManager.records[i] = "99:99:99";
+                        GameSparksManager.records[i] = 999999;
                     }
                 }
                 else

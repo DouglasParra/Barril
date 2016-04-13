@@ -27,6 +27,14 @@ public class ClockTime : MonoBehaviour {
 
 	}
 
+    public string RetornaTempoString(int t) {
+        string minutes = Mathf.Floor(t / 60).ToString("00");
+        string seconds = Mathf.Floor(t % 60).ToString("00");
+        string fraction = Mathf.Floor((t * 100) % 100).ToString("00");
+
+        return minutes + ":" + seconds + ":" + fraction;
+    }
+
 	void updateTextComponent () {
 		GetComponent<Text> ().text = timestring;
 	}

@@ -23,7 +23,14 @@ public class GameManager : MonoBehaviour {
 
 	void Awake () {
 		startAll ();
+
+        GameSparks.Api.Messages.NewHighScoreMessage.Listener += HighScoreMessageHandler; // assign the New High Score message
 	}
+
+    void HighScoreMessageHandler(GameSparks.Api.Messages.NewHighScoreMessage _message)
+    {
+        Debug.Log("NEW TIME RECORD\n " + _message.LeaderboardName);
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -75,71 +82,59 @@ public class GameManager : MonoBehaviour {
 	void saveTime () {
 		Debug.Log ("Venci - " + clockTime.timestring + " -- " + clockTime.timer);
 
-        if (SceneManager.GetActiveScene().name.Equals("1-1")) 
-        {
-            SalvarTempoGameSparks_1_1();
-        }
-        else if (SceneManager.GetActiveScene().name.Equals("1-2"))
-        {
-            SalvarTempoGameSparks_1_2();
-        }
-        else if (SceneManager.GetActiveScene().name.Equals("1-3"))
-        {
-            SalvarTempoGameSparks_1_3();
-        }
-        else if (SceneManager.GetActiveScene().name.Equals("1-4"))
-        {
-            SalvarTempoGameSparks_1_4();
-        }
-        else if (SceneManager.GetActiveScene().name.Equals("1-5"))
-        {
-            SalvarTempoGameSparks_1_5();
-        }
-        else if (SceneManager.GetActiveScene().name.Equals("1-6"))
-        {
-            SalvarTempoGameSparks_1_6();
-        }
-        else if (SceneManager.GetActiveScene().name.Equals("1-7"))
-        {
-            SalvarTempoGameSparks_1_7();
-        }
-        else if (SceneManager.GetActiveScene().name.Equals("1-8"))
-        {
-            SalvarTempoGameSparks_1_8();
-        }
-        else if (SceneManager.GetActiveScene().name.Equals("1-9"))
-        {
-            SalvarTempoGameSparks_1_9();
-        }
-        else if (SceneManager.GetActiveScene().name.Equals("1-10"))
-        {
-            SalvarTempoGameSparks_1_10();
-        }
+        // Transforma o tempo em int
+        int teste2 = ClockTimeInt();
+
+        Debug.Log(teste2);
+        Debug.Log("CT: " + clockTime.RetornaTempoString(teste2));
+
+        SalvarTempoGameSparks();
 
         // Debug.Log(loadedID + " - " + loadedTime);
         // Debug.Log(string.Compare(loadedTime, clockTime.timestring));
 	}
 
-    void SalvarTempoGameSparks_1_1() {
+    private int ClockTimeInt() {
+        return int.Parse(clockTime.timestring[0].ToString() +
+                         clockTime.timestring[1].ToString() +
+                         clockTime.timestring[3].ToString() +
+                         clockTime.timestring[4].ToString() +
+                         clockTime.timestring[6].ToString() +
+                         clockTime.timestring[7].ToString());
+    }
 
-        // Se arg1 > arg2, compare==1
-        // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
+    // Dado o nome da fase no formato "X-Y", retorna a posição no vetor GameSparksManager.records[]
+    private int PosicaoVetorRecords(string mundo) {
+        string[] m1 = mundo.Split('-'); 
+        
+        int m2 = int.Parse(m1[0]) - 1;
+        int m3 = int.Parse(m1[1]) - 1;
 
-        // switch para, dado o nome da fase, pegar o índice dela em records[]
-        if (string.Compare(clockTime.timestring, GameSparksManager.records[0])==-1) 
+        return int.Parse((m2.ToString() + m3.ToString()));
+    }
+
+    // Salva tempo no GS pro Leaderboard da fase que está jogando
+    void SalvarTempoGameSparks()
+    {
+        // m1[0] = String da cena antes do '-' ; m1[1] = String da cena depois do '-' ; 
+        string[] m1 = SceneManager.GetActiveScene().name.Split('-');
+
+        // Se ClockTimeInt() < records[], salva
+        if (ClockTimeInt() < GameSparksManager.records[PosicaoVetorRecords(SceneManager.GetActiveScene().name)])
         {
-            GameSparksManager.records[0] = clockTime.timestring;
+            GameSparksManager.records[PosicaoVetorRecords(SceneManager.GetActiveScene().name)] = ClockTimeInt();
 
             // mudar no gs para ficar 1-1 e assim usar o nome da cena concatenado
             new GameSparks.Api.Requests.LogEventRequest()
-                .SetEventKey("SAVE_STAGE_1_1")
-                .SetEventAttribute("TIME_1_1", clockTime.timestring)
+                .SetEventKey("SAVE_STAGE_" + m1[0] + "_" + m1[1])
+                .SetEventAttribute("TIME_" + m1[0] + "_" + m1[1], ClockTimeInt())
                 .Send((response) =>
                 {
 
                     if (!response.HasErrors)
                     {
                         Debug.Log("Player Saved To GameSparks...");
+                        Debug.Log("Score Posted Sucessfully...");
                     }
                     else
                     {
@@ -149,248 +144,24 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void SalvarTempoGameSparks_1_2()
-    {
+    /*void SubmitScoreLeaderboardGameSparks() {
+        Debug.Log("Posting Score To Leaderboard...");
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("SUBMIT_RECORD_1_1")
+            .SetEventAttribute("TIME_1_1", ClockTimeInt())
+            .Send((response) =>
+            {
 
-        // Se arg1 > arg2, compare==1
-        // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
-        if (string.Compare(clockTime.timestring, GameSparksManager.records[1]) == -1)
-        {
-            GameSparksManager.records[1] = clockTime.timestring;
-
-            new GameSparks.Api.Requests.LogEventRequest()
-                .SetEventKey("SAVE_STAGE_1_2")
-                .SetEventAttribute("TIME_1_2", clockTime.timestring)
-                .Send((response) =>
+                if (!response.HasErrors)
                 {
-
-                    if (!response.HasErrors)
-                    {
-                        Debug.Log("Player Saved To GameSparks...");
-                    }
-                    else
-                    {
-                        Debug.Log("Error Saving Player Data...");
-                    }
-                });
-        }
-    }
-
-    void SalvarTempoGameSparks_1_3()
-    {
-
-        // Se arg1 > arg2, compare==1
-        // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
-        if (string.Compare(clockTime.timestring, GameSparksManager.records[2]) == -1)
-        {
-            GameSparksManager.records[2] = clockTime.timestring;
-
-            new GameSparks.Api.Requests.LogEventRequest()
-                .SetEventKey("SAVE_STAGE_1_3")
-                .SetEventAttribute("TIME_1_3", clockTime.timestring)
-                .Send((response) =>
+                    Debug.Log("Score Posted Sucessfully...");
+                }
+                else
                 {
-
-                    if (!response.HasErrors)
-                    {
-                        Debug.Log("Player Saved To GameSparks...");
-                    }
-                    else
-                    {
-                        Debug.Log("Error Saving Player Data...");
-                    }
-                });
-        }
-    }
-
-    void SalvarTempoGameSparks_1_4()
-    {
-
-        // Se arg1 > arg2, compare==1
-        // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
-        if (string.Compare(clockTime.timestring, GameSparksManager.records[3]) == -1)
-        {
-            GameSparksManager.records[3] = clockTime.timestring;
-
-            new GameSparks.Api.Requests.LogEventRequest()
-                .SetEventKey("SAVE_STAGE_1_4")
-                .SetEventAttribute("TIME_1_4", clockTime.timestring)
-                .Send((response) =>
-                {
-
-                    if (!response.HasErrors)
-                    {
-                        Debug.Log("Player Saved To GameSparks...");
-                    }
-                    else
-                    {
-                        Debug.Log("Error Saving Player Data...");
-                    }
-                });
-        }
-    }
-
-    void SalvarTempoGameSparks_1_5()
-    {
-
-        // Se arg1 > arg2, compare==1
-        // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
-        if (string.Compare(clockTime.timestring, GameSparksManager.records[4]) == -1)
-        {
-            GameSparksManager.records[4] = clockTime.timestring;
-
-            new GameSparks.Api.Requests.LogEventRequest()
-                .SetEventKey("SAVE_STAGE_1_5")
-                .SetEventAttribute("TIME_1_5", clockTime.timestring)
-                .Send((response) =>
-                {
-
-                    if (!response.HasErrors)
-                    {
-                        Debug.Log("Player Saved To GameSparks...");
-                    }
-                    else
-                    {
-                        Debug.Log("Error Saving Player Data...");
-                    }
-                });
-        }
-    }
-
-    void SalvarTempoGameSparks_1_6()
-    {
-
-        // Se arg1 > arg2, compare==1
-        // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
-        if (string.Compare(clockTime.timestring, GameSparksManager.records[5]) == -1)
-        {
-            GameSparksManager.records[5] = clockTime.timestring;
-
-            new GameSparks.Api.Requests.LogEventRequest()
-                .SetEventKey("SAVE_STAGE_1_6")
-                .SetEventAttribute("TIME_1_6", clockTime.timestring)
-                .Send((response) =>
-                {
-
-                    if (!response.HasErrors)
-                    {
-                        Debug.Log("Player Saved To GameSparks...");
-                    }
-                    else
-                    {
-                        Debug.Log("Error Saving Player Data...");
-                    }
-                });
-        }
-    }
-
-    void SalvarTempoGameSparks_1_7()
-    {
-
-        // Se arg1 > arg2, compare==1
-        // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
-        if (string.Compare(clockTime.timestring, GameSparksManager.records[6]) == -1)
-        {
-            GameSparksManager.records[6] = clockTime.timestring;
-
-            new GameSparks.Api.Requests.LogEventRequest()
-                .SetEventKey("SAVE_STAGE_1_7")
-                .SetEventAttribute("TIME_1_7", clockTime.timestring)
-                .Send((response) =>
-                {
-
-                    if (!response.HasErrors)
-                    {
-                        Debug.Log("Player Saved To GameSparks...");
-                    }
-                    else
-                    {
-                        Debug.Log("Error Saving Player Data...");
-                    }
-                });
-        }
-    }
-
-    void SalvarTempoGameSparks_1_8()
-    {
-
-        // Se arg1 > arg2, compare==1
-        // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
-        if (string.Compare(clockTime.timestring, GameSparksManager.records[7]) == -1)
-        {
-            GameSparksManager.records[7] = clockTime.timestring;
-
-            new GameSparks.Api.Requests.LogEventRequest()
-                .SetEventKey("SAVE_STAGE_1_8")
-                .SetEventAttribute("TIME_1_8", clockTime.timestring)
-                .Send((response) =>
-                {
-
-                    if (!response.HasErrors)
-                    {
-                        Debug.Log("Player Saved To GameSparks...");
-                    }
-                    else
-                    {
-                        Debug.Log("Error Saving Player Data...");
-                    }
-                });
-        }
-    }
-
-    void SalvarTempoGameSparks_1_9()
-    {
-
-        // Se arg1 > arg2, compare==1
-        // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
-        if (string.Compare(clockTime.timestring, GameSparksManager.records[8]) == -1)
-        {
-            GameSparksManager.records[8] = clockTime.timestring;
-
-            new GameSparks.Api.Requests.LogEventRequest()
-                .SetEventKey("SAVE_STAGE_1_9")
-                .SetEventAttribute("TIME_1_9", clockTime.timestring)
-                .Send((response) =>
-                {
-
-                    if (!response.HasErrors)
-                    {
-                        Debug.Log("Player Saved To GameSparks...");
-                    }
-                    else
-                    {
-                        Debug.Log("Error Saving Player Data...");
-                    }
-                });
-        }
-    }
-
-    void SalvarTempoGameSparks_1_10()
-    {
-
-        // Se arg1 > arg2, compare==1
-        // Debug.Log("Tempo salvo no GS: " + loadedTime + " - Tempo desse jogo: " + clockTime.timestring);
-        if (string.Compare(clockTime.timestring, GameSparksManager.records[9]) == -1)
-        {
-            GameSparksManager.records[9] = clockTime.timestring;
-
-            new GameSparks.Api.Requests.LogEventRequest()
-                .SetEventKey("SAVE_STAGE_1_10")
-                .SetEventAttribute("TIME_1_10", clockTime.timestring)
-                .Send((response) =>
-                {
-
-                    if (!response.HasErrors)
-                    {
-                        Debug.Log("Player Saved To GameSparks...");
-                    }
-                    else
-                    {
-                        Debug.Log("Error Saving Player Data...");
-                    }
-                });
-        }
-    }
+                    Debug.Log("Error Posting Score...");
+                }
+            });
+    }*/
 
 	void showLoseModal () {
 		if (loseModal) {

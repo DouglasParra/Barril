@@ -18,7 +18,7 @@ public class GameSparksManager : MonoBehaviour
     public Canvas registerPlayerCanvas;
 
     // Vetor de strings para guardar os tempos recebidos do GS
-    public static string[] records;
+    public static int[] records;
     public static int NUMERO_FASES = 10;
 
     private string loadedID = "";
@@ -85,7 +85,7 @@ public class GameSparksManager : MonoBehaviour
 
     private void RetrieveRecords()
     {
-        records = new string[NUMERO_FASES];
+        records = new int[NUMERO_FASES];
 
         // Carrega o tempo da fase salvo
         new GameSparks.Api.Requests.LogEventRequest()
@@ -100,16 +100,16 @@ public class GameSparksManager : MonoBehaviour
                         loadedID = "Player ID: " + data.GetString("playerID");
 
                         // Por enquanto, apenas tempos das fases do mundo 1
-                        records[0] = data.GetString("playerTime_1_1");
-                        records[1] = data.GetString("playerTime_1_2");
-                        records[2] = data.GetString("playerTime_1_3");
-                        records[3] = data.GetString("playerTime_1_4");
-                        records[4] = data.GetString("playerTime_1_5");
-                        records[5] = data.GetString("playerTime_1_6");
-                        records[6] = data.GetString("playerTime_1_7");
-                        records[7] = data.GetString("playerTime_1_8");
-                        records[8] = data.GetString("playerTime_1_9");
-                        records[9] = data.GetString("playerTime_1_10");
+                        records[0] = (int)data.GetInt("playerTime_1_1");
+                        records[1] = (int)data.GetInt("playerTime_1_2");
+                        records[2] = (int)data.GetInt("playerTime_1_3");
+                        records[3] = (int)data.GetInt("playerTime_1_4");
+                        records[4] = (int)data.GetInt("playerTime_1_5");
+                        records[5] = (int)data.GetInt("playerTime_1_6");
+                        records[6] = (int)data.GetInt("playerTime_1_7");
+                        records[7] = (int)data.GetInt("playerTime_1_8");
+                        records[8] = (int)data.GetInt("playerTime_1_9");
+                        records[9] = (int)data.GetInt("playerTime_1_10");
                     }
                     else
                     {
