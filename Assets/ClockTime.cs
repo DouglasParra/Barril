@@ -20,11 +20,6 @@ public class ClockTime : MonoBehaviour {
 
 	void updateTimes () {
 		timer += Time.deltaTime;
-		string minutes = Mathf.Floor(timer / 60).ToString("00");
-		string seconds = Mathf.Floor(timer % 60).ToString("00");
-		string fraction = Mathf.Floor((timer * 100) % 100).ToString("00");
-		timestring = minutes + ":" + seconds + ":" + fraction;
-
 	}
 
     public string RetornaTempoString(int t) {
@@ -36,6 +31,10 @@ public class ClockTime : MonoBehaviour {
     }
 
 	void updateTextComponent () {
+		string minutes = Mathf.Floor(timer / 60).ToString("00");
+		string seconds = Mathf.Floor(timer % 60).ToString("00");
+		string fraction = Mathf.Floor((timer * 100) % 100).ToString("00");
+		timestring = minutes + ":" + seconds + ":" + fraction;
 		GetComponent<Text> ().text = timestring;
 	}
 
@@ -47,4 +46,8 @@ public class ClockTime : MonoBehaviour {
 		canRunTime = false;
 	}
 
+	public void statTimeCheckpoint (float timer) {
+		this.timer = timer;
+		updateTextComponent ();
+	}
 }

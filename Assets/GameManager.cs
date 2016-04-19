@@ -17,13 +17,15 @@ public class GameManager : MonoBehaviour {
 
 	public Text victoryClockText;
 	public ClockTime clockTime;
+	public Button loseCheckpointButton;
+	public Button pauseCheckponintButton;
 
-    private string loadedID = "";
-    private string loadedTime = "";
+	[Tooltip("Insira o numero de checkpoint e sete eles na posição e ordem correta")]
+	public GameObject[] checkpoints;
 
 	void Awake () {
 		startAll ();
-
+		verifyCheckpoint ();
         GameSparks.Api.Messages.NewHighScoreMessage.Listener += HighScoreMessageHandler; // assign the New High Score message
 	}
 
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour {
 		hidePauseButton ();
 		saveTime ();
 		verifyTutorialDone ();
+		resetCheckpoint ();
 	}
 
 	void showClockTime () {
@@ -63,14 +66,17 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void goToStageSelectScene () {
+		resetCheckpoint ();
 		SceneManager.LoadScene ("StageSelect");
 	}
 
 	public void goToNextScene () {
 		try {
+			resetCheckpoint ();
 			SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
 		}
 		catch (System.Exception e) {
+			Debug.Log (e.ToString());
 			goToStageSelectScene ();
 		}
 	}
@@ -209,5 +215,55 @@ public class GameManager : MonoBehaviour {
 		if (PlayerPrefs.HasKey ("tutorialDone") == false) {
 			PlayerPrefs.SetInt ("tutorialDone", 1);
 		}
+	}
+
+	public void checkpoint (int order) {
+		PlayerPrefs.SetInt ("checkpointOrder", order);
+		PlayerPrefs.SetFloat ("checkpointTimer", clockTime.timer);
+		PlayerPrefs.SetInt ("hasCheckpoint", 1);
+		activeCheckpointButton ();
+	}
+
+	void verifyCheckpoint () {
+		if (PlayerPrefs.HasKey("startInCheckpoint") 
+			&& PlayerPrefs.GetInt ("startInCheckpoint") == 1
+			&& PlayerPrefs.HasKey ("hasCheckpoint") 
+			&& PlayerPrefs.GetInt ("hasCheckpoint") == 1) {
+			setRobotToCheckpoint ();
+			setCheckpointTimer ();
+			activeCheckpointButton ();
+		}
+	}
+
+	void activeCheckpointButton () {
+		loseCheckpointButton.interactable = true;
+		pauseCheckponintButton.interactable = true;
+	}
+
+	void setRobotToCheckpoint () {
+		GameObject checkpointField = checkpoints[PlayerPrefs.GetInt ("checkpointOrder")] ;
+		GameObject.Find ("Robot").SendMessage ("goToField", checkpointField);
+	}
+
+	void setCheckpointTimer () {
+		clockTime.statTimeCheckpoint (PlayerPrefs.GetFloat ("checkpointTimer"));
+	}
+
+	public void restartCheckpoint () {
+		PlayerPrefs.SetInt("startInCheckpoint", 1); 
+		restart ();
+	}
+
+	public void restartWithoutCheckpoint () {
+		resetCheckpoint ();
+		restart ();
+	}
+
+	void resetCheckpoint () {
+		PlayerPrefs.SetInt("startInCheckpoint", 0); 
+	}
+
+	void OnApplicationQuit() {
+		resetCheckpoint ();
 	}
 }

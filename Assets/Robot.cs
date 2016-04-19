@@ -59,8 +59,13 @@ public class Robot : MonoBehaviour {
 			this.transform.rotation = coll.gameObject.transform.rotation;
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0.0f, 0.0f);
 			GetComponent<Rigidbody2D> ().gravityScale = 0.0f;
-
 		}
+	}
+
+	void goToField (GameObject field) {
+		this.transform.position = field.transform.position;
+		this.transform.rotation = field.transform.rotation;
+		this.transform.parent = field.transform;
 	}
 
 
