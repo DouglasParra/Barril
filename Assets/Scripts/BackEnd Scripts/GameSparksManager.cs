@@ -128,8 +128,6 @@ public class GameSparksManager : MonoBehaviour
 
     }
 
-
-
     #region FaceBook Authentication
     /// <summary>
     /// Below we will login with facebook.
@@ -174,10 +172,11 @@ public class GameSparksManager : MonoBehaviour
         {
             Debug.Log("Logging into gamesparks with facebook details");
             GSFacebookLogin(AfterFBLogin);
+            UserManager.instance.UpdateInformation();
         }
         else
         {
-            Debug.Log("Something wrong  with FB");
+            Debug.Log("Something wrong with FB");
         }
     }
 
@@ -194,8 +193,6 @@ public class GameSparksManager : MonoBehaviour
     //This method will connect GS with FB
     public void GSFacebookLogin(FacebookLoginCallback _fbLoginCallback)
     {
-        Debug.Log("");
-
         new GameSparks.Api.Requests.FacebookConnectRequest()
             .SetAccessToken(AccessToken.CurrentAccessToken.TokenString)
             .Send((response) =>

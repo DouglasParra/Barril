@@ -150,25 +150,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    /*void SubmitScoreLeaderboardGameSparks() {
-        Debug.Log("Posting Score To Leaderboard...");
-        new GameSparks.Api.Requests.LogEventRequest()
-            .SetEventKey("SUBMIT_RECORD_1_1")
-            .SetEventAttribute("TIME_1_1", ClockTimeInt())
-            .Send((response) =>
-            {
-
-                if (!response.HasErrors)
-                {
-                    Debug.Log("Score Posted Sucessfully...");
-                }
-                else
-                {
-                    Debug.Log("Error Posting Score...");
-                }
-            });
-    }*/
-
 	void showLoseModal () {
 		if (loseModal) {
 			loseModal.SetActive (true);

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Facebook.Unity;
 
 public class StageSelectScript : MonoBehaviour {
 
@@ -11,8 +12,8 @@ public class StageSelectScript : MonoBehaviour {
 	void Start () {
         playerName.text = PlayerPrefs.GetString("DisplayName");
 	}
-	
-	// Update is called once per frame
+
+    // Update is called once per frame
 	void Update () {
 	
 	}

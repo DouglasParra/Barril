@@ -7,12 +7,16 @@ public class RankingScript : MonoBehaviour {
 
     public Text[] record;
 
+    // Ranking Mundial
     public Text nomeFase;
     public Text[] mundialRankRecords;
     public Text[] mundialNameRecords;
     public Text[] mundialTimeRecords;
-
     public Text[] stageNameMundialRecords;
+
+    public GameObject[] friendGrid;
+    public Text nomeFaseFriends;
+    private Sprite teste;
 
     private string stageSelected;
 
@@ -94,6 +98,62 @@ public class RankingScript : MonoBehaviour {
                 else
                 {
                     Debug.Log("Error Retrieving Leaderboard Data...");
+                }
+
+            });
+    }
+
+    private void resetFriendScores()
+    {
+        for (int i = 0; i < friendGrid.Length; i++)
+        {
+            friendGrid[i].GetComponent<FriendEntry>().rank.text = "< N >";
+            friendGrid[i].GetComponent<FriendEntry>().nameLabel.text = "< Jogador >";
+            friendGrid[i].GetComponent<FriendEntry>().time.text = "--:--:--";
+            friendGrid[i].GetComponent<FriendEntry>().profilePicture.sprite = null;
+        }
+    }
+
+    public void GetLeaderboardSocial()
+    {
+        resetFriendScores();
+        nomeFaseFriends.text = "Fase " + stageSelected;
+
+        // m1[0] = String da cena antes do '-' ; m1[1] = String da cena depois do '-' ; 
+        string[] m1 = stageSelected.Split('-');
+
+        Debug.Log("Fetching Social Leaderboard Data...");
+
+        int i = 0;
+
+        new GameSparks.Api.Requests.SocialLeaderboardDataRequest()
+            .SetLeaderboardShortCode("LEADERBOARD_" + m1[0] + "_" + m1[1])
+            .SetEntryCount(GameSparksManager.records[PosicaoVetorRecords(stageSelected)]) // we need to parse this text input, since the entry count only takes long
+            .SetSocial(true)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Found Leaderboard Data...");
+
+                    foreach (GameSparks.Api.Responses.LeaderboardDataResponse._LeaderboardData entry in response.Data) // iterate through the leaderboard data
+                    {
+                        friendGrid[i].GetComponent<FriendEntry>().rank.text = entry.Rank.ToString();
+                        friendGrid[i].GetComponent<FriendEntry>().nameLabel.text = entry.UserName;
+
+                        int tempo = int.Parse(entry.JSONData["TIME_" + m1[0] + "_" + m1[1]].ToString());
+                        friendGrid[i].GetComponent<FriendEntry>().time.text = RetornaTempoString(tempo);
+
+                        friendGrid[i].GetComponent<FriendEntry>().UpdateFriendImage(entry.ExternalIds.GetString("FB"));
+
+                        i++;
+                        if (i >= 10) break;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Error Retrieving Social Leaderboard Data...");
                 }
 
             });
