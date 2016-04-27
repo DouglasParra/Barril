@@ -8,9 +8,15 @@ public class StageSelectScript : MonoBehaviour {
 
     public Text playerName;
 
+    public GameObject[] mundos;
+
+    private int QTDE_MUNDO = 8;
+    private int mundoAtual;
+
 	// Use this for initialization
 	void Start () {
         playerName.text = PlayerPrefs.GetString("DisplayName");
+        mundoAtual = 0;
 	}
 
     // Update is called once per frame
@@ -87,5 +93,22 @@ public class StageSelectScript : MonoBehaviour {
 		SceneManager.LoadScene("TutorialScene");
 	}
 
+    public void loadScene(string scene) {
+        SceneManager.LoadScene(scene);
+    }
 
+    public void nextWorld() {
+        mundos[mundoAtual].gameObject.SetActive(false);
+        mundoAtual = mundoAtual + 1;
+        if (mundoAtual >= QTDE_MUNDO) mundoAtual = 0;
+        mundos[mundoAtual].gameObject.SetActive(true);
+    }
+
+    public void previousWorld()
+    {
+        mundos[mundoAtual].gameObject.SetActive(false);
+        mundoAtual = mundoAtual - 1;
+        if (mundoAtual < 0) mundoAtual = QTDE_MUNDO - 1;
+        mundos[mundoAtual].gameObject.SetActive(true);
+    }
 }

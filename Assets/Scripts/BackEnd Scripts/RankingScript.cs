@@ -5,15 +5,24 @@ using System.Collections;
 
 public class RankingScript : MonoBehaviour {
 
+    [Header("Record Pessoal")]
+    public Text worldNameRecord;
+    public Text[] stageNameRecord;
     public Text[] record;
 
+    private int mundoAtual;
+    
     // Ranking Mundial
+    [Header("Ranking Mundial")]
+    [Space(10)]
     public Text nomeFase;
     public Text[] mundialRankRecords;
     public Text[] mundialNameRecords;
     public Text[] mundialTimeRecords;
     public Text[] stageNameMundialRecords;
 
+    [Header("Ranking Amigos")]
+    [Space(10)]
     public GameObject[] friendGrid;
     public Text nomeFaseFriends;
     private Sprite teste;
@@ -25,6 +34,8 @@ public class RankingScript : MonoBehaviour {
         for (int i = 0; i < record.Length; i++) {
             record[i].text = RetornaTempoString(GameSparksManager.records[i]);
         }
+
+        mundoAtual = 1;
 
         resetMundialScores();
 	}
@@ -157,5 +168,31 @@ public class RankingScript : MonoBehaviour {
                 }
 
             });
+    }
+
+    public void nextWorldRecord() {
+        mundoAtual += 1;
+        if (mundoAtual >= 9) mundoAtual = 1;
+
+        worldNameRecord.text = "Mundo " + mundoAtual;
+
+        renameStageNameRecord();
+    }
+
+    public void previousWorldRecord()
+    {
+        mundoAtual -= 1;
+        if (mundoAtual < 1) mundoAtual = 8;
+
+        worldNameRecord.text = "Mundo " + mundoAtual;
+
+        renameStageNameRecord();
+    }
+
+    private void renameStageNameRecord() {
+        for (int i = 1; i <= 10; i++)
+        {
+            stageNameRecord[i - 1].text = "Fase " + mundoAtual + "-" + i;
+        }
     }
 }

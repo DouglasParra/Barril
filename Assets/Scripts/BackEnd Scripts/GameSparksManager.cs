@@ -103,7 +103,16 @@ public class GameSparksManager : MonoBehaviour
                         loadedID = "Player ID: " + data.GetString("playerID");
 
                         // Por enquanto, apenas tempos das fases do mundo 1
-                        records[0] = (int)data.GetInt("playerTime_1_1");
+                        int k = 0;
+                        for (int i = 1; i <= 8; i++)
+                        {
+                            for (int j = 1; i <= 10; j++)
+                            {
+                                records[k] = (int)data.GetInt("playerTime_" + i + "_" + j);
+                            }
+                        }
+                            
+                        /*records[0] = (int)data.GetInt("playerTime_1_1");
                         records[1] = (int)data.GetInt("playerTime_1_2");
                         records[2] = (int)data.GetInt("playerTime_1_3");
                         records[3] = (int)data.GetInt("playerTime_1_4");
@@ -112,7 +121,7 @@ public class GameSparksManager : MonoBehaviour
                         records[6] = (int)data.GetInt("playerTime_1_7");
                         records[7] = (int)data.GetInt("playerTime_1_8");
                         records[8] = (int)data.GetInt("playerTime_1_9");
-                        records[9] = (int)data.GetInt("playerTime_1_10");
+                        records[9] = (int)data.GetInt("playerTime_1_10");*/
                     }
                     else
                     {
