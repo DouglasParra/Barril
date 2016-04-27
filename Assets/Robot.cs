@@ -40,6 +40,7 @@ public class Robot : MonoBehaviour {
 
 		GetComponentInParent<Transform>().position = transform.position + transform.up * 2;
 
+		activeFieldLaunchAnimation ();
 
 		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
 		rb.gravityScale = GRAVITY_SCALE;
@@ -66,6 +67,12 @@ public class Robot : MonoBehaviour {
 		this.transform.position = field.transform.position;
 		this.transform.rotation = field.transform.rotation;
 		this.transform.parent = field.transform;
+	}
+
+	void activeFieldLaunchAnimation () {
+		if (transform.parent.gameObject.GetComponent<Animator> ()) {
+			transform.parent.gameObject.GetComponent<Animator> ().SetTrigger ("launch");
+		}
 	}
 
 
