@@ -106,7 +106,8 @@ public class GameManager : MonoBehaviour {
                          clockTime.timestring[3].ToString() +
                          clockTime.timestring[4].ToString() +
                          clockTime.timestring[6].ToString() +
-                         clockTime.timestring[7].ToString());
+                         clockTime.timestring[7].ToString() +
+                         clockTime.timestring[8].ToString());
     }
 
     // Dado o nome da fase no formato "X-Y", retorna a posição no vetor GameSparksManager.records[]

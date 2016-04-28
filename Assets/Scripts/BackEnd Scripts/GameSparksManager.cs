@@ -20,7 +20,7 @@ public class GameSparksManager : MonoBehaviour
 
     // Vetor de strings para guardar os tempos recebidos do GS
     public static int[] records;
-    public static int NUMERO_FASES = 10;
+    public static int NUMERO_FASES = 80;
 
     private string loadedID = "";
     private string loadedTime = "";
@@ -102,26 +102,16 @@ public class GameSparksManager : MonoBehaviour
                         GSData data = response.ScriptData.GetGSData("player_Data");
                         loadedID = "Player ID: " + data.GetString("playerID");
 
-                        // Por enquanto, apenas tempos das fases do mundo 1
+                        // Joga todos os tempos do jogador no vetor records
                         int k = 0;
                         for (int i = 1; i <= 8; i++)
                         {
-                            for (int j = 1; i <= 10; j++)
+                            for (int j = 1; j <= 10; j++)
                             {
                                 records[k] = (int)data.GetInt("playerTime_" + i + "_" + j);
+                                k++;
                             }
                         }
-                            
-                        /*records[0] = (int)data.GetInt("playerTime_1_1");
-                        records[1] = (int)data.GetInt("playerTime_1_2");
-                        records[2] = (int)data.GetInt("playerTime_1_3");
-                        records[3] = (int)data.GetInt("playerTime_1_4");
-                        records[4] = (int)data.GetInt("playerTime_1_5");
-                        records[5] = (int)data.GetInt("playerTime_1_6");
-                        records[6] = (int)data.GetInt("playerTime_1_7");
-                        records[7] = (int)data.GetInt("playerTime_1_8");
-                        records[8] = (int)data.GetInt("playerTime_1_9");
-                        records[9] = (int)data.GetInt("playerTime_1_10");*/
                     }
                     else
                     {

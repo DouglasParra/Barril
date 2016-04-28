@@ -15,40 +15,51 @@ public class RankingScript : MonoBehaviour {
     // Ranking Mundial
     [Header("Ranking Mundial")]
     [Space(10)]
+    public Text nomeMundo;
     public Text nomeFase;
     public Text[] mundialRankRecords;
     public Text[] mundialNameRecords;
     public Text[] mundialTimeRecords;
     public Text[] stageNameMundialRecords;
+    public Button[] mundialRankButtons;
+
+    private int mundoAtualMundial;
 
     [Header("Ranking Amigos")]
     [Space(10)]
     public GameObject[] friendGrid;
     public Text nomeFaseFriends;
+    public Text nomeMundoAmigos;
+    public Button[] friendRankButtons;
+
     private Sprite teste;
+
+    private int mundoAtualAmigos;
 
     private string stageSelected;
 
 	// Use this for initialization
 	void Start () {
-        for (int i = 0; i < record.Length; i++) {
+        for (int i = 0; i < 10; i++) {
             record[i].text = RetornaTempoString(GameSparksManager.records[i]);
         }
 
         mundoAtual = 1;
+        mundoAtualMundial = 1;
+        mundoAtualAmigos = 1;
 
         resetMundialScores();
 	}
 
-    public void ChangeStageSelected(string s) {
-        stageSelected = s;
+    public void ChangeStageSelected(GameObject s) {
+        stageSelected = s.GetComponentInChildren<Text>().text;
     }
 
     public string RetornaTempoString(int t)
     {
-        string minutes = Mathf.Floor(t / 10000).ToString("00");
-        string seconds = Mathf.Floor((t % 10000) / 100).ToString("00");
-        string fraction = Mathf.Floor(t % 100).ToString("00");
+        string minutes = Mathf.Floor(t / 100000).ToString("00");
+        string seconds = Mathf.Floor((t % 100000) / 1000).ToString("00");
+        string fraction = Mathf.Floor(t % 1000).ToString("000");
 
         return minutes + ":" + seconds + ":" + fraction;
     }
@@ -58,7 +69,7 @@ public class RankingScript : MonoBehaviour {
         {
             mundialRankRecords[i].text = "< N >";
             mundialNameRecords[i].text = "< Jogador >";
-            mundialTimeRecords[i].text = "--:--:--";
+            mundialTimeRecords[i].text = "--:--:---";
         }
     }
 
@@ -120,7 +131,7 @@ public class RankingScript : MonoBehaviour {
         {
             friendGrid[i].GetComponent<FriendEntry>().rank.text = "< N >";
             friendGrid[i].GetComponent<FriendEntry>().nameLabel.text = "< Jogador >";
-            friendGrid[i].GetComponent<FriendEntry>().time.text = "--:--:--";
+            friendGrid[i].GetComponent<FriendEntry>().time.text = "--:--:---";
             friendGrid[i].GetComponent<FriendEntry>().profilePicture.sprite = null;
         }
     }
@@ -139,7 +150,7 @@ public class RankingScript : MonoBehaviour {
 
         new GameSparks.Api.Requests.SocialLeaderboardDataRequest()
             .SetLeaderboardShortCode("LEADERBOARD_" + m1[0] + "_" + m1[1])
-            .SetEntryCount(GameSparksManager.records[PosicaoVetorRecords(stageSelected)]) // we need to parse this text input, since the entry count only takes long
+            .SetEntryCount(GameSparksManager.records[PosicaoVetorRecords(stageSelected)])
             .SetSocial(true)
             .Send((response) =>
             {
@@ -174,25 +185,84 @@ public class RankingScript : MonoBehaviour {
         mundoAtual += 1;
         if (mundoAtual >= 9) mundoAtual = 1;
 
-        worldNameRecord.text = "Mundo " + mundoAtual;
-
         renameStageNameRecord();
     }
 
     public void previousWorldRecord()
     {
         mundoAtual -= 1;
-        if (mundoAtual < 1) mundoAtual = 8;
-
-        worldNameRecord.text = "Mundo " + mundoAtual;
+        if (mundoAtual < 1) mundoAtual = 8;        
 
         renameStageNameRecord();
     }
 
     private void renameStageNameRecord() {
+        worldNameRecord.text = "Mundo " + mundoAtual;
+
         for (int i = 1; i <= 10; i++)
         {
             stageNameRecord[i - 1].text = "Fase " + mundoAtual + "-" + i;
+        }
+
+        // Pegar os records em GameSparksManager.records[]
+        int j = int.Parse((mundoAtual - 1).ToString() + "0");
+        for (int i = 0; i < record.Length; i++) {
+            record[i].text = RetornaTempoString(GameSparksManager.records[j]);
+            j++;
+        }
+    }
+
+    // Ranking Mundial
+    public void nextWorldRanking()
+    {
+        mundoAtualMundial += 1;
+        if (mundoAtualMundial >= 9) mundoAtualMundial = 1;
+
+        renameStageNameRanking();
+    }
+
+    public void previousWorldRanking()
+    {
+        mundoAtualMundial -= 1;
+        if (mundoAtualMundial < 1) mundoAtualMundial = 8;
+
+        renameStageNameRanking();
+    }
+
+    private void renameStageNameRanking()
+    {
+        nomeMundo.text = "Mundo " + mundoAtualMundial;
+
+        for (int i = 1; i <= 10; i++)
+        {
+            mundialRankButtons[i - 1].GetComponentInChildren<Text>().text = mundoAtualMundial + "-" + i;
+        }
+    }
+
+    // Ranking Amigos
+    public void nextWorldFriends()
+    {
+        mundoAtualAmigos += 1;
+        if (mundoAtualAmigos >= 9) mundoAtualAmigos = 1;
+
+        renameStageNameFriends();
+    }
+
+    public void previousWorldFriends()
+    {
+        mundoAtualAmigos -= 1;
+        if (mundoAtualAmigos < 1) mundoAtualAmigos = 8;
+
+        renameStageNameFriends();
+    }
+
+    private void renameStageNameFriends()
+    {
+        nomeMundoAmigos.text = "Mundo " + mundoAtualAmigos;
+
+        for (int i = 1; i <= 10; i++)
+        {
+            friendRankButtons[i - 1].GetComponentInChildren<Text>().text = mundoAtualAmigos + "-" + i;
         }
     }
 }

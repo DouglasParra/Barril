@@ -23,9 +23,9 @@ public class ClockTime : MonoBehaviour {
 	}
 
     public string RetornaTempoString(int t) {
-        string minutes = Mathf.Floor(t / 60).ToString("00");
-        string seconds = Mathf.Floor(t % 60).ToString("00");
-        string fraction = Mathf.Floor((t * 100) % 100).ToString("00");
+        string minutes = Mathf.Floor(t / 100000).ToString("00");
+        string seconds = Mathf.Floor((t % 100000) / 1000).ToString("00");
+        string fraction = Mathf.Floor(t % 1000).ToString("000");
 
         return minutes + ":" + seconds + ":" + fraction;
     }
@@ -33,7 +33,7 @@ public class ClockTime : MonoBehaviour {
 	void updateTextComponent () {
 		string minutes = Mathf.Floor(timer / 60).ToString("00");
 		string seconds = Mathf.Floor(timer % 60).ToString("00");
-		string fraction = Mathf.Floor((timer * 100) % 100).ToString("00");
+		string fraction = Mathf.Floor((timer * 1000) % 1000).ToString("000");
 		timestring = minutes + ":" + seconds + ":" + fraction;
 		GetComponent<Text> ().text = timestring;
 	}
