@@ -157,6 +157,30 @@ public class RegisterPlayer_Script : MonoBehaviour
                     for (int i=0; i < GameSparksManager.NUMERO_FASES; i++) {
                         GameSparksManager.records[i] = 9999999;
                     }
+
+                    InitiateLife();
+                }
+                else
+                {
+                    Debug.Log("Error Saving Player Data...");
+                }
+            });
+    }
+
+    private void InitiateLife()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("SAVE_LIFES")
+            .SetEventAttribute("LIFE", 5)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Inicializou vida com 5...");
+
+                    PlayerPrefs.SetString("Minutos", "10");
+                    PlayerPrefs.SetString("Segundos", "00");
                 }
                 else
                 {

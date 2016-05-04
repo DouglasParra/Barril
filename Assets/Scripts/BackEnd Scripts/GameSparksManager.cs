@@ -41,7 +41,7 @@ public class GameSparksManager : MonoBehaviour
         }
         GS.GameSparksAvailable += GSAvailable;
         GameSparks.Api.Messages.AchievementEarnedMessage.Listener += AchievementEarnedListener;
-        
+        GameObject.Find("LoadingBar").SendMessage("goToLoading", 90);
     }
 
     void GSAvailable(bool _isAvalable)
@@ -60,14 +60,35 @@ public class GameSparksManager : MonoBehaviour
                     if (!response.HasErrors)
                     {
                         // Conectou, prossegue mostrando o nome
+                        GameObject.Find("LoadingBar").SendMessage("goToLoading", 100);
+
                         Debug.Log("Account Details Found... - Olá, " + response.DisplayName);
                         loadingInfoCanvas.gameObject.SetActive(false);
 
                         RetrieveRecords();
+
                         //string playerName = response.DisplayName; // we can get the display name
 
                         //username.text = "Olá, " + playerName + " - ";
 
+                        /*new GameSparks.Api.Requests.LogEventRequest()
+                            .SetEventKey("SAVE_LIFES")
+                            .SetEventAttribute("LIFE", 5)
+                            .Send((respons) =>
+                            {
+
+                                if (!respons.HasErrors)
+                                {
+                                    Debug.Log("Inicializou vida com 5...");
+                                    
+                                    PlayerPrefs.SetString("Minutos", "10");
+                                    PlayerPrefs.SetString("Segundos", "00");
+                                }
+                                else
+                                {
+                                    Debug.Log("Error Saving Player Data...");
+                                }
+                           });*/
                     }
                     else
                     {
@@ -256,5 +277,9 @@ public class GameSparksManager : MonoBehaviour
             });
     }
 
-
+    // Ao sair do jogo, guarda o tempo em DateTime
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+    }
 }

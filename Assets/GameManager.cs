@@ -15,10 +15,14 @@ public class GameManager : MonoBehaviour {
 	public GameObject pauseButton;
 	public GameObject clockPanel;
 
+    public GameObject gameSparksManager;
+
 	public Text victoryClockText;
 	public ClockTime clockTime;
 	public Button loseCheckpointButton;
 	public Button pauseCheckponintButton;
+
+    public Text energyText;
 
 	[Tooltip("Insira o numero de checkpoint e sete eles na posição e ordem correta")]
 	public GameObject[] checkpoints;
@@ -26,6 +30,8 @@ public class GameManager : MonoBehaviour {
 	void Awake () {
 		startAll ();
 		verifyCheckpoint ();
+        LoadLife();
+        gameSparksManager = GameObject.Find("GameSparks Manager");
         GameSparks.Api.Messages.NewHighScoreMessage.Listener += HighScoreMessageHandler; // assign the New High Score message
 	}
 
@@ -42,6 +48,32 @@ public class GameManager : MonoBehaviour {
 	public void loseGame () {
 		stopAll ();
 		showLoseModal ();
+
+        // Tira uma vida
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("SAVE_LIFES")
+            .SetEventAttribute("LIFE", int.Parse(energyText.text) - 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Perdeu uma vida...");
+
+                    if ((int.Parse(energyText.text) - 1) <= 0) { 
+                        Debug.Log("Vida <= 0, não pode jogar");
+                    }
+                    else if ((int.Parse(energyText.text) - 1) == 4)
+                    {
+                        PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+                    }
+
+                }
+                else
+                {
+                    Debug.Log("Error Saving Player Data...");
+                }
+            });
 	}
 
 	public void victoryGame () {
@@ -248,4 +280,26 @@ public class GameManager : MonoBehaviour {
 	void OnApplicationQuit() {
 		resetCheckpoint ();
 	}
+
+    // Carrega o valor da vida
+    private void LoadLife()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("RETRIEVE_RECORDS")
+                .Send((response) =>
+                {
+
+                    if (!response.HasErrors)
+                    {
+                        GSData data = response.ScriptData.GetGSData("player_Data");
+                        energyText.text = data.GetInt("life").ToString();
+
+                        Debug.Log("Recieved Player Life Data From GameSparks...");
+                    }
+                    else
+                    {
+                        Debug.Log("Error Loading Player Data...");
+                    }
+                });
+    }
 }
