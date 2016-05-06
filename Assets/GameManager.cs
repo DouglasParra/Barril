@@ -49,31 +49,10 @@ public class GameManager : MonoBehaviour {
 		stopAll ();
 		showLoseModal ();
 
-        // Tira uma vida
-        new GameSparks.Api.Requests.LogEventRequest()
-            .SetEventKey("SAVE_LIFES")
-            .SetEventAttribute("LIFE", int.Parse(energyText.text) - 1)
-            .Send((response) =>
-            {
-
-                if (!response.HasErrors)
-                {
-                    Debug.Log("Perdeu uma vida...");
-
-                    if ((int.Parse(energyText.text) - 1) <= 0) { 
-                        Debug.Log("Vida <= 0, não pode jogar");
-                    }
-                    else if ((int.Parse(energyText.text) - 1) == 4)
-                    {
-                        PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-                    }
-
-                }
-                else
-                {
-                    Debug.Log("Error Saving Player Data...");
-                }
-            });
+        if ((int.Parse(energyText.text)) <= 0)
+        {
+            loseModal.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
+        }
 	}
 
 	public void victoryGame () {
@@ -114,6 +93,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void restart () {
+        LoseLife(int.Parse(energyText.text) - 1);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
@@ -127,9 +107,6 @@ public class GameManager : MonoBehaviour {
         Debug.Log("CT: " + clockTime.RetornaTempoString(teste2));
 
         SalvarTempoGameSparks();
-
-        // Debug.Log(loadedID + " - " + loadedTime);
-        // Debug.Log(string.Compare(loadedTime, clockTime.timestring));
 	}
 
     private int ClockTimeInt() {
@@ -193,6 +170,11 @@ public class GameManager : MonoBehaviour {
 		stopAll ();
 		hidePauseButton ();
 		showPauseModal ();
+
+        if ((int.Parse(energyText.text)) <= 0)
+        {
+            pauseModal.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
+        }
 	}
 
 	void hidePauseButton () {
@@ -264,7 +246,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void restartCheckpoint () {
-		PlayerPrefs.SetInt("startInCheckpoint", 1); 
+		PlayerPrefs.SetInt("startInCheckpoint", 1);
 		restart ();
 	}
 
@@ -301,5 +283,37 @@ public class GameManager : MonoBehaviour {
                         Debug.Log("Error Loading Player Data...");
                     }
                 });
+    }
+
+    private void LoseLife(int vida) {
+        // Tira uma vida em jogo
+        energyText.text = (int.Parse(energyText.text) - 1).ToString();
+
+        // Tira uma vida no GS
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("SAVE_LIFES")
+            .SetEventAttribute("LIFE", vida)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Perdeu uma vida...");
+
+                    if ((int.Parse(energyText.text)) <= 0)
+                    {
+                        Debug.Log("Vida <= 0, não pode jogar");
+                    }
+                    else if ((int.Parse(energyText.text)) == 4)
+                    {
+                        PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+                    }
+
+                }
+                else
+                {
+                    Debug.Log("Error Saving Player Data...");
+                }
+            });
     }
 }

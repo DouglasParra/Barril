@@ -9,6 +9,7 @@ public class FieldCheckpoint : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Robot") {
 			GameObject.Find ("GameManager").SendMessage ("checkpoint", order);
-		}
+            Instantiate(Resources.Load("LetrasCheckpoint"), transform.position, Quaternion.identity);
+        }
 	}
 }
