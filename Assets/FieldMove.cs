@@ -13,6 +13,10 @@ public class FieldMove : MonoBehaviour {
 
 	public float VELOCITY = 10.0f;
 
+    /////////////////////
+    //public float cameraX;
+    //public float cameraY;
+
 	// Use this for initialization
 	void Start () {
 		goPlace = new Vector3(goPlaceRef.position.x, goPlaceRef.position.y, 0);

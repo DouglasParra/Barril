@@ -7,13 +7,12 @@ public class Robot : MonoBehaviour {
 
 	public float GRAVITY_SCALE = 1.0f;
 
-//	public Camera camera;
+	private Camera camera;
 
-//	void Awake()
-//	{
-//		// Muda velocidade das animações
-//		camera = GameObject.FindGameObjectWithTag("MainCam;era").GetComponent<Camera>();
-//	}
+	void Awake()
+	{
+		camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -22,22 +21,23 @@ public class Robot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        /*if (transform.parent.name.StartsWith("MOV"))
+        {
+            camera.GetComponent<CameraValuesScript>().podeMover = false;
+
+            camera.transform.position = new Vector3(transform.GetComponentInParent<FieldMove>().cameraX,
+                                                    transform.GetComponentInParent<FieldMove>().cameraY,
+                                                    -10);
+        }
+        else
+        {
+            camera.GetComponent<CameraValuesScript>().podeMover = true;
+        }*/
 	}
-
-//	void FixedUpdate()
-//	{
-////		if (transform.parent == null)
-////		{
-//			camera.transform.position = new Vector3(Mathf.Lerp(camera.transform.position.x, Mathf.Clamp(transform.position.x, camera.GetComponent<CameraValuesScript>().getXMin(), camera.GetComponent<CameraValuesScript>().getXMax()), .25f),
-//				Mathf.Lerp(camera.transform.position.y, Mathf.Clamp(transform.position.y, camera.GetComponent<CameraValuesScript>().getYMin(), camera.GetComponent<CameraValuesScript>().getYMax()), .25f),
-//				-10);
-////		}
-//	}
-
 
 	public void launch () {
 
+        camera.GetComponent<CameraValuesScript>().podeMover = true;
 		GetComponentInParent<Transform>().position = transform.position + transform.up * 2;
 
 		activeFieldLaunchAnimation ();

@@ -168,4 +168,9 @@ public class StageSelectScript : MonoBehaviour {
         if (mundoAtual < 0) mundoAtual = QTDE_MUNDO - 1;
         mundos[mundoAtual].gameObject.SetActive(true);
     }
+
+    private bool verificarVidas() {
+        return true;
+        return false;
+    }
 }

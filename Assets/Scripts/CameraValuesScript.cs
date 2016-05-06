@@ -4,11 +4,22 @@ using System.Collections;
 public class CameraValuesScript : MonoBehaviour {
 
     public float xMin, xMax, yMin, yMax;
+    private GameObject robot;
+    public bool podeMover;
+
+    void Start() {
+        podeMover = true;
+        robot = GameObject.Find("Robot");
+    }
 
 	void FixedUpdate() {
-		if (GameObject.Find ("Robot")) {
+		if (podeMover) {
 			transform.rotation = Quaternion.identity;
-			transform.position = new Vector3 (GameObject.Find ("Robot").transform.position.x, GameObject.Find ("Robot").transform.position.y, -10);
+            //transform.position = new Vector3(robot.transform.position.x, robot.transform.position.y, -10);
+
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, Mathf.Clamp(robot.transform.position.x, getXMin(), getXMax()), .25f),
+                                             Mathf.Lerp(transform.position.y, Mathf.Clamp(robot.transform.position.y, getYMin(), getYMax()), .25f),
+                                                        -10);
 		}
 	}
 

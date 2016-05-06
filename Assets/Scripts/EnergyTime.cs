@@ -70,6 +70,8 @@ public class EnergyTime : MonoBehaviour {
             time.text = "10:00";
             PlayerPrefs.SetString("Minutos", "10");
             PlayerPrefs.SetString("Segundos", "00");
+            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(10);
+            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(0);
             energyTimeBox.SetActive(false);
         }
 	}
@@ -201,6 +203,39 @@ public class EnergyTime : MonoBehaviour {
             energyTimeBox.SetActive(false);
         }
     }
+
+
+    // DESENVOLVEDOR - DAR VIDAS
+    public void GiveLifes()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("SAVE_LIFES")
+            .SetEventAttribute("LIFE", int.Parse(life.text) + 5)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Jogador agora possui " + (int.Parse(life.text) + 5) + " vidas");
+                    canRunTime = false;
+                    StopCoroutine("CountdownTimer");
+                    time.text = "10:00";
+                    life.text = (int.Parse(life.text) + 5).ToString();
+                    PlayerPrefs.SetString("Minutos", "10");
+                    PlayerPrefs.SetString("Segundos", "00");
+
+                    gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(10);
+                    gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(0);
+
+                    energyTimeBox.SetActive(false);
+                }
+                else
+                {
+                    Debug.Log("Error Saving Player Data...");
+                }
+            });
+    }
+
 
     void OnApplicationQuit()
     {

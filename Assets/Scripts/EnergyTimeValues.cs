@@ -5,6 +5,7 @@ public class EnergyTimeValues : MonoBehaviour {
 
     private int minutos;
     private int segundos;
+    private int vidas;
 
     private int tempoDesdeInicio;
 
