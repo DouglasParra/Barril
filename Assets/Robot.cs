@@ -12,6 +12,7 @@ public class Robot : MonoBehaviour {
 	void Awake()
 	{
 		camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        camera.transform.position = transform.position;
 	}
 
 	// Use this for initialization

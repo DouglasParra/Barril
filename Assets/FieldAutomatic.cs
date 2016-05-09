@@ -3,9 +3,11 @@ using System.Collections;
 
 public class FieldAutomatic : MonoBehaviour {
 
+    private GameObject robot;
+
 	// Use this for initialization
 	void Start () {
-		
+        robot = GameObject.Find("Robot");
 	}
 	
 	// Update is called once per frame
@@ -16,7 +18,7 @@ public class FieldAutomatic : MonoBehaviour {
 	IEnumerator AutomaticShot()
 	{
 		yield return new WaitForSeconds(.1f);
-		GameObject.Find ("Robot").SendMessage ("launch");
+        robot.SendMessage("launch");
 //		yield return new WaitForSeconds(.1f);
 	}
 

@@ -15,8 +15,12 @@ public class FieldCounter : MonoBehaviour {
 
 	private bool robotInField = false;
 
+    private GameObject gameManager;
+
 	void Awake () {
 		textCounter.text = counterTime.ToString("0");
+
+        gameManager = GameObject.Find("GameManager");
 	}
 
 	void Update () {
@@ -40,7 +44,7 @@ public class FieldCounter : MonoBehaviour {
 	void verifyLoseGame () {
 		if (currentTime > counterTime && robotInField) {
 			canRunTime = false;
-			GameObject.Find ("GameManager").SendMessage ("loseGame");
+			gameManager.SendMessage ("loseGame");
 		}
 	}
 

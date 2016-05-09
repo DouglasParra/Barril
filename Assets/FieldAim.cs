@@ -41,4 +41,15 @@ public class FieldAim : MonoBehaviour {
 		}
 
 	}
+
+    public void launchAim() {
+        StopCoroutine("rotateRoutine");
+        GetComponent<Animator>().SetTrigger("Launch");
+        StartCoroutine("restartAim");
+    }
+
+    IEnumerator restartAim() {
+        yield return new WaitForSeconds(0.75f);
+        StartCoroutine("rotateRoutine");
+    }
 }

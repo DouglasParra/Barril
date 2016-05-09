@@ -5,16 +5,30 @@ public class ButtonShootScript : MonoBehaviour {
 
 	private bool firstLaunch = true;
 
+    private GameObject robot;
+    private GameObject clockTime;
+
+    void Awake() {
+        robot = GameObject.Find("Robot");
+        clockTime = GameObject.Find("ClockTime");
+    }
+
 	public void launchRobot () {
 		if (firstLaunch) {
 			startClockTime ();
 		}
-		GameObject.Find ("Robot").SendMessage ("launch");
+
+        if (robot.transform.parent.name.StartsWith("AIM")) {
+            robot.GetComponentInParent<FieldAim>().launchAim();
+        }
+
+		robot.SendMessage ("launch");
 	}
 
 	void startClockTime () {
-		if (GameObject.Find ("ClockTime")) {
-			GameObject.Find ("ClockTime").SendMessage ("startTime");
+        if (clockTime)
+        {
+            clockTime.SendMessage("startTime");
 			firstLaunch = false;
 		}
 	}
