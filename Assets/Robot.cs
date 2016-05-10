@@ -9,10 +9,12 @@ public class Robot : MonoBehaviour {
 
 	private Camera camera;
 
+    public AudioClip launchSound;
+
 	void Awake()
 	{
 		camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        camera.transform.position = transform.position;
+        //camera.transform.position = transform.position;
 	}
 
 	// Use this for initialization
@@ -37,6 +39,8 @@ public class Robot : MonoBehaviour {
 	}
 
 	public void launch () {
+
+        GetComponent<AudioSource>().PlayOneShot(launchSound);
 
         camera.GetComponent<CameraValuesScript>().podeMover = true;
 		GetComponentInParent<Transform>().position = transform.position + transform.up * 2;

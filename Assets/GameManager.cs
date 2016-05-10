@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 using GameSparks.Core;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour {
 
@@ -26,6 +27,9 @@ public class GameManager : MonoBehaviour {
 
 	[Tooltip("Insira o numero de checkpoint e sete eles na posição e ordem correta")]
 	public GameObject[] checkpoints;
+
+    public AudioMixerSnapshot paused;
+    public AudioMixerSnapshot unpaused;
 
 	void Awake () {
 		startAll ();
@@ -171,6 +175,8 @@ public class GameManager : MonoBehaviour {
 		hidePauseButton ();
 		showPauseModal ();
 
+        Lowpass();
+
         if ((int.Parse(energyText.text)) <= 0)
         {
             pauseModal.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
@@ -189,6 +195,7 @@ public class GameManager : MonoBehaviour {
 		startAll ();
 		hidePauseModal ();
 		showPauseButton ();
+        Lowpass();
 	}
 
 	void showPauseModal () {
@@ -262,6 +269,19 @@ public class GameManager : MonoBehaviour {
 	void OnApplicationQuit() {
 		resetCheckpoint ();
 	}
+
+    void Lowpass()
+    {
+        if (Time.timeScale == 0)
+        {
+            paused.TransitionTo(.01f);
+        }
+
+        else
+        {
+            unpaused.TransitionTo(.01f);
+        }
+    }
 
     // Carrega o valor da vida
     private void LoadLife()
