@@ -181,6 +181,10 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                     PlayerPrefs.SetString("Minutos", "10");
                     PlayerPrefs.SetString("Segundos", "00");
+
+                    PlayerPrefs.SetFloat("sfxVol", -10.0f);
+                    PlayerPrefs.SetFloat("musicVol", -10.0f);
+                    PlayerPrefs.SetInt("soundOnOff", 1);
                 }
                 else
                 {

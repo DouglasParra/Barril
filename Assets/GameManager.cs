@@ -31,10 +31,16 @@ public class GameManager : MonoBehaviour {
     public AudioMixerSnapshot paused;
     public AudioMixerSnapshot unpaused;
 
+    public AudioMixer masterMixer;
+
 	void Awake () {
 		startAll ();
 		verifyCheckpoint ();
         LoadLife();
+
+        masterMixer.SetFloat("sfxVol", PlayerPrefs.GetFloat("sfxVol"));
+        masterMixer.SetFloat("musicVol", PlayerPrefs.GetFloat("musicVol"));
+
         gameSparksManager = GameObject.Find("GameSparks Manager");
         GameSparks.Api.Messages.NewHighScoreMessage.Listener += HighScoreMessageHandler; // assign the New High Score message
 	}
