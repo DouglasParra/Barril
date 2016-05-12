@@ -13,6 +13,10 @@ public class FieldMove : MonoBehaviour {
 
 	public float VELOCITY = 10.0f;
 
+    public GameObject rastro;
+    public GameObject rastroB;
+    private Vector3 pos;
+
     /////////////////////
     //public float cameraX;
     //public float cameraY;
@@ -21,22 +25,50 @@ public class FieldMove : MonoBehaviour {
 	void Start () {
 		goPlace = new Vector3(goPlaceRef.position.x, goPlaceRef.position.y, 0);
 		backPlace = new Vector3(backPlaceRef.position.x, backPlaceRef.position.y, 0);
+
+        pos = transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (going) {
-			transform.position = Vector3.MoveTowards (transform.position, goPlace, VELOCITY * Time.deltaTime);
-			if(transform.position.Equals(goPlace)){
-				going = false;
-			}
-		} else {
-			transform.position = Vector3.MoveTowards (transform.position, backPlace, VELOCITY * Time.deltaTime);
-			if(transform.position.Equals(backPlace)){
-				going = true;
-			}
-		}
+        move();
 	}
+
+    void move() {
+        if (going)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, goPlace, VELOCITY * Time.deltaTime);
+            if (transform.position.Equals(goPlace))
+            {
+                going = false;
+
+                changeTrailDirection();
+            }
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, backPlace, VELOCITY * Time.deltaTime);
+            if (transform.position.Equals(backPlace))
+            {
+                going = true;
+
+                changeTrailDirection();
+            }
+        }
+    }
+
+    void changeTrailDirection() {
+        if (rastro.activeInHierarchy == true)
+        {
+            rastro.SetActive(false);
+            rastroB.SetActive(true);
+        }
+        else
+        {
+            rastro.SetActive(true);
+            rastroB.SetActive(false);
+        }
+    }
 
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "MovePlace") {

@@ -14,7 +14,9 @@ public class Robot : MonoBehaviour {
 	void Awake()
 	{
 		camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        //camera.transform.position = transform.position;
+
+        if(PlayerPrefs.GetInt("startInCheckpoint") != 0)
+            camera.transform.position = transform.position;
 	}
 
 	// Use this for initialization
@@ -58,7 +60,8 @@ public class Robot : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll){
-		if (coll.gameObject.tag == "Fields") {
+        if (coll.gameObject.tag != "MovePlace" && coll.gameObject.tag == "Fields")
+        {
 			this.transform.parent = coll.gameObject.transform;
 			GetComponent<BoxCollider2D> ().isTrigger = true;
 			this.transform.position = coll.gameObject.transform.position;

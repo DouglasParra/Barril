@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour {
 	[Tooltip("Insira o numero de checkpoint e sete eles na posição e ordem correta")]
 	public GameObject[] checkpoints;
 
+    public GameObject[] portas;
+
     public AudioMixerSnapshot paused;
     public AudioMixerSnapshot unpaused;
 
