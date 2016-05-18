@@ -4,11 +4,15 @@ using System.Collections;
 public class FieldChave : MonoBehaviour {
 
     private GameObject robot;
-    public GameObject parede;
+    public GameObject porta;
+
+    [Tooltip("0 - Roxo; 1 - Azul; 2 - Verde; 3 - Amarelo; 4 - Laranja; 5 - Vermelho;")]
+    public int numeroPorta;
 
     // Use this for initialization
     void Start()
     {
+        GetComponent<Animator>().SetInteger("Cor", numeroPorta);
         robot = GameObject.Find("Robot");
     }
 
@@ -30,7 +34,8 @@ public class FieldChave : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Robot")
         {
-            parede.SetActive(false);
+            porta.SetActive(false);
+            GetComponent<Animator>().SetBool("Piscando", true);
             StartCoroutine(AutomaticShot());
         }
     }

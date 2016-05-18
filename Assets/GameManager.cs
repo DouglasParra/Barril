@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
 	public Button pauseCheckponintButton;
 
     public Text energyText;
+    public Text stageText;
 
 	[Tooltip("Insira o numero de checkpoint e sete eles na posição e ordem correta")]
 	public GameObject[] checkpoints;
@@ -40,12 +41,24 @@ public class GameManager : MonoBehaviour {
 		verifyCheckpoint ();
         LoadLife();
 
+        stageText.text = "Fase " + SceneManager.GetActiveScene().name;
+
         masterMixer.SetFloat("sfxVol", PlayerPrefs.GetFloat("sfxVol"));
         masterMixer.SetFloat("musicVol", PlayerPrefs.GetFloat("musicVol"));
 
         gameSparksManager = GameObject.Find("GameSparks Manager");
         GameSparks.Api.Messages.NewHighScoreMessage.Listener += HighScoreMessageHandler; // assign the New High Score message
 	}
+
+    void Start() {
+        for (int i = 0; i < portas.Length; i++) {
+            if(PlayerPrefs.HasKey("Porta" + portas[i].name)){
+                if (PlayerPrefs.GetInt("Porta" + portas[i].name) == 0) {
+                    portas[i].SetActive(false);
+                }
+            }
+        }
+    }
 
     void HighScoreMessageHandler(GameSparks.Api.Messages.NewHighScoreMessage _message)
     {
@@ -272,6 +285,13 @@ public class GameManager : MonoBehaviour {
 
 	void resetCheckpoint () {
 		PlayerPrefs.SetInt("startInCheckpoint", 0); 
+
+        // Reseta portas
+        for (int i = 0; i < portas.Length; i++) {
+            if (PlayerPrefs.HasKey("Porta" + portas[i].name)) { 
+                PlayerPrefs.DeleteKey("Porta" + portas[i].name);
+            }
+        }
 	}
 
 	void OnApplicationQuit() {

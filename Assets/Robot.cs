@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 
 public class Robot : MonoBehaviour {
@@ -21,8 +22,13 @@ public class Robot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        
 	}
+
+    void OnSceneGUI()
+    {
+        Handles.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.x + 50, transform.position.z));
+    }
 	
 	// Update is called once per frame
 	void Update () {

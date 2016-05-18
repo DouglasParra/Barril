@@ -29,19 +29,26 @@ public class GameSparksManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        //this will create a singleton for our gamesparks manager object
-        if (instance == null)
+        if (Application.internetReachability != NetworkReachability.NotReachable)
         {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //this will create a singleton for our gamesparks manager object
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else
+            {
+                DontDestroyOnLoad(this.gameObject);
+            }
+            GS.GameSparksAvailable += GSAvailable;
+            GameSparks.Api.Messages.AchievementEarnedMessage.Listener += AchievementEarnedListener;
+            GameObject.Find("LoadingBar").SendMessage("goToLoading", 90);
         }
-        else
-        {
-            DontDestroyOnLoad(this.gameObject);
+        else { 
+            // Sem conexão com a internet
+
         }
-        GS.GameSparksAvailable += GSAvailable;
-        GameSparks.Api.Messages.AchievementEarnedMessage.Listener += AchievementEarnedListener;
-        GameObject.Find("LoadingBar").SendMessage("goToLoading", 90);
     }
 
     void GSAvailable(bool _isAvalable)
