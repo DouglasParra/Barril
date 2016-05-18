@@ -152,8 +152,11 @@ public class FieldCounter : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D(Collider2D coll) {
-		canRunTime = false;
-		robotInField = false;
+        if (coll.gameObject.tag == "Robot")
+        {
+            canRunTime = false;
+            robotInField = false;
+        }
 	}
 
     private bool ContadorPadrao() {
