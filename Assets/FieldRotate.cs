@@ -11,7 +11,7 @@ public class FieldRotate : MonoBehaviour {
 
 	private float angleToBack;
 
-	private static float VELOCITY = 1.5f;
+	public float VELOCITY = 1.5f;
 
 	private bool going = true;
 

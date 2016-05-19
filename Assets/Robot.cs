@@ -89,5 +89,7 @@ public class Robot : MonoBehaviour {
 		}
 	}
 
-
+    public void destruir() {
+        Destroy(this.gameObject);
+    }
 }

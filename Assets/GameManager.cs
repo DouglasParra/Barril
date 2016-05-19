@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour {
 	public void loseGame () {
 		stopAll ();
 		showLoseModal ();
+        LoseLife(int.Parse(energyText.text) - 1);
 
         if ((int.Parse(energyText.text)) <= 0)
         {
@@ -103,6 +104,10 @@ public class GameManager : MonoBehaviour {
 
 	public void goToStageSelectScene () {
 		resetCheckpoint ();
+        if (!clockTime.timestring.Equals("00:00:000") && !victoryModal.activeInHierarchy && !loseModal.activeInHierarchy)
+        {
+            LoseLife(int.Parse(energyText.text) - 1);
+        }
 		SceneManager.LoadScene ("StageSelect");
 	}
 
@@ -118,7 +123,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void restart () {
-        LoseLife(int.Parse(energyText.text) - 1);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
@@ -335,7 +339,7 @@ public class GameManager : MonoBehaviour {
 
     private void LoseLife(int vida) {
         // Tira uma vida em jogo
-        energyText.text = (int.Parse(energyText.text) - 1).ToString();
+        energyText.text = vida.ToString();
 
         // Tira uma vida no GS
         new GameSparks.Api.Requests.LogEventRequest()

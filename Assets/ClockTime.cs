@@ -9,7 +9,12 @@ public class ClockTime : MonoBehaviour {
 	public string timestring;
 
 	private bool canRunTime = false;
-	
+
+    void Awake()
+    {
+        timestring = "00:00:000";
+    }
+
 	// Update is called once per frame
 	void Update () {
 		if (canRunTime) {

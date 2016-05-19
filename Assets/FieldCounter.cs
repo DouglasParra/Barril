@@ -107,6 +107,10 @@ public class FieldCounter : MonoBehaviour {
 		string seconds = Mathf.Floor((counterTime - currentTime) % 60).ToString("0");
         transform.GetComponent<Animator>().SetFloat("Contador", float.Parse(seconds));
 
+        Debug.Log(transform.name + " - " + float.Parse(seconds));
+
+		textCounter.text = seconds;
+
         if (ContadorPadrao())
         {
             particulas.GetComponent<Animator>().SetFloat("Contador", float.Parse(seconds));
@@ -117,7 +121,6 @@ public class FieldCounter : MonoBehaviour {
             GetComponent<FieldMove>().rastroB.GetComponent<Animator>().SetFloat("Contador", float.Parse(seconds));
         }
 
-		textCounter.text = seconds;
 		//textCounter.color = Color.Lerp(Color.green, Color.red, 	currentTime/counterTime);
         if (float.Parse(textCounter.text) >= 8.0f)
         {

@@ -58,15 +58,15 @@ public class FieldMove : MonoBehaviour {
     }
 
     void changeTrailDirection() {
-        if (rastro.activeInHierarchy == true)
+        if (rastro.GetComponent<SpriteRenderer>().enabled)
         {
-            rastro.SetActive(false);
-            rastroB.SetActive(true);
+            rastro.GetComponent<SpriteRenderer>().enabled = false;
+            rastroB.GetComponent<SpriteRenderer>().enabled = true;
         }
         else
         {
-            rastro.SetActive(true);
-            rastroB.SetActive(false);
+            rastro.GetComponent<SpriteRenderer>().enabled = true;
+            rastroB.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
