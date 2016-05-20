@@ -73,6 +73,6 @@ public class FieldMove : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "MovePlace") {
 			going = false;
-		}
+        }
 	}
 }

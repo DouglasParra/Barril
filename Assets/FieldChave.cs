@@ -13,6 +13,7 @@ public class FieldChave : MonoBehaviour {
     void Start()
     {
         GetComponent<Animator>().SetInteger("Cor", numeroPorta);
+        porta.GetComponent<Animator>().SetInteger("Cor", numeroPorta);
         robot = GameObject.Find("Robot");
     }
 
@@ -34,7 +35,9 @@ public class FieldChave : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Robot")
         {
-            porta.SetActive(false);
+            //porta.SetActive(false);
+            porta.GetComponent<Animator>().SetBool("Aberta", true);
+            porta.GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<Animator>().SetBool("Piscando", true);
             StartCoroutine(AutomaticShot());
         }

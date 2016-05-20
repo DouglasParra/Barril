@@ -12,6 +12,8 @@ public class Robot : MonoBehaviour {
 
     public AudioClip launchSound;
 
+    public GameObject laser;
+
 	void Awake()
 	{
 		camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -48,6 +50,8 @@ public class Robot : MonoBehaviour {
 
 	public void launch () {
 
+        laser.SetActive(false);
+
         GetComponent<AudioSource>().PlayOneShot(launchSound);
 
         camera.GetComponent<CameraValuesScript>().podeMover = true;
@@ -68,6 +72,16 @@ public class Robot : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll){
         if (coll.gameObject.tag != "MovePlace" && coll.gameObject.tag == "Fields")
         {
+            // Condicoes de ligar o laser - ter comprado
+            // Liga o laser
+            if (!coll.gameObject.name.StartsWith("A-STA") && 
+                !coll.gameObject.name.StartsWith("FAL") && 
+                !coll.gameObject.name.StartsWith("FIN") && 
+                !coll.gameObject.name.StartsWith("K"))
+            {
+                laser.SetActive(true);
+            }
+
 			this.transform.parent = coll.gameObject.transform;
 			GetComponent<BoxCollider2D> ().isTrigger = true;
 			this.transform.position = coll.gameObject.transform.position;
