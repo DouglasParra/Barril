@@ -5,6 +5,7 @@ public class CameraMiniMapa : MonoBehaviour {
 
     public Camera miniMapCamera;
     private GameObject mainCamera;
+    private GameObject backgroundMainCamera;
 
     public GameObject shootButton;
     public GameObject mainCameraMiniMapButton;
@@ -20,6 +21,7 @@ public class CameraMiniMapa : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        backgroundMainCamera = GameObject.Find("background");
         zoom = false;
 	}
 	
@@ -70,7 +72,7 @@ public class CameraMiniMapa : MonoBehaviour {
     public void startMiniMap() {
         mainCamera.SetActive(false);
         miniMapCamera.enabled = true;
-        miniMapCamera.transform.GetChild(0).gameObject.SetActive(true);
+        backgroundMainCamera.SetActive(false);
         shootButton.SetActive(false);
         mainCameraMiniMapButton.SetActive(false);
 
@@ -81,7 +83,7 @@ public class CameraMiniMapa : MonoBehaviour {
     {
         mainCamera.SetActive(true);
         miniMapCamera.enabled = false;
-        miniMapCamera.transform.GetChild(0).gameObject.SetActive(false);
+        backgroundMainCamera.SetActive(true);
         shootButton.SetActive(true);
         mainCameraMiniMapButton.SetActive(true);
 
