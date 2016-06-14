@@ -185,6 +185,9 @@ public class RegisterPlayer_Script : MonoBehaviour
                     PlayerPrefs.SetFloat("sfxVol", -10.0f);
                     PlayerPrefs.SetFloat("musicVol", -10.0f);
                     PlayerPrefs.SetInt("soundOnOff", 1);
+
+                    PlayerPrefs.SetInt("Laser", 0);
+                    PlayerPrefs.SetInt("MiniMapa", 0);
                 }
                 else
                 {

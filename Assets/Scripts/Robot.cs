@@ -73,7 +73,10 @@ public class Robot : MonoBehaviour {
                 !coll.gameObject.name.StartsWith("FIN") && 
                 !coll.gameObject.name.StartsWith("K"))
             {
-                laser.SetActive(true);
+                if (PlayerPrefs.GetInt("Laser") == 1)
+                {
+                    laser.SetActive(true);
+                }
             }
 
 			this.transform.parent = coll.gameObject.transform;
