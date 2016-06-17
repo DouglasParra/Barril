@@ -73,29 +73,6 @@ public class GameSparksManager : MonoBehaviour
                         loadingInfoCanvas.gameObject.SetActive(false);
 
                         RetrieveRecords();
-
-                        //string playerName = response.DisplayName; // we can get the display name
-
-                        //username.text = "Olá, " + playerName + " - ";
-
-                        /*new GameSparks.Api.Requests.LogEventRequest()
-                            .SetEventKey("SAVE_LIFES")
-                            .SetEventAttribute("LIFE", 5)
-                            .Send((respons) =>
-                            {
-
-                                if (!respons.HasErrors)
-                                {
-                                    Debug.Log("Inicializou vida com 5...");
-                                    
-                                    PlayerPrefs.SetString("Minutos", "10");
-                                    PlayerPrefs.SetString("Segundos", "00");
-                                }
-                                else
-                                {
-                                    Debug.Log("Error Saving Player Data...");
-                                }
-                           });*/
                     }
                     else
                     {
@@ -279,8 +256,6 @@ public class GameSparksManager : MonoBehaviour
                 {
                     Debug.LogWarning("Failed to register player...\n" + response.Errors.JSON.ToString());
                 }
-
-
             });
     }
 

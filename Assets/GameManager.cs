@@ -123,6 +123,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void restart () {
+        if (!clockTime.timestring.Equals("00:00:000") && !victoryModal.activeInHierarchy && !loseModal.activeInHierarchy)
+        {
+            LoseLife(int.Parse(energyText.text) - 1);
+        }
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 

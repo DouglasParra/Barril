@@ -31,42 +31,42 @@ public class BoostsScript : MonoBehaviour {
             minimapa.isOn = true;
         }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void LaserOnOff() {
 
-        Debug.Log("Laser era " + PlayerPrefs.GetInt("Laser"));
-
-        if (PlayerPrefs.GetInt("Laser") == 0)
+        if (laser.interactable)
         {
-            PlayerPrefs.SetInt("Laser", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("Laser", 0);
-        }
+            Debug.Log("Laser era " + PlayerPrefs.GetInt("Laser"));
 
-        Debug.Log("Agora é " + PlayerPrefs.GetInt("Laser"));
+            if (PlayerPrefs.GetInt("Laser") == 0)
+            {
+                PlayerPrefs.SetInt("Laser", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Laser", 0);
+            }
+
+            Debug.Log("Agora é " + PlayerPrefs.GetInt("Laser"));
+        }
     }
 
     public void MiniMapaOnOff()
     {
-
-        Debug.Log("Minimapa era " + PlayerPrefs.GetInt("MiniMapa"));
-
-        if (PlayerPrefs.GetInt("MiniMapa") == 0)
+        if (minimapa.interactable)
         {
-            PlayerPrefs.SetInt("MiniMapa", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("MiniMapa", 0);
-        }
+            Debug.Log("Minimapa era " + PlayerPrefs.GetInt("MiniMapa"));
 
-        Debug.Log("Agora é " + PlayerPrefs.GetInt("MiniMapa"));
+            if (PlayerPrefs.GetInt("MiniMapa") == 0)
+            {
+                PlayerPrefs.SetInt("MiniMapa", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("MiniMapa", 0);
+            }
+
+            Debug.Log("Agora é " + PlayerPrefs.GetInt("MiniMapa"));
+        }
     }
 }

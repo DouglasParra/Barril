@@ -25,6 +25,8 @@ public class RegisterPlayer_Script : MonoBehaviour
             code = code + characters[a];
         }
 
+
+
         return code;
     }
 
@@ -188,6 +190,67 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                     PlayerPrefs.SetInt("Laser", 0);
                     PlayerPrefs.SetInt("MiniMapa", 0);
+
+                    InitiatePowercells();
+                }
+                else
+                {
+                    Debug.Log("Error Saving Player Data...");
+                }
+            });
+    }
+
+    private void InitiatePowercells()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("SAVE_POWERCELLS")
+            .SetEventAttribute("POWERCELL", 5)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Inicializou powercells com 5...");
+                    InitiateLaser();
+                }
+                else
+                {
+                    Debug.Log("Error Saving Player Data...");
+                }
+            });
+    }
+
+    private void InitiateLaser()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_LASER")
+            .SetEventAttribute("LASER", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Inicializou laser com 0...");
+                    InitiateMinimap();
+                }
+                else
+                {
+                    Debug.Log("Error Saving Player Data...");
+                }
+            });
+    }
+
+    private void InitiateMinimap()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_MINIMAP")
+            .SetEventAttribute("MINIMAP", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Inicializou minimapa com 0...");
                 }
                 else
                 {

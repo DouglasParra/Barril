@@ -25,12 +25,6 @@ public class StageSelectScript : MonoBehaviour
         gameSparksManager = GameObject.Find("GameSparks Manager");
     }
 
-    // Update is called once per frame
-    void Awake()
-    {
-
-    }
-
     public void StageSelect()
     {
         SceneManager.LoadScene(0);
@@ -262,11 +256,5 @@ public class StageSelectScript : MonoBehaviour
         mundoAtual = mundoAtual - 1;
         if (mundoAtual < 0) mundoAtual = QTDE_MUNDO - 1;
         mundos[mundoAtual].gameObject.SetActive(true);
-    }
-
-    private bool verificarVidas()
-    {
-        return true;
-        return false;
     }
 }
