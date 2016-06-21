@@ -191,6 +191,13 @@ public class RegisterPlayer_Script : MonoBehaviour
                     PlayerPrefs.SetInt("Laser", 0);
                     PlayerPrefs.SetInt("MiniMapa", 0);
 
+                    PlayerPrefs.SetInt("Skin1", 0);
+                    PlayerPrefs.SetInt("Skin2", 0);
+                    PlayerPrefs.SetInt("Skin3", 0);
+                    PlayerPrefs.SetInt("Skin4", 0);
+                    PlayerPrefs.SetInt("Skin5", 0);
+                    PlayerPrefs.SetInt("Skin6", 0);
+
                     InitiatePowercells();
                 }
                 else
@@ -235,7 +242,7 @@ public class RegisterPlayer_Script : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Error Saving Player Data...");
+                    Debug.Log("Error Saving Laser Data...");
                 }
             });
     }
@@ -251,10 +258,130 @@ public class RegisterPlayer_Script : MonoBehaviour
                 if (!response.HasErrors)
                 {
                     Debug.Log("Inicializou minimapa com 0...");
+                    InitiateSkin1();
                 }
                 else
                 {
-                    Debug.Log("Error Saving Player Data...");
+                    Debug.Log("Error Saving Minimap Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin1()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN1")
+            .SetEventAttribute("SKIN1", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Inicializou skin1 com 0...");
+                    InitiateSkin2();
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin1 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin2()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN2")
+            .SetEventAttribute("SKIN2", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Inicializou skin2 com 0...");
+                    InitiateSkin3();
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin2 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin3()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN3")
+            .SetEventAttribute("SKIN3", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Inicializou skin3 com 0...");
+                    InitiateSkin4();
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin3 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin4()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN4")
+            .SetEventAttribute("SKIN4", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Inicializou skin4 com 0...");
+                    InitiateSkin5();
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin4 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin5()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN5")
+            .SetEventAttribute("SKIN5", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Inicializou skin5 com 0...");
+                    InitiateSkin6();
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin5 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin6()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN6")
+            .SetEventAttribute("SKIN6", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Inicializou skin6 com 0...");
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin6 Data...");
                 }
             });
     }

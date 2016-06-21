@@ -22,6 +22,15 @@ public class ShopManager : MonoBehaviour {
     public Button comprarSkin2;
     public Button comprarSkin3;
     public Button comprarSkin4;
+    public Button comprarSkin5;
+    public Button comprarSkin6;
+
+    public Toggle skin1Toggle;
+    public Toggle skin2Toggle;
+    public Toggle skin3Toggle;
+    public Toggle skin4Toggle;
+    public Toggle skin5Toggle;
+    public Toggle skin6Toggle;
 
     [Space(10)]
     [Header("Boosts")]
@@ -128,49 +137,139 @@ public class ShopManager : MonoBehaviour {
         // Verificar se já está comprado
         // Adicionar botão de habilitar / desabilitar skin
 
-        // Verifica se tem powercells suficiente pra compra
-        if (haveEnoughPowercells(25))
+        // Se ainda não comprou a skin, não pode ligar / desligar
+        if (skin1Toggle.interactable == false)
         {
-            // Habilitar skin 1
+            // Verifica se tem powercells suficiente pra compra
+            if (haveEnoughPowercells(25))
+            {
+                // Retirar pc
+                RetirarPowercells(25);
 
-            // Retirar pc
-            RetirarPowercells(25);
+                // Indica no GS que comprou skin1
+                BuySkin1();
+
+                // Daqui em diante pode ligar / desligar skin1
+                skin1Toggle.interactable = true;
+
+                // E não pode comprar mais ele
+                comprarSkin1.interactable = false;
+            }
         }
     }
 
     public void ComprarSkin2()
     {
-        // Verifica se tem powercells suficiente pra compra
-        if (haveEnoughPowercells(50))
+        // Se ainda não comprou a skin, não pode ligar / desligar
+        if (skin2Toggle.interactable == false)
         {
-            // Habilitar skin 1
+            // Verifica se tem powercells suficiente pra compra
+            if (haveEnoughPowercells(50))
+            {
+                // Retirar pc
+                RetirarPowercells(50);
 
-            // Retirar pc
-            RetirarPowercells(50);
+                // Indica no GS que comprou skin2
+                BuySkin2();
+
+                // Daqui em diante pode ligar / desligar skin2
+                skin2Toggle.interactable = true;
+
+                // E não pode comprar mais ele
+                comprarSkin2.interactable = false;
+            }
         }
     }
 
     public void ComprarSkin3()
     {
-        // Verifica se tem powercells suficiente pra compra
-        if (haveEnoughPowercells(100))
+        // Se ainda não comprou a skin, não pode ligar / desligar
+        if (skin3Toggle.interactable == false)
         {
-            // Habilitar skin 1
+            // Verifica se tem powercells suficiente pra compra
+            if (haveEnoughPowercells(100))
+            {
+                // Retirar pc
+                RetirarPowercells(100);
 
-            // Retirar pc
-            RetirarPowercells(100);
+                // Indica no GS que comprou skin3
+                BuySkin3();
+
+                // Daqui em diante pode ligar / desligar skin3
+                skin3Toggle.interactable = true;
+
+                // E não pode comprar mais ele
+                comprarSkin3.interactable = false;
+            }
         }
     }
 
     public void ComprarSkin4()
     {
-        // Verifica se tem powercells suficiente pra compra
-        if (haveEnoughPowercells(200))
+        // Se ainda não comprou a skin, não pode ligar / desligar
+        if (skin4Toggle.interactable == false)
         {
-            // Habilitar skin 1
+            // Verifica se tem powercells suficiente pra compra
+            if (haveEnoughPowercells(200))
+            {
+                // Retirar pc
+                RetirarPowercells(200);
 
-            // Retirar pc
-            RetirarPowercells(200);
+                // Indica no GS que comprou skin4
+                BuySkin4();
+
+                // Daqui em diante pode ligar / desligar skin4
+                skin4Toggle.interactable = true;
+
+                // E não pode comprar mais ele
+                comprarSkin4.interactable = false;
+            }
+        }
+    }
+
+    public void ComprarSkin5()
+    {
+        // Se ainda não comprou a skin, não pode ligar / desligar
+        if (skin5Toggle.interactable == false)
+        {
+            // Verifica se tem powercells suficiente pra compra
+            if (haveEnoughPowercells(200))
+            {
+                // Retirar pc
+                RetirarPowercells(200);
+
+                // Indica no GS que comprou skin5
+                BuySkin5();
+
+                // Daqui em diante pode ligar / desligar skin5
+                skin5Toggle.interactable = true;
+
+                // E não pode comprar mais ele
+                comprarSkin5.interactable = false;
+            }
+        }
+    }
+
+    public void ComprarSkin6()
+    {
+        // Se ainda não comprou a skin, não pode ligar / desligar
+        if (skin6Toggle.interactable == false)
+        {
+            // Verifica se tem powercells suficiente pra compra
+            if (haveEnoughPowercells(200))
+            {
+                // Retirar pc
+                RetirarPowercells(200);
+
+                // Indica no GS que comprou skin6
+                BuySkin6();
+
+                // Daqui em diante pode ligar / desligar skin6
+                skin6Toggle.interactable = true;
+
+                // E não pode comprar mais ele
+                comprarSkin6.interactable = false;
+            }
         }
     }
 
@@ -256,6 +355,13 @@ public class ShopManager : MonoBehaviour {
                         int laser = (int)data.GetInt("laser");
                         int minimapa = (int)data.GetInt("minimap");
 
+                        int skin1 = (int)data.GetInt("skin1");
+                        int skin2 = (int)data.GetInt("skin2");
+                        int skin3 = (int)data.GetInt("skin3");
+                        int skin4 = (int)data.GetInt("skin4");
+                        int skin5 = (int)data.GetInt("skin5");
+                        int skin6 = (int)data.GetInt("skin6");
+
                         // Se o laser foi comprado
                         if (laser != 0)
                         {
@@ -282,6 +388,90 @@ public class ShopManager : MonoBehaviour {
                             // Só pode ligar / desligar minimapa depois de comprar
                             minimapToggle.interactable = false;
                             comprarMinimapa.interactable = true;
+                        }
+
+                        // Se skin 1 foi comprada
+                        if (skin1 != 0)
+                        {
+                            // Pode ligar / desligar skin1
+                            skin1Toggle.interactable = true;
+                            comprarSkin1.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin1 depois de comprar
+                            skin1Toggle.interactable = false;
+                            comprarSkin1.interactable = true;
+                        }
+
+                        // Se skin 2 foi comprada
+                        if (skin2 != 0)
+                        {
+                            // Pode ligar / desligar skin2
+                            skin2Toggle.interactable = true;
+                            comprarSkin2.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin2 depois de comprar
+                            skin2Toggle.interactable = false;
+                            comprarSkin2.interactable = true;
+                        }
+
+                        // Se skin 3 foi comprada
+                        if (skin3 != 0)
+                        {
+                            // Pode ligar / desligar skin3
+                            skin3Toggle.interactable = true;
+                            comprarSkin3.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin3 depois de comprar
+                            skin3Toggle.interactable = false;
+                            comprarSkin3.interactable = true;
+                        }
+
+                        // Se skin 4 foi comprada
+                        if (skin4 != 0)
+                        {
+                            // Pode ligar / desligar skin4
+                            skin4Toggle.interactable = true;
+                            comprarSkin4.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin4 depois de comprar
+                            skin4Toggle.interactable = false;
+                            comprarSkin4.interactable = true;
+                        }
+
+                        // Se skin 5 foi comprada
+                        if (skin5 != 0)
+                        {
+                            // Pode ligar / desligar skin5
+                            skin5Toggle.interactable = true;
+                            comprarSkin5.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin5 depois de comprar
+                            skin5Toggle.interactable = false;
+                            comprarSkin5.interactable = true;
+                        }
+
+                        // Se skin 6 foi comprada
+                        if (skin6 != 0)
+                        {
+                            // Pode ligar / desligar skin6
+                            skin6Toggle.interactable = true;
+                            comprarSkin6.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin6 depois de comprar
+                            skin6Toggle.interactable = false;
+                            comprarSkin6.interactable = true;
                         }
 
                         Debug.Log("Recieved Player Laser/Minimap Data From GameSparks...");
@@ -327,6 +517,120 @@ public class ShopManager : MonoBehaviour {
                 else
                 {
                     Debug.Log("Error Saving Player Data...");
+                }
+            });
+    }
+
+    public void BuySkin1()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN1")
+            .SetEventAttribute("SKIN1", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Comprou skin1...");
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin1 Data...");
+                }
+            });
+    }
+
+    public void BuySkin2()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN2")
+            .SetEventAttribute("SKIN2", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Comprou skin2...");
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin2 Data...");
+                }
+            });
+    }
+
+    public void BuySkin3()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN3")
+            .SetEventAttribute("SKIN3", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Comprou skin3...");
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin3 Data...");
+                }
+            });
+    }
+
+    public void BuySkin4()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN4")
+            .SetEventAttribute("SKIN4", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Comprou skin4...");
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin4 Data...");
+                }
+            });
+    }
+
+    public void BuySkin5()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN5")
+            .SetEventAttribute("SKIN5", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Comprou skin5...");
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin5 Data...");
+                }
+            });
+    }
+
+    public void BuySkin6()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN6")
+            .SetEventAttribute("SKIN6", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    Debug.Log("Comprou skin6...");
+                }
+                else
+                {
+                    Debug.Log("Error Saving Skin6 Data...");
                 }
             });
     }
