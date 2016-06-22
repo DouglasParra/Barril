@@ -52,6 +52,7 @@ public class StageSelectScript : MonoBehaviour
         gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
         gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
         PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+        SaveMinuteSeconds();
         SceneManager.LoadScene("RankScene");
     }
 
@@ -63,6 +64,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene("1-1");
         }
         else
@@ -80,6 +82,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene("1-2");
         }
         else
@@ -96,6 +99,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene("1-3");
         }
         else
@@ -113,6 +117,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene("1-4");
         }
         else
@@ -129,6 +134,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene("1-5");
         }
         else
@@ -145,6 +151,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene("1-6");
         }
         else
@@ -161,6 +168,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene("1-7");
         }
         else
@@ -177,6 +185,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene("1-8");
         }
         else
@@ -193,6 +202,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene("1-9");
         }
         else
@@ -209,6 +219,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene("1-10");
         }
         else
@@ -223,6 +234,7 @@ public class StageSelectScript : MonoBehaviour
         gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
         gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
         PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+        SaveMinuteSeconds();
         SceneManager.LoadScene("TutorialScene");
     }
 
@@ -234,6 +246,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
             SceneManager.LoadScene(scene);
         }
         else
@@ -256,5 +269,18 @@ public class StageSelectScript : MonoBehaviour
         mundoAtual = mundoAtual - 1;
         if (mundoAtual < 0) mundoAtual = QTDE_MUNDO - 1;
         mundos[mundoAtual].gameObject.SetActive(true);
+    }
+
+    // Chamar ao carregar uma fase
+    private void SaveMinuteSeconds() {
+        energyTime.GetComponent<EnergyTime>().SaveMinuteSeconds();
+    }
+
+    void OnApplicationQuit() {
+        gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
+        gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
+        gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
+        PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+        //SaveMinuteSeconds();
     }
 }

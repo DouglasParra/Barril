@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Facebook.Unity;
 
 public class RankingScript : MonoBehaviour {
 
@@ -38,8 +39,15 @@ public class RankingScript : MonoBehaviour {
 
     private string stageSelected;
 
+    private GameObject gameSparksManager;
+
+    public GameObject connectWithFBPanel;
+    public GameObject friendsStageSelectPanel;
+
 	// Use this for initialization
 	void Start () {
+        gameSparksManager = GameObject.Find("GameSparks Manager");
+
         for (int i = 0; i < 10; i++) {
             record[i].text = RetornaTempoString(GameSparksManager.records[i]);
         }
@@ -49,7 +57,24 @@ public class RankingScript : MonoBehaviour {
         mundoAtualAmigos = 1;
 
         resetMundialScores();
+
+        if (!FB.IsInitialized)
+        {
+            connectWithFBPanel.SetActive(true);
+            friendsStageSelectPanel.SetActive(false);
+        } else {
+            connectWithFBPanel.SetActive(false);
+            friendsStageSelectPanel.SetActive(true);
+        }
 	}
+
+    void Update() {
+        if (FB.IsInitialized)
+        {
+            connectWithFBPanel.SetActive(false);
+            friendsStageSelectPanel.SetActive(true);
+        }
+    }
 
     public void ChangeStageSelected(GameObject s) {
         stageSelected = s.GetComponentInChildren<Text>().text;
@@ -264,5 +289,11 @@ public class RankingScript : MonoBehaviour {
         {
             friendRankButtons[i - 1].GetComponentInChildren<Text>().text = mundoAtualAmigos + "-" + i;
         }
+    }
+
+    // Chama o GSManager para se conectar ao FB;
+    public void ConnectWithFacebook()
+    {
+        gameSparksManager.GetComponent<GameSparksManager>().ConnectWithFacebook();
     }
 }

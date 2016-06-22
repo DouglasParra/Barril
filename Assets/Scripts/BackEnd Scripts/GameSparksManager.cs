@@ -236,27 +236,7 @@ public class GameSparksManager : MonoBehaviour
             });
     }
 
-    /// <summary>
-    /// this will register a new player and assign their email to their account.
-    /// </summary>
-    public void RegisterNewPlayer(string _userNameInput, string _emailInput, string _passwordInput)
-    {
-        new GameSparks.Api.Requests.RegistrationRequest()
-            .SetDisplayName(_userNameInput)
-            .SetUserName(_userNameInput)
-            .SetPassword(_passwordInput)
-            .SetScriptData(new GSRequestData().AddString("email", _emailInput))
-            .Send((response) =>
-            {
-                if (!response.HasErrors)
-                {
-                    Debug.Log("Player registered");
-                }
-                else
-                {
-                    Debug.LogWarning("Failed to register player...\n" + response.Errors.JSON.ToString());
-                }
-            });
+    public void SaveDateTime() { 
     }
 
     // Ao sair do jogo, guarda o tempo em DateTime

@@ -7,11 +7,14 @@ public class RegisterPlayer_Script : MonoBehaviour
     public Canvas registerPlayerCanvas;
 
     // Username generator
-    private string characters = "0123456789abcdefghijklmnopqrstuvwx";
+    private string characters = "0123456789abcdefghijklmnopqrstuvwxyz";
     private int DESIRED_CODE_LENGTH = 8;
 
-    public Text displayNameInput; // these are set through the editor
+    public InputField displayNameInput; // these are set through the editor
+    
     // , userNameInput, passwordInput
+    public Button confirmButton;
+    public Text warningLabel;
 
     private string userName;
 
@@ -25,9 +28,27 @@ public class RegisterPlayer_Script : MonoBehaviour
             code = code + characters[a];
         }
 
-
-
         return code;
+    }
+
+    public void ValidatePlayerName() {
+        // Deve ser >= 3 para nome válido
+        Debug.Log(displayNameInput.text);
+
+        if (displayNameInput.text.Length>= 3)
+        {
+            confirmButton.interactable = true;
+            warningLabel.gameObject.SetActive(false); 
+        }
+        else 
+        {
+            confirmButton.interactable = false;
+            warningLabel.gameObject.SetActive(true);
+        }
+    }
+
+    private void ValidateUserName() { 
+        
     }
 
     public void RegisterPlayerBttn()
@@ -55,6 +76,9 @@ public class RegisterPlayer_Script : MonoBehaviour
                 else if (response.Errors.JSON.Equals("{\"USERNAME\":\"TAKEN\"}"))
                 {
                     Debug.Log("Username iguais, deveria gerar outro...");
+                    
+                    // Chama de novo até um username válido ser gerado
+                    RegisterPlayerBttn();
                 }
                 else
                 {

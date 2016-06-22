@@ -302,7 +302,7 @@ public class ShopManager : MonoBehaviour {
         if (minimapToggle.interactable == false)
         {
             // Verifica se tem powercells suficiente pra compra
-            if (haveEnoughPowercells(500))
+            if (haveEnoughPowercells(1000))
             {
                 // Retirar pc
                 RetirarPowercells(1000);

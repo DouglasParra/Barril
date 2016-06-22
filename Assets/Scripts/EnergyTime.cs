@@ -14,6 +14,8 @@ public class EnergyTime : MonoBehaviour {
     public Text life;
 
     public GameObject energyTimeBox;
+
+    [HideInInspector]
     public GameObject gameSparksManager;
 
     private int MAX_VIDAS = 5;
@@ -236,10 +238,14 @@ public class EnergyTime : MonoBehaviour {
             });
     }
 
+    public void SaveMinuteSeconds() {
+        gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(minutos);
+        gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(segundos);
+        gameSparksManager.GetComponent<EnergyTimeValues>().SavePlayerPrefsMinutesSeconds();
+    }
 
     void OnApplicationQuit()
     {
-        gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(minutos);
-        gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(segundos);
+        SaveMinuteSeconds();
     }
 }

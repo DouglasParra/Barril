@@ -15,10 +15,6 @@ public class EnergyTimeValues : MonoBehaviour {
         segundos = int.Parse(PlayerPrefs.GetString("Segundos"));
     }
 
-    void Update() {
-
-    }
-
     public void setMinutos(int m) {
         minutos = m;
     }
@@ -47,8 +43,7 @@ public class EnergyTimeValues : MonoBehaviour {
         return tempoDesdeInicio;
     }
 
-    void OnApplicationQuit()
-    {
+    public void SavePlayerPrefsMinutesSeconds() {
         tempoDesdeInicio = (int)(Time.realtimeSinceStartup - tempoDesdeInicio);
 
         minutos = minutos - tempoDesdeInicio / 60;
