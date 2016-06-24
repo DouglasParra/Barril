@@ -9,9 +9,13 @@ public class StageSelectScript : MonoBehaviour
 
     public Text playerName;
     public GameObject energyTime;
+
+    [HideInInspector]
     public GameObject gameSparksManager;
 
     public GameObject[] mundos;
+    public Sprite[] backgroundMundos;
+    public Image backgroundImage;
     public GameObject cantPlayImage;
 
     private int QTDE_MUNDO = 8;
@@ -261,6 +265,7 @@ public class StageSelectScript : MonoBehaviour
         mundoAtual = mundoAtual + 1;
         if (mundoAtual >= QTDE_MUNDO) mundoAtual = 0;
         mundos[mundoAtual].gameObject.SetActive(true);
+        backgroundImage.sprite = backgroundMundos[mundoAtual];
     }
 
     public void previousWorld()
@@ -269,6 +274,7 @@ public class StageSelectScript : MonoBehaviour
         mundoAtual = mundoAtual - 1;
         if (mundoAtual < 0) mundoAtual = QTDE_MUNDO - 1;
         mundos[mundoAtual].gameObject.SetActive(true);
+        backgroundImage.sprite = backgroundMundos[mundoAtual];
     }
 
     // Chamar ao carregar uma fase
