@@ -37,16 +37,28 @@ public class GameManager : MonoBehaviour {
     public AudioMixer masterMixer;
 
 	void Awake () {
+        gameSparksManager = GameObject.Find("GameSparks Manager");
+
 		startAll ();
 		verifyCheckpoint ();
-        LoadLife();
+        
+        // Se tem conexão com a internet
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            // Pega vida do GameSparks
+            LoadLife();
+        }
+        else 
+        {
+            // Senão, pega do PlayerPrefs
+            energyText.text = PlayerPrefs.GetInt("Vidas").ToString();
+        }
 
         stageText.text = "Fase " + SceneManager.GetActiveScene().name;
 
         masterMixer.SetFloat("sfxVol", PlayerPrefs.GetFloat("sfxVol"));
         masterMixer.SetFloat("musicVol", PlayerPrefs.GetFloat("musicVol"));
 
-        gameSparksManager = GameObject.Find("GameSparks Manager");
         GameSparks.Api.Messages.NewHighScoreMessage.Listener += HighScoreMessageHandler; // assign the New High Score message
 	}
 
@@ -62,7 +74,7 @@ public class GameManager : MonoBehaviour {
 
     void HighScoreMessageHandler(GameSparks.Api.Messages.NewHighScoreMessage _message)
     {
-        Debug.Log("NEW TIME RECORD\n " + _message.LeaderboardName);
+        //Debug.Log("NEW TIME RECORD\n " + _message.LeaderboardName);
     }
 
 	// Update is called once per frame
@@ -73,7 +85,18 @@ public class GameManager : MonoBehaviour {
 	public void loseGame () {
 		stopAll ();
 		showLoseModal ();
-        LoseLife(int.Parse(energyText.text) - 1);
+
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Conectado, perdendo vida no GS" + (int.Parse(energyText.text) - 1).ToString());
+            LoseLife(int.Parse(energyText.text) - 1);
+        }
+        else
+        {
+            //Debug.Log("Sem conexão, perdendo vida no PlayerPrefs " + (int.Parse(energyText.text) - 1).ToString());
+            energyText.text = (int.Parse(energyText.text) - 1).ToString();
+            PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
+        }
 
         if ((int.Parse(energyText.text)) <= 0)
         {
@@ -106,7 +129,15 @@ public class GameManager : MonoBehaviour {
 		resetCheckpoint ();
         if (!clockTime.timestring.Equals("00:00:000") && !victoryModal.activeInHierarchy && !loseModal.activeInHierarchy)
         {
-            LoseLife(int.Parse(energyText.text) - 1);
+            if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+            {
+                LoseLife(int.Parse(energyText.text) - 1);
+            }
+            else 
+            {
+                energyText.text = (int.Parse(energyText.text) - 1).ToString();
+                PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
+            }
         }
 		SceneManager.LoadScene ("StageSelect");
 	}
@@ -117,7 +148,7 @@ public class GameManager : MonoBehaviour {
 			SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
 		}
 		catch (System.Exception e) {
-			Debug.Log (e.ToString());
+			//Debug.Log (e.ToString());
 			goToStageSelectScene ();
 		}
 	}
@@ -125,21 +156,32 @@ public class GameManager : MonoBehaviour {
 	public void restart () {
         if (!clockTime.timestring.Equals("00:00:000") && !victoryModal.activeInHierarchy && !loseModal.activeInHierarchy)
         {
-            LoseLife(int.Parse(energyText.text) - 1);
+            if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+            {
+                LoseLife(int.Parse(energyText.text) - 1);
+            }
+            else
+            {
+                energyText.text = (int.Parse(energyText.text) - 1).ToString();
+                PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
+            }
         }
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	void saveTime () {
-		Debug.Log ("Venci - " + clockTime.timestring + " -- " + clockTime.timer);
+		//Debug.Log ("Venci - " + clockTime.timestring + " -- " + clockTime.timer);
 
         // Transforma o tempo em int
         int teste2 = ClockTimeInt();
 
-        Debug.Log(teste2);
-        Debug.Log("CT: " + clockTime.RetornaTempoString(teste2));
+        //Debug.Log(teste2);
+        //Debug.Log("CT: " + clockTime.RetornaTempoString(teste2));
 
-        SalvarTempoGameSparks();
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            SalvarTempoGameSparks();
+        }
 	}
 
     private int ClockTimeInt() {
@@ -182,12 +224,12 @@ public class GameManager : MonoBehaviour {
 
                     if (!response.HasErrors)
                     {
-                        Debug.Log("Player Saved To GameSparks...");
-                        Debug.Log("Score Posted Sucessfully...");
+                        //Debug.Log("Player Saved To GameSparks...");
+                        //Debug.Log("Score Posted Sucessfully...");
                     }
                     else
                     {
-                        Debug.Log("Error Saving Player Data...");
+                        //Debug.Log("Error Saving Player Data...");
                     }
                 });
         }
@@ -312,7 +354,6 @@ public class GameManager : MonoBehaviour {
         {
             paused.TransitionTo(.01f);
         }
-
         else
         {
             unpaused.TransitionTo(.01f);
@@ -332,11 +373,11 @@ public class GameManager : MonoBehaviour {
                         GSData data = response.ScriptData.GetGSData("player_Data");
                         energyText.text = data.GetInt("life").ToString();
 
-                        Debug.Log("Recieved Player Life Data From GameSparks...");
+                        //Debug.Log("Recieved Player Life Data From GameSparks...");
                     }
                     else
                     {
-                        Debug.Log("Error Loading Player Data...");
+                        //Debug.Log("Error Loading Player Data...");
                     }
                 });
     }
@@ -344,6 +385,7 @@ public class GameManager : MonoBehaviour {
     private void LoseLife(int vida) {
         // Tira uma vida em jogo
         energyText.text = vida.ToString();
+        PlayerPrefs.SetInt("Vidas", vida);
 
         // Tira uma vida no GS
         new GameSparks.Api.Requests.LogEventRequest()
@@ -354,11 +396,11 @@ public class GameManager : MonoBehaviour {
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Perdeu uma vida...");
+                    //Debug.Log("Perdeu uma vida...");
 
                     if ((int.Parse(energyText.text)) <= 0)
                     {
-                        Debug.Log("Vida <= 0, não pode jogar");
+                        //Debug.Log("Vida <= 0, não pode jogar");
                     }
                     else if ((int.Parse(energyText.text)) == 4)
                     {
@@ -368,7 +410,7 @@ public class GameManager : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("Error Saving Player Data...");
+                    //Debug.Log("Error Saving Player Data...");
                 }
             });
     }

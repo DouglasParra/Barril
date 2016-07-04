@@ -154,7 +154,7 @@ namespace CompleteProject
                 // If the look up found a product for this device's store and that product is ready to be sold ... 
                 if (product != null && product.availableToPurchase)
                 {
-                    Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));// ... buy the product. Expect a response either through ProcessPurchase or OnPurchaseFailed 
+                    //Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));// ... buy the product. Expect a response either through ProcessPurchase or OnPurchaseFailed 
                     // asynchronously.
                     m_StoreController.InitiatePurchase(product);
                 }
@@ -162,7 +162,7 @@ namespace CompleteProject
                 else
                 {
                     // ... report the product look-up failure situation  
-                    Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
+                    //Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
                 }
             }
             // Otherwise ...
@@ -170,7 +170,7 @@ namespace CompleteProject
             {
                 // ... report the fact Purchasing has not succeeded initializing yet. Consider waiting longer or 
                 // retrying initiailization.
-                Debug.Log("BuyProductID FAIL. Not initialized.");
+                //Debug.Log("BuyProductID FAIL. Not initialized.");
             }
         }
 
@@ -183,7 +183,7 @@ namespace CompleteProject
             if (!IsInitialized())
             {
                 // ... report the situation and stop restoring. Consider either waiting longer, or retrying initialization.
-                Debug.Log("RestorePurchases FAIL. Not initialized.");
+                //Debug.Log("RestorePurchases FAIL. Not initialized.");
                 return;
             }
 
@@ -192,7 +192,7 @@ namespace CompleteProject
                 Application.platform == RuntimePlatform.OSXPlayer)
             {
                 // ... begin restoring purchases
-                Debug.Log("RestorePurchases started ...");
+                //Debug.Log("RestorePurchases started ...");
 
                 // Fetch the Apple store-specific subsystem.
                 var apple = m_StoreExtensionProvider.GetExtension<IAppleExtensions>();
@@ -202,14 +202,14 @@ namespace CompleteProject
                 {
                     // The first phase of restoration. If no more responses are received on ProcessPurchase then 
                     // no purchases are available to be restored.
-                    Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
+                    //Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
                 });
             }
             // Otherwise ...
             else
             {
                 // We are not running on an Apple device. No work is necessary to restore purchases.
-                Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
+                //Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
             }
         }
 
@@ -221,7 +221,7 @@ namespace CompleteProject
         public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
         {
             // Purchasing has succeeded initializing. Collect our Purchasing references.
-            Debug.Log("OnInitialized: PASS");
+            //Debug.Log("OnInitialized: PASS");
 
             // Overall Purchasing system, configured with products for this application.
             m_StoreController = controller;
@@ -233,7 +233,7 @@ namespace CompleteProject
         public void OnInitializeFailed(InitializationFailureReason error)
         {
             // Purchasing set-up has not succeeded. Check error for reason. Consider sharing this reason with the user.
-            Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
+            //Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
         }
 
 
@@ -242,30 +242,30 @@ namespace CompleteProject
             // A consumable product has been purchased by this user.
             if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_5pc, StringComparison.Ordinal))
             {
-                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+                //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
                 GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(5);
-                Debug.Log("Comprou 5 Powercells");
+                //Debug.Log("Comprou 5 Powercells");
                 //ScoreManager.score += 5;
             } 
             else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_20pc, StringComparison.Ordinal))
             {
-                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+                //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
                 GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(20);
-                Debug.Log("Comprou 20 Powercells");
+                //Debug.Log("Comprou 20 Powercells");
                 //ScoreManager.score += 20;
             } 
             else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_50pc, StringComparison.Ordinal))
             {
-                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+                //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
                 GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(50);
-                Debug.Log("Comprou 50 Powercells");
+                //Debug.Log("Comprou 50 Powercells");
                 //ScoreManager.score += 50;
             } 
             else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_100pc, StringComparison.Ordinal))
             {
-                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+                //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
                 GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(100);
-                Debug.Log("Comprou 100 Powercells");
+                //Debug.Log("Comprou 100 Powercells");
                 //ScoreManager.score += 100;
             } 
 
@@ -273,17 +273,17 @@ namespace CompleteProject
             // Or ... a non-consumable product has been purchased by this user.
             else if (String.Equals(args.purchasedProduct.definition.id, kProductIDNonConsumable, StringComparison.Ordinal))
             {
-                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// TODO: The non-consumable item has been successfully purchased, grant this item to the player.
+                //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// TODO: The non-consumable item has been successfully purchased, grant this item to the player.
             }
             // Or ... a subscription product has been purchased by this user.
             else if (String.Equals(args.purchasedProduct.definition.id, kProductIDSubscription, StringComparison.Ordinal))
             {
-                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// TODO: The subscription item has been successfully purchased, grant this to the player.
+                //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// TODO: The subscription item has been successfully purchased, grant this to the player.
             }
             // Or ... an unknown product has been purchased by this user. Fill in additional products here....
             else
             {
-                Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
+                //Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
             }
 
             // Return a flag indicating whether this product has completely been received, or if the application needs 
@@ -297,7 +297,7 @@ namespace CompleteProject
         {
             // A product purchase attempt did not succeed. Check failureReason for more detail. Consider sharing 
             // this reason with the user to guide their troubleshooting actions.
-            Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
+            //Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
         }
     }
 }

@@ -41,7 +41,7 @@ public class test : MonoBehaviour
                 livesLeft = MAX_LIVES;
             }
 
-            Debug.Log("it's been " + t + " since lives dropped from full (now " + livesLeft + "). " + amountOfIntervalsPassed + " reloads passed. Lives Left: " + getAmountOfLives());
+            //Debug.Log("it's been " + t + " since lives dropped from full (now " + livesLeft + "). " + amountOfIntervalsPassed + " reloads passed. Lives Left: " + getAmountOfLives());
         }
     }
 

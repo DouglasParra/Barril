@@ -69,11 +69,7 @@ public class RankingScript : MonoBehaviour {
 	}
 
     void Update() {
-        if (FB.IsInitialized)
-        {
-            connectWithFBPanel.SetActive(false);
-            friendsStageSelectPanel.SetActive(true);
-        }
+
     }
 
     public void ChangeStageSelected(GameObject s) {
@@ -117,7 +113,7 @@ public class RankingScript : MonoBehaviour {
         // m1[0] = String da cena antes do '-' ; m1[1] = String da cena depois do '-' ; 
         string[] m1 = stageSelected.Split('-');
 
-        Debug.Log("Fetching Leaderboard Data...");
+        //Debug.Log("Fetching Leaderboard Data...");
 
         int i = 0;
 
@@ -129,7 +125,7 @@ public class RankingScript : MonoBehaviour {
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Found Leaderboard Data...");
+                    //Debug.Log("Found Leaderboard Data...");
 
                     foreach (GameSparks.Api.Responses.LeaderboardDataResponse._LeaderboardData entry in response.Data) // iterate through the leaderboard data
                     {
@@ -144,7 +140,7 @@ public class RankingScript : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("Error Retrieving Leaderboard Data...");
+                    //Debug.Log("Error Retrieving Leaderboard Data...");
                 }
 
             });
@@ -169,7 +165,7 @@ public class RankingScript : MonoBehaviour {
         // m1[0] = String da cena antes do '-' ; m1[1] = String da cena depois do '-' ; 
         string[] m1 = stageSelected.Split('-');
 
-        Debug.Log("Fetching Social Leaderboard Data...");
+        //Debug.Log("Fetching Social Leaderboard Data...");
 
         int i = 0;
 
@@ -182,7 +178,7 @@ public class RankingScript : MonoBehaviour {
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Found Leaderboard Data...");
+                    //Debug.Log("Found Leaderboard Data...");
 
                     foreach (GameSparks.Api.Responses.LeaderboardDataResponse._LeaderboardData entry in response.Data) // iterate through the leaderboard data
                     {
@@ -200,7 +196,7 @@ public class RankingScript : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("Error Retrieving Social Leaderboard Data...");
+                    //Debug.Log("Error Retrieving Social Leaderboard Data...");
                 }
 
             });
@@ -295,5 +291,14 @@ public class RankingScript : MonoBehaviour {
     public void ConnectWithFacebook()
     {
         gameSparksManager.GetComponent<GameSparksManager>().ConnectWithFacebook();
+        if (FB.IsInitialized)
+        {
+            connectWithFBPanel.SetActive(false);
+            friendsStageSelectPanel.SetActive(true);
+        }
+    }
+
+    public void StageSelectScene() {
+        SceneManager.LoadScene("StageSelect");
     }
 }

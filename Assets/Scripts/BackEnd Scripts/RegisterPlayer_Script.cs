@@ -33,7 +33,7 @@ public class RegisterPlayer_Script : MonoBehaviour
 
     public void ValidatePlayerName() {
         // Deve ser >= 3 para nome válido
-        Debug.Log(displayNameInput.text);
+        //Debug.Log(displayNameInput.text);
 
         if (displayNameInput.text.Length>= 3)
         {
@@ -53,7 +53,7 @@ public class RegisterPlayer_Script : MonoBehaviour
 
     public void RegisterPlayerBttn()
     {
-        Debug.Log("Registering Player...");
+        //Debug.Log("Registering Player...");
 
         userName = UsernameGenerator();
         PlayerPrefs.SetString("UserName", userName);
@@ -68,21 +68,21 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Player Registered \n Player Name: " + response.DisplayName);
+                    //Debug.Log("Player Registered \n Player Name: " + response.DisplayName);
                     registerPlayerCanvas.gameObject.SetActive(false);
 
                     InitiateRecords();
                 }
                 else if (response.Errors.JSON.Equals("{\"USERNAME\":\"TAKEN\"}"))
                 {
-                    Debug.Log("Username iguais, deveria gerar outro...");
+                    //Debug.Log("Username iguais, deveria gerar outro...");
                     
                     // Chama de novo até um username válido ser gerado
                     RegisterPlayerBttn();
                 }
                 else
                 {
-                    Debug.Log("Error Registering Player... \n " + response.Errors.JSON.ToString());
+                    //Debug.Log("Error Registering Player... \n " + response.Errors.JSON.ToString());
                 }
 
             });
@@ -176,7 +176,7 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Player records initiated to GameSparks...");
+                    //Debug.Log("Player records initiated to GameSparks...");
 
                     // Jogar pro records[] do GameManager
                     GameSparksManager.records = new int[GameSparksManager.NUMERO_FASES];
@@ -188,7 +188,7 @@ public class RegisterPlayer_Script : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Error Saving Player Data...");
+                    //Debug.Log("Error Saving Player Data...");
                 }
             });
     }
@@ -203,7 +203,7 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Inicializou vida com 5...");
+                    //Debug.Log("Inicializou vida com 5...");
 
                     PlayerPrefs.SetString("Minutos", "10");
                     PlayerPrefs.SetString("Segundos", "00");
@@ -222,11 +222,13 @@ public class RegisterPlayer_Script : MonoBehaviour
                     PlayerPrefs.SetInt("Skin5", 0);
                     PlayerPrefs.SetInt("Skin6", 0);
 
+                    PlayerPrefs.SetInt("Vidas", 5);
+
                     InitiatePowercells();
                 }
                 else
                 {
-                    Debug.Log("Error Saving Player Data...");
+                    //Debug.Log("Error Saving Player Data...");
                 }
             });
     }
@@ -241,12 +243,12 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Inicializou powercells com 5...");
+                    //Debug.Log("Inicializou powercells com 5...");
                     InitiateLaser();
                 }
                 else
                 {
-                    Debug.Log("Error Saving Player Data...");
+                    //Debug.Log("Error Saving powercells Data...");
                 }
             });
     }
@@ -261,12 +263,12 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Inicializou laser com 0...");
+                    //Debug.Log("Inicializou laser com 0...");
                     InitiateMinimap();
                 }
                 else
                 {
-                    Debug.Log("Error Saving Laser Data...");
+                    //Debug.Log("Error Saving Laser Data...");
                 }
             });
     }
@@ -281,12 +283,12 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Inicializou minimapa com 0...");
+                    //Debug.Log("Inicializou minimapa com 0...");
                     InitiateSkin1();
                 }
                 else
                 {
-                    Debug.Log("Error Saving Minimap Data...");
+                    //Debug.Log("Error Saving Minimap Data...");
                 }
             });
     }
@@ -301,12 +303,12 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Inicializou skin1 com 0...");
+                    //Debug.Log("Inicializou skin1 com 0...");
                     InitiateSkin2();
                 }
                 else
                 {
-                    Debug.Log("Error Saving Skin1 Data...");
+                    //Debug.Log("Error Saving Skin1 Data...");
                 }
             });
     }
@@ -321,12 +323,12 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Inicializou skin2 com 0...");
+                    //Debug.Log("Inicializou skin2 com 0...");
                     InitiateSkin3();
                 }
                 else
                 {
-                    Debug.Log("Error Saving Skin2 Data...");
+                    //Debug.Log("Error Saving Skin2 Data...");
                 }
             });
     }
@@ -341,12 +343,12 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Inicializou skin3 com 0...");
+                    //Debug.Log("Inicializou skin3 com 0...");
                     InitiateSkin4();
                 }
                 else
                 {
-                    Debug.Log("Error Saving Skin3 Data...");
+                    //Debug.Log("Error Saving Skin3 Data...");
                 }
             });
     }
@@ -361,12 +363,12 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Inicializou skin4 com 0...");
+                    //Debug.Log("Inicializou skin4 com 0...");
                     InitiateSkin5();
                 }
                 else
                 {
-                    Debug.Log("Error Saving Skin4 Data...");
+                    //Debug.Log("Error Saving Skin4 Data...");
                 }
             });
     }
@@ -381,12 +383,12 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Inicializou skin5 com 0...");
+                    //Debug.Log("Inicializou skin5 com 0...");
                     InitiateSkin6();
                 }
                 else
                 {
-                    Debug.Log("Error Saving Skin5 Data...");
+                    //Debug.Log("Error Saving Skin5 Data...");
                 }
             });
     }
@@ -401,11 +403,11 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Inicializou skin6 com 0...");
+                    //Debug.Log("Inicializou skin6 com 0...");
                 }
                 else
                 {
-                    Debug.Log("Error Saving Skin6 Data...");
+                    //Debug.Log("Error Saving Skin6 Data...");
                 }
             });
     }

@@ -20,7 +20,7 @@ public class FieldCheckpoint : MonoBehaviour {
             // Salva quais portas não estão ativas 
             for (int i = 0; i < gameManager.GetComponent<GameManager>().portas.Length; i++) {
                 if (!gameManager.GetComponent<GameManager>().portas[i].activeInHierarchy) {
-                    Debug.Log("Salvou porta " + gameManager.GetComponent<GameManager>().portas[i].name);
+                    //Debug.Log("Salvou porta " + gameManager.GetComponent<GameManager>().portas[i].name);
                     PlayerPrefs.SetInt("Porta" + gameManager.GetComponent<GameManager>().portas[i].name, 0);
                 }
             }

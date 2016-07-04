@@ -9,12 +9,12 @@ public class RobotSkins : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        Debug.Log("Skin1 :" + PlayerPrefs.GetInt("Skin1"));
-        Debug.Log("Skin2 :" + PlayerPrefs.GetInt("Skin2"));
-        Debug.Log("Skin3 :" + PlayerPrefs.GetInt("Skin3"));
-        Debug.Log("Skin4 :" + PlayerPrefs.GetInt("Skin4"));
-        Debug.Log("Skin5 :" + PlayerPrefs.GetInt("Skin5"));
-        Debug.Log("Skin6 :" + PlayerPrefs.GetInt("Skin6"));
+        //Debug.Log("Skin1 :" + PlayerPrefs.GetInt("Skin1"));
+        //Debug.Log("Skin2 :" + PlayerPrefs.GetInt("Skin2"));
+        //Debug.Log("Skin3 :" + PlayerPrefs.GetInt("Skin3"));
+        //Debug.Log("Skin4 :" + PlayerPrefs.GetInt("Skin4"));
+        //Debug.Log("Skin5 :" + PlayerPrefs.GetInt("Skin5"));
+        //Debug.Log("Skin6 :" + PlayerPrefs.GetInt("Skin6"));
 
         if (PlayerPrefs.GetInt("Skin1") == 1)
         {

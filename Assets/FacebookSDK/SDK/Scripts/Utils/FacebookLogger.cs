@@ -95,26 +95,26 @@ namespace Facebook.Unity
             {
                 if (Debug.isDebugBuild)
                 {
-                    Debug.Log(msg);
+                    //Debug.Log(msg);
                     this.logger.Log(msg);
                 }
             }
 
             public void Info(string msg)
             {
-                Debug.Log(msg);
+                //Debug.Log(msg);
                 this.logger.Info(msg);
             }
 
             public void Warn(string msg)
             {
-                Debug.LogWarning(msg);
+                //Debug.LogWarning(msg);
                 this.logger.Warn(msg);
             }
 
             public void Error(string msg)
             {
-                Debug.LogError(msg);
+                //Debug.LogError(msg);
                 this.logger.Error(msg);
             }
         }

@@ -4,6 +4,12 @@ using System.Collections;
 
 public class PlayAd : MonoBehaviour {
 
+    private GameObject energyTime;
+
+    void Awake() {
+        energyTime = GetComponent<StageSelectScript>().energyTime;
+    }
+
     public void ShowAd() {
         if (Advertisement.IsReady())
         {
@@ -15,13 +21,14 @@ public class PlayAd : MonoBehaviour {
         switch (result)
         {
             case ShowResult.Finished:
-                Debug.Log("Player gains 1 life");
+                energyTime.GetComponent<EnergyTime>().GanharVida();
+                //Debug.Log("Player gains 1 life");
                 break;
             case ShowResult.Skipped:
-                Debug.Log("Player didn't fully watch the ad");
+                //Debug.Log("Player didn't fully watch the ad");
                 break;
             case ShowResult.Failed:
-                Debug.Log("Player failed to launch the ad. Internet error?");
+                //Debug.Log("Player failed to launch the ad. Internet error?");
                 break;
         }
     }

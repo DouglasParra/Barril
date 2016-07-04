@@ -17,9 +17,12 @@ public class FieldRotate : MonoBehaviour {
 
 	private float clockwiseConstant;
 
+    private GameObject mainCamera;
+
 	// Use this for initialization
 	void Start () {
-		
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
 		angleToBack = Mathf.Floor(transform.eulerAngles.z);
 
 		if (clockwise) {
@@ -35,25 +38,36 @@ public class FieldRotate : MonoBehaviour {
 	}
 
 	void rotate () {
-		if (rotateFull360) {
-			transform.Rotate (Vector3.forward, clockwiseConstant, Space.Self);
-		} else {
-			if (going == true) {
-				transform.Rotate (Vector3.forward, clockwiseConstant, Space.Self);
+        if (mainCamera.activeInHierarchy)
+        {
+            if (rotateFull360)
+            {
+                transform.Rotate(Vector3.forward, clockwiseConstant, Space.Self);
+            }
+            else
+            {
+                if (going == true)
+                {
+                    transform.Rotate(Vector3.forward, clockwiseConstant, Space.Self);
 
-				// Range do angleToGo ate angleToGo + 2
-				if (Mathf.Floor (transform.eulerAngles.z) >= angleToGo && Mathf.Floor (transform.eulerAngles.z) <= angleToGo + 2) {
-					going = false;
-				}
-			} else {
-				transform.Rotate (Vector3.forward, clockwiseConstant * -1, Space.Self);
+                    // Range do angleToGo ate angleToGo + 2
+                    if (Mathf.Floor(transform.eulerAngles.z) >= angleToGo && Mathf.Floor(transform.eulerAngles.z) <= angleToGo + 2)
+                    {
+                        going = false;
+                    }
+                }
+                else
+                {
+                    transform.Rotate(Vector3.forward, clockwiseConstant * -1, Space.Self);
 
-				// Range do angleToBack ate angleToBack + 2
-				if (Mathf.Floor (transform.eulerAngles.z) >= angleToBack && Mathf.Floor (transform.eulerAngles.z) <= angleToBack + 2) {
-					going = true;
-				}
-			}
-		}
+                    // Range do angleToBack ate angleToBack + 2
+                    if (Mathf.Floor(transform.eulerAngles.z) >= angleToBack && Mathf.Floor(transform.eulerAngles.z) <= angleToBack + 2)
+                    {
+                        going = true;
+                    }
+                }
+            }
+        }
 	}
 			
 }

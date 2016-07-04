@@ -37,13 +37,13 @@ public class ConfigScript : MonoBehaviour {
     {
         if (soundOnOff.isOn)
         {
-            Debug.Log("Ligado");
+            //Debug.Log("Ligado");
             PlayerPrefs.SetInt("soundOnOff", 1);
             camera.GetComponent<AudioListener>().enabled = true;
         }
         else 
         {
-            Debug.Log("Desligado");
+            //Debug.Log("Desligado");
             PlayerPrefs.SetInt("soundOnOff", 0);
             camera.GetComponent<AudioListener>().enabled = false;
         }

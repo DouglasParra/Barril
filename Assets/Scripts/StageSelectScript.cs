@@ -18,19 +18,37 @@ public class StageSelectScript : MonoBehaviour
     public Image backgroundImage;
     public GameObject cantPlayImage;
 
+    public Button rankButton;
+
     private int QTDE_MUNDO = 8;
     private int mundoAtual;
 
     // Use this for initialization
     void Start()
     {
-        playerName.text = PlayerPrefs.GetString("DisplayName");
+        // Se possui "DisplayName", não é novo usuário
+        if (PlayerPrefs.HasKey("DisplayName"))
+        {
+            playerName.text = PlayerPrefs.GetString("DisplayName");
+        }
+
         mundoAtual = 0;
         gameSparksManager = GameObject.Find("GameSparks Manager");
     }
 
+    void Update() {
+        if (GameObject.Find("GameSparks Manager").GetComponent<ModoOffline>().getModoOffline())
+        {
+            rankButton.interactable = false;
+        }
+        else 
+        {
+            rankButton.interactable = true;
+        }
+    }
+
     public void StageSelect()
-    {
+    {   
         SceneManager.LoadScene(0);
     }
 
@@ -51,7 +69,7 @@ public class StageSelectScript : MonoBehaviour
 
     public void RankScene()
     {
-        //Debug.Log(energyTime.GetComponent<EnergyTime>().time.text);
+        ////Debug.Log(energyTime.GetComponent<EnergyTime>().time.text);
         gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
         gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
         gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);

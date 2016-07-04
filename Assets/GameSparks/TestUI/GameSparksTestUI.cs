@@ -164,9 +164,9 @@ public class GameSparksTestUI : MonoBehaviour
             new AuthenticationRequest ().SetUserName ("gabs").SetPassword ("gabs").Send ((AR) => {
 
                 if (AR.HasErrors) {
-    				Debug.Log ("Didnt Work");
+    				//Debug.Log ("Didnt Work");
     			} else {
-    				Debug.Log ("Worked");
+    				//Debug.Log ("Worked");
     			}
             });
 
@@ -178,16 +178,16 @@ public class GameSparksTestUI : MonoBehaviour
 
                 
     			if (leadResponse.HasErrors) {
-    				Debug.Log("Leaderboard data retrieval failed ...");
+    				//Debug.Log("Leaderboard data retrieval failed ...");
     			} else {
-    				Debug.Log("Leaderboard data retrieval succeeded ..." + leadResponse);
+    				//Debug.Log("Leaderboard data retrieval succeeded ..." + leadResponse);
     				
     				// Render the leaderboard entries on the screen
     				
     				foreach (var entry in leadResponse.Data)
     				{
     					string myText = "Rank: " + entry.Rank.ToString() + "    UserName: " + entry.UserName + "    Score: " + entry.GetNumberValue("SCORE").ToString();
-    					Debug.Log (myText);
+    					//Debug.Log (myText);
     				}
     				
     			}

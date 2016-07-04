@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using GameSparks.Core;
 using System.Collections.Generic;
@@ -29,35 +30,60 @@ public class GameSparksManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        if (Application.internetReachability != NetworkReachability.NotReachable)
+        //this will create a singleton for our gamesparks manager object
+        if (instance == null)
         {
-            //this will create a singleton for our gamesparks manager object
-            if (instance == null)
-            {
-                instance = this;
-                DontDestroyOnLoad(this.gameObject);
-            }
-            else
-            {
-                DontDestroyOnLoad(this.gameObject);
-            }
-            GS.GameSparksAvailable += GSAvailable;
-            GameSparks.Api.Messages.AchievementEarnedMessage.Listener += AchievementEarnedListener;
-            GameObject.Find("LoadingBar").SendMessage("goToLoading", 90);
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
-        else { 
-            // Sem conexão com a internet
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
 
+        GS.GameSparksAvailable += GSAvailable;
+        GameSparks.Api.Messages.AchievementEarnedMessage.Listener += AchievementEarnedListener;
+        GameObject.Find("LoadingBar").SendMessage("goToLoading", 90);
+    }
+
+    void Update() { 
+        if(SceneManager.GetActiveScene().name.Equals("TitleScene")){
+            if(GetComponent<ModoOffline>().getModoOffline()){
+
+                // Sem conexão com a internet, modo offline caso já tenha registrado jogador
+                if (PlayerPrefs.HasKey("DisplayName"))
+                {
+                    loadingInfoCanvas.gameObject.SetActive(false);
+                }
+                else
+                {
+                    // Tenta recomeçar o jogo se jogador não registrado (aparecer uma tela antes?)
+                    SceneManager.LoadScene(0);
+                }
+            }
         }
     }
 
     void GSAvailable(bool _isAvalable)
     {
+        if (GetComponent<ModoOffline>().getModoOffline())
+        {
+            if (PlayerPrefs.HasKey("DisplayName"))
+            {
+                loadingInfoCanvas.gameObject.SetActive(false);
+            }
+            else
+            {
+                // Tenta recomeçar o jogo se jogador não registrado (aparecer uma tela antes?)
+                SceneManager.LoadScene(0);
+            }
+        }
+
         //this method will be called only when the GS service is available or unavailable
         if (_isAvalable)
         {
             // Application.LoadLevel(1);
-            Debug.Log(">>>>>>>>>GS Conected<<<<<<<<");
+            //Debug.Log(">>>>>>>>>GS Conected<<<<<<<<");
 
             // Tenta concetar a uma conta
             new GameSparks.Api.Requests.AccountDetailsRequest()
@@ -67,9 +93,12 @@ public class GameSparksManager : MonoBehaviour
                     if (!response.HasErrors)
                     {
                         // Conectou, prossegue mostrando o nome
-                        GameObject.Find("LoadingBar").SendMessage("goToLoading", 100);
+                        if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                        {
+                            GameObject.Find("LoadingBar").SendMessage("goToLoading", 100);
+                        }
 
-                        Debug.Log("Account Details Found... - Olá, " + response.DisplayName);
+                        //Debug.Log("Account Details Found... - Olá, " + response.DisplayName);
                         loadingInfoCanvas.gameObject.SetActive(false);
 
                         RetrieveRecords();
@@ -77,7 +106,7 @@ public class GameSparksManager : MonoBehaviour
                     else
                     {
                         // Não conectou a nenhuma conta, mostra tela de registro
-                        Debug.Log("Error Retrieving Account Details...");
+                        //Debug.Log("Error Retrieving Account Details...");
                         loadingInfoCanvas.gameObject.SetActive(false);
 
                         registerPlayerCanvas.gameObject.SetActive(true);
@@ -87,7 +116,7 @@ public class GameSparksManager : MonoBehaviour
         }
         else
         {
-            Debug.Log(">>>>>>>>>GS Disconnected<<<<<<<<");
+            //Debug.Log(">>>>>>>>>GS Disconnected<<<<<<<<");
         }
     }
 
@@ -103,7 +132,7 @@ public class GameSparksManager : MonoBehaviour
 
                     if (!response.HasErrors)
                     {
-                        Debug.Log("Recieved Player Data From GameSparks...");
+                        //Debug.Log("Recieved Player Data From GameSparks...");
                         GSData data = response.ScriptData.GetGSData("player_Data");
                         loadedID = "Player ID: " + data.GetString("playerID");
 
@@ -120,7 +149,7 @@ public class GameSparksManager : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Error Loading Player Data...");
+                        //Debug.Log("Error Loading Player Data...");
                     }
                 });
     }
@@ -128,7 +157,7 @@ public class GameSparksManager : MonoBehaviour
     //Achievement message  listener
     private void AchievementEarnedListener(GameSparks.Api.Messages.AchievementEarnedMessage _message)
     {
-        Debug.LogWarning("Message Recieved" + _message.AchievementName);
+        //Debug.LogWarning("Message Recieved" + _message.AchievementName);
 
     }
 
@@ -143,7 +172,7 @@ public class GameSparksManager : MonoBehaviour
     {
         if (!FB.IsInitialized)
         {
-            Debug.Log("Initializing Facebook");
+            //Debug.Log("Initializing Facebook");
             FB.Init(FacebookLogin);
         }
         else
@@ -161,7 +190,7 @@ public class GameSparksManager : MonoBehaviour
     {
         if (!FB.IsLoggedIn)
         {
-            Debug.Log("Logging into Facebook");
+            //Debug.Log("Logging into Facebook");
             FB.LogInWithReadPermissions(
                 new List<string>() { "public_profile", "email", "user_friends" },
                 GameSparksFBConnect
@@ -174,20 +203,20 @@ public class GameSparksManager : MonoBehaviour
 
         if (FB.IsLoggedIn)
         {
-            Debug.Log("Logging into gamesparks with facebook details");
+            //Debug.Log("Logging into gamesparks with facebook details");
             GSFacebookLogin(AfterFBLogin);
             UserManager.instance.UpdateInformation();
         }
         else
         {
-            Debug.Log("Something wrong with FB");
+            //Debug.Log("Something wrong with FB");
         }
     }
 
     //this is the callback that happens when gamesparks has been connected with FB
     private void AfterFBLogin(GameSparks.Api.Responses.AuthenticationResponse _resp)
     {
-        Debug.Log(_resp.DisplayName);
+        //Debug.Log(_resp.DisplayName);
     }
 
     //delegate for asynchronous callbacks
@@ -203,12 +232,12 @@ public class GameSparksManager : MonoBehaviour
             {
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Logged into gamesparks with facebook");
+                    //Debug.Log("Logged into gamesparks with facebook");
                     _fbLoginCallback(response);
                 }
                 else
                 {
-                    Debug.Log("Error Logging into facebook");
+                    //Debug.Log("Error Logging into facebook");
                 }
 
             });
@@ -227,11 +256,11 @@ public class GameSparksManager : MonoBehaviour
             {
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Player Authenticated...");
+                    //Debug.Log("Player Authenticated...");
                 }
                 else
                 {
-                    Debug.Log("Error Authenticating Player\n" + response.Errors.JSON.ToString());
+                    //Debug.Log("Error Authenticating Player\n" + response.Errors.JSON.ToString());
                 }
             });
     }

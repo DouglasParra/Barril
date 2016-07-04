@@ -10,7 +10,12 @@ public class PowercellsManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        LoadPowercells();
+
+        // Se está online, carrega o valor de powercells
+        if (!GameObject.Find("GameSparks Manager").GetComponent<ModoOffline>().getModoOffline())
+        {
+            LoadPowercells();
+        }
 	}
 
     private void LoadPowercells()
@@ -25,11 +30,11 @@ public class PowercellsManager : MonoBehaviour {
                         powercells.text = data.GetInt("powercell").ToString();
                         powercellsLoja.text = powercells.text;
 
-                        Debug.Log("Recieved Player Powercells Data From GameSparks...");
+                        //Debug.Log("Recieved Player Powercells Data From GameSparks...");
                     }
                     else
                     {
-                        Debug.Log("Error Loading Player Data...");
+                        //Debug.Log("Error Loading Player Data...");
                     }
                 });        
     }
@@ -44,13 +49,13 @@ public class PowercellsManager : MonoBehaviour {
 
                 if (!response.HasErrors)
                 {
-                    Debug.Log("Adicionou " + value + " powercells");
+                    //Debug.Log("Adicionou " + value + " powercells");
                     powercells.text = (int.Parse(powercells.text) + value).ToString();
                     powercellsLoja.text = powercells.text;
                 }
                 else
                 {
-                    Debug.Log("Error Saving Player Data...");
+                    //Debug.Log("Error Saving Player Data...");
                 }
             });
     }

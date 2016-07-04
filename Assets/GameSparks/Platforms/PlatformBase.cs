@@ -141,10 +141,10 @@ namespace GameSparks.Platforms
             ExecuteOnMainThread(() => {
                 if (message.Length < 1500)
                 {
-                    Debug.Log("GS: " + message);
+                    //Debug.Log("GS: " + message);
                 } else
                 {
-                    Debug.Log("GS: " + message.Substring(0, 1500) + "...");
+                    //Debug.Log("GS: " + message.Substring(0, 1500) + "...");
                 }
             });
 		}

@@ -17,15 +17,15 @@ public class BoostsScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        //Debug.Log("Laser :" + PlayerPrefs.GetInt("Laser"));
-        //Debug.Log("MiniMapa :" + PlayerPrefs.GetInt("MiniMapa"));
+        ////Debug.Log("Laser :" + PlayerPrefs.GetInt("Laser"));
+        ////Debug.Log("MiniMapa :" + PlayerPrefs.GetInt("MiniMapa"));
 
-        Debug.Log("Skin1 :" + PlayerPrefs.GetInt("Skin1"));
-        Debug.Log("Skin2 :" + PlayerPrefs.GetInt("Skin2"));
-        Debug.Log("Skin3 :" + PlayerPrefs.GetInt("Skin3"));
-        Debug.Log("Skin4 :" + PlayerPrefs.GetInt("Skin4"));
-        Debug.Log("Skin5 :" + PlayerPrefs.GetInt("Skin5"));
-        Debug.Log("Skin6 :" + PlayerPrefs.GetInt("Skin6"));
+        //Debug.Log("Skin1 :" + PlayerPrefs.GetInt("Skin1"));
+        //Debug.Log("Skin2 :" + PlayerPrefs.GetInt("Skin2"));
+        //Debug.Log("Skin3 :" + PlayerPrefs.GetInt("Skin3"));
+        //Debug.Log("Skin4 :" + PlayerPrefs.GetInt("Skin4"));
+        //Debug.Log("Skin5 :" + PlayerPrefs.GetInt("Skin5"));
+        //Debug.Log("Skin6 :" + PlayerPrefs.GetInt("Skin6"));
 
         if (PlayerPrefs.GetInt("Laser") == 0)
         {
@@ -104,7 +104,7 @@ public class BoostsScript : MonoBehaviour {
 
         if (laser.interactable)
         {
-            Debug.Log("Laser era " + PlayerPrefs.GetInt("Laser"));
+            //Debug.Log("Laser era " + PlayerPrefs.GetInt("Laser"));
 
             if (PlayerPrefs.GetInt("Laser") == 0)
             {
@@ -115,7 +115,7 @@ public class BoostsScript : MonoBehaviour {
                 PlayerPrefs.SetInt("Laser", 0);
             }
 
-            Debug.Log("Agora é " + PlayerPrefs.GetInt("Laser"));
+            //Debug.Log("Agora é " + PlayerPrefs.GetInt("Laser"));
         }
     }
 
@@ -123,7 +123,7 @@ public class BoostsScript : MonoBehaviour {
     {
         if (minimapa.interactable)
         {
-            Debug.Log("Minimapa era " + PlayerPrefs.GetInt("MiniMapa"));
+            //Debug.Log("Minimapa era " + PlayerPrefs.GetInt("MiniMapa"));
 
             if (PlayerPrefs.GetInt("MiniMapa") == 0)
             {
@@ -134,7 +134,7 @@ public class BoostsScript : MonoBehaviour {
                 PlayerPrefs.SetInt("MiniMapa", 0);
             }
 
-            Debug.Log("Agora é " + PlayerPrefs.GetInt("MiniMapa"));
+            //Debug.Log("Agora é " + PlayerPrefs.GetInt("MiniMapa"));
         }
     }
 

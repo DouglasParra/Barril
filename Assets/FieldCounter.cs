@@ -36,7 +36,7 @@ public class FieldCounter : MonoBehaviour {
 
         if (ContadorPadrao())
         {
-            textCounter.transform.parent = transform.parent;
+            textCounter.transform.SetParent(transform.parent);
         }
 
         if (float.Parse(textCounter.text) >= 8.0f)
@@ -112,9 +112,12 @@ public class FieldCounter : MonoBehaviour {
 		string seconds = Mathf.Floor((counterTime - currentTime) % 60).ToString("0");
         transform.GetComponent<Animator>().SetFloat("Contador", float.Parse(seconds));
 
-        //Debug.Log(transform.name + " - " + float.Parse(seconds));
+        ////Debug.Log(transform.name + " - " + float.Parse(seconds));
 
-		textCounter.text = seconds;
+        if (int.Parse(seconds) >= 0)
+        {
+            textCounter.text = seconds;
+        }
 
         if (ContadorPadrao())
         {

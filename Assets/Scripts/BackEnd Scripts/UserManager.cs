@@ -41,9 +41,9 @@ public class UserManager : MonoBehaviour
         userId = uid;
         facebookId = fbId;
 
-        Debug.Log("UserName: " + name + "\n" +
-                  "UserID: " + uid + "\n" +
-                  "FacebookID: " + fbId);
+        //Debug.Log("UserName: " + name + "\n" +
+                  //"UserID: " + uid + "\n" +
+                  //"FacebookID: " + fbId);
 
         // https://graph.facebook.com/100000253293158/picture?width=128&height=128
 

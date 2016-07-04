@@ -75,6 +75,7 @@ public class CameraMiniMapa : MonoBehaviour {
         backgroundMainCamera.SetActive(false);
         shootButton.SetActive(false);
         mainCameraMiniMapButton.SetActive(false);
+        miniMapCamera.GetComponent<AudioListener>().enabled = true;
 
         zoom = true;
     }
@@ -86,6 +87,7 @@ public class CameraMiniMapa : MonoBehaviour {
         backgroundMainCamera.SetActive(true);
         shootButton.SetActive(true);
         mainCameraMiniMapButton.SetActive(true);
+        miniMapCamera.GetComponent<AudioListener>().enabled = false;
 
         zoom = false;
         t = 0f;
