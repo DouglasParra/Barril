@@ -8,14 +8,21 @@ public class PowercellsManager : MonoBehaviour {
     public Text powercells;
     public Text powercellsLoja;
 
+    private GameObject gameSparksManager;
+
+    void Awake() {
+        gameSparksManager = GameObject.Find("GameSparks Manager");
+    }
+
 	// Use this for initialization
 	void Start () {
 
         // Se está online, carrega o valor de powercells
-        if (!GameObject.Find("GameSparks Manager").GetComponent<ModoOffline>().getModoOffline())
+        StartCoroutine("CarregarPowercells");
+        /*if (!GameObject.Find("GameSparks Manager").GetComponent<ModoOffline>().getModoOffline())
         {
             LoadPowercells();
-        }
+        }*/
 	}
 
     private void LoadPowercells()
@@ -59,4 +66,21 @@ public class PowercellsManager : MonoBehaviour {
                 }
             });
     }
+
+    IEnumerator CarregarPowercells()
+    {
+        // Chama o teste de conexão em ModoOffline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Online");
+            LoadPowercells();
+        }
+    }
+
 }

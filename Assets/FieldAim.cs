@@ -13,6 +13,7 @@ public class FieldAim : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        GetComponent<Animator>().speed = (1.0f - TURN_TIME) + 1.0f;
 		StartCoroutine ("rotateRoutine");
 	}
 

@@ -30,6 +30,10 @@ public class GameSparksManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        Application.runInBackground = true;
+
+        //PlayerPrefs.SetInt("Vidas", 5);
+
         //this will create a singleton for our gamesparks manager object
         if (instance == null)
         {
@@ -48,7 +52,8 @@ public class GameSparksManager : MonoBehaviour
 
     void Update() { 
         if(SceneManager.GetActiveScene().name.Equals("TitleScene")){
-            if(GetComponent<ModoOffline>().getModoOffline()){
+            StartCoroutine("VerificarJogadorRegistrado");
+            /*if(GetComponent<ModoOffline>().getModoOffline()){
 
                 // Sem conexão com a internet, modo offline caso já tenha registrado jogador
                 if (PlayerPrefs.HasKey("DisplayName"))
@@ -60,13 +65,14 @@ public class GameSparksManager : MonoBehaviour
                     // Tenta recomeçar o jogo se jogador não registrado (aparecer uma tela antes?)
                     SceneManager.LoadScene(0);
                 }
-            }
+            }*/
         }
     }
 
     void GSAvailable(bool _isAvalable)
     {
-        if (GetComponent<ModoOffline>().getModoOffline())
+        StartCoroutine("VerificarJogadorRegistrado");
+        /*if (GetComponent<ModoOffline>().getModoOffline())
         {
             if (PlayerPrefs.HasKey("DisplayName"))
             {
@@ -77,7 +83,7 @@ public class GameSparksManager : MonoBehaviour
                 // Tenta recomeçar o jogo se jogador não registrado (aparecer uma tela antes?)
                 SceneManager.LoadScene(0);
             }
-        }
+        }*/
 
         //this method will be called only when the GS service is available or unavailable
         if (_isAvalable)
@@ -272,5 +278,30 @@ public class GameSparksManager : MonoBehaviour
     void OnApplicationQuit()
     {
         PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+    }
+
+    IEnumerator VerificarJogadorRegistrado()
+    {
+        // Chama o teste de conexão em ModoOffline
+        GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Offline");
+            // Sem conexão com a internet, modo offline caso já tenha registrado jogador
+            if (PlayerPrefs.HasKey("DisplayName"))
+            {
+                loadingInfoCanvas.gameObject.SetActive(false);
+            }
+            else
+            {
+                // Tenta recomeçar o jogo se jogador não registrado (aparecer uma tela antes?)
+                SceneManager.LoadScene(0);
+            }
+        }
     }
 }

@@ -39,8 +39,9 @@ public class EnergyTime : MonoBehaviour {
 
         //Debug.Log("Valor de Vidas em PlayerPrefs = " + PlayerPrefs.GetInt("Vidas"));
 
+        StartCoroutine("CarregarVida");
         // Se tem conexão com internet
-        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             // Pegar vida salva do GameSparks
             LoadLife();
@@ -54,7 +55,7 @@ public class EnergyTime : MonoBehaviour {
             life.text = PlayerPrefs.GetInt("Vidas").ToString();
             initializeEnergyTime();
             offline = true;
-        }
+        }*/
     }
 
     IEnumerator CountdownTimer()
@@ -72,6 +73,7 @@ public class EnergyTime : MonoBehaviour {
         if (minutos < 0)
         {
             GanharVida();
+            minutos = 9;
         }
 
         time.text = minutos.ToString("00") + ":" + segundos.ToString("00");
@@ -83,7 +85,7 @@ public class EnergyTime : MonoBehaviour {
 	void Update () {
 
         // Se estava offline mas conseguiu conexão com internet de novo
-        if (offline && !gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        /*if (offline && !gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             //SincronizarVidas();
             LoadLife();
@@ -93,7 +95,7 @@ public class EnergyTime : MonoBehaviour {
         {
             // Se a rede caiu, está offline
             offline = true;
-        }
+        }*/
 
         if (int.Parse(life.text) >= MAX_VIDAS)
         {
@@ -135,15 +137,14 @@ public class EnergyTime : MonoBehaviour {
     public void GanharVida() {
         life.text = (int.Parse(life.text) + 1).ToString();
 
+        StartCoroutine("SalvarVida");
         //Debug.Log("Pre: SaveLife em CountdownTimer " + life.text);
-        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             SaveLife(int.Parse(life.text));
-        }
+        }*/
         PlayerPrefs.SetInt("Vidas", (int.Parse(life.text)));
         //Debug.Log("Pos: SaveLife em CountdownTimer " + life.text);
-
-        minutos = 9;
     }
 
     // Salva no GS o valor de vida passado como argumento
@@ -225,10 +226,11 @@ public class EnergyTime : MonoBehaviour {
             }
 
             //Debug.Log("Pre: SaveLife em initializeEnergyTime " + life.text);
-            if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+            StartCoroutine("SalvarVida");
+            /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
             {
                 SaveLife(int.Parse(life.text));
-            }
+            }*/
             PlayerPrefs.SetInt("Vidas", int.Parse(life.text));
             //Debug.Log("Pos: SaveLife em initializeEnergyTime " + life.text);
 
@@ -250,6 +252,7 @@ public class EnergyTime : MonoBehaviour {
         if (int.Parse(life.text) < MAX_VIDAS)
         {
             canRunTime = true;
+            energyTimeBox.SetActive(true);
             StartCoroutine("CountdownTimer");
         }
         else
@@ -265,26 +268,31 @@ public class EnergyTime : MonoBehaviour {
     // DESENVOLVEDOR - DAR VIDAS
     public void GiveLifes()
     {
+        PlayerPrefs.SetInt("Vidas", int.Parse(life.text) + 5);
+
+        canRunTime = false;
+
+        StopCoroutine("CountdownTimer");
+        time.text = "10:00";
+        life.text = (int.Parse(life.text) + 5).ToString();
+
+        PlayerPrefs.SetString("Minutos", "10");
+        PlayerPrefs.SetString("Segundos", "00");
+
+        gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(10);
+        gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(0);
+
+        energyTimeBox.SetActive(false);
+
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("SAVE_LIFES")
-            .SetEventAttribute("LIFE", int.Parse(life.text) + 5)
+            .SetEventAttribute("LIFE", int.Parse(life.text))
             .Send((response) =>
             {
 
                 if (!response.HasErrors)
                 {
                     //Debug.Log("Jogador agora possui " + (int.Parse(life.text) + 5) + " vidas");
-                    canRunTime = false;
-                    StopCoroutine("CountdownTimer");
-                    time.text = "10:00";
-                    life.text = (int.Parse(life.text) + 5).ToString();
-                    PlayerPrefs.SetString("Minutos", "10");
-                    PlayerPrefs.SetString("Segundos", "00");
-
-                    gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(10);
-                    gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(0);
-
-                    energyTimeBox.SetActive(false);
                 }
                 else
                 {
@@ -301,8 +309,9 @@ public class EnergyTime : MonoBehaviour {
 
     public void SincronizarVidas()
     {
+        StartCoroutine("VerificarConexaoSincronizar");
         // Se tem conexão com internet, sincroniza
-        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             //LoadLife();
 
@@ -316,11 +325,80 @@ public class EnergyTime : MonoBehaviour {
             }
 
             //Debug.Log("Pos: SaveLife em SincronizarVidas " + life.text);
-        }
+        }*/
     }
 
     void OnApplicationQuit()
     {
         SaveMinuteSeconds();
+    }
+
+    IEnumerator CarregarVida() {
+        // Chama o teste de conexão em Modo Offline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        // Se tem conexão com internet
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            // Pegar vida salva do GameSparks
+            LoadLife();
+            //SincronizarVidas();
+            //initializeEnergyTime();
+            offline = false;
+        }
+        else 
+        {
+            // Pega vida salva no PlayerPrefs
+            life.text = PlayerPrefs.GetInt("Vidas").ToString();
+            initializeEnergyTime();
+            offline = true;
+        }
+    }
+
+    IEnumerator SalvarVida()
+    {
+        // Chama o teste de conexão em Modo Offline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Online");
+            SaveLife(int.Parse(life.text));
+        }
+    }
+
+    IEnumerator VerificarConexaoSincronizar()
+    {
+        // Chama o teste de conexão em Modo Offline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //LoadLife();
+
+            //Debug.Log("Pre: SaveLife em SincronizarVidas " + life.text);
+
+            // PlayerPrefs sempre estará com o valor certo de vidas
+            if (PlayerPrefs.GetInt("Vidas") != int.Parse(life.text))
+            {
+                SaveLife(PlayerPrefs.GetInt("Vidas"));
+                life.text = PlayerPrefs.GetInt("Vidas").ToString();
+                //LoadLife();
+            }
+
+            //Debug.Log("Pos: SaveLife em SincronizarVidas " + life.text);
+        }
     }
 }

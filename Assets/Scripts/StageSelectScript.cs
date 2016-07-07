@@ -37,14 +37,14 @@ public class StageSelectScript : MonoBehaviour
     }
 
     void Update() {
-        if (GameObject.Find("GameSparks Manager").GetComponent<ModoOffline>().getModoOffline())
+        /*if (GameObject.Find("GameSparks Manager").GetComponent<ModoOffline>().getModoOffline())
         {
             rankButton.interactable = false;
         }
         else 
         {
             rankButton.interactable = true;
-        }
+        }*/
     }
 
     public void StageSelect()
