@@ -42,6 +42,21 @@ public class ShopManager : MonoBehaviour {
 
     private const int MAX_VIDAS = 99;
 
+    private const int CUSTO_5_VIDAS = 1;
+    private const int CUSTO_10_VIDAS = 1;
+    private const int CUSTO_20_VIDAS = 1;
+    private const int CUSTO_50_VIDAS = 1;
+
+    private const int CUSTO_SKIN1 = 1;
+    private const int CUSTO_SKIN2 = 1;
+    private const int CUSTO_SKIN3 = 1;
+    private const int CUSTO_SKIN4 = 1;
+    private const int CUSTO_SKIN5 = 1;
+    private const int CUSTO_SKIN6 = 1;
+
+    private const int CUSTO_LASER = 1;
+    private const int CUSTO_MINIMAPA = 1;
+
     void Start() {
         gameSparksManager = GameObject.Find("GameSparks Manager");
         energyTextLoja.text = energyText.text;
@@ -93,7 +108,7 @@ public class ShopManager : MonoBehaviour {
         if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             // Verifica se tem powercells suficiente pra compra
-            if (haveEnoughPowercells(25))
+            if (haveEnoughPowercells(CUSTO_5_VIDAS))
             {
                 // Adicionar 5 Vidas no GS
                 AdicionarVidas(5);
@@ -101,7 +116,7 @@ public class ShopManager : MonoBehaviour {
                 PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 5);
 
                 // Retirar pc
-                RetirarPowercells(25);
+                RetirarPowercells(CUSTO_5_VIDAS);
             }
         }
 	}
@@ -111,7 +126,7 @@ public class ShopManager : MonoBehaviour {
         if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             // Verifica se tem powercells suficiente pra compra
-            if (haveEnoughPowercells(50))
+            if (haveEnoughPowercells(CUSTO_10_VIDAS))
             {
                 // Adicionar 10 Vidas no GS
                 AdicionarVidas(10);
@@ -119,7 +134,7 @@ public class ShopManager : MonoBehaviour {
                 PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 10);
 
                 // Retirar pc
-                RetirarPowercells(50);
+                RetirarPowercells(CUSTO_10_VIDAS);
             }
         }
     }
@@ -129,7 +144,7 @@ public class ShopManager : MonoBehaviour {
         if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             // Verifica se tem powercells suficiente pra compra
-            if (haveEnoughPowercells(100))
+            if (haveEnoughPowercells(CUSTO_20_VIDAS))
             {
                 // Adicionar 20 Vidas no GS
                 AdicionarVidas(20);
@@ -137,7 +152,7 @@ public class ShopManager : MonoBehaviour {
                 PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 20);
 
                 // Retirar pc
-                RetirarPowercells(100);
+                RetirarPowercells(CUSTO_20_VIDAS);
             }
         }
     }
@@ -147,7 +162,7 @@ public class ShopManager : MonoBehaviour {
         if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             // Verifica se tem powercells suficiente pra compra
-            if (haveEnoughPowercells(200))
+            if (haveEnoughPowercells(CUSTO_50_VIDAS))
             {
                 // Adicionar 50 Vidas no GS
                 AdicionarVidas(50);
@@ -155,7 +170,7 @@ public class ShopManager : MonoBehaviour {
                 PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 50);
 
                 // Retirar pc
-                RetirarPowercells(200);
+                RetirarPowercells(CUSTO_50_VIDAS);
             }
         }
     }
@@ -168,10 +183,10 @@ public class ShopManager : MonoBehaviour {
             if (skin1Toggle.interactable == false)
             {
                 // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(25))
+                if (haveEnoughPowercells(CUSTO_SKIN1))
                 {
                     // Retirar pc
-                    RetirarPowercells(25);
+                    RetirarPowercells(CUSTO_SKIN1);
 
                     // Indica no GS que comprou skin1
                     BuySkin1();
@@ -194,10 +209,10 @@ public class ShopManager : MonoBehaviour {
             if (skin2Toggle.interactable == false)
             {
                 // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(50))
+                if (haveEnoughPowercells(CUSTO_SKIN2))
                 {
                     // Retirar pc
-                    RetirarPowercells(50);
+                    RetirarPowercells(CUSTO_SKIN2);
 
                     // Indica no GS que comprou skin2
                     BuySkin2();
@@ -220,10 +235,10 @@ public class ShopManager : MonoBehaviour {
             if (skin3Toggle.interactable == false)
             {
                 // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(100))
+                if (haveEnoughPowercells(CUSTO_SKIN3))
                 {
                     // Retirar pc
-                    RetirarPowercells(100);
+                    RetirarPowercells(CUSTO_SKIN3);
 
                     // Indica no GS que comprou skin3
                     BuySkin3();
@@ -246,10 +261,10 @@ public class ShopManager : MonoBehaviour {
             if (skin4Toggle.interactable == false)
             {
                 // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(200))
+                if (haveEnoughPowercells(CUSTO_SKIN4))
                 {
                     // Retirar pc
-                    RetirarPowercells(200);
+                    RetirarPowercells(CUSTO_SKIN4);
 
                     // Indica no GS que comprou skin4
                     BuySkin4();
@@ -272,10 +287,10 @@ public class ShopManager : MonoBehaviour {
             if (skin5Toggle.interactable == false)
             {
                 // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(200))
+                if (haveEnoughPowercells(CUSTO_SKIN5))
                 {
                     // Retirar pc
-                    RetirarPowercells(200);
+                    RetirarPowercells(CUSTO_SKIN5);
 
                     // Indica no GS que comprou skin5
                     BuySkin5();
@@ -298,10 +313,10 @@ public class ShopManager : MonoBehaviour {
             if (skin6Toggle.interactable == false)
             {
                 // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(200))
+                if (haveEnoughPowercells(CUSTO_SKIN6))
                 {
                     // Retirar pc
-                    RetirarPowercells(200);
+                    RetirarPowercells(CUSTO_SKIN6);
 
                     // Indica no GS que comprou skin6
                     BuySkin6();
@@ -324,10 +339,10 @@ public class ShopManager : MonoBehaviour {
             if (laserToggle.interactable == false)
             {
                 // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(500))
+                if (haveEnoughPowercells(CUSTO_LASER))
                 {
                     // Retirar pc
-                    RetirarPowercells(500);
+                    RetirarPowercells(CUSTO_LASER);
 
                     // Indica no GS que comprou laser
                     ComprarLaserGS();
@@ -350,10 +365,10 @@ public class ShopManager : MonoBehaviour {
             if (minimapToggle.interactable == false)
             {
                 // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(1000))
+                if (haveEnoughPowercells(CUSTO_MINIMAPA))
                 {
                     // Retirar pc
-                    RetirarPowercells(1000);
+                    RetirarPowercells(CUSTO_MINIMAPA);
 
                     // Indica no GS que comprou minimapa
                     ComprarMinimapaGS();

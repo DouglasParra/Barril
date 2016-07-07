@@ -30,6 +30,10 @@ public class GameSparksManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        Application.runInBackground = true;
+
+        //PlayerPrefs.SetInt("Vidas", 5);
+
         //this will create a singleton for our gamesparks manager object
         if (instance == null)
         {
@@ -48,6 +52,7 @@ public class GameSparksManager : MonoBehaviour
 
     void Update() { 
         if(SceneManager.GetActiveScene().name.Equals("TitleScene")){
+            StartCoroutine("VerificarJogadorRegistrado");
             if(GetComponent<ModoOffline>().getModoOffline()){
 
                 // Sem conexão com a internet, modo offline caso já tenha registrado jogador
@@ -272,5 +277,9 @@ public class GameSparksManager : MonoBehaviour
     void OnApplicationQuit()
     {
         PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+    }
+
+    IEnumerator VerificarJogadorRegistrado() { 
+        yield return new WaitForFixedUpdate();
     }
 }

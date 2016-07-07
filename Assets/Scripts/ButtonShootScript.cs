@@ -5,6 +5,7 @@ public class ButtonShootScript : MonoBehaviour {
 
 	private bool firstLaunch = true;
 
+    [SerializeField]
     private GameObject robot;
     private GameObject clockTime;
 

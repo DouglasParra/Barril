@@ -72,6 +72,7 @@ public class EnergyTime : MonoBehaviour {
         if (minutos < 0)
         {
             GanharVida();
+            minutos = 9;
         }
 
         time.text = minutos.ToString("00") + ":" + segundos.ToString("00");
@@ -142,8 +143,6 @@ public class EnergyTime : MonoBehaviour {
         }
         PlayerPrefs.SetInt("Vidas", (int.Parse(life.text)));
         //Debug.Log("Pos: SaveLife em CountdownTimer " + life.text);
-
-        minutos = 9;
     }
 
     // Salva no GS o valor de vida passado como argumento
@@ -265,32 +264,38 @@ public class EnergyTime : MonoBehaviour {
     // DESENVOLVEDOR - DAR VIDAS
     public void GiveLifes()
     {
-        new GameSparks.Api.Requests.LogEventRequest()
-            .SetEventKey("SAVE_LIFES")
-            .SetEventAttribute("LIFE", int.Parse(life.text) + 5)
-            .Send((response) =>
-            {
+        PlayerPrefs.SetInt("Vidas", int.Parse(life.text) + 5);
 
-                if (!response.HasErrors)
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            new GameSparks.Api.Requests.LogEventRequest()
+                .SetEventKey("SAVE_LIFES")
+                .SetEventAttribute("LIFE", int.Parse(life.text) + 5)
+                .Send((response) =>
                 {
-                    //Debug.Log("Jogador agora possui " + (int.Parse(life.text) + 5) + " vidas");
-                    canRunTime = false;
-                    StopCoroutine("CountdownTimer");
-                    time.text = "10:00";
-                    life.text = (int.Parse(life.text) + 5).ToString();
-                    PlayerPrefs.SetString("Minutos", "10");
-                    PlayerPrefs.SetString("Segundos", "00");
 
-                    gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(10);
-                    gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(0);
+                    if (!response.HasErrors)
+                    {
+                        //Debug.Log("Jogador agora possui " + (int.Parse(life.text) + 5) + " vidas");
+                        canRunTime = false;
+                        StopCoroutine("CountdownTimer");
+                        time.text = "10:00";
+                        life.text = (int.Parse(life.text) + 5).ToString();
 
-                    energyTimeBox.SetActive(false);
-                }
-                else
-                {
-                    //Debug.Log("Error Saving Player Data...");
-                }
-            });
+                        PlayerPrefs.SetString("Minutos", "10");
+                        PlayerPrefs.SetString("Segundos", "00");
+
+                        gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(10);
+                        gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(0);
+
+                        energyTimeBox.SetActive(false);
+                    }
+                    else
+                    {
+                        //Debug.Log("Error Saving Player Data...");
+                    }
+                });
+        }
     }
 
     public void SaveMinuteSeconds() {
