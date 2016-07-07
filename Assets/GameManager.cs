@@ -41,10 +41,9 @@ public class GameManager : MonoBehaviour {
 
 		startAll ();
 		verifyCheckpoint ();
-
-        StartCoroutine("CarregarVida");
+        
         // Se tem conexão com a internet
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             // Pega vida do GameSparks
             LoadLife();
@@ -53,16 +52,9 @@ public class GameManager : MonoBehaviour {
         {
             // Senão, pega do PlayerPrefs
             energyText.text = PlayerPrefs.GetInt("Vidas").ToString();
-        }*/
+        }
 
-        if (SceneManager.GetActiveScene().name.Equals("TutorialScene"))
-        {
-            stageText.text = "Tutorial";
-        }
-        else
-        {
-            stageText.text = "Fase " + SceneManager.GetActiveScene().name;
-        }
+        stageText.text = "Fase " + SceneManager.GetActiveScene().name;
 
         masterMixer.SetFloat("sfxVol", PlayerPrefs.GetFloat("sfxVol"));
         masterMixer.SetFloat("musicVol", PlayerPrefs.GetFloat("musicVol"));
@@ -94,8 +86,7 @@ public class GameManager : MonoBehaviour {
 		stopAll ();
 		showLoseModal ();
 
-        StartCoroutine("PerderVida");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             //Debug.Log("Conectado, perdendo vida no GS" + (int.Parse(energyText.text) - 1).ToString());
             LoseLife(int.Parse(energyText.text) - 1);
@@ -105,33 +96,22 @@ public class GameManager : MonoBehaviour {
             //Debug.Log("Sem conexão, perdendo vida no PlayerPrefs " + (int.Parse(energyText.text) - 1).ToString());
             energyText.text = (int.Parse(energyText.text) - 1).ToString();
             PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
-        }*/
+        }
 
-        // Desabilita botões de reiniciar fase do começo e do checkpoint
         if ((int.Parse(energyText.text)) <= 0)
         {
             loseModal.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
-            loseModal.transform.GetChild(0).GetChild(2).GetComponent<Button>().interactable = false;
         }
 	}
 
 	public void victoryGame () {
-        if (SceneManager.GetActiveScene().name.Equals("TutorialScene"))
-        {
-            stopAll();
-            verifyTutorialDone();
-            SceneManager.LoadScene("StageSelect");
-        }
-        else
-        {
-            stopAll();
-            showVictoryModal();
-            showClockTime();
-            hidePauseButton();
-            saveTime();
-            verifyTutorialDone();
-            resetCheckpoint();
-        }
+		stopAll ();
+		showVictoryModal ();
+		showClockTime ();
+		hidePauseButton ();
+		saveTime ();
+		verifyTutorialDone ();
+		resetCheckpoint ();
 	}
 
 	void showClockTime () {
@@ -149,8 +129,7 @@ public class GameManager : MonoBehaviour {
 		resetCheckpoint ();
         if (!clockTime.timestring.Equals("00:00:000") && !victoryModal.activeInHierarchy && !loseModal.activeInHierarchy)
         {
-            StartCoroutine("PerderVida");
-            /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+            if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
             {
                 LoseLife(int.Parse(energyText.text) - 1);
             }
@@ -158,7 +137,7 @@ public class GameManager : MonoBehaviour {
             {
                 energyText.text = (int.Parse(energyText.text) - 1).ToString();
                 PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
-            }*/
+            }
         }
 		SceneManager.LoadScene ("StageSelect");
 	}
@@ -177,8 +156,7 @@ public class GameManager : MonoBehaviour {
 	public void restart () {
         if (!clockTime.timestring.Equals("00:00:000") && !victoryModal.activeInHierarchy && !loseModal.activeInHierarchy)
         {
-            StartCoroutine("PerderVida");
-            /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+            if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
             {
                 LoseLife(int.Parse(energyText.text) - 1);
             }
@@ -186,7 +164,7 @@ public class GameManager : MonoBehaviour {
             {
                 energyText.text = (int.Parse(energyText.text) - 1).ToString();
                 PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
-            }*/
+            }
         }
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
@@ -200,11 +178,10 @@ public class GameManager : MonoBehaviour {
         //Debug.Log(teste2);
         //Debug.Log("CT: " + clockTime.RetornaTempoString(teste2));
 
-        StartCoroutine("SalvarTempo");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             SalvarTempoGameSparks();
-        }*/
+        }
 	}
 
     private int ClockTimeInt() {
@@ -437,69 +414,4 @@ public class GameManager : MonoBehaviour {
                 }
             });
     }
-
-    IEnumerator CarregarVida()
-    {
-        // Chama o teste de conexão em Modo Offline
-        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
-
-        // Aguarda até terminar o teste
-        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
-
-        // Age de acordo com o resultado, offline ou online
-        if (gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            //Debug.Log("Acao - Offline");
-            energyText.text = PlayerPrefs.GetInt("Vidas").ToString();
-        }
-        else
-        {
-            //Debug.Log("Acao - Online");
-            LoadLife();
-        }
-    }
-
-    IEnumerator PerderVida() 
-    {
-        // Chama o teste de conexão em ModoOffline
-        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
-
-        // Aguarda até terminar o teste
-        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
-
-        // Age de acordo com o resultado, offline ou online
-        if (gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            //Debug.Log("Acao - Offline");
-            energyText.text = (int.Parse(energyText.text) - 1).ToString();
-            PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
-        }
-        else
-        {
-            //Debug.Log("Acao - Online");
-            LoseLife(int.Parse(energyText.text) - 1);
-        }
-    }
-
-    IEnumerator SalvarTempo() 
-    {
-        // Chama o teste de conexão em ModoOffline
-        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
-
-        // Aguarda até terminar o teste
-        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
-
-        // Age de acordo com o resultado, offline ou online
-        if (gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            //Debug.Log("Acao - Offline");
-            // Avisar que está offline e não vai salvar o tempo?
-        }
-        else
-        {
-            //Debug.Log("Acao - Online");
-            SalvarTempoGameSparks();
-        }
-    }
-
 }

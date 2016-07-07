@@ -42,13 +42,13 @@ public class FieldRotate : MonoBehaviour {
         {
             if (rotateFull360)
             {
-                transform.Rotate(Vector3.forward * Time.deltaTime, clockwiseConstant, Space.Self);
+                transform.Rotate(Vector3.forward, clockwiseConstant, Space.Self);
             }
             else
             {
                 if (going == true)
                 {
-                    transform.Rotate(Vector3.forward * Time.deltaTime, clockwiseConstant, Space.Self);
+                    transform.Rotate(Vector3.forward, clockwiseConstant, Space.Self);
 
                     // Range do angleToGo ate angleToGo + 2
                     if (Mathf.Floor(transform.eulerAngles.z) >= angleToGo && Mathf.Floor(transform.eulerAngles.z) <= angleToGo + 2)
@@ -58,7 +58,7 @@ public class FieldRotate : MonoBehaviour {
                 }
                 else
                 {
-                    transform.Rotate(Vector3.forward * Time.deltaTime, clockwiseConstant * -1, Space.Self);
+                    transform.Rotate(Vector3.forward, clockwiseConstant * -1, Space.Self);
 
                     // Range do angleToBack ate angleToBack + 2
                     if (Mathf.Floor(transform.eulerAngles.z) >= angleToBack && Mathf.Floor(transform.eulerAngles.z) <= angleToBack + 2)

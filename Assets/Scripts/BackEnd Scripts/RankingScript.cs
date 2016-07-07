@@ -58,11 +58,6 @@ public class RankingScript : MonoBehaviour {
 
         resetMundialScores();
 
-        if (PlayerPrefs.HasKey("FB") && PlayerPrefs.GetInt("FB") == 1)
-        {
-            ConnectWithFacebook();
-        }
-
         if (!FB.IsInitialized)
         {
             connectWithFBPanel.SetActive(true);
@@ -300,10 +295,6 @@ public class RankingScript : MonoBehaviour {
         {
             connectWithFBPanel.SetActive(false);
             friendsStageSelectPanel.SetActive(true);
-
-            if (!PlayerPrefs.HasKey("FB")) {
-                PlayerPrefs.SetInt("FB", 1);
-            }
         }
     }
 
