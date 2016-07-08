@@ -28,7 +28,7 @@ public class GameSparksManager : MonoBehaviour
 
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         Application.runInBackground = true;
 
@@ -45,13 +45,15 @@ public class GameSparksManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
 
-        GS.GameSparksAvailable += GSAvailable;
+        Debug.Log("Chamando CarregarJogador de Awake");
+        StartCoroutine("CarregarJogador");
+        /*GS.GameSparksAvailable += GSAvailable;
         GameSparks.Api.Messages.AchievementEarnedMessage.Listener += AchievementEarnedListener;
-        GameObject.Find("LoadingBar").SendMessage("goToLoading", 90);
+        GameObject.Find("LoadingBar").SendMessage("goToLoading", 90);*/
     }
 
     void Update() { 
-        if(SceneManager.GetActiveScene().name.Equals("TitleScene")){
+        /*if(SceneManager.GetActiveScene().name.Equals("TitleScene")){
             StartCoroutine("VerificarJogadorRegistrado");
             /*if(GetComponent<ModoOffline>().getModoOffline()){
 
@@ -65,8 +67,8 @@ public class GameSparksManager : MonoBehaviour
                     // Tenta recomeçar o jogo se jogador não registrado (aparecer uma tela antes?)
                     SceneManager.LoadScene(0);
                 }
-            }*/
-        }
+            }
+        }*/
     }
 
     void GSAvailable(bool _isAvalable)
@@ -303,5 +305,27 @@ public class GameSparksManager : MonoBehaviour
                 SceneManager.LoadScene(0);
             }
         }
+    }
+
+    IEnumerator CarregarJogador() {
+        // Chama o teste de conexão em ModoOffline
+        GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!GetComponent<ModoOffline>().getModoOffline())
+        {
+            Debug.Log("Acao - Online");
+            GS.GameSparksAvailable += GSAvailable;
+            GameSparks.Api.Messages.AchievementEarnedMessage.Listener += AchievementEarnedListener;
+            GameObject.Find("LoadingBar").SendMessage("goToLoading", 90);
+        }
+        else
+        {
+            StartCoroutine("VerificarJogadorRegistrado");
+        }
+
     }
 }

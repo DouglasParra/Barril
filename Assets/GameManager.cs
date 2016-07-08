@@ -54,7 +54,9 @@ public class GameManager : MonoBehaviour {
             // Senão, pega do PlayerPrefs
             energyText.text = PlayerPrefs.GetInt("Vidas").ToString();
         }*/
+	}
 
+    private void CarregarTutorial() {
         if (SceneManager.GetActiveScene().name.Equals("TutorialScene"))
         {
             stageText.text = "Tutorial";
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour {
         masterMixer.SetFloat("musicVol", PlayerPrefs.GetFloat("musicVol"));
 
         GameSparks.Api.Messages.NewHighScoreMessage.Listener += HighScoreMessageHandler; // assign the New High Score message
-	}
+    }
 
     void Start() {
         for (int i = 0; i < portas.Length; i++) {
@@ -108,11 +110,11 @@ public class GameManager : MonoBehaviour {
         }*/
 
         // Desabilita botões de reiniciar fase do começo e do checkpoint
-        if ((int.Parse(energyText.text)) <= 0)
+        /*if ((int.Parse(energyText.text)) <= 0)
         {
             loseModal.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
             loseModal.transform.GetChild(0).GetChild(2).GetComponent<Button>().interactable = false;
-        }
+        }*/
 	}
 
 	public void victoryGame () {
@@ -457,6 +459,8 @@ public class GameManager : MonoBehaviour {
             //Debug.Log("Acao - Online");
             LoadLife();
         }
+
+        CarregarTutorial();
     }
 
     IEnumerator PerderVida()
@@ -478,6 +482,12 @@ public class GameManager : MonoBehaviour {
         {
             //Debug.Log("Acao - Online");
             LoseLife(int.Parse(energyText.text) - 1);
+        }
+
+        if ((int.Parse(energyText.text)) <= 0)
+        {
+            loseModal.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
+            loseModal.transform.GetChild(0).GetChild(2).GetComponent<Button>().interactable = false;
         }
     }
 

@@ -27,7 +27,6 @@ public class EnergyTime : MonoBehaviour {
     public int segundos;
 
     private bool canRunTime;
-    private bool offline;
     private bool initializeTime;
 
 	// Use this for initialization
@@ -200,6 +199,8 @@ public class EnergyTime : MonoBehaviour {
 
         time.text = minutos.ToString("00") + ":" + segundos.ToString("00");
 
+        Debug.Log("Entrou initializeEnergyTime");
+
         if (int.Parse(life.text) < MAX_VIDAS)
         {
             // Cada vez que entra na cena, calcula o tempo guardado
@@ -348,14 +349,12 @@ public class EnergyTime : MonoBehaviour {
             LoadLife();
             //SincronizarVidas();
             //initializeEnergyTime();
-            offline = false;
         }
         else 
         {
             // Pega vida salva no PlayerPrefs
             life.text = PlayerPrefs.GetInt("Vidas").ToString();
             initializeEnergyTime();
-            offline = true;
         }
     }
 

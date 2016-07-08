@@ -37,11 +37,11 @@ public class PowercellsManager : MonoBehaviour {
                         powercells.text = data.GetInt("powercell").ToString();
                         powercellsLoja.text = powercells.text;
 
-                        //Debug.Log("Recieved Player Powercells Data From GameSparks...");
+                        Debug.Log("Recieved Player Powercells Data From GameSparks...");
                     }
                     else
                     {
-                        //Debug.Log("Error Loading Player Data...");
+                        Debug.Log("Error Loading Player Powercell Data...");
                     }
                 });        
     }
