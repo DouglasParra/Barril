@@ -96,7 +96,7 @@ public class Robot : MonoBehaviour {
 
 	void activeFieldLaunchAnimation () {
 		if (transform.parent.gameObject.GetComponent<Animator> ()) {
-			transform.parent.gameObject.GetComponent<Animator> ().SetTrigger ("launch");
+			transform.parent.gameObject.GetComponent<Animator> ().SetTrigger ("Launch");
 		}
 	}
 

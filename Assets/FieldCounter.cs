@@ -112,7 +112,7 @@ public class FieldCounter : MonoBehaviour {
 		string seconds = Mathf.Floor((counterTime - currentTime) % 60).ToString("0");
         transform.GetComponent<Animator>().SetFloat("Contador", float.Parse(seconds));
 
-        ////Debug.Log(transform.name + " - " + float.Parse(seconds));
+        Debug.Log(transform.name + " - " + float.Parse(seconds));
 
         if (int.Parse(seconds) >= 0)
         {

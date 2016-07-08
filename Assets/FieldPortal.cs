@@ -18,6 +18,7 @@ public class FieldPortal : MonoBehaviour {
         if (fromPortal) {
             robot.transform.position = destino.transform.position;
             robot.transform.rotation = destino.transform.rotation;
+            robot.transform.parent = destino.transform;
             fromPortal = false;
         }
     }
