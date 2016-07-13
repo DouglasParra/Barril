@@ -223,6 +223,7 @@ public class RegisterPlayer_Script : MonoBehaviour
                     PlayerPrefs.SetInt("Skin6", 0);
 
                     PlayerPrefs.SetInt("Vidas", 5);
+                    PlayerPrefs.SetInt("tutorialDone", 0);
 
                     InitiatePowercells();
                 }

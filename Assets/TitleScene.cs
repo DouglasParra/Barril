@@ -15,7 +15,7 @@ public class TitleScene : MonoBehaviour {
 	}
 
 	public void changeScene() {
-		if (PlayerPrefs.HasKey("tutorialDone")) {
+		if (PlayerPrefs.HasKey("tutorialDone") && PlayerPrefs.GetInt("tutorialDone")==1) {
 			SceneManager.LoadScene ("StageSelect");
 		} else {
 			SceneManager.LoadScene ("TutorialScene");

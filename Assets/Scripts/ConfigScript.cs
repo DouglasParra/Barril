@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ConfigScript : MonoBehaviour {
@@ -9,6 +10,7 @@ public class ConfigScript : MonoBehaviour {
     public Toggle soundOnOff;
 
     private Camera camera;
+    private Camera miniMapCamera;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +27,15 @@ public class ConfigScript : MonoBehaviour {
         else
         {
             camera.GetComponent<AudioListener>().enabled = false;
+        }
+
+        if (SceneManager.GetActiveScene().name.Contains("-"))
+        {
+            miniMapCamera = GameObject.Find("MiniMapCamera").GetComponent<Camera>();
+            if (PlayerPrefs.GetInt("soundOnOff") == 0)
+            {
+                miniMapCamera.GetComponent<AudioListener>().enabled = false;
+            }
         }
 	}
 	
@@ -46,6 +57,14 @@ public class ConfigScript : MonoBehaviour {
             //Debug.Log("Desligado");
             PlayerPrefs.SetInt("soundOnOff", 0);
             camera.GetComponent<AudioListener>().enabled = false;
+        }
+
+        if (SceneManager.GetActiveScene().name.Contains("-"))
+        {
+            if (PlayerPrefs.GetInt("soundOnOff") == 0)
+            {
+                miniMapCamera.GetComponent<AudioListener>().enabled = false;
+            }
         }
     }
 }

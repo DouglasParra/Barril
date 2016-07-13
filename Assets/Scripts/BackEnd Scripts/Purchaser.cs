@@ -27,6 +27,8 @@ namespace CompleteProject
         public static string kProductIDConsumable_20pc = "com.sdgstudio.orb_e.20powercell";
         public static string kProductIDConsumable_50pc = "com.sdgstudio.orb_e.50powercell";
         public static string kProductIDConsumable_100pc = "com.sdgstudio.orb_e.100powercell";
+        public static string kProductIDConsumable_200pc = "com.sdgstudio.orb_e.200powercell";
+        public static string kProductIDConsumable_500pc = "com.sdgstudio.orb_e.500powercell";
 
 
         public static string kProductIDNonConsumable = "nonconsumable";
@@ -76,6 +78,8 @@ namespace CompleteProject
             builder.AddProduct(kProductIDConsumable_20pc, ProductType.Consumable);
             builder.AddProduct(kProductIDConsumable_50pc, ProductType.Consumable);
             builder.AddProduct(kProductIDConsumable_100pc, ProductType.Consumable);
+            builder.AddProduct(kProductIDConsumable_200pc, ProductType.Consumable);
+            builder.AddProduct(kProductIDConsumable_500pc, ProductType.Consumable);
 
             // Continue adding the non-consumable product.
             builder.AddProduct(kProductIDNonConsumable, ProductType.NonConsumable);
@@ -122,6 +126,20 @@ namespace CompleteProject
             // Buy the consumable product using its general identifier. Expect a response either 
             // through ProcessPurchase or OnPurchaseFailed asynchronously.
             BuyProductID(kProductIDConsumable_100pc);
+        }
+
+        public void BuyConsumable200PC()
+        {
+            // Buy the consumable product using its general identifier. Expect a response either 
+            // through ProcessPurchase or OnPurchaseFailed asynchronously.
+            BuyProductID(kProductIDConsumable_200pc);
+        }
+
+        public void BuyConsumable500PC()
+        {
+            // Buy the consumable product using its general identifier. Expect a response either 
+            // through ProcessPurchase or OnPurchaseFailed asynchronously.
+            BuyProductID(kProductIDConsumable_500pc);
         }
 
         public void BuyNonConsumable()
@@ -265,6 +283,20 @@ namespace CompleteProject
             {
                 //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
                 GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(100);
+                //Debug.Log("Comprou 100 Powercells");
+                //ScoreManager.score += 100;
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_200pc, StringComparison.Ordinal))
+            {
+                //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(200);
+                //Debug.Log("Comprou 100 Powercells");
+                //ScoreManager.score += 100;
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_500pc, StringComparison.Ordinal))
+            {
+                //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(500);
                 //Debug.Log("Comprou 100 Powercells");
                 //ScoreManager.score += 100;
             } 

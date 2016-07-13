@@ -20,13 +20,13 @@ public class LoadingProgressBar : MonoBehaviour {
         if (currentAmmount < loadingValue)
         {
             currentAmmount += speed * Time.deltaTime;
-            textIndicator.GetComponent<Text>().text = "Carregando informações... " + ((int)currentAmmount).ToString() + "%";
+            textIndicator.GetComponent<Text>().text = "Loading data... " + ((int)currentAmmount).ToString() + "%";
         }
         else 
         {
             if (currentAmmount >= 100)
             {
-                textIndicator.GetComponent<Text>().text = "Completo";
+                textIndicator.GetComponent<Text>().text = "Done!";
             }
         }
 

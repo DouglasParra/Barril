@@ -6,10 +6,7 @@ using Facebook.Unity;
 
 public class FriendEntry : MonoBehaviour
 {
-    public Text nameLabel;
     public Image profilePicture;
-    public Text rank;
-    public Text time;
 
     public void UpdateFriendImage(string facebookID)
     {
