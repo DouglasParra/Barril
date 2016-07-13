@@ -279,6 +279,7 @@ public class GameSparksManager : MonoBehaviour
     // Ao sair do jogo, guarda o tempo em DateTime
     void OnApplicationQuit()
     {
+        PlayerPrefs.SetInt("MainMenuOff", 0);
         PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
     }
 

@@ -23,6 +23,9 @@ public class StageSelectScript : MonoBehaviour
     private int QTDE_MUNDO = 8;
     private int mundoAtual;
 
+    public GameObject loadingCanvas;
+    public GameObject mainCanvas;
+
     // Use this for initialization
     void Start()
     {
@@ -30,6 +33,12 @@ public class StageSelectScript : MonoBehaviour
         if (PlayerPrefs.HasKey("DisplayName"))
         {
             playerName.text = PlayerPrefs.GetString("DisplayName");
+        }
+
+        if (PlayerPrefs.GetInt("MainMenuOff") == 1)
+        {
+            mainCanvas.SetActive(false);
+            PlayerPrefs.SetInt("MainMenuOff", 0);
         }
 
         mundoAtual = 0;
@@ -78,186 +87,23 @@ public class StageSelectScript : MonoBehaviour
         SceneManager.LoadScene("RankScene");
     }
 
-    public void scene1_1()
+    // The coroutine runs on its own at the same time as Update() and takes an integer indicating which scene to load.
+    IEnumerator LoadNewScene(string levelName)
     {
-        if (canPlay())
-        {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-            SceneManager.LoadScene("1-1");
-        }
-        else
-        {
-            cantPlayImage.SetActive(true);
-        }
-    }
 
-    public void scene1_2()
-    {
-        if (canPlay())
-        {
+        // This line waits for 3 seconds before executing the next line in the coroutine.
+        // This line is only necessary for this demo. The scenes are so simple that they load too fast to read the "Loading..." text.
+        yield return new WaitForSeconds(3);
 
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-            SceneManager.LoadScene("1-2");
-        }
-        else
-        {
-            cantPlayImage.SetActive(true);
-        }
-    }
+        // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
+        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
 
-    public void scene1_3()
-    {
-        if (canPlay())
+        // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
+        while (!async.isDone)
         {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-            SceneManager.LoadScene("1-3");
-        }
-        else
-        {
-            cantPlayImage.SetActive(true);
+            yield return null;
         }
 
-    }
-
-    public void scene1_4()
-    {
-        if (canPlay())
-        {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-            SceneManager.LoadScene("1-4");
-        }
-        else
-        {
-            cantPlayImage.SetActive(true);
-        }
-    }
-
-    public void scene1_5()
-    {
-        if (canPlay())
-        {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-            SceneManager.LoadScene("1-5");
-        }
-        else
-        {
-            cantPlayImage.SetActive(true);
-        }
-    }
-
-    public void scene1_6()
-    {
-        if (canPlay())
-        {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-            SceneManager.LoadScene("1-6");
-        }
-        else
-        {
-            cantPlayImage.SetActive(true);
-        }
-    }
-
-    public void scene1_7()
-    {
-        if (canPlay())
-        {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-            SceneManager.LoadScene("1-7");
-        }
-        else
-        {
-            cantPlayImage.SetActive(true);
-        }
-    }
-
-    public void scene1_8()
-    {
-        if (canPlay())
-        {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-            SceneManager.LoadScene("1-8");
-        }
-        else
-        {
-            cantPlayImage.SetActive(true);
-        }
-    }
-
-    public void scene1_9()
-    {
-        if (canPlay())
-        {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-            SceneManager.LoadScene("1-9");
-        }
-        else
-        {
-            cantPlayImage.SetActive(true);
-        }
-    }
-
-    public void scene1_10()
-    {
-        if (canPlay())
-        {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-            SceneManager.LoadScene("1-10");
-        }
-        else
-        {
-            cantPlayImage.SetActive(true);
-        }
-    }
-
-    public void tutorial()
-    {
-        gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-        gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-        gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-        PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-        SaveMinuteSeconds();
-        SceneManager.LoadScene("TutorialScene");
     }
 
     public void loadScene(string scene)
@@ -269,7 +115,11 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
             PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
             SaveMinuteSeconds();
-            SceneManager.LoadScene(scene);
+
+            loadingCanvas.SetActive(true);
+            StartCoroutine("LoadNewScene", scene);
+
+            //SceneManager.LoadScene(scene);
         }
         else
         {

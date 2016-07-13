@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject pauseButton;
 	public GameObject clockPanel;
 
+    [HideInInspector]
     public GameObject gameSparksManager;
 
 	public Text victoryClockText;
@@ -36,11 +37,15 @@ public class GameManager : MonoBehaviour {
 
     public AudioMixer masterMixer;
 
+    private int perderVidaFlag;
+
 	void Awake () {
         gameSparksManager = GameObject.Find("GameSparks Manager");
 
 		startAll ();
 		verifyCheckpoint ();
+
+        PlayerPrefs.SetInt("MainMenuOff", 1);
 
         StartCoroutine("CarregarVida");
         // Se tem conexão com a internet
@@ -96,6 +101,7 @@ public class GameManager : MonoBehaviour {
 		stopAll ();
 		showLoseModal ();
 
+        perderVidaFlag = 0;
         StartCoroutine("PerderVida");
         /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
@@ -151,6 +157,7 @@ public class GameManager : MonoBehaviour {
 		resetCheckpoint ();
         if (!clockTime.timestring.Equals("00:00:000") && !victoryModal.activeInHierarchy && !loseModal.activeInHierarchy)
         {
+            perderVidaFlag = 1;
             StartCoroutine("PerderVida");
             /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
             {
@@ -161,8 +168,9 @@ public class GameManager : MonoBehaviour {
                 energyText.text = (int.Parse(energyText.text) - 1).ToString();
                 PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
             }*/
+        }else{
+            SceneManager.LoadScene("StageSelect");
         }
-		SceneManager.LoadScene ("StageSelect");
 	}
 
 	public void goToNextScene () {
@@ -179,6 +187,7 @@ public class GameManager : MonoBehaviour {
 	public void restart () {
         if (!clockTime.timestring.Equals("00:00:000") && !victoryModal.activeInHierarchy && !loseModal.activeInHierarchy)
         {
+            perderVidaFlag = 2;
             StartCoroutine("PerderVida");
             /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
             {
@@ -190,7 +199,10 @@ public class GameManager : MonoBehaviour {
                 PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
             }*/
         }
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 	}
 
 	void saveTime () {
@@ -489,6 +501,16 @@ public class GameManager : MonoBehaviour {
             loseModal.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
             loseModal.transform.GetChild(0).GetChild(2).GetComponent<Button>().interactable = false;
         }
+
+        if (perderVidaFlag == 1)
+        {
+            SceneManager.LoadScene("StageSelect");
+        }
+        else if (perderVidaFlag == 2)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
 
     IEnumerator SalvarTempo()

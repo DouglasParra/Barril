@@ -19,30 +19,35 @@ public class Robot : MonoBehaviour {
 
         if(PlayerPrefs.GetInt("startInCheckpoint") != 0)
             camera.transform.position = transform.position;
+
+        GetComponent<SpriteRenderer>().enabled = false;
+
 	}
 
 	// Use this for initialization
 	void Start () {
-        
+        GameObject g = Instantiate(Resources.Load("RobotInicial"), transform.position, transform.rotation) as GameObject;
+        g.transform.parent = this.transform.parent;
+        StartCoroutine("TocarAnimacaoInicial");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        /*if (transform.parent.name.StartsWith("MOV"))
-        {
-            camera.GetComponent<CameraValuesScript>().podeMover = false;
 
-            camera.transform.position = new Vector3(transform.GetComponentInParent<FieldMove>().cameraX,
-                                                    transform.GetComponentInParent<FieldMove>().cameraY,
-                                                    -10);
-        }
-        else
-        {
-            camera.GetComponent<CameraValuesScript>().podeMover = true;
-        }*/
 	}
 
+    IEnumerator TocarAnimacaoInicial()
+    {
+        yield return new WaitForSeconds(0.857f);
+        GetComponent<SpriteRenderer>().enabled = true;
+    }
+
 	public void launch () {
+
+        if (GetComponent<SpriteRenderer>().enabled == false)
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
+        }
 
         laser.SetActive(false);
 
@@ -102,5 +107,10 @@ public class Robot : MonoBehaviour {
 
     public void destruir() {
         Destroy(this.gameObject);
+    }
+
+    public void desligarAnimator()
+    {
+        GetComponent<Animator>().enabled = false;
     }
 }

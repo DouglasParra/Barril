@@ -15,10 +15,19 @@ public class FieldFinal : MonoBehaviour {
 	
 	}
 
+    IEnumerator TocarAnimacaoFinal()
+    {
+        yield return new WaitForSeconds(0.857f);
+        gameManager.SendMessage("victoryGame");
+    }
+
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Robot") {
 			if (gameManager) {
-				gameManager.SendMessage ("victoryGame");
+                coll.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                GameObject g = Instantiate(Resources.Load("RobotFinal"), transform.position, Quaternion.identity) as GameObject;
+                g.transform.parent = this.transform;
+                StartCoroutine("TocarAnimacaoFinal");
 			}
 		}
 	}
