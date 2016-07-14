@@ -33,7 +33,10 @@ public class Robot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (transform.parent == null)
+        {
+            transform.up = Vector3.Slerp(transform.up, GetComponent<Rigidbody2D>().velocity.normalized, Time.deltaTime);
+        }
 	}
 
     IEnumerator TocarAnimacaoInicial()
@@ -61,7 +64,6 @@ public class Robot : MonoBehaviour {
 		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
 		rb.gravityScale = GRAVITY_SCALE;
 		rb.velocity = transform.up * SPEED_LAUNCH;
-
 
 		transform.parent = null;
 		GetComponent<BoxCollider2D> ().isTrigger = false;
