@@ -40,6 +40,10 @@ public class ShopManager : MonoBehaviour {
     public Toggle laserToggle;
     public Toggle minimapToggle;
 
+    [Space(10)]
+    public GameObject notEnoughPowercell;
+    public GameObject buyLife;
+
     private const int MAX_VIDAS = 99;
 
     private const int CUSTO_5_VIDAS = 1;
@@ -101,7 +105,8 @@ public class ShopManager : MonoBehaviour {
 
     private bool haveEnoughPowercells(int value) { 
         if(int.Parse(powercellsManager.GetComponent<PowercellsManager>().powercells.text) - value >= 0) return true;
-        
+
+        notEnoughPowercell.GetComponent<AudioSource>().Play();
         return false;
     }
     
@@ -747,6 +752,8 @@ public class ShopManager : MonoBehaviour {
 
                 PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 5);
 
+                buyLife.GetComponent<AudioSource>().Play();
+
                 // Retirar pc
                 RetirarPowercells(CUSTO_5_VIDAS);
             }
@@ -772,6 +779,8 @@ public class ShopManager : MonoBehaviour {
                 AdicionarVidas(10);
 
                 PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 10);
+
+                buyLife.GetComponent<AudioSource>().Play();
 
                 // Retirar pc
                 RetirarPowercells(CUSTO_10_VIDAS);
@@ -799,6 +808,8 @@ public class ShopManager : MonoBehaviour {
 
                 PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 20);
 
+                buyLife.GetComponent<AudioSource>().Play();
+
                 // Retirar pc
                 RetirarPowercells(CUSTO_20_VIDAS);
             }
@@ -824,6 +835,8 @@ public class ShopManager : MonoBehaviour {
                 AdicionarVidas(50);
 
                 PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 50);
+
+                buyLife.GetComponent<AudioSource>().Play();
 
                 // Retirar pc
                 RetirarPowercells(CUSTO_50_VIDAS);

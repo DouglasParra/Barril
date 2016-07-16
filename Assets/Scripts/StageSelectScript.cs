@@ -108,7 +108,18 @@ public class StageSelectScript : MonoBehaviour
 
     public void loadScene(string scene)
     {
-        if (canPlay())
+        if (scene.Equals("TutorialScene"))
+        {
+            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
+            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
+            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
+            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+            SaveMinuteSeconds();
+
+            loadingCanvas.SetActive(true);
+            StartCoroutine("LoadNewScene", scene);
+        }
+        else if (canPlay())
         {
             gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
             gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);

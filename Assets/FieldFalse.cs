@@ -9,11 +9,18 @@ public class FieldFalse : MonoBehaviour {
         gameManager = GameObject.Find("GameManager");
     }
 
+    IEnumerator TocarAnimacaoFalso()
+    {
+        yield return new WaitForSeconds(2f);
+        gameManager.SendMessage("loseGame");
+        GetComponent<Animator>().SetBool("Destruindo", true);
+    }
+
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Robot") {
-			gameManager.SendMessage ("loseGame");
+            GetComponent<AudioSource>().Play();
             coll.gameObject.GetComponent<Animator>().enabled = true;
-            GetComponent<Animator>().SetBool("Destruindo", true);
+            StartCoroutine("TocarAnimacaoFalso");
 		}
 	}
 }

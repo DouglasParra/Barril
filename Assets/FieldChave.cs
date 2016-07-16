@@ -38,6 +38,10 @@ public class FieldChave : MonoBehaviour {
             //porta.SetActive(false);
             porta.GetComponent<Animator>().SetBool("Aberta", true);
             porta.GetComponent<BoxCollider2D>().enabled = false;
+            if (GetComponent<Animator>().GetBool("Piscando") == false)
+            {
+                GetComponent<AudioSource>().Play();
+            }
             GetComponent<Animator>().SetBool("Piscando", true);
             StartCoroutine(AutomaticShot());
         }

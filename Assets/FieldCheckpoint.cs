@@ -15,6 +15,7 @@ public class FieldCheckpoint : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Robot") {
 			gameManager.SendMessage ("checkpoint", order);
+            GetComponent<AudioSource>().Play();
             Instantiate(Resources.Load("LetrasCheckpoint"), transform.position, Quaternion.identity);
 
             // Salva quais portas não estão ativas 

@@ -27,6 +27,7 @@ public class FieldFinal : MonoBehaviour {
                 coll.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 GameObject g = Instantiate(Resources.Load("RobotFinal"), transform.position, Quaternion.identity) as GameObject;
                 g.transform.parent = this.transform;
+                GetComponent<AudioSource>().Play();
                 StartCoroutine("TocarAnimacaoFinal");
 			}
 		}

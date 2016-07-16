@@ -39,6 +39,7 @@ public class FieldPortal : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Robot")
         {
+            GetComponent<AudioSource>().Play();
             GameObject g = Instantiate(Resources.Load("RobotTeleportGo"), transform.position, transform.rotation) as GameObject;
             g.transform.parent = this.transform;
             fromPortal = true;
