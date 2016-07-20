@@ -323,7 +323,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void verifyTutorialDone () {
-		if (PlayerPrefs.HasKey ("tutorialDone") == false) {
+		if (PlayerPrefs.GetInt ("tutorialDone") == 0) {
 			PlayerPrefs.SetInt ("tutorialDone", 1);
 		}
 	}

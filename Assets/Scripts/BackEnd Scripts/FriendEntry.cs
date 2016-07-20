@@ -14,6 +14,11 @@ public class FriendEntry : MonoBehaviour
         FB.API(facebookID + "/picture?type=square&height=64&width=64", Facebook.Unity.HttpMethod.GET, FbGetPicture);
     }
 
+    public void UpdateOwnImage()
+    {
+        FB.API("me/picture?type=square&height=64&width=64", Facebook.Unity.HttpMethod.GET, FbGetPicture);
+    }
+
     private void FbGetPicture(IGraphResult result)
     {
         if (result.Texture != null)

@@ -148,10 +148,28 @@ public class FieldCounter : MonoBehaviour {
         }
 	}
 
+    IEnumerator TocarAnimacaoColisaoLaser()
+    {
+        yield return new WaitForSeconds(1.1f);
+        gameManager.SendMessage("loseGame");
+    }
+
 	void verifyLoseGame () {
 		if (currentTime > counterTime && robotInField) {
 			canRunTime = false;
-			gameManager.SendMessage ("loseGame");
+            GameObject robot = GameObject.FindGameObjectWithTag("Robot");
+
+            if (robot.GetComponent<SpriteRenderer>().enabled)
+            {
+                GameObject g = Instantiate(Resources.Load("RobotColisaoLaser"), robot.transform.position, robot.transform.rotation) as GameObject;
+                g.transform.parent = this.transform;
+                GetComponent<AudioSource>().Play();
+            }
+
+            robot.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            //Destroy(robot);
+
+            StartCoroutine("TocarAnimacaoColisaoLaser");
 		}
 	}
 

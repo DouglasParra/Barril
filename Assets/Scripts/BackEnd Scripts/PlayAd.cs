@@ -22,6 +22,8 @@ public class PlayAd : MonoBehaviour {
         {
             case ShowResult.Finished:
                 energyTime.GetComponent<EnergyTime>().GanharVida();
+                PlayerPrefs.SetInt("ADLifes", PlayerPrefs.GetInt("ADLifes") - 1);
+                //Debug.Log(PlayerPrefs.GetInt("ADLifes"));
                 //Debug.Log("Player gains 1 life");
                 break;
             case ShowResult.Skipped:

@@ -261,42 +261,42 @@ namespace CompleteProject
             if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_5pc, StringComparison.Ordinal))
             {
                 //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(5);
+                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(10);
                 //Debug.Log("Comprou 5 Powercells");
                 //ScoreManager.score += 5;
             } 
             else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_20pc, StringComparison.Ordinal))
             {
                 //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(20);
+                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(60);
                 //Debug.Log("Comprou 20 Powercells");
                 //ScoreManager.score += 20;
             } 
             else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_50pc, StringComparison.Ordinal))
             {
                 //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(50);
+                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(140);
                 //Debug.Log("Comprou 50 Powercells");
                 //ScoreManager.score += 50;
             } 
             else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_100pc, StringComparison.Ordinal))
             {
                 //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(100);
+                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(250);
                 //Debug.Log("Comprou 100 Powercells");
                 //ScoreManager.score += 100;
             }
             else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_200pc, StringComparison.Ordinal))
             {
                 //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(200);
+                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(600);
                 //Debug.Log("Comprou 100 Powercells");
                 //ScoreManager.score += 100;
             }
             else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable_500pc, StringComparison.Ordinal))
             {
                 //Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));// The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(500);
+                GameObject.Find("Scripts").GetComponent<PowercellsManager>().SavePowercells(1350);
                 //Debug.Log("Comprou 100 Powercells");
                 //ScoreManager.score += 100;
             } 

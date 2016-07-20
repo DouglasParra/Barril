@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -224,6 +225,10 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                     PlayerPrefs.SetInt("Vidas", 5);
                     PlayerPrefs.SetInt("tutorialDone", 0);
+                    PlayerPrefs.SetInt("stageSelectTutorialDone", 0);
+
+                    PlayerPrefs.SetString("ADDateTime", DateTime.Now.ToString());
+                    PlayerPrefs.SetInt("ADLifes", 5);
 
                     InitiatePowercells();
                 }
@@ -238,7 +243,7 @@ public class RegisterPlayer_Script : MonoBehaviour
     {
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("SAVE_POWERCELLS")
-            .SetEventAttribute("POWERCELL", 5)
+            .SetEventAttribute("POWERCELL", 50)
             .Send((response) =>
             {
 

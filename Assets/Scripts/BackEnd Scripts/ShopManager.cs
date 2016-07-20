@@ -46,20 +46,20 @@ public class ShopManager : MonoBehaviour {
 
     private const int MAX_VIDAS = 99;
 
-    private const int CUSTO_5_VIDAS = 1;
-    private const int CUSTO_10_VIDAS = 1;
-    private const int CUSTO_20_VIDAS = 1;
-    private const int CUSTO_50_VIDAS = 1;
+    private const int CUSTO_5_VIDAS = 7;
+    private const int CUSTO_10_VIDAS = 13;
+    private const int CUSTO_20_VIDAS = 24;
+    private const int CUSTO_50_VIDAS = 68;
 
-    private const int CUSTO_SKIN1 = 1;
-    private const int CUSTO_SKIN2 = 1;
-    private const int CUSTO_SKIN3 = 1;
-    private const int CUSTO_SKIN4 = 1;
-    private const int CUSTO_SKIN5 = 1;
-    private const int CUSTO_SKIN6 = 1;
+    private const int CUSTO_SKIN1 = 30;
+    private const int CUSTO_SKIN2 = 30;
+    private const int CUSTO_SKIN3 = 30;
+    private const int CUSTO_SKIN4 = 30;
+    private const int CUSTO_SKIN5 = 30;
+    private const int CUSTO_SKIN6 = 30;
 
-    private const int CUSTO_LASER = 1;
-    private const int CUSTO_MINIMAPA = 1;
+    private const int CUSTO_LASER = 80;
+    private const int CUSTO_MINIMAPA = 130;
 
     void Start() {
         gameSparksManager = GameObject.Find("GameSparks Manager");
