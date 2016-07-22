@@ -124,7 +124,7 @@ public class RankingScript : MonoBehaviour {
             redo = true;
         }
         resetMundialScores();
-        nomeFase.text = "Stage " + stageSelected;
+        nomeFase.text = "Fase " + stageSelected;
 
         // m1[0] = String da cena antes do '-' ; m1[1] = String da cena depois do '-' ; 
         string[] m1 = stageSelected.Split('-');
@@ -159,7 +159,9 @@ public class RankingScript : MonoBehaviour {
 
                         g.transform.SetParent(globalViewport.transform);
                         g.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
-                        g.GetComponent<RectTransform>().offsetMax = new Vector2(Screen.width - 240, 70);    //900, 70   Screen.width - 300
+                        //g.GetComponent<RectTransform>().offsetMax = new Vector2(Screen.width - 240, 70);    //900, 70   Screen.width - 300
+                        g.GetComponent<RectTransform>().offsetMax = new Vector2(0, 70);
+                        g.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
                         g.GetComponent<RectTransform>().localPosition = new Vector2(510, i * passo - 40);
 
                         i++;
@@ -208,7 +210,7 @@ public class RankingScript : MonoBehaviour {
         }
 
         resetFriendScores();
-        nomeFaseFriends.text = "Stage " + stageSelected;
+        nomeFaseFriends.text = "Fase " + stageSelected;
 
         // m1[0] = String da cena antes do '-' ; m1[1] = String da cena depois do '-' ; 
         string[] m1 = stageSelected.Split('-');
@@ -241,7 +243,9 @@ public class RankingScript : MonoBehaviour {
 
                         g.transform.SetParent(friendViewport.transform);
                         g.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
-                        g.GetComponent<RectTransform>().offsetMax = new Vector2(Screen.width - 240, 70);
+                        //g.GetComponent<RectTransform>().offsetMax = new Vector2(Screen.width - 240, 70);
+                        g.GetComponent<RectTransform>().offsetMax = new Vector2(0, 70);
+                        g.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
                         g.GetComponent<RectTransform>().localPosition = new Vector2(510, i * passo - 40);
 
                         i++;
@@ -292,11 +296,11 @@ public class RankingScript : MonoBehaviour {
     }
 
     private void renameStageNameRecord() {
-        worldNameRecord.text = "World " + mundoAtual;
+        worldNameRecord.text = "Mundo " + mundoAtual;
 
         for (int i = 1; i <= 10; i++)
         {
-            stageNameRecord[i - 1].text = "Stage " + mundoAtual + "-" + i;
+            stageNameRecord[i - 1].text = "Fase " + mundoAtual + "-" + i;
         }
 
         // Pegar os records em GameSparksManager.records[]
@@ -326,7 +330,7 @@ public class RankingScript : MonoBehaviour {
 
     private void renameStageNameRanking()
     {
-        nomeMundo.text = "World " + mundoAtualMundial;
+        nomeMundo.text = "Mundo " + mundoAtualMundial;
 
         for (int i = 1; i <= 10; i++)
         {
@@ -353,7 +357,7 @@ public class RankingScript : MonoBehaviour {
 
     private void renameStageNameFriends()
     {
-        nomeMundoAmigos.text = "World " + mundoAtualAmigos;
+        nomeMundoAmigos.text = "Mundo " + mundoAtualAmigos;
 
         for (int i = 1; i <= 10; i++)
         {
@@ -431,7 +435,9 @@ public class RankingScript : MonoBehaviour {
 
                 g.transform.SetParent(globalViewport.transform);
                 g.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
-                g.GetComponent<RectTransform>().offsetMax = new Vector2(Screen.width - 240, 70);    //900, 70   Screen.width - 300
+                //g.GetComponent<RectTransform>().offsetMax = new Vector2(Screen.width - 240, 70);    //900, 70   Screen.width - 300
+                g.GetComponent<RectTransform>().offsetMax = new Vector2(0, 70);
+                g.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
                 g.GetComponent<RectTransform>().localPosition = new Vector2(510, (i + 1) * passo - 40);
 
             }
@@ -495,10 +501,12 @@ public class RankingScript : MonoBehaviour {
                         // Debug.Log(e.ToString());
                         return;
                     }
-
+                    
                     g.transform.SetParent(friendViewport.transform);
                     g.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
-                    g.GetComponent<RectTransform>().offsetMax = new Vector2(Screen.width - 240, 70);    //900, 70   Screen.width - 300
+                    //g.GetComponent<RectTransform>().offsetMax = new Vector2(Screen.width - 240, 70);    //900, 70   Screen.width - 300
+                    g.GetComponent<RectTransform>().offsetMax = new Vector2(0, 70);
+                    g.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
                     g.GetComponent<RectTransform>().localPosition = new Vector2(510, (i + 1) * passo - 40);
 
                 }

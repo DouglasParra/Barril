@@ -27,8 +27,8 @@ public class BoundariesScript : MonoBehaviour {
                 GetComponent<AudioSource>().Play();
             }
             mainCamera.GetComponent<CameraValuesScript>().podeMover = false;
-            obj.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            //Destroy(obj.gameObject);
+            //obj.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(obj.gameObject);
 
             StartCoroutine("TocarAnimacaoColisaoLaser");
         }

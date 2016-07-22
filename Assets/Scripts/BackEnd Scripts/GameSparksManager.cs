@@ -31,7 +31,6 @@ public class GameSparksManager : MonoBehaviour
     void Start()
     {
         Application.runInBackground = true;
-
         //PlayerPrefs.SetInt("Vidas", 5);
 
         //this will create a singleton for our gamesparks manager object

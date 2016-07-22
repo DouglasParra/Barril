@@ -68,7 +68,8 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
-            stageText.text = "Stage " + SceneManager.GetActiveScene().name;
+            stageText.text = "Fase " + SceneManager.GetActiveScene().name;
+            //stageText.text = "Stage " + SceneManager.GetActiveScene().name;
         }
 
         masterMixer.SetFloat("sfxVol", PlayerPrefs.GetFloat("sfxVol"));
@@ -139,8 +140,22 @@ public class GameManager : MonoBehaviour {
             saveTime();
             verifyTutorialDone();
             resetCheckpoint();
+            SalvarFases();
         }
 	}
+
+    void SalvarFases()
+    {
+        string[] m = SceneManager.GetActiveScene().name.Split('-');
+        string n = m[0];
+        string o = m[1];
+        string p = (int.Parse(n) - 1).ToString() + o;
+
+        if (PlayerPrefs.GetInt("Fases") <= int.Parse(p))
+        {
+            PlayerPrefs.SetInt("Fases", int.Parse(p) + 1);
+        }
+    }
 
 	void showClockTime () {
 		victoryClockText.text = clockTime.timestring;

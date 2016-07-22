@@ -30,19 +30,23 @@ public class BoostsScript : MonoBehaviour {
         if (PlayerPrefs.GetInt("Laser") == 0)
         {
             laser.isOn = false;
+            laser.transform.GetChild(1).GetComponent<Text>().text = "     Laser desligado";
         }
         else 
         {
             laser.isOn = true;
+            laser.transform.GetChild(1).GetComponent<Text>().text = "     Laser ligado";
         }
 
         if (PlayerPrefs.GetInt("MiniMapa") == 0)
         {
             minimapa.isOn = false;
+            minimapa.transform.GetChild(1).GetComponent<Text>().text = "     Radar desligado";
         }
         else
         {
             minimapa.isOn = true;
+            minimapa.transform.GetChild(1).GetComponent<Text>().text = "     Radar ligado";
         }
 
         if (PlayerPrefs.GetInt("Skin1") == 0)
@@ -109,10 +113,12 @@ public class BoostsScript : MonoBehaviour {
             if (PlayerPrefs.GetInt("Laser") == 0)
             {
                 PlayerPrefs.SetInt("Laser", 1);
+                laser.transform.GetChild(1).GetComponent<Text>().text = "     Laser ligado";
             }
             else
             {
                 PlayerPrefs.SetInt("Laser", 0);
+                laser.transform.GetChild(1).GetComponent<Text>().text = "     Laser desligado";
             }
 
             //Debug.Log("Agora é " + PlayerPrefs.GetInt("Laser"));
@@ -128,10 +134,12 @@ public class BoostsScript : MonoBehaviour {
             if (PlayerPrefs.GetInt("MiniMapa") == 0)
             {
                 PlayerPrefs.SetInt("MiniMapa", 1);
+                minimapa.transform.GetChild(1).GetComponent<Text>().text = "     Radar ligado";
             }
             else
             {
                 PlayerPrefs.SetInt("MiniMapa", 0);
+                minimapa.transform.GetChild(1).GetComponent<Text>().text = "     Radar desligado";
             }
 
             //Debug.Log("Agora é " + PlayerPrefs.GetInt("MiniMapa"));

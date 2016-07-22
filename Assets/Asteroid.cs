@@ -27,8 +27,8 @@ public class Asteroid : MonoBehaviour {
                 GetComponent<AudioSource>().Play();
             }
             mainCamera.GetComponent<CameraValuesScript>().podeMover = false;
-            coll.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            //Destroy(coll.gameObject);
+            //coll.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(coll.gameObject);
 
             StartCoroutine("TocarAnimacaoColisaoAsteroide");
 		}

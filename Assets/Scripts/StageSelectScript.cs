@@ -25,6 +25,7 @@ public class StageSelectScript : MonoBehaviour
 
     public GameObject loadingCanvas;
     public GameObject mainCanvas;
+    public GameObject creditsCanvas;
 
     // Use this for initialization
     void Start()
@@ -41,7 +42,16 @@ public class StageSelectScript : MonoBehaviour
             PlayerPrefs.SetInt("MainMenuOff", 0);
         }
 
+        if (PlayerPrefs.GetInt("Credits") == 1)
+        {
+            PlayerPrefs.SetInt("Credits", 0);
+            creditsCanvas.SetActive(true);
+            GetComponent<AudioSource>().Stop();
+            creditsCanvas.GetComponent<AudioSource>().Play();
+        }
+
         mundoAtual = 0;
+        LiberarFases();
         gameSparksManager = GameObject.Find("GameSparks Manager");
     }
 
@@ -54,6 +64,28 @@ public class StageSelectScript : MonoBehaviour
         {
             rankButton.interactable = true;
         }*/
+    }
+
+    private void LiberarFases()
+    {
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        while (i < PlayerPrefs.GetInt("Fases"))
+        {
+            mundos[j].transform.GetChild(k).GetComponent<Button>().interactable = true;
+            mundos[j].transform.GetChild(k).GetChild(0).gameObject.SetActive(true);
+            mundos[j].transform.GetChild(k).GetChild(1).gameObject.SetActive(false);
+
+            k++;
+            if (k > 9)
+            {
+                k = 0;
+                j++;
+            }
+            i++;
+        }
     }
 
     public void StageSelect()

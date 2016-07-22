@@ -230,6 +230,8 @@ public class RegisterPlayer_Script : MonoBehaviour
                     PlayerPrefs.SetString("ADDateTime", DateTime.Now.ToString());
                     PlayerPrefs.SetInt("ADLifes", 5);
 
+                    PlayerPrefs.SetInt("Fases", 1);
+
                     InitiatePowercells();
                 }
                 else
@@ -243,7 +245,7 @@ public class RegisterPlayer_Script : MonoBehaviour
     {
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("SAVE_POWERCELLS")
-            .SetEventAttribute("POWERCELL", 50)
+            .SetEventAttribute("POWERCELL", 500)
             .Send((response) =>
             {
 

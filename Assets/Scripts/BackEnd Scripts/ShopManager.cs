@@ -9,6 +9,7 @@ public class ShopManager : MonoBehaviour {
     public Text energyTextLoja;
     public GameObject powercellsManager;
     public GameObject gameSparksManager;
+    public GameObject confirmarCompraPanel;
 
     [Space(10)]
     [Header("Vidas")]
@@ -60,6 +61,8 @@ public class ShopManager : MonoBehaviour {
 
     private const int CUSTO_LASER = 80;
     private const int CUSTO_MINIMAPA = 130;
+
+    private string itemPurchased;
 
     void Start() {
         gameSparksManager = GameObject.Find("GameSparks Manager");
@@ -753,7 +756,7 @@ public class ShopManager : MonoBehaviour {
                 PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 5);
 
                 buyLife.GetComponent<AudioSource>().Play();
-
+                
                 // Retirar pc
                 RetirarPowercells(CUSTO_5_VIDAS);
             }
@@ -1116,4 +1119,25 @@ public class ShopManager : MonoBehaviour {
         }
     }
 
+    private void MostrarAlgo()
+    {
+        Debug.Log("MostrarAlgo");
+    }
+
+    private void MostrarAlgo2()
+    {
+        Debug.Log("MostrarAlgo12312");
+    }
+
+    public void ComprarItem(string s)
+    {
+        itemPurchased = s;
+        confirmarCompraPanel.SetActive(true);
+    }
+
+    // Setar uma string privada e mudar de acordo com a compra a ser feita
+    public void ConfirmarCompra()
+    {
+        SendMessage(itemPurchased);
+    }
 }
