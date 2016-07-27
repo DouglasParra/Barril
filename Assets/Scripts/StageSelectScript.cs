@@ -72,7 +72,7 @@ public class StageSelectScript : MonoBehaviour
         int j = 0;
         int k = 0;
 
-        while (i < PlayerPrefs.GetInt("Fases"))
+        while (i < PlayerPrefs.GetInt("Fases") && i <= 80)
         {
             mundos[j].transform.GetChild(k).GetComponent<Button>().interactable = true;
             mundos[j].transform.GetChild(k).GetChild(0).gameObject.SetActive(true);

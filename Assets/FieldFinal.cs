@@ -4,10 +4,12 @@ using System.Collections;
 public class FieldFinal : MonoBehaviour {
 
     private GameObject gameManager;
+    private GameObject shootButton;
 
 	// Use this for initialization
 	void Awake () {
         gameManager = GameObject.Find("GameManager");
+        shootButton = GameObject.Find("ShootButton");
 	}
 	
 	// Update is called once per frame
@@ -24,6 +26,7 @@ public class FieldFinal : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Robot") {
 			if (gameManager) {
+                shootButton.SetActive(false);
                 coll.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 GameObject g = Instantiate(Resources.Load("RobotFinal"), transform.position, Quaternion.identity) as GameObject;
                 g.transform.parent = this.transform;

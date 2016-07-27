@@ -167,7 +167,7 @@ public class RankingScript : MonoBehaviour {
                         i++;
                     }
 
-                    if (i != 0)
+                    if (i != 0 && redo)
                     {
                         GetRankingEntry(i);
                     }
@@ -253,7 +253,7 @@ public class RankingScript : MonoBehaviour {
                         //if (i >= 10) break;
                     }
 
-                    if (i != 0)
+                    if (i != 0 && redo)
                     {
                         GetRankingEntrySocial(i);
                     }
@@ -374,10 +374,7 @@ public class RankingScript : MonoBehaviour {
             connectWithFBPanel.SetActive(false);
             friendsStageSelectPanel.SetActive(true);
 
-            if (!PlayerPrefs.HasKey("FB"))
-            {
-                PlayerPrefs.SetInt("FB", 1);
-            }
+            PlayerPrefs.SetInt("FB", 1);
         }
     }
 
@@ -461,6 +458,7 @@ public class RankingScript : MonoBehaviour {
 
             GetLeaderboardEntriesRequest leaderboard = new GetLeaderboardEntriesRequest();
             leaderboard.SetLeaderboards(leaderboardCodes);
+            leaderboard.SetSocial(true);
             leaderboard.Send((response) =>
             {
                 if (!response.HasErrors)

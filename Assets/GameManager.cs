@@ -61,7 +61,18 @@ public class GameManager : MonoBehaviour {
         }*/
 	}
 
-    private void CarregarTutorial() {
+    void Start() {
+        for (int i = 0; i < portas.Length; i++) {
+            if(PlayerPrefs.HasKey("Porta" + portas[i].name)){
+                if (PlayerPrefs.GetInt("Porta" + portas[i].name) == 0) {
+                    portas[i].SetActive(false);
+                }
+            }
+        }
+    }
+
+    private void CarregarTutorial()
+    {
         if (SceneManager.GetActiveScene().name.Equals("TutorialScene"))
         {
             stageText.text = "Tutorial";
@@ -78,13 +89,13 @@ public class GameManager : MonoBehaviour {
         GameSparks.Api.Messages.NewHighScoreMessage.Listener += HighScoreMessageHandler; // assign the New High Score message
     }
 
-    void Start() {
-        for (int i = 0; i < portas.Length; i++) {
-            if(PlayerPrefs.HasKey("Porta" + portas[i].name)){
-                if (PlayerPrefs.GetInt("Porta" + portas[i].name) == 0) {
-                    portas[i].SetActive(false);
-                }
-            }
+    private void BloquearBotoes()
+    {
+        Debug.Log("Chamando BloquearBotoes " + energyText.text);
+        if (int.Parse(energyText.text) <= 1)
+        {
+            Debug.Log(pauseModal.transform.GetChild(0).GetChild(2).name);
+            pauseModal.transform.GetChild(0).GetChild(2).gameObject.GetComponent<Button>().interactable = false;
         }
     }
 
@@ -149,11 +160,12 @@ public class GameManager : MonoBehaviour {
         string[] m = SceneManager.GetActiveScene().name.Split('-');
         string n = m[0];
         string o = m[1];
-        string p = (int.Parse(n) - 1).ToString() + o;
+        int q = (int.Parse(n) - 1) * 10 + (int.Parse(o) + 1);
+        string p = q.ToString();
 
         if (PlayerPrefs.GetInt("Fases") <= int.Parse(p))
         {
-            PlayerPrefs.SetInt("Fases", int.Parse(p) + 1);
+            PlayerPrefs.SetInt("Fases", int.Parse(p));
         }
     }
 
@@ -424,6 +436,7 @@ public class GameManager : MonoBehaviour {
                     {
                         GSData data = response.ScriptData.GetGSData("player_Data");
                         energyText.text = data.GetInt("life").ToString();
+                        BloquearBotoes();
 
                         //Debug.Log("Recieved Player Life Data From GameSparks...");
                     }
@@ -432,6 +445,7 @@ public class GameManager : MonoBehaviour {
                         //Debug.Log("Error Loading Player Data...");
                     }
                 });
+
     }
 
     private void LoseLife(int vida) {
@@ -487,7 +501,9 @@ public class GameManager : MonoBehaviour {
             LoadLife();
         }
 
+
         CarregarTutorial();
+        BloquearBotoes();
     }
 
     IEnumerator PerderVida()

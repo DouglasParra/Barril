@@ -23,10 +23,12 @@ public class ConfigScript : MonoBehaviour {
         if (PlayerPrefs.GetInt("soundOnOff") == 1)
         {
             camera.GetComponent<AudioListener>().enabled = true;
+            AudioListener.volume = 1;
         }
         else
         {
             camera.GetComponent<AudioListener>().enabled = false;
+            AudioListener.volume = 0;
         }
 
         if (SceneManager.GetActiveScene().name.Contains("-"))
@@ -35,6 +37,7 @@ public class ConfigScript : MonoBehaviour {
             if (PlayerPrefs.GetInt("soundOnOff") == 0)
             {
                 miniMapCamera.GetComponent<AudioListener>().enabled = false;
+                AudioListener.volume = 0;
             }
         }
 	}
@@ -51,12 +54,14 @@ public class ConfigScript : MonoBehaviour {
             //Debug.Log("Ligado");
             PlayerPrefs.SetInt("soundOnOff", 1);
             camera.GetComponent<AudioListener>().enabled = true;
+            AudioListener.volume = 1;
         }
         else 
         {
             //Debug.Log("Desligado");
             PlayerPrefs.SetInt("soundOnOff", 0);
             camera.GetComponent<AudioListener>().enabled = false;
+            AudioListener.volume = 0;
         }
 
         if (SceneManager.GetActiveScene().name.Contains("-"))
@@ -64,6 +69,7 @@ public class ConfigScript : MonoBehaviour {
             if (PlayerPrefs.GetInt("soundOnOff") == 0)
             {
                 miniMapCamera.GetComponent<AudioListener>().enabled = false;
+                AudioListener.volume = 0;
             }
         }
     }

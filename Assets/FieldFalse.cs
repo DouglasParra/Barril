@@ -4,9 +4,11 @@ using System.Collections;
 public class FieldFalse : MonoBehaviour {
 
     private GameObject gameManager;
+    private GameObject shootButton;
 
     void Awake() {
         gameManager = GameObject.Find("GameManager");
+        shootButton = GameObject.Find("ShootButton");
     }
 
     IEnumerator TocarAnimacaoFalso()
@@ -18,6 +20,7 @@ public class FieldFalse : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Robot") {
+            shootButton.SetActive(false);
             GetComponent<AudioSource>().Play();
             coll.gameObject.GetComponent<Animator>().enabled = true;
             StartCoroutine("TocarAnimacaoFalso");

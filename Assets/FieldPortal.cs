@@ -8,10 +8,12 @@ public class FieldPortal : MonoBehaviour {
     private bool fromPortal;
 
     private GameObject robot;
+    private GameObject shootButton;
 
 	// Use this for initialization
 	void Awake () {
         fromPortal = false;
+        shootButton = GameObject.Find("ShootButton");
 	}
 
     void Update() {
@@ -24,6 +26,8 @@ public class FieldPortal : MonoBehaviour {
     IEnumerator TocarAnimacaoTeleport()
     {
         yield return new WaitForSeconds(0.5f);
+
+        shootButton.SetActive(true);
 
         robot.transform.position = destino.transform.position;
         robot.transform.rotation = destino.transform.rotation;
@@ -39,6 +43,7 @@ public class FieldPortal : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Robot")
         {
+            shootButton.SetActive(false);
             GetComponent<AudioSource>().Play();
             GameObject g = Instantiate(Resources.Load("RobotTeleportGo"), transform.position, transform.rotation) as GameObject;
             g.transform.parent = this.transform;
