@@ -64,11 +64,21 @@ public class GameManager : MonoBehaviour {
     void Start() {
         for (int i = 0; i < portas.Length; i++) {
             if(PlayerPrefs.HasKey("Porta" + portas[i].name)){
+                Debug.Log("Porta " + portas[i].name + " deveria estar aberta");
                 if (PlayerPrefs.GetInt("Porta" + portas[i].name) == 0) {
-                    portas[i].SetActive(false);
+                    portas[i].GetComponent<Animator>().SetInteger("Cor", i);
+                    StartCoroutine("EsperarSegundosAbrirPorta", i);
+                    //portas[i].GetComponent<Animator>().SetBool("Aberta", true);
                 }
             }
         }
+    }
+
+    IEnumerator EsperarSegundosAbrirPorta(int i)
+    {
+        yield return new WaitForSeconds(.1f);
+        portas[i].GetComponent<Animator>().SetBool("Aberta", true);
+        portas[i].GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void CarregarTutorial()

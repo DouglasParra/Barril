@@ -19,6 +19,8 @@ public class FieldCounter : MonoBehaviour {
 
     private GameObject particulas;
 
+    private GameObject shootButton;
+
 	void Awake () {
 		textCounter.text = counterTime.ToString("0");
         transform.GetComponent<Animator>().SetFloat("Contador", (float)counterTime);
@@ -30,6 +32,7 @@ public class FieldCounter : MonoBehaviour {
         }
 
         gameManager = GameObject.Find("GameManager");
+        shootButton = GameObject.Find("ShootButton");
 	}
 
     void Start() {
@@ -157,6 +160,7 @@ public class FieldCounter : MonoBehaviour {
 	void verifyLoseGame () {
 		if (currentTime > counterTime && robotInField) {
 			canRunTime = false;
+            shootButton.SetActive(false);
             GameObject robot = GameObject.FindGameObjectWithTag("Robot");
 
             if (robot.GetComponent<SpriteRenderer>().enabled)
@@ -177,6 +181,7 @@ public class FieldCounter : MonoBehaviour {
 		if (coll.gameObject.tag == "Robot") {
 			canRunTime = true;
 			robotInField = true;
+            if (ContadorPadrao()) ResetarAnimacao();
 		}
 	}
 
@@ -185,6 +190,7 @@ public class FieldCounter : MonoBehaviour {
         {
             canRunTime = false;
             robotInField = false;
+            if (ContadorPadrao()) ResetarAnimacao();
         }
 	}
 
@@ -197,5 +203,25 @@ public class FieldCounter : MonoBehaviour {
     {
         if (transform.name.StartsWith("C-MOV")) return true;
         return false;
+    }
+
+    private void ResetarAnimacao()
+    {
+        if (float.Parse(textCounter.text) >= 8.0f)
+        {
+            GetComponent<Animator>().Play("Contador_Padrão_Verde", 0, GetComponent<FieldAim>().TURN_TIME);
+        }
+        else if (float.Parse(textCounter.text) >= 5.0f)
+        {
+            GetComponent<Animator>().Play("Contador_Padrão_Amarelo", 0, GetComponent<FieldAim>().TURN_TIME);
+        }
+        else if (float.Parse(textCounter.text) >= 3.0f)
+        {
+            GetComponent<Animator>().Play("Contador_Padrão_Laranja", 0, GetComponent<FieldAim>().TURN_TIME);
+        }
+        else
+        {
+            GetComponent<Animator>().Play("Contador_Padrão_Vermelho", 0, GetComponent<FieldAim>().TURN_TIME);
+        }
     }
 }

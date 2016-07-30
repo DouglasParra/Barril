@@ -51,6 +51,7 @@ public class FieldAim : MonoBehaviour {
 
     IEnumerator restartAim() {
         yield return new WaitForSeconds(0.75f);
+        GetComponent<Animator>().Play("FieldIdleAnimation",0,TURN_TIME);
         StartCoroutine("rotateRoutine");
     }
 }
