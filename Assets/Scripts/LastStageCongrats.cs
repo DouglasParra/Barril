@@ -6,14 +6,10 @@ public class LastStageCongrats : MonoBehaviour {
 
     public GameObject creditsButton;
 
-	// Use this for initialization
-	void Start () {
-        StartCoroutine("HabilitarBotao");
-	}
-
     IEnumerator HabilitarBotao()
     {
-        yield return new WaitForSeconds(3f);
+        Debug.Log("Esperando 3s");
+        yield return new WaitForSeconds(3);
         creditsButton.SetActive(true);
     }
 
@@ -21,5 +17,10 @@ public class LastStageCongrats : MonoBehaviour {
     {
         PlayerPrefs.SetInt("Credits", 1);
         SceneManager.LoadScene("StageSelect");
+    }
+
+    public void Esperar3Segundos()
+    {
+        StartCoroutine(HabilitarBotao());
     }
 }

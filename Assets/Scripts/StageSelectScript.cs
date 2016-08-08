@@ -8,9 +8,10 @@ public class StageSelectScript : MonoBehaviour
 {
 
     public Text playerName;
+    public Text worldName;
     public GameObject energyTime;
 
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject gameSparksManager;
 
     public GameObject[] mundos;
@@ -26,6 +27,22 @@ public class StageSelectScript : MonoBehaviour
     public GameObject loadingCanvas;
     public GameObject mainCanvas;
     public GameObject creditsCanvas;
+
+    void Awake()
+    {
+        gameSparksManager = GameObject.Find("GameSparks Manager");
+
+        if (gameSparksManager == null)
+        {
+            gameSparksManager = new GameObject();
+            gameSparksManager.name = "GameSparks Manager";
+            gameSparksManager.AddComponent<GameSparksUnity>();
+            gameSparksManager.AddComponent<GameSparksManager>();
+            gameSparksManager.AddComponent<UserManager>();
+            gameSparksManager.AddComponent<EnergyTimeValues>();
+            gameSparksManager.AddComponent<ModoOffline>();
+        }
+    }
 
     // Use this for initialization
     void Start()
@@ -50,9 +67,9 @@ public class StageSelectScript : MonoBehaviour
             creditsCanvas.GetComponent<AudioSource>().Play();
         }
 
-        mundoAtual = 0;
+        //mundoAtual = 0;
         LiberarFases();
-        gameSparksManager = GameObject.Find("GameSparks Manager");
+        mundoAtual = (PlayerPrefs.GetInt("Fases") - 1) / 10;
     }
 
     void Update() {
@@ -176,6 +193,7 @@ public class StageSelectScript : MonoBehaviour
         mundoAtual = mundoAtual + 1;
         if (mundoAtual >= QTDE_MUNDO) mundoAtual = 0;
         mundos[mundoAtual].gameObject.SetActive(true);
+        worldName.text = "Mundo " + (mundoAtual + 1).ToString();
         backgroundImage.sprite = backgroundMundos[mundoAtual];
     }
 
@@ -185,6 +203,7 @@ public class StageSelectScript : MonoBehaviour
         mundoAtual = mundoAtual - 1;
         if (mundoAtual < 0) mundoAtual = QTDE_MUNDO - 1;
         mundos[mundoAtual].gameObject.SetActive(true);
+        worldName.text = "Mundo " + (mundoAtual + 1).ToString();
         backgroundImage.sprite = backgroundMundos[mundoAtual];
     }
 

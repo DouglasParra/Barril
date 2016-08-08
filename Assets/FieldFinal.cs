@@ -6,6 +6,7 @@ public class FieldFinal : MonoBehaviour {
     private GameObject gameManager;
     private GameObject shootButton;
 
+
 	// Use this for initialization
 	void Awake () {
         gameManager = GameObject.Find("GameManager");
@@ -17,9 +18,10 @@ public class FieldFinal : MonoBehaviour {
 	
 	}
 
-    IEnumerator TocarAnimacaoFinal()
+    IEnumerator TocarAnimacaoFinal(GameObject g)
     {
         yield return new WaitForSeconds(0.857f);
+        GameObject.Destroy(g);
         gameManager.SendMessage("victoryGame");
     }
 
@@ -29,9 +31,10 @@ public class FieldFinal : MonoBehaviour {
                 shootButton.SetActive(false);
                 coll.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 GameObject g = Instantiate(Resources.Load("RobotFinal"), transform.position, Quaternion.identity) as GameObject;
+                g.GetComponent<Animator>().SetInteger("Skin", coll.gameObject.GetComponent<RobotSkins>().skinNo);
                 g.transform.parent = this.transform;
                 GetComponent<AudioSource>().Play();
-                StartCoroutine("TocarAnimacaoFinal");
+                StartCoroutine("TocarAnimacaoFinal", g);
 			}
 		}
 	}

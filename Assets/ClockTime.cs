@@ -10,6 +10,8 @@ public class ClockTime : MonoBehaviour {
 
 	private bool canRunTime = false;
 
+    private float tempoAtual;
+
     void Awake()
     {
         timestring = "00:00:000";
@@ -19,7 +21,11 @@ public class ClockTime : MonoBehaviour {
 	void Update () {
 		if (canRunTime) {
 			updateTimes ();
-			updateTextComponent ();
+            if (Time.time >= tempoAtual + .2f)
+            {
+                updateTextComponent();
+                tempoAtual = Time.time;
+            }
 		}
 	}
 
@@ -45,6 +51,7 @@ public class ClockTime : MonoBehaviour {
 
 	public void startTime () {
 		canRunTime = true;
+        tempoAtual = Time.time;
 	}
 
 	public void stopTime () {

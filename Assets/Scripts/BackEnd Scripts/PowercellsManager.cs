@@ -10,13 +10,9 @@ public class PowercellsManager : MonoBehaviour {
 
     private GameObject gameSparksManager;
 
-    void Awake() {
-        gameSparksManager = GameObject.Find("GameSparks Manager");
-    }
-
 	// Use this for initialization
 	void Start () {
-
+        gameSparksManager = GameObject.Find("GameSparks Manager");
         // Se está online, carrega o valor de powercells
         StartCoroutine("CarregarPowercells");
         /*if (!GameObject.Find("GameSparks Manager").GetComponent<ModoOffline>().getModoOffline())

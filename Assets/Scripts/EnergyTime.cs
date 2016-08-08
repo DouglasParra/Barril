@@ -12,6 +12,7 @@ public class EnergyTime : MonoBehaviour {
 
     public Text time;
     public Text life;
+    public Text lifeLoja;
 
     public GameObject energyTimeBox;
 
@@ -34,10 +35,12 @@ public class EnergyTime : MonoBehaviour {
         Time.timeScale = 1;
         initializeTime = true;
 
-        gameSparksManager = GameObject.Find("GameSparks Manager");
-
         //Debug.Log("Valor de Vidas em PlayerPrefs = " + PlayerPrefs.GetInt("Vidas"));
+    }
 
+    void Start()
+    {
+        gameSparksManager = GameObject.Find("GameSparks Manager");
         StartCoroutine("CarregarVida");
         // Se tem conexão com internet
         /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
@@ -394,6 +397,7 @@ public class EnergyTime : MonoBehaviour {
             {
                 SaveLife(PlayerPrefs.GetInt("Vidas"));
                 life.text = PlayerPrefs.GetInt("Vidas").ToString();
+                lifeLoja.text = life.text;
                 //LoadLife();
             }
 

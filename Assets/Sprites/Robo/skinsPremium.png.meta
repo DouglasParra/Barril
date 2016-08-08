@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: 638411c032d64e7459957177917f77f7
+timeCreated: 1470273877
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: skinsPremium_0
+    21300002: skinsPremium_1
+    21300004: skinsPremium_2
+    21300006: skinsPremium_3
+    21300008: skinsPremium_4
+    21300010: skinsPremium_5
+    21300012: skinsPremium_6
+    21300014: skinsPremium_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 42
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: skinsPremium_0
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 1263
+        width: 393
+        height: 472
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31.740005, y: 61.328003}
+        - {x: -22.259995, y: 61.328003}
+        - {x: -50.259995, y: 45.328003}
+        - {x: -50.259995, y: -49.671997}
+        - {x: -32.259995, y: -60.671997}
+        - {x: 36.740005, y: -60.671997}
+        - {x: 50.740005, y: -26.671997}
+        - {x: 50.740005, y: 41.328003}
+        - {x: 37.740005, y: 60.328003}
+    - name: skinsPremium_1
+      rect:
+        serializedVersion: 2
+        x: 1288
+        y: 1263
+        width: 393
+        height: 472
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38.271973, y: 61.328003}
+        - {x: -50.271973, y: 57.328003}
+        - {x: -50.271973, y: -28.671997}
+        - {x: -48.271973, y: -37.671997}
+        - {x: -17.271973, y: -60.671997}
+        - {x: 39.728027, y: -60.671997}
+        - {x: 51.728027, y: -36.671997}
+        - {x: 51.728027, y: 48.328003}
+        - {x: 41.728027, y: 61.328003}
+    - name: skinsPremium_2
+      rect:
+        serializedVersion: 2
+        x: 2277
+        y: 1263
+        width: 404
+        height: 490
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.587952, y: 63.328003}
+        - {x: -51.58795, y: 11.328003}
+        - {x: -51.58795, y: -20.671997}
+        - {x: -20.587952, y: -62.671997}
+        - {x: 41.41205, y: -62.671997}
+        - {x: 53.41205, y: -37.671997}
+        - {x: 53.41205, y: 37.328003}
+        - {x: 20.412048, y: 63.328003}
+    - name: skinsPremium_3
+      rect:
+        serializedVersion: 2
+        x: 3290
+        y: 1263
+        width: 393
+        height: 472
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.259949, y: 61.328003}
+        - {x: -50.25995, y: 42.328003}
+        - {x: -50.25995, y: -33.671997}
+        - {x: -49.25995, y: -37.671997}
+        - {x: -11.259949, y: -60.671997}
+        - {x: 26.740051, y: -60.671997}
+        - {x: 50.74005, y: -23.671997}
+        - {x: 50.74005, y: 32.328003}
+        - {x: 17.740051, y: 61.328003}
+    - name: skinsPremium_4
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 263
+        width: 393
+        height: 472
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.259995, y: 61.328003}
+        - {x: -50.259995, y: 42.328003}
+        - {x: -50.259995, y: -33.671997}
+        - {x: -49.259995, y: -37.671997}
+        - {x: -11.2599945, y: -60.671997}
+        - {x: 26.740005, y: -60.671997}
+        - {x: 50.740005, y: -23.671997}
+        - {x: 50.740005, y: 32.328003}
+        - {x: 17.740005, y: 61.328003}
+    - name: skinsPremium_5
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 261
+        width: 395
+        height: 472
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.759979, y: 61.816}
+        - {x: -50.75998, y: 44.816}
+        - {x: -50.75998, y: -38.184}
+        - {x: -49.75998, y: -42.184}
+        - {x: -10.759979, y: -60.184}
+        - {x: 18.24002, y: -60.184}
+        - {x: 51.24002, y: -23.183998}
+        - {x: 51.24002, y: 34.816}
+        - {x: 23.24002, y: 61.816}
+    - name: skinsPremium_6
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 265
+        width: 364
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19.664001, y: 64.840004}
+        - {x: -16.335999, y: 64.840004}
+        - {x: -46.336, y: 24.840004}
+        - {x: -46.336, y: -46.159996}
+        - {x: -13.335999, y: -63.159996}
+        - {x: 26.664001, y: -63.159996}
+        - {x: 46.664, y: -35.159996}
+        - {x: 47.664, y: -33.159996}
+        - {x: 47.664, y: 25.840004}
+    - name: skinsPremium_7
+      rect:
+        serializedVersion: 2
+        x: 3284
+        y: 263
+        width: 399
+        height: 472
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.79596, y: 61.328003}
+        - {x: -47.79596, y: 39.328003}
+        - {x: -50.79596, y: 29.328003}
+        - {x: -50.79596, y: -28.671997}
+        - {x: -49.79596, y: -40.671997}
+        - {x: -32.79596, y: -60.671997}
+        - {x: 31.20404, y: -60.671997}
+        - {x: 52.20404, y: -43.671997}
+        - {x: 52.20404, y: 32.328003}
+        - {x: 18.20404, y: 61.328003}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

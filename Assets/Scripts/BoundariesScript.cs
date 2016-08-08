@@ -24,6 +24,7 @@ public class BoundariesScript : MonoBehaviour {
             if (obj.gameObject.GetComponent<SpriteRenderer>().enabled)
             {
                 GameObject g = Instantiate(Resources.Load("RobotColisaoLaser"), obj.transform.position, obj.transform.rotation) as GameObject;
+                g.GetComponent<Animator>().SetInteger("Skin", obj.gameObject.GetComponent<RobotSkins>().skinNo);
                 GetComponent<AudioSource>().Play();
             }
             mainCamera.GetComponent<CameraValuesScript>().podeMover = false;

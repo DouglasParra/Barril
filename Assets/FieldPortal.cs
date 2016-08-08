@@ -34,6 +34,7 @@ public class FieldPortal : MonoBehaviour {
         robot.transform.parent = destino.transform;
 
         GameObject g = Instantiate(Resources.Load("RobotTeleportBack"), destino.transform.position, destino.transform.rotation) as GameObject;
+        g.GetComponent<Animator>().SetInteger("Skin", robot.GetComponent<RobotSkins>().skinNo);
         g.transform.parent = destino.transform;
 
         fromPortal = false;
@@ -43,12 +44,13 @@ public class FieldPortal : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Robot")
         {
+            robot = coll.gameObject;
             shootButton.SetActive(false);
             GetComponent<AudioSource>().Play();
             GameObject g = Instantiate(Resources.Load("RobotTeleportGo"), transform.position, transform.rotation) as GameObject;
+            g.GetComponent<Animator>().SetInteger("Skin", robot.GetComponent<RobotSkins>().skinNo);
             g.transform.parent = this.transform;
             fromPortal = true;
-            robot = coll.gameObject;
         }
     }
 }

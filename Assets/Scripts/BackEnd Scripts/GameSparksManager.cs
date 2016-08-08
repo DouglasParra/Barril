@@ -103,10 +103,10 @@ public class GameSparksManager : MonoBehaviour
                         if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
                         {
                             GameObject.Find("LoadingBar").SendMessage("goToLoading", 100);
-                        }
 
-                        //Debug.Log("Account Details Found... - Olá, " + response.DisplayName);
-                        loadingInfoCanvas.gameObject.SetActive(false);
+                            //Debug.Log("Account Details Found... - Olá, " + response.DisplayName);
+                            loadingInfoCanvas.gameObject.SetActive(false);
+                        }
 
                         RetrieveRecords();
                     }

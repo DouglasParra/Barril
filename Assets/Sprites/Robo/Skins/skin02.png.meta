@@ -1,0 +1,968 @@
+fileFormatVersion: 2
+guid: 77b16e60da38e2349b866b01b320322e
+timeCreated: 1470273460
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: skin02_0
+    21300002: skin02_1
+    21300004: skin02_2
+    21300006: skin02_3
+    21300008: skin02_4
+    21300010: skin02_5
+    21300012: skin02_6
+    21300014: skin02_7
+    21300016: skin02_8
+    21300018: skin02_9
+    21300020: skin02_10
+    21300022: skin02_11
+    21300024: skin02_12
+    21300026: skin02_13
+    21300028: skin02_14
+    21300030: skin02_15
+    21300032: skin02_16
+    21300034: skin02_17
+    21300036: skin02_18
+    21300038: skin02_19
+    21300040: skin02_20
+    21300042: skin02_21
+    21300044: skin02_22
+    21300046: skin02_23
+    21300048: skin02_24
+    21300050: skin02_25
+    21300052: skin02_26
+    21300054: skin02_27
+    21300056: skin02_28
+    21300058: skin02_29
+    21300060: skin02_30
+    21300062: skin02_31
+    21300064: skin02_32
+    21300066: skin02_33
+    21300068: skin02_34
+    21300070: skin02_35
+    21300072: skin02_36
+    21300074: skin02_37
+    21300076: skin02_38
+    21300078: skin02_39
+    21300080: skin02_40
+    21300082: skin02_41
+    21300084: skin02_42
+    21300086: skin02_43
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 42
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: skin02_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 32}
+        - {x: -15, y: 32}
+        - {x: -31, y: 27}
+        - {x: -31, y: -30}
+        - {x: -17, y: -33}
+        - {x: 14, y: -33}
+        - {x: 24, y: -20}
+        - {x: 26, y: -10}
+        - {x: 26, y: 12}
+    - name: skin02_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44, y: 57}
+        - {x: -58, y: 38}
+        - {x: -58, y: -29}
+        - {x: -43, y: -58}
+        - {x: 19, y: -58}
+        - {x: 58, y: -36}
+        - {x: 58, y: 46}
+        - {x: 35, y: 57}
+    - name: skin02_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21, y: 58}
+        - {x: -31, y: 58}
+        - {x: -57, y: 43}
+        - {x: -58, y: 36}
+        - {x: -58, y: -33}
+        - {x: -34, y: -58}
+        - {x: 51, y: -58}
+        - {x: 58, y: -33}
+        - {x: 58, y: 39}
+        - {x: 54, y: 42}
+    - name: skin02_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -42, y: 58}
+        - {x: -59, y: 36}
+        - {x: -59, y: -27}
+        - {x: -50, y: -59}
+        - {x: 53, y: -59}
+        - {x: 59, y: -46}
+        - {x: 59, y: 46}
+        - {x: 32, y: 58}
+    - name: skin02_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 59, y: 12}
+        - {x: 57, y: 24}
+        - {x: 40, y: 52}
+        - {x: 18, y: 58}
+        - {x: -28, y: 58}
+        - {x: -55, y: 32}
+        - {x: -59, y: 26}
+        - {x: -59, y: -30}
+        - {x: -56, y: -51}
+        - {x: -30, y: -59}
+        - {x: 22, y: -59}
+        - {x: 34, y: -50}
+        - {x: 51, y: -35}
+        - {x: 59, y: -14}
+    - name: skin02_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 59, y: 12}
+        - {x: 57, y: 24}
+        - {x: 40, y: 52}
+        - {x: 18, y: 58}
+        - {x: -28, y: 58}
+        - {x: -55, y: 32}
+        - {x: -59, y: 26}
+        - {x: -59, y: -30}
+        - {x: -56, y: -51}
+        - {x: -30, y: -59}
+        - {x: 22, y: -59}
+        - {x: 34, y: -50}
+        - {x: 51, y: -35}
+        - {x: 59, y: -14}
+    - name: skin02_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: 59}
+        - {x: -59, y: 27}
+        - {x: -59, y: -28}
+        - {x: -53, y: -41}
+        - {x: -25, y: -60}
+        - {x: 22, y: -60}
+        - {x: 40, y: -56}
+        - {x: 59, y: -36}
+        - {x: 59, y: 32}
+        - {x: 41, y: 59}
+    - name: skin02_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 36, y: 61}
+        - {x: 32, y: 62}
+        - {x: -40, y: 62}
+        - {x: -59, y: 36}
+        - {x: -59, y: -38}
+        - {x: -35, y: -63}
+        - {x: 27, y: -63}
+        - {x: 59, y: -32}
+        - {x: 59, y: 20}
+        - {x: 48, y: 40}
+    - name: skin02_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33, y: 64}
+        - {x: -44, y: 64}
+        - {x: -58, y: 43}
+        - {x: -58, y: -38}
+        - {x: -52, y: -64}
+        - {x: 50, y: -64}
+        - {x: 58, y: -38}
+        - {x: 58, y: 51}
+        - {x: 56, y: 56}
+    - name: skin02_9
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: 64}
+        - {x: -58, y: 47}
+        - {x: -58, y: -44}
+        - {x: -53, y: -64}
+        - {x: 58, y: -64}
+        - {x: 58, y: 58}
+        - {x: 47, y: 64}
+    - name: skin02_10
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: 64}
+        - {x: -58, y: 59}
+        - {x: -58, y: -64}
+        - {x: 58, y: -64}
+        - {x: 58, y: 64}
+    - name: skin02_11
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: skin02_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 33}
+        - {x: -27, y: 22}
+        - {x: -27, y: -11}
+        - {x: -17, y: -32}
+        - {x: 9, y: -32}
+        - {x: 27, y: -22}
+        - {x: 27, y: 13}
+        - {x: 21, y: 33}
+    - name: skin02_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 47}
+        - {x: -47, y: 38}
+        - {x: -47, y: -23}
+        - {x: -31, y: -47}
+        - {x: 34, y: -47}
+        - {x: 47, y: -27}
+        - {x: 47, y: 43}
+        - {x: 43, y: 47}
+    - name: skin02_14
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 47}
+        - {x: -47, y: 39}
+        - {x: -47, y: -23}
+        - {x: -41, y: -47}
+        - {x: 29, y: -47}
+        - {x: 47, y: -33}
+        - {x: 47, y: 24}
+        - {x: 30, y: 47}
+    - name: skin02_15
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 20, y: 47}
+        - {x: -27, y: 47}
+        - {x: -44, y: 32}
+        - {x: -47, y: 27}
+        - {x: -47, y: -36}
+        - {x: -34, y: -47}
+        - {x: 39, y: -47}
+        - {x: 47, y: -32}
+        - {x: 47, y: 34}
+    - name: skin02_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 47}
+        - {x: -46, y: 28}
+        - {x: -47, y: 22}
+        - {x: -47, y: -28}
+        - {x: -35, y: -48}
+        - {x: 41, y: -48}
+        - {x: 48, y: -26}
+        - {x: 48, y: 18}
+        - {x: 30, y: 47}
+    - name: skin02_17
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 45, y: 64}
+        - {x: -38, y: 64}
+        - {x: -64, y: 57}
+        - {x: -64, y: -39}
+        - {x: -39, y: -64}
+        - {x: 28, y: -64}
+        - {x: 42, y: -61}
+        - {x: 64, y: -36}
+        - {x: 64, y: 34}
+        - {x: 62, y: 45}
+    - name: skin02_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58, y: 52}
+        - {x: -64, y: 39}
+        - {x: -64, y: -42}
+        - {x: -37, y: -53}
+        - {x: 45, y: -53}
+        - {x: 64, y: -32}
+        - {x: 64, y: 32}
+        - {x: 39, y: 52}
+    - name: skin02_19
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 60, y: 24}
+        - {x: 39, y: 28}
+        - {x: -48, y: 28}
+        - {x: -64, y: 18}
+        - {x: -64, y: -24}
+        - {x: -47, y: -27}
+        - {x: 49, y: -27}
+        - {x: 63, y: -19}
+        - {x: 64, y: -14}
+        - {x: 64, y: 19}
+    - name: skin02_20
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: 10}
+        - {x: -58, y: 7}
+        - {x: -64, y: 5}
+        - {x: -64, y: -9}
+        - {x: -38, y: -11}
+        - {x: 47, y: -11}
+        - {x: 64, y: -8}
+        - {x: 64, y: 10}
+    - name: skin02_21
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58, y: 10}
+        - {x: -64, y: 5}
+        - {x: -64, y: -7}
+        - {x: -58, y: -11}
+        - {x: 48, y: -11}
+        - {x: 64, y: -10}
+        - {x: 64, y: 10}
+    - name: skin02_22
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53, y: 10}
+        - {x: -64, y: 9}
+        - {x: -64, y: -9}
+        - {x: -51, y: -11}
+        - {x: 56, y: -11}
+        - {x: 64, y: -7}
+        - {x: 64, y: 6}
+        - {x: 54, y: 10}
+    - name: skin02_23
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: skin02_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 32}
+        - {x: -31, y: 20}
+        - {x: -31, y: -22}
+        - {x: -12, y: -33}
+        - {x: 17, y: -33}
+        - {x: 26, y: -13}
+        - {x: 26, y: 20}
+        - {x: 14, y: 32}
+    - name: skin02_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55, y: 62}
+        - {x: -59, y: 62}
+        - {x: -62, y: 50}
+        - {x: -62, y: -47}
+        - {x: -51, y: -62}
+        - {x: 44, y: -62}
+        - {x: 53, y: -60}
+        - {x: 62, y: -31}
+        - {x: 62, y: 24}
+    - name: skin02_26
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48, y: 62}
+        - {x: -62, y: 28}
+        - {x: -62, y: -39}
+        - {x: -44, y: -58}
+        - {x: -32, y: -62}
+        - {x: 42, y: -62}
+        - {x: 62, y: -44}
+        - {x: 62, y: 35}
+        - {x: 45, y: 62}
+    - name: skin02_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 62}
+        - {x: -62, y: 56}
+        - {x: -62, y: -49}
+        - {x: -30, y: -63}
+        - {x: 25, y: -63}
+        - {x: 43, y: -55}
+        - {x: 63, y: -36}
+        - {x: 63, y: 28}
+        - {x: 47, y: 62}
+    - name: skin02_28
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 63}
+        - {x: -63, y: 39}
+        - {x: -63, y: -25}
+        - {x: -56, y: -47}
+        - {x: -26, y: -63}
+        - {x: 24, y: -63}
+        - {x: 62, y: -49}
+        - {x: 63, y: -45}
+        - {x: 63, y: 26}
+        - {x: 38, y: 63}
+    - name: skin02_29
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 63}
+        - {x: -63, y: 39}
+        - {x: -63, y: -25}
+        - {x: -56, y: -47}
+        - {x: -26, y: -63}
+        - {x: 24, y: -63}
+        - {x: 62, y: -49}
+        - {x: 63, y: -45}
+        - {x: 63, y: 26}
+        - {x: 38, y: 63}
+    - name: skin02_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 63}
+        - {x: -63, y: 39}
+        - {x: -63, y: -25}
+        - {x: -56, y: -47}
+        - {x: -26, y: -63}
+        - {x: 24, y: -63}
+        - {x: 62, y: -49}
+        - {x: 63, y: -45}
+        - {x: 63, y: 26}
+        - {x: 38, y: 63}
+    - name: skin02_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 63}
+        - {x: -63, y: 39}
+        - {x: -63, y: -25}
+        - {x: -56, y: -47}
+        - {x: -26, y: -63}
+        - {x: 24, y: -63}
+        - {x: 62, y: -49}
+        - {x: 63, y: -45}
+        - {x: 63, y: 26}
+        - {x: 38, y: 63}
+    - name: skin02_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 63}
+        - {x: -63, y: 39}
+        - {x: -63, y: -25}
+        - {x: -56, y: -47}
+        - {x: -26, y: -63}
+        - {x: 24, y: -63}
+        - {x: 62, y: -49}
+        - {x: 63, y: -45}
+        - {x: 63, y: 26}
+        - {x: 38, y: 63}
+    - name: skin02_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48, y: 62}
+        - {x: -62, y: 28}
+        - {x: -62, y: -39}
+        - {x: -44, y: -58}
+        - {x: -32, y: -62}
+        - {x: 42, y: -62}
+        - {x: 62, y: -44}
+        - {x: 62, y: 35}
+        - {x: 45, y: 62}
+    - name: skin02_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 37, y: 61}
+        - {x: -49, y: 61}
+        - {x: -61, y: 40}
+        - {x: -61, y: -52}
+        - {x: -37, y: -61}
+        - {x: 42, y: -61}
+        - {x: 59, y: -28}
+        - {x: 61, y: -21}
+        - {x: 61, y: 23}
+    - name: skin02_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -11, y: 32}
+        - {x: -29, y: 19}
+        - {x: -31, y: 9}
+        - {x: -31, y: -23}
+        - {x: -15, y: -33}
+        - {x: 18, y: -33}
+        - {x: 26, y: -14}
+        - {x: 26, y: 19}
+        - {x: 15, y: 28}
+    - name: skin02_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 61}
+        - {x: -61, y: 41}
+        - {x: -61, y: -23}
+        - {x: -46, y: -42}
+        - {x: -37, y: -52}
+        - {x: -27, y: -61}
+        - {x: 25, y: -61}
+        - {x: 61, y: -46}
+        - {x: 61, y: 41}
+        - {x: 31, y: 61}
+    - name: skin02_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55, y: 62}
+        - {x: -59, y: 62}
+        - {x: -62, y: 50}
+        - {x: -62, y: -47}
+        - {x: -51, y: -62}
+        - {x: 44, y: -62}
+        - {x: 53, y: -60}
+        - {x: 62, y: -31}
+        - {x: 62, y: 24}
+    - name: skin02_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48, y: 62}
+        - {x: -62, y: 28}
+        - {x: -62, y: -39}
+        - {x: -44, y: -58}
+        - {x: -32, y: -62}
+        - {x: 42, y: -62}
+        - {x: 62, y: -44}
+        - {x: 62, y: 35}
+        - {x: 45, y: 62}
+    - name: skin02_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48, y: 62}
+        - {x: -62, y: 28}
+        - {x: -62, y: -39}
+        - {x: -44, y: -58}
+        - {x: -32, y: -62}
+        - {x: 42, y: -62}
+        - {x: 62, y: -44}
+        - {x: 62, y: 35}
+        - {x: 45, y: 62}
+    - name: skin02_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 62}
+        - {x: -62, y: 56}
+        - {x: -62, y: -49}
+        - {x: -30, y: -63}
+        - {x: 25, y: -63}
+        - {x: 43, y: -55}
+        - {x: 63, y: -36}
+        - {x: 63, y: 28}
+        - {x: 47, y: 62}
+    - name: skin02_41
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 62}
+        - {x: -62, y: 56}
+        - {x: -62, y: -49}
+        - {x: -30, y: -63}
+        - {x: 25, y: -63}
+        - {x: 43, y: -55}
+        - {x: 63, y: -36}
+        - {x: 63, y: 28}
+        - {x: 47, y: 62}
+    - name: skin02_42
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55, y: 62}
+        - {x: -59, y: 62}
+        - {x: -62, y: 50}
+        - {x: -62, y: -47}
+        - {x: -51, y: -62}
+        - {x: 44, y: -62}
+        - {x: 53, y: -60}
+        - {x: 62, y: -31}
+        - {x: 62, y: 24}
+    - name: skin02_43
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31, y: 59}
+        - {x: -27, y: 59}
+        - {x: -59, y: 32}
+        - {x: -59, y: -31}
+        - {x: -26, y: -59}
+        - {x: 46, y: -59}
+        - {x: 59, y: -29}
+        - {x: 59, y: 36}
+        - {x: 41, y: 56}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

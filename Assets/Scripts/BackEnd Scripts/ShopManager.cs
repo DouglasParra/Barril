@@ -874,6 +874,10 @@ public class ShopManager : MonoBehaviour {
                     // Daqui em diante pode ligar / desligar a skin
                     skin1Toggle.interactable = true;
 
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin1", 1);
+                    skin1Toggle.isOn = true;
+
                     // E não pode comprar mais ela
                     comprarSkin1.interactable = false;
                 }
@@ -907,6 +911,10 @@ public class ShopManager : MonoBehaviour {
 
                     // Daqui em diante pode ligar / desligar a skin
                     skin2Toggle.interactable = true;
+
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin2", 1);
+                    skin2Toggle.isOn = true;
 
                     // E não pode comprar mais ela
                     comprarSkin2.interactable = false;
@@ -942,6 +950,10 @@ public class ShopManager : MonoBehaviour {
                     // Daqui em diante pode ligar / desligar a skin
                     skin3Toggle.interactable = true;
 
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin3", 1);
+                    skin3Toggle.isOn = true;
+
                     // E não pode comprar mais ela
                     comprarSkin3.interactable = false;
                 }
@@ -975,6 +987,10 @@ public class ShopManager : MonoBehaviour {
 
                     // Daqui em diante pode ligar / desligar a skin
                     skin4Toggle.interactable = true;
+
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin4", 1);
+                    skin4Toggle.isOn = true;
 
                     // E não pode comprar mais ela
                     comprarSkin4.interactable = false;
@@ -1010,6 +1026,10 @@ public class ShopManager : MonoBehaviour {
                     // Daqui em diante pode ligar / desligar a skin
                     skin5Toggle.interactable = true;
 
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin5", 1);
+                    skin5Toggle.isOn = true;
+
                     // E não pode comprar mais ela
                     comprarSkin5.interactable = false;
                 }
@@ -1043,6 +1063,10 @@ public class ShopManager : MonoBehaviour {
 
                     // Daqui em diante pode ligar / desligar a skin
                     skin6Toggle.interactable = true;
+
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin6", 1);
+                    skin6Toggle.isOn = true;
 
                     // E não pode comprar mais ela
                     comprarSkin6.interactable = false;
@@ -1078,6 +1102,10 @@ public class ShopManager : MonoBehaviour {
                     // Daqui em diante pode ligar / desligar laser
                     laserToggle.interactable = true;
 
+                    laserToggle.isOn = true;
+                    PlayerPrefs.SetInt("Laser", 1);
+                    laserToggle.transform.GetChild(1).GetComponent<Text>().text = "     Laser ligado";
+
                     // E não pode comprar mais ele
                     comprarLaser.interactable = false;
                 }
@@ -1112,21 +1140,15 @@ public class ShopManager : MonoBehaviour {
                     // Daqui em diante pode ligar / desligar minimapa
                     minimapToggle.interactable = true;
 
+                    minimapToggle.isOn = true;
+                    PlayerPrefs.SetInt("MiniMapa", 1);
+                    minimapToggle.transform.GetChild(1).GetComponent<Text>().text = "     Radar ligado";
+
                     // E não pode comprar mais ele
                     comprarMinimapa.interactable = false;
                 }
             }
         }
-    }
-
-    private void MostrarAlgo()
-    {
-        Debug.Log("MostrarAlgo");
-    }
-
-    private void MostrarAlgo2()
-    {
-        Debug.Log("MostrarAlgo12312");
     }
 
     public void ComprarItem(string s)
@@ -1139,5 +1161,22 @@ public class ShopManager : MonoBehaviour {
     public void ConfirmarCompra()
     {
         SendMessage(itemPurchased);
+    }
+
+    public void ZerarSkins()
+    {
+        PlayerPrefs.SetInt("Skin1", 0);
+        PlayerPrefs.SetInt("Skin2", 0);
+        PlayerPrefs.SetInt("Skin3", 0);
+        PlayerPrefs.SetInt("Skin4", 0);
+        PlayerPrefs.SetInt("Skin5", 0);
+        PlayerPrefs.SetInt("Skin6", 0);
+        PlayerPrefs.SetInt("Skin7", 0);
+        PlayerPrefs.SetInt("Skin8", 0);
+        PlayerPrefs.SetInt("Skin9", 0);
+        PlayerPrefs.SetInt("Skin10", 0);
+        PlayerPrefs.SetInt("Skin11", 0);
+        PlayerPrefs.SetInt("Skin12", 0);
+        PlayerPrefs.SetInt("Skin13", 0);
     }
 }

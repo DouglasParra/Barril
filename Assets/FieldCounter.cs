@@ -21,6 +21,9 @@ public class FieldCounter : MonoBehaviour {
 
     private GameObject shootButton;
 
+    private GameObject laserAnimation;
+    private bool playingLaserAnimation;
+
 	void Awake () {
 		textCounter.text = counterTime.ToString("0");
         transform.GetComponent<Animator>().SetFloat("Contador", (float)counterTime);
@@ -105,6 +108,12 @@ public class FieldCounter : MonoBehaviour {
 			updateTextComponent ();
 			verifyLoseGame ();
 		}
+
+        if (playingLaserAnimation)
+        {
+            laserAnimation.transform.position = this.transform.position;
+            laserAnimation.transform.rotation = this.transform.rotation;
+        }
 	}
 
 	void updateTimes () {
@@ -165,9 +174,12 @@ public class FieldCounter : MonoBehaviour {
 
             if (robot.GetComponent<SpriteRenderer>().enabled)
             {
-                GameObject g = Instantiate(Resources.Load("RobotColisaoLaser"), robot.transform.position, robot.transform.rotation) as GameObject;
-                g.transform.parent = this.transform;
+                laserAnimation = Instantiate(Resources.Load("RobotColisaoLaser"), robot.transform.position, robot.transform.rotation) as GameObject;
+                laserAnimation.GetComponent<Animator>().SetInteger("Skin", robot.gameObject.GetComponent<RobotSkins>().skinNo);
+                laserAnimation.transform.localScale = Vector3.one;
                 GetComponent<AudioSource>().Play();
+
+                playingLaserAnimation = true;
             }
 
             robot.gameObject.GetComponent<SpriteRenderer>().enabled = false;

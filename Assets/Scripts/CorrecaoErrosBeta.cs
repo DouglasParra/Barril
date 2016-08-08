@@ -10,6 +10,11 @@ public class CorrecaoErrosBeta : MonoBehaviour {
         {
             PlayerPrefs.SetInt("Fases", 21);
         }
+
+        if (PlayerPrefs.GetString("DisplayName").Equals("DouglasAndroid"))
+        {
+            PlayerPrefs.SetInt("Fases", 80);
+        }
 	}
 	
 }

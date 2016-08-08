@@ -27,8 +27,9 @@ public class Robot : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         GameObject g = Instantiate(Resources.Load("RobotInicial"), transform.position, transform.rotation) as GameObject;
+        g.GetComponent<Animator>().SetInteger("Skin", gameObject.GetComponent<RobotSkins>().skinNo);
         g.transform.parent = this.transform.parent;
-        StartCoroutine("TocarAnimacaoInicial");
+        StartCoroutine("TocarAnimacaoInicial", g);
 	}
 	
 	// Update is called once per frame
@@ -39,9 +40,10 @@ public class Robot : MonoBehaviour {
         }
 	}
 
-    IEnumerator TocarAnimacaoInicial()
+    IEnumerator TocarAnimacaoInicial(GameObject g)
     {
         yield return new WaitForSeconds(0.857f);
+        GameObject.Destroy(g);
         GetComponent<SpriteRenderer>().enabled = true;
     }
 

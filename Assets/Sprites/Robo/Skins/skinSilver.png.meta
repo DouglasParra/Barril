@@ -1,0 +1,947 @@
+fileFormatVersion: 2
+guid: cc04e6a304575474381932a94c1ec40e
+timeCreated: 1470273539
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: skinSilver_0
+    21300002: skinSilver_1
+    21300004: skinSilver_2
+    21300006: skinSilver_3
+    21300008: skinSilver_4
+    21300010: skinSilver_5
+    21300012: skinSilver_6
+    21300014: skinSilver_7
+    21300016: skinSilver_8
+    21300018: skinSilver_9
+    21300020: skinSilver_10
+    21300022: skinSilver_11
+    21300024: skinSilver_12
+    21300026: skinSilver_13
+    21300028: skinSilver_14
+    21300030: skinSilver_15
+    21300032: skinSilver_16
+    21300034: skinSilver_17
+    21300036: skinSilver_18
+    21300038: skinSilver_19
+    21300040: skinSilver_20
+    21300042: skinSilver_21
+    21300044: skinSilver_22
+    21300046: skinSilver_23
+    21300048: skinSilver_24
+    21300050: skinSilver_25
+    21300052: skinSilver_26
+    21300054: skinSilver_27
+    21300056: skinSilver_28
+    21300058: skinSilver_29
+    21300060: skinSilver_30
+    21300062: skinSilver_31
+    21300064: skinSilver_32
+    21300066: skinSilver_33
+    21300068: skinSilver_34
+    21300070: skinSilver_35
+    21300072: skinSilver_36
+    21300074: skinSilver_37
+    21300076: skinSilver_38
+    21300078: skinSilver_39
+    21300080: skinSilver_40
+    21300082: skinSilver_41
+    21300084: skinSilver_42
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 42
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: skinSilver_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -29, y: 26}
+        - {x: -29, y: -28}
+        - {x: -11, y: -33}
+        - {x: 15, y: -33}
+        - {x: 26, y: -18}
+        - {x: 26, y: 10}
+        - {x: 15, y: 32}
+    - name: skinSilver_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44, y: 57}
+        - {x: -58, y: 38}
+        - {x: -58, y: -29}
+        - {x: -43, y: -58}
+        - {x: 19, y: -58}
+        - {x: 58, y: -36}
+        - {x: 58, y: 46}
+        - {x: 35, y: 57}
+    - name: skinSilver_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21, y: 58}
+        - {x: -31, y: 58}
+        - {x: -57, y: 43}
+        - {x: -58, y: 36}
+        - {x: -58, y: -33}
+        - {x: -34, y: -58}
+        - {x: 51, y: -58}
+        - {x: 58, y: -33}
+        - {x: 58, y: 39}
+        - {x: 54, y: 42}
+    - name: skinSilver_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -42, y: 58}
+        - {x: -59, y: 36}
+        - {x: -59, y: -27}
+        - {x: -50, y: -59}
+        - {x: 53, y: -59}
+        - {x: 59, y: -46}
+        - {x: 59, y: 46}
+        - {x: 32, y: 58}
+    - name: skinSilver_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 59, y: 12}
+        - {x: 57, y: 24}
+        - {x: 40, y: 52}
+        - {x: 18, y: 58}
+        - {x: -28, y: 58}
+        - {x: -55, y: 32}
+        - {x: -59, y: 26}
+        - {x: -59, y: -30}
+        - {x: -56, y: -51}
+        - {x: -30, y: -59}
+        - {x: 22, y: -59}
+        - {x: 34, y: -50}
+        - {x: 51, y: -35}
+        - {x: 59, y: -14}
+    - name: skinSilver_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 59, y: 12}
+        - {x: 57, y: 24}
+        - {x: 40, y: 52}
+        - {x: 18, y: 58}
+        - {x: -28, y: 58}
+        - {x: -55, y: 32}
+        - {x: -59, y: 26}
+        - {x: -59, y: -30}
+        - {x: -56, y: -51}
+        - {x: -30, y: -59}
+        - {x: 22, y: -59}
+        - {x: 34, y: -50}
+        - {x: 51, y: -35}
+        - {x: 59, y: -14}
+    - name: skinSilver_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: 59}
+        - {x: -59, y: 27}
+        - {x: -59, y: -28}
+        - {x: -53, y: -41}
+        - {x: -25, y: -60}
+        - {x: 22, y: -60}
+        - {x: 40, y: -56}
+        - {x: 59, y: -36}
+        - {x: 59, y: 32}
+        - {x: 41, y: 59}
+    - name: skinSilver_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 36, y: 61}
+        - {x: 32, y: 62}
+        - {x: -40, y: 62}
+        - {x: -59, y: 36}
+        - {x: -59, y: -38}
+        - {x: -35, y: -63}
+        - {x: 27, y: -63}
+        - {x: 59, y: -32}
+        - {x: 59, y: 20}
+        - {x: 48, y: 40}
+    - name: skinSilver_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33, y: 64}
+        - {x: -44, y: 64}
+        - {x: -58, y: 43}
+        - {x: -58, y: -38}
+        - {x: -52, y: -64}
+        - {x: 50, y: -64}
+        - {x: 58, y: -38}
+        - {x: 58, y: 51}
+        - {x: 56, y: 56}
+    - name: skinSilver_9
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: 64}
+        - {x: -58, y: 47}
+        - {x: -58, y: -44}
+        - {x: -53, y: -64}
+        - {x: 58, y: -64}
+        - {x: 58, y: 58}
+        - {x: 47, y: 64}
+    - name: skinSilver_10
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: 64}
+        - {x: -58, y: 59}
+        - {x: -58, y: -64}
+        - {x: 58, y: -64}
+        - {x: 58, y: 64}
+    - name: skinSilver_11
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: skinSilver_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -7, y: 32}
+        - {x: -27, y: 13}
+        - {x: -27, y: -6}
+        - {x: -26, y: -18}
+        - {x: -7, y: -33}
+        - {x: 11, y: -33}
+        - {x: 24, y: -21}
+        - {x: 27, y: -5}
+        - {x: 27, y: 15}
+    - name: skinSilver_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 47}
+        - {x: -47, y: 38}
+        - {x: -47, y: -23}
+        - {x: -31, y: -47}
+        - {x: 34, y: -47}
+        - {x: 47, y: -27}
+        - {x: 47, y: 43}
+        - {x: 43, y: 47}
+    - name: skinSilver_14
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 47}
+        - {x: -47, y: 39}
+        - {x: -47, y: -23}
+        - {x: -41, y: -47}
+        - {x: 29, y: -47}
+        - {x: 47, y: -33}
+        - {x: 47, y: 24}
+        - {x: 30, y: 47}
+    - name: skinSilver_15
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 20, y: 47}
+        - {x: -27, y: 47}
+        - {x: -44, y: 32}
+        - {x: -47, y: 27}
+        - {x: -47, y: -36}
+        - {x: -34, y: -47}
+        - {x: 39, y: -47}
+        - {x: 47, y: -32}
+        - {x: 47, y: 34}
+    - name: skinSilver_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 47}
+        - {x: -46, y: 28}
+        - {x: -47, y: 22}
+        - {x: -47, y: -28}
+        - {x: -35, y: -48}
+        - {x: 41, y: -48}
+        - {x: 48, y: -26}
+        - {x: 48, y: 18}
+        - {x: 30, y: 47}
+    - name: skinSilver_17
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 45, y: 64}
+        - {x: -38, y: 64}
+        - {x: -64, y: 57}
+        - {x: -64, y: -39}
+        - {x: -39, y: -64}
+        - {x: 28, y: -64}
+        - {x: 42, y: -61}
+        - {x: 64, y: -36}
+        - {x: 64, y: 34}
+        - {x: 62, y: 45}
+    - name: skinSilver_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58, y: 52}
+        - {x: -64, y: 39}
+        - {x: -64, y: -42}
+        - {x: -37, y: -53}
+        - {x: 45, y: -53}
+        - {x: 64, y: -32}
+        - {x: 64, y: 32}
+        - {x: 39, y: 52}
+    - name: skinSilver_19
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 60, y: 24}
+        - {x: 39, y: 28}
+        - {x: -48, y: 28}
+        - {x: -64, y: 18}
+        - {x: -64, y: -24}
+        - {x: -47, y: -27}
+        - {x: 49, y: -27}
+        - {x: 63, y: -19}
+        - {x: 64, y: -14}
+        - {x: 64, y: 19}
+    - name: skinSilver_20
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: 10}
+        - {x: -58, y: 7}
+        - {x: -64, y: 5}
+        - {x: -64, y: -9}
+        - {x: -38, y: -11}
+        - {x: 47, y: -11}
+        - {x: 64, y: -8}
+        - {x: 64, y: 10}
+    - name: skinSilver_21
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58, y: 10}
+        - {x: -64, y: 5}
+        - {x: -64, y: -7}
+        - {x: -58, y: -11}
+        - {x: 48, y: -11}
+        - {x: 64, y: -10}
+        - {x: 64, y: 10}
+    - name: skinSilver_22
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53, y: 10}
+        - {x: -64, y: 9}
+        - {x: -64, y: -9}
+        - {x: -51, y: -11}
+        - {x: 56, y: -11}
+        - {x: 64, y: -7}
+        - {x: 64, y: 6}
+        - {x: 54, y: 10}
+    - name: skinSilver_23
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: skinSilver_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -29, y: 28}
+        - {x: -29, y: -19}
+        - {x: -12, y: -33}
+        - {x: 8, y: -33}
+        - {x: 25, y: -22}
+        - {x: 25, y: 11}
+        - {x: 15, y: 32}
+    - name: skinSilver_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55, y: 62}
+        - {x: -59, y: 62}
+        - {x: -62, y: 50}
+        - {x: -62, y: -47}
+        - {x: -51, y: -62}
+        - {x: 44, y: -62}
+        - {x: 53, y: -60}
+        - {x: 62, y: -31}
+        - {x: 62, y: 24}
+    - name: skinSilver_26
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48, y: 62}
+        - {x: -62, y: 28}
+        - {x: -62, y: -39}
+        - {x: -44, y: -58}
+        - {x: -32, y: -62}
+        - {x: 42, y: -62}
+        - {x: 62, y: -44}
+        - {x: 62, y: 35}
+        - {x: 45, y: 62}
+    - name: skinSilver_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 62}
+        - {x: -62, y: 56}
+        - {x: -62, y: -49}
+        - {x: -30, y: -63}
+        - {x: 25, y: -63}
+        - {x: 43, y: -55}
+        - {x: 63, y: -36}
+        - {x: 63, y: 28}
+        - {x: 47, y: 62}
+    - name: skinSilver_28
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 63}
+        - {x: -63, y: 39}
+        - {x: -63, y: -25}
+        - {x: -56, y: -47}
+        - {x: -26, y: -63}
+        - {x: 24, y: -63}
+        - {x: 62, y: -49}
+        - {x: 63, y: -45}
+        - {x: 63, y: 26}
+        - {x: 38, y: 63}
+    - name: skinSilver_29
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 63}
+        - {x: -63, y: 39}
+        - {x: -63, y: -25}
+        - {x: -56, y: -47}
+        - {x: -26, y: -63}
+        - {x: 24, y: -63}
+        - {x: 62, y: -49}
+        - {x: 63, y: -45}
+        - {x: 63, y: 26}
+        - {x: 38, y: 63}
+    - name: skinSilver_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 63}
+        - {x: -63, y: 39}
+        - {x: -63, y: -25}
+        - {x: -56, y: -47}
+        - {x: -26, y: -63}
+        - {x: 24, y: -63}
+        - {x: 62, y: -49}
+        - {x: 63, y: -45}
+        - {x: 63, y: 26}
+        - {x: 38, y: 63}
+    - name: skinSilver_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 63}
+        - {x: -63, y: 39}
+        - {x: -63, y: -25}
+        - {x: -56, y: -47}
+        - {x: -26, y: -63}
+        - {x: 24, y: -63}
+        - {x: 62, y: -49}
+        - {x: 63, y: -45}
+        - {x: 63, y: 26}
+        - {x: 38, y: 63}
+    - name: skinSilver_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 63}
+        - {x: -63, y: 39}
+        - {x: -63, y: -25}
+        - {x: -56, y: -47}
+        - {x: -26, y: -63}
+        - {x: 24, y: -63}
+        - {x: 62, y: -49}
+        - {x: 63, y: -45}
+        - {x: 63, y: 26}
+        - {x: 38, y: 63}
+    - name: skinSilver_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48, y: 62}
+        - {x: -62, y: 28}
+        - {x: -62, y: -39}
+        - {x: -44, y: -58}
+        - {x: -32, y: -62}
+        - {x: 42, y: -62}
+        - {x: 62, y: -44}
+        - {x: 62, y: 35}
+        - {x: 45, y: 62}
+    - name: skinSilver_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 37, y: 61}
+        - {x: -49, y: 61}
+        - {x: -61, y: 40}
+        - {x: -61, y: -52}
+        - {x: -37, y: -61}
+        - {x: 42, y: -61}
+        - {x: 59, y: -28}
+        - {x: 61, y: -21}
+        - {x: 61, y: 23}
+    - name: skinSilver_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -29, y: 26}
+        - {x: -29, y: -28}
+        - {x: -11, y: -33}
+        - {x: 15, y: -33}
+        - {x: 26, y: -18}
+        - {x: 26, y: 10}
+        - {x: 15, y: 32}
+    - name: skinSilver_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 61}
+        - {x: -61, y: 41}
+        - {x: -61, y: -23}
+        - {x: -46, y: -42}
+        - {x: -37, y: -52}
+        - {x: -27, y: -61}
+        - {x: 25, y: -61}
+        - {x: 61, y: -46}
+        - {x: 61, y: 41}
+        - {x: 31, y: 61}
+    - name: skinSilver_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55, y: 62}
+        - {x: -59, y: 62}
+        - {x: -62, y: 50}
+        - {x: -62, y: -47}
+        - {x: -51, y: -62}
+        - {x: 44, y: -62}
+        - {x: 53, y: -60}
+        - {x: 62, y: -31}
+        - {x: 62, y: 24}
+    - name: skinSilver_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48, y: 62}
+        - {x: -62, y: 28}
+        - {x: -62, y: -39}
+        - {x: -44, y: -58}
+        - {x: -32, y: -62}
+        - {x: 42, y: -62}
+        - {x: 62, y: -44}
+        - {x: 62, y: 35}
+        - {x: 45, y: 62}
+    - name: skinSilver_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48, y: 62}
+        - {x: -62, y: 28}
+        - {x: -62, y: -39}
+        - {x: -44, y: -58}
+        - {x: -32, y: -62}
+        - {x: 42, y: -62}
+        - {x: 62, y: -44}
+        - {x: 62, y: 35}
+        - {x: 45, y: 62}
+    - name: skinSilver_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 62}
+        - {x: -62, y: 56}
+        - {x: -62, y: -49}
+        - {x: -30, y: -63}
+        - {x: 25, y: -63}
+        - {x: 43, y: -55}
+        - {x: 63, y: -36}
+        - {x: 63, y: 28}
+        - {x: 47, y: 62}
+    - name: skinSilver_41
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 62}
+        - {x: -62, y: 56}
+        - {x: -62, y: -49}
+        - {x: -30, y: -63}
+        - {x: 25, y: -63}
+        - {x: 43, y: -55}
+        - {x: 63, y: -36}
+        - {x: 63, y: 28}
+        - {x: 47, y: 62}
+    - name: skinSilver_42
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 61}
+        - {x: -61, y: 41}
+        - {x: -61, y: -23}
+        - {x: -46, y: -42}
+        - {x: -37, y: -52}
+        - {x: -27, y: -61}
+        - {x: 25, y: -61}
+        - {x: 61, y: -46}
+        - {x: 61, y: 41}
+        - {x: 31, y: 61}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

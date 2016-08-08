@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour {
 	public GameObject pauseModal;
 	public GameObject pauseButton;
 	public GameObject clockPanel;
+    public GameObject loadingMini;
 
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject gameSparksManager;
 
 	public Text victoryClockText;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour {
 
     public Text energyText;
     public Text stageText;
+    public Toggle rankToggle;
 
 	[Tooltip("Insira o numero de checkpoint e sete eles na posição e ordem correta")]
 	public GameObject[] checkpoints;
@@ -41,6 +43,17 @@ public class GameManager : MonoBehaviour {
 
 	void Awake () {
         gameSparksManager = GameObject.Find("GameSparks Manager");
+
+        if (gameSparksManager == null)
+        {
+            gameSparksManager = new GameObject();
+            gameSparksManager.name = "GameSparks Manager";
+            gameSparksManager.AddComponent<GameSparksUnity>();
+            gameSparksManager.AddComponent<GameSparksManager>();
+            gameSparksManager.AddComponent<UserManager>();
+            gameSparksManager.AddComponent<EnergyTimeValues>();
+            gameSparksManager.AddComponent<ModoOffline>();
+        }
 
 		startAll ();
 		verifyCheckpoint ();
@@ -150,7 +163,9 @@ public class GameManager : MonoBehaviour {
         {
             stopAll();
             verifyTutorialDone();
-            SceneManager.LoadScene("StageSelect");
+            loadingMini.SetActive(true);
+            StartCoroutine("LoadNewScene", "StageSelect");
+            //SceneManager.LoadScene("StageSelect");
         }
         else
         {
@@ -161,7 +176,11 @@ public class GameManager : MonoBehaviour {
             saveTime();
             verifyTutorialDone();
             resetCheckpoint();
-            SalvarFases();
+
+            if (!SceneManager.GetActiveScene().name.Equals("8-10"))
+            {
+                SalvarFases();
+            }
         }
 	}
 
@@ -190,6 +209,43 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+    // The coroutine runs on its own at the same time as Update() and takes an integer indicating which scene to load.
+    IEnumerator LoadNewScene(string levelName)
+    {
+        clockTime.stopTime();
+        Time.timeScale = 1;
+        // This line waits for 1 seconds before executing the next line in the coroutine.
+        // This line is only necessary for this demo. The scenes are so simple that they load too fast to read the "Loading..." text.
+        yield return new WaitForSeconds(1);
+
+        // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
+        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
+
+        // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
+        while (!async.isDone)
+        {
+            yield return null;
+        }
+    }
+
+    IEnumerator LoadNewScene(int levelName)
+    {
+        clockTime.stopTime();
+        Time.timeScale = 1;
+        // This line waits for 1 seconds before executing the next line in the coroutine.
+        // This line is only necessary for this demo. The scenes are so simple that they load too fast to read the "Loading..." text.
+        yield return new WaitForSeconds(1);
+
+        // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
+        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
+
+        // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
+        while (!async.isDone)
+        {
+            yield return null;
+        }
+    }
+
 	public void goToStageSelectScene () {
 		resetCheckpoint ();
         if (!clockTime.timestring.Equals("00:00:000") && !victoryModal.activeInHierarchy && !loseModal.activeInHierarchy)
@@ -206,14 +262,18 @@ public class GameManager : MonoBehaviour {
                 PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
             }*/
         }else{
-            SceneManager.LoadScene("StageSelect");
+            loadingMini.SetActive(true);
+            StartCoroutine("LoadNewScene", "StageSelect");
+            //SceneManager.LoadScene("StageSelect");
         }
 	}
 
 	public void goToNextScene () {
 		try {
 			resetCheckpoint ();
-			SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+            loadingMini.SetActive(true);
+            StartCoroutine("LoadNewScene", SceneManager.GetActiveScene().buildIndex + 1);
+			//SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
 		}
 		catch (System.Exception e) {
 			//Debug.Log (e.ToString());
@@ -238,7 +298,9 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            loadingMini.SetActive(true);
+            StartCoroutine("LoadNewScene", SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 	}
 
@@ -283,6 +345,7 @@ public class GameManager : MonoBehaviour {
     {
         // m1[0] = String da cena antes do '-' ; m1[1] = String da cena depois do '-' ; 
         string[] m1 = SceneManager.GetActiveScene().name.Split('-');
+        rankToggle.isOn = true;
 
         // Se ClockTimeInt() < records[], salva
         if (ClockTimeInt() < GameSparksManager.records[PosicaoVetorRecords(SceneManager.GetActiveScene().name)])
@@ -304,6 +367,7 @@ public class GameManager : MonoBehaviour {
                     else
                     {
                         //Debug.Log("Error Saving Player Data...");
+                        rankToggle.isOn = false;
                     }
                 });
         }
@@ -509,6 +573,9 @@ public class GameManager : MonoBehaviour {
         {
             //Debug.Log("Acao - Online");
             LoadLife();
+
+            if(int.Parse(energyText.text) != PlayerPrefs.GetInt("Vidas"))
+                energyText.text = PlayerPrefs.GetInt("Vidas").ToString();
         }
 
 
@@ -545,11 +612,15 @@ public class GameManager : MonoBehaviour {
 
         if (perderVidaFlag == 1)
         {
-            SceneManager.LoadScene("StageSelect");
+            //SceneManager.LoadScene("StageSelect");
+            loadingMini.SetActive(true);
+            StartCoroutine("LoadNewScene", "StageSelect");
         }
         else if (perderVidaFlag == 2)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            loadingMini.SetActive(true);
+            StartCoroutine("LoadNewScene", SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
     }
@@ -566,6 +637,7 @@ public class GameManager : MonoBehaviour {
         if (gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
             //Debug.Log("Acao - Offline");
+            rankToggle.isOn = false;
             // Avisar que está offline e não vai salvar o tempo?
         }
         else
