@@ -53,9 +53,23 @@ public class RankingScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gameSparksManager = GameObject.Find("GameSparks Manager");
+        gameSparksManager.GetComponent<GameSparksManager>().RetrieveRecords();
 
-        for (int i = 0; i < 10; i++) {
+        /*Debug.Log("Mudou valores");
+        mundoAtual = 0;
+        nextWorldRecord();*/
+
+        StartCoroutine(InitializeRecords());
+	}
+
+    IEnumerator InitializeRecords()
+    {
+        yield return new WaitForSeconds(1f);
+
+        for (int i = 0; i < 10; i++)
+        {
             record[i].text = RetornaTempoString(GameSparksManager.records[i]);
+            //Debug.Log(record[i].text);
         }
 
         mundoAtual = 1;
@@ -70,16 +84,17 @@ public class RankingScript : MonoBehaviour {
             ConnectWithFacebook();
         }
 
-        if (!FB.IsInitialized)
+        if (!FB.IsLoggedIn)
         {
             connectWithFBPanel.SetActive(true);
             friendsStageSelectPanel.SetActive(false);
-        } else {
+        }
+        else
+        {
             connectWithFBPanel.SetActive(false);
             friendsStageSelectPanel.SetActive(true);
         }
-
-	}
+    }
 
     void Update() {
 
@@ -369,7 +384,16 @@ public class RankingScript : MonoBehaviour {
     public void ConnectWithFacebook()
     {
         gameSparksManager.GetComponent<GameSparksManager>().ConnectWithFacebook();
-        if (FB.IsInitialized)
+
+        // Colocar um tempo de espera até conectar
+        StartCoroutine(FacebookConnected());
+    }
+
+    IEnumerator FacebookConnected()
+    {
+        yield return new WaitUntil(() => FB.IsLoggedIn);
+
+        if (FB.IsLoggedIn)
         {
             connectWithFBPanel.SetActive(false);
             friendsStageSelectPanel.SetActive(true);

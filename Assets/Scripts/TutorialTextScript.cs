@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class TutorialTextScript : MonoBehaviour {
@@ -98,5 +99,12 @@ public class TutorialTextScript : MonoBehaviour {
         {
             focusImage[i].SetActive(false);
         }
+    }
+
+    public void PularTutorial()
+    {
+        tutorialCanvas.SetActive(false);
+        PlayerPrefs.SetInt("tutorialDone", 1);
+        SceneManager.LoadScene("StageSelect");
     }
 }

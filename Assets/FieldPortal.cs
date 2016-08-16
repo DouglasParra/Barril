@@ -37,6 +37,8 @@ public class FieldPortal : MonoBehaviour {
         g.GetComponent<Animator>().SetInteger("Skin", robot.GetComponent<RobotSkins>().skinNo);
         g.transform.parent = destino.transform;
 
+        CreateMark(destino.transform);
+
         fromPortal = false;
     }
 
@@ -51,6 +53,34 @@ public class FieldPortal : MonoBehaviour {
             g.GetComponent<Animator>().SetInteger("Skin", robot.GetComponent<RobotSkins>().skinNo);
             g.transform.parent = this.transform;
             fromPortal = true;
+
+            CreateMark(this.transform);
+        }
+    }
+
+    void CreateMark(Transform t)
+    {
+        // Marca
+        if (PlayerPrefs.GetInt("Mark") == 1)
+        {
+            //Debug.Log("Criando marca no portal " + t.name);
+            bool passouMark = false;
+            for (int i = 0; i < t.childCount; i++)
+            {
+                if (t.GetChild(i).name.StartsWith("Mark"))
+                {
+                    passouMark = true;
+                    break;
+                }
+            }
+
+            if (!passouMark)
+            {
+                GameObject g2 = Instantiate(Resources.Load("Mark"), t.transform.position, t.transform.rotation) as GameObject;
+                g2.transform.SetParent(t.transform);
+                g2.transform.localScale = new Vector3(3, 3, 1);
+            }
+
         }
     }
 }

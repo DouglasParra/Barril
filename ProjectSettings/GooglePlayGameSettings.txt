@@ -1,0 +1,10 @@
+lastUpgrade=00932
+proj.pluginVersion=0.9.32
+proj.AppId=828668270230
+and.BundleId=com.SDGStudio.Orb_e
+proj.classDir=Assets
+proj.ConstantsClassName=OrbeResources
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--%0d%0aGoogle+Play+game+services+IDs.%0d%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0d%0a--%3e%0d%0a%3cresources%3e%0d%0a++%3cstring+name%3d%22app_id%22%3e828668270230%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22package_name%22%3ecom.SDGStudio.Orb_e%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_clear_world_1%22%3eCgkIlq3pg48YEAIQAA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_clear_world_2%22%3eCgkIlq3pg48YEAIQAQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_clear_world_3%22%3eCgkIlq3pg48YEAIQAg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_clear_world_4%22%3eCgkIlq3pg48YEAIQAw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_clear_world_5%22%3eCgkIlq3pg48YEAIQBA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_clear_world_6%22%3eCgkIlq3pg48YEAIQBQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_clear_world_7%22%3eCgkIlq3pg48YEAIQBg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_clear_world_8%22%3eCgkIlq3pg48YEAIQBw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_beat_stage_11_time%22%3eCgkIlq3pg48YEAIQCA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_beat_stage_29_time%22%3eCgkIlq3pg48YEAIQCQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_beat_stage_35_time%22%3eCgkIlq3pg48YEAIQCg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_beat_stage_43_time%22%3eCgkIlq3pg48YEAIQCw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_beat_stage_54_time%22%3eCgkIlq3pg48YEAIQDA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_beat_stage_67_time%22%3eCgkIlq3pg48YEAIQDQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_beat_stage_79_time%22%3eCgkIlq3pg48YEAIQDg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_beat_stage_810_time%22%3eCgkIlq3pg48YEAIQDw%3c%2fstring%3e%0d%0a%3c%2fresources%3e%0d%0a
+and.ClientId=
+proj.requireGPlus=false
+android.SetupDone=true

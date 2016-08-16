@@ -44,7 +44,7 @@ public class GameSparksManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
 
-        Debug.Log("Chamando CarregarJogador de Awake");
+        //Debug.Log("Chamando CarregarJogador de Awake");
         StartCoroutine("CarregarJogador");
         /*GS.GameSparksAvailable += GSAvailable;
         GameSparks.Api.Messages.AchievementEarnedMessage.Listener += AchievementEarnedListener;
@@ -52,22 +52,7 @@ public class GameSparksManager : MonoBehaviour
     }
 
     void Update() { 
-        /*if(SceneManager.GetActiveScene().name.Equals("TitleScene")){
-            StartCoroutine("VerificarJogadorRegistrado");
-            /*if(GetComponent<ModoOffline>().getModoOffline()){
 
-                // Sem conexão com a internet, modo offline caso já tenha registrado jogador
-                if (PlayerPrefs.HasKey("DisplayName"))
-                {
-                    loadingInfoCanvas.gameObject.SetActive(false);
-                }
-                else
-                {
-                    // Tenta recomeçar o jogo se jogador não registrado (aparecer uma tela antes?)
-                    SceneManager.LoadScene(0);
-                }
-            }
-        }*/
     }
 
     void GSAvailable(bool _isAvalable)
@@ -108,7 +93,12 @@ public class GameSparksManager : MonoBehaviour
                             loadingInfoCanvas.gameObject.SetActive(false);
                         }
 
+                        // Caso haja records não salvos, salva
+                        SalvarTempo();
+
                         RetrieveRecords();
+
+                        GetComponent<GooglePlayOrbe>().GooglePlayOrbeActivate();
                     }
                     else
                     {
@@ -127,7 +117,7 @@ public class GameSparksManager : MonoBehaviour
         }
     }
 
-    private void RetrieveRecords()
+    public void RetrieveRecords()
     {
         records = new int[NUMERO_FASES];
 
@@ -153,6 +143,7 @@ public class GameSparksManager : MonoBehaviour
                                 k++;
                             }
                         }
+
                     }
                     else
                     {
@@ -297,7 +288,10 @@ public class GameSparksManager : MonoBehaviour
             // Sem conexão com a internet, modo offline caso já tenha registrado jogador
             if (PlayerPrefs.HasKey("DisplayName"))
             {
-                loadingInfoCanvas.gameObject.SetActive(false);
+                if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                {
+                    loadingInfoCanvas.gameObject.SetActive(false);
+                }
             }
             else
             {
@@ -317,15 +311,61 @@ public class GameSparksManager : MonoBehaviour
         // Age de acordo com o resultado, offline ou online
         if (!GetComponent<ModoOffline>().getModoOffline())
         {
-            Debug.Log("Acao - Online");
+            //Debug.Log("Acao - Online");
             GS.GameSparksAvailable += GSAvailable;
             GameSparks.Api.Messages.AchievementEarnedMessage.Listener += AchievementEarnedListener;
-            GameObject.Find("LoadingBar").SendMessage("goToLoading", 90);
+            GetComponent<EnergyTimeValues>().LoadPowercells();
+
+            if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+            {
+                GameObject.Find("LoadingBar").SendMessage("goToLoading", 90);
+            }
         }
         else
         {
             StartCoroutine("VerificarJogadorRegistrado");
         }
 
+    }
+
+    private void SalvarTempo()
+    {
+        for (int i = 1; i <= 8; i++)
+        {
+            for (int j = 1; j <= 10; j++)
+            {
+                if (PlayerPrefs.HasKey("LEADERBOARD_" + i + "_" + j))
+                {
+                    //Debug.Log(PlayerPrefs.GetInt("LEADERBOARD_" + i + "_" + j));
+                    SalvarTempoGameSparks(i, j);
+                }
+            }
+        }
+    }
+
+    // Salva tempo no GS pro Leaderboard da fase que está jogando
+    void SalvarTempoGameSparks(int i, int j)
+    {
+        // mudar no gs para ficar 1-1 e assim usar o nome da cena concatenado
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("SAVE_STAGE_" + i + "_" + j)
+            .SetEventAttribute("TIME_" + i + "_" + j, PlayerPrefs.GetInt("LEADERBOARD_" + i + "_" + j))
+            .SetDurable(true)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Player Saved To GameSparks...");
+                    //Debug.Log("Score Posted Sucessfully...");
+                    Debug.Log("Salvou tempo da fase " + i + "-" + j);
+                    PlayerPrefs.DeleteKey("LEADERBOARD_" + i + "_" + j);
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Player Data...");
+
+                }
+            });
     }
 }

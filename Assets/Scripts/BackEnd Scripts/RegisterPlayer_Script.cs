@@ -19,6 +19,10 @@ public class RegisterPlayer_Script : MonoBehaviour
 
     private string userName;
 
+    void Start(){
+
+    }
+
     private string UsernameGenerator()
     {
         string code = "#";
@@ -71,6 +75,8 @@ public class RegisterPlayer_Script : MonoBehaviour
                 {
                     //Debug.Log("Player Registered \n Player Name: " + response.DisplayName);
                     registerPlayerCanvas.gameObject.SetActive(false);
+
+                    GameObject.Find("GameSparks Manager").GetComponent<GooglePlayOrbe>().GooglePlayOrbeActivate();
 
                     InitiateRecords();
                 }
@@ -215,6 +221,7 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                     PlayerPrefs.SetInt("Laser", 0);
                     PlayerPrefs.SetInt("MiniMapa", 0);
+                    PlayerPrefs.SetInt("Mark", 0);
 
                     PlayerPrefs.SetInt("Skin1", 0);
                     PlayerPrefs.SetInt("Skin2", 0);
@@ -222,6 +229,13 @@ public class RegisterPlayer_Script : MonoBehaviour
                     PlayerPrefs.SetInt("Skin4", 0);
                     PlayerPrefs.SetInt("Skin5", 0);
                     PlayerPrefs.SetInt("Skin6", 0);
+                    PlayerPrefs.SetInt("Skin7", 0);
+                    PlayerPrefs.SetInt("Skin8", 0);
+                    PlayerPrefs.SetInt("Skin9", 0);
+                    PlayerPrefs.SetInt("Skin10", 0);
+                    PlayerPrefs.SetInt("Skin11", 0);
+                    PlayerPrefs.SetInt("Skin12", 0);
+                    PlayerPrefs.SetInt("Skin13", 0);
 
                     PlayerPrefs.SetInt("Vidas", 5);
                     PlayerPrefs.SetInt("tutorialDone", 0);
@@ -411,6 +425,7 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
+                    InitiateSkin7();
                     //Debug.Log("Inicializou skin6 com 0...");
                 }
                 else
@@ -420,4 +435,162 @@ public class RegisterPlayer_Script : MonoBehaviour
             });
     }
 
+    private void InitiateSkin7()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN7")
+            .SetEventAttribute("SKIN7", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    InitiateSkin8();
+                    //Debug.Log("Inicializou skin6 com 0...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin8()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN8")
+            .SetEventAttribute("SKIN8", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    InitiateSkin9();
+                    //Debug.Log("Inicializou skin6 com 0...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin9()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN9")
+            .SetEventAttribute("SKIN9", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    InitiateSkin10();
+                    //Debug.Log("Inicializou skin6 com 0...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin10()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN10")
+            .SetEventAttribute("SKIN10", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    InitiateSkin11();
+                    //Debug.Log("Inicializou skin6 com 0...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin11()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN11")
+            .SetEventAttribute("SKIN11", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    InitiateSkin12();
+                    //Debug.Log("Inicializou skin6 com 0...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin12()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN12")
+            .SetEventAttribute("SKIN12", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    InitiateSkin13();
+                    //Debug.Log("Inicializou skin6 com 0...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    private void InitiateSkin13()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN13")
+            .SetEventAttribute("SKIN13", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Inicializou skin6 com 0...");
+                    InitiateMark();
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    private void InitiateMark()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_MARK")
+            .SetEventAttribute("MARK", 0)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Inicializou minimapa com 0...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Minimap Data...");
+                }
+            });
+    }
 }

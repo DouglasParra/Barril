@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class FieldFinal : MonoBehaviour {
 
     private GameObject gameManager;
     private GameObject shootButton;
-
+    [SerializeField]
+    private GameObject miniMapButton;
 
 	// Use this for initialization
 	void Awake () {
         gameManager = GameObject.Find("GameManager");
         shootButton = GameObject.Find("ShootButton");
+        miniMapButton = gameManager.transform.parent.GetChild(4).gameObject;
 	}
 	
 	// Update is called once per frame
@@ -29,6 +32,8 @@ public class FieldFinal : MonoBehaviour {
 		if (coll.gameObject.tag == "Robot") {
 			if (gameManager) {
                 shootButton.SetActive(false);
+                miniMapButton.GetComponent<Button>().interactable = false;
+
                 coll.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 GameObject g = Instantiate(Resources.Load("RobotFinal"), transform.position, Quaternion.identity) as GameObject;
                 g.GetComponent<Animator>().SetInteger("Skin", coll.gameObject.GetComponent<RobotSkins>().skinNo);

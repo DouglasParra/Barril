@@ -26,6 +26,13 @@ public class ShopManager : MonoBehaviour {
     public Button comprarSkin4;
     public Button comprarSkin5;
     public Button comprarSkin6;
+    public Button comprarSkin7;
+    public Button comprarSkin8;
+    public Button comprarSkin9;
+    public Button comprarSkin10;
+    public Button comprarSkin11;
+    public Button comprarSkin12;
+    public Button comprarSkin13;
 
     public Toggle skin1Toggle;
     public Toggle skin2Toggle;
@@ -33,13 +40,22 @@ public class ShopManager : MonoBehaviour {
     public Toggle skin4Toggle;
     public Toggle skin5Toggle;
     public Toggle skin6Toggle;
+    public Toggle skin7Toggle;
+    public Toggle skin8Toggle;
+    public Toggle skin9Toggle;
+    public Toggle skin10Toggle;
+    public Toggle skin11Toggle;
+    public Toggle skin12Toggle;
+    public Toggle skin13Toggle;
 
     [Space(10)]
     [Header("Boosts")]
     public Button comprarLaser;
     public Button comprarMinimapa;
+    public Button comprarMark;
     public Toggle laserToggle;
     public Toggle minimapToggle;
+    public Toggle markToggle;
 
     [Space(10)]
     public GameObject notEnoughPowercell;
@@ -58,9 +74,17 @@ public class ShopManager : MonoBehaviour {
     private const int CUSTO_SKIN4 = 30;
     private const int CUSTO_SKIN5 = 30;
     private const int CUSTO_SKIN6 = 30;
+    private const int CUSTO_SKIN7 = 30;
+    private const int CUSTO_SKIN8 = 30;
+    private const int CUSTO_SKIN9 = 30;
+    private const int CUSTO_SKIN10 = 30;
+    private const int CUSTO_SKIN11 = 30;
+    private const int CUSTO_SKIN12 = 30;
+    private const int CUSTO_SKIN13 = 30;
 
     private const int CUSTO_LASER = 80;
     private const int CUSTO_MINIMAPA = 130;
+    private const int CUSTO_MARK = 80;
 
     private string itemPurchased;
 
@@ -71,6 +95,7 @@ public class ShopManager : MonoBehaviour {
         VerificarVidas();
 
         StartCoroutine("CarregarInformacoesBoosts");
+
         // Se não está no modo offline
         /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
@@ -115,293 +140,101 @@ public class ShopManager : MonoBehaviour {
     
 	public void Comprar5Vidas () {
         StartCoroutine("VerificarConexaoComprar5Vidas");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Verifica se tem powercells suficiente pra compra
-            if (haveEnoughPowercells(CUSTO_5_VIDAS))
-            {
-                // Adicionar 5 Vidas no GS
-                AdicionarVidas(5);
-
-                PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 5);
-
-                // Retirar pc
-                RetirarPowercells(CUSTO_5_VIDAS);
-            }
-        }*/
 	}
 
     public void Comprar10Vidas()
     {
         StartCoroutine("VerificarConexaoComprar10Vidas");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Verifica se tem powercells suficiente pra compra
-            if (haveEnoughPowercells(CUSTO_10_VIDAS))
-            {
-                // Adicionar 10 Vidas no GS
-                AdicionarVidas(10);
-
-                PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 10);
-
-                // Retirar pc
-                RetirarPowercells(CUSTO_10_VIDAS);
-            }
-        }*/
     }
 
     public void Comprar20Vidas()
     {
         StartCoroutine("VerificarConexaoComprar20Vidas");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Verifica se tem powercells suficiente pra compra
-            if (haveEnoughPowercells(CUSTO_20_VIDAS))
-            {
-                // Adicionar 20 Vidas no GS
-                AdicionarVidas(20);
-
-                PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 20);
-
-                // Retirar pc
-                RetirarPowercells(CUSTO_20_VIDAS);
-            }
-        }*/
     }
 
     public void Comprar50Vidas()
     {
         StartCoroutine("VerificarConexaoComprar50Vidas");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Verifica se tem powercells suficiente pra compra
-            if (haveEnoughPowercells(CUSTO_50_VIDAS))
-            {
-                // Adicionar 50 Vidas no GS
-                AdicionarVidas(50);
-
-                PlayerPrefs.SetInt("Vidas", PlayerPrefs.GetInt("Vidas") + 50);
-
-                // Retirar pc
-                RetirarPowercells(CUSTO_50_VIDAS);
-            }
-        }*/
     }
 
     public void ComprarSkin1()
     {
         StartCoroutine("VerificarConexaoComprarSkin1");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Se ainda não comprou a skin, não pode ligar / desligar
-            if (skin1Toggle.interactable == false)
-            {
-                // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(CUSTO_SKIN1))
-                {
-                    // Retirar pc
-                    RetirarPowercells(CUSTO_SKIN1);
-
-                    // Indica no GS que comprou skin1
-                    BuySkin1();
-
-                    // Daqui em diante pode ligar / desligar skin1
-                    skin1Toggle.interactable = true;
-
-                    // E não pode comprar mais ele
-                    comprarSkin1.interactable = false;
-                }
-            }
-        }*/
     }
 
     public void ComprarSkin2()
     {
         StartCoroutine("VerificarConexaoComprarSkin2");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Se ainda não comprou a skin, não pode ligar / desligar
-            if (skin2Toggle.interactable == false)
-            {
-                // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(CUSTO_SKIN2))
-                {
-                    // Retirar pc
-                    RetirarPowercells(CUSTO_SKIN2);
-
-                    // Indica no GS que comprou skin2
-                    BuySkin2();
-
-                    // Daqui em diante pode ligar / desligar skin2
-                    skin2Toggle.interactable = true;
-
-                    // E não pode comprar mais ele
-                    comprarSkin2.interactable = false;
-                }
-            }
-        }*/
     }
 
     public void ComprarSkin3()
     {
         StartCoroutine("VerificarConexaoComprarSkin3");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Se ainda não comprou a skin, não pode ligar / desligar
-            if (skin3Toggle.interactable == false)
-            {
-                // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(CUSTO_SKIN3))
-                {
-                    // Retirar pc
-                    RetirarPowercells(CUSTO_SKIN3);
-
-                    // Indica no GS que comprou skin3
-                    BuySkin3();
-
-                    // Daqui em diante pode ligar / desligar skin3
-                    skin3Toggle.interactable = true;
-
-                    // E não pode comprar mais ele
-                    comprarSkin3.interactable = false;
-                }
-            }
-        }*/
     }
 
     public void ComprarSkin4()
     {
         StartCoroutine("VerificarConexaoComprarSkin4");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Se ainda não comprou a skin, não pode ligar / desligar
-            if (skin4Toggle.interactable == false)
-            {
-                // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(CUSTO_SKIN4))
-                {
-                    // Retirar pc
-                    RetirarPowercells(CUSTO_SKIN4);
-
-                    // Indica no GS que comprou skin4
-                    BuySkin4();
-
-                    // Daqui em diante pode ligar / desligar skin4
-                    skin4Toggle.interactable = true;
-
-                    // E não pode comprar mais ele
-                    comprarSkin4.interactable = false;
-                }
-            }
-        }*/
     }
 
     public void ComprarSkin5()
     {
         StartCoroutine("VerificarConexaoComprarSkin5");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Se ainda não comprou a skin, não pode ligar / desligar
-            if (skin5Toggle.interactable == false)
-            {
-                // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(CUSTO_SKIN5))
-                {
-                    // Retirar pc
-                    RetirarPowercells(CUSTO_SKIN5);
-
-                    // Indica no GS que comprou skin5
-                    BuySkin5();
-
-                    // Daqui em diante pode ligar / desligar skin5
-                    skin5Toggle.interactable = true;
-
-                    // E não pode comprar mais ele
-                    comprarSkin5.interactable = false;
-                }
-            }
-        }*/
     }
 
     public void ComprarSkin6()
     {
         StartCoroutine("VerificarConexaoComprarSkin6");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Se ainda não comprou a skin, não pode ligar / desligar
-            if (skin6Toggle.interactable == false)
-            {
-                // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(CUSTO_SKIN6))
-                {
-                    // Retirar pc
-                    RetirarPowercells(CUSTO_SKIN6);
+    }
 
-                    // Indica no GS que comprou skin6
-                    BuySkin6();
+    public void ComprarSkin7()
+    {
+        StartCoroutine("VerificarConexaoComprarSkin7");
+    }
 
-                    // Daqui em diante pode ligar / desligar skin6
-                    skin6Toggle.interactable = true;
+    public void ComprarSkin8()
+    {
+        StartCoroutine("VerificarConexaoComprarSkin8");
+    }
 
-                    // E não pode comprar mais ele
-                    comprarSkin6.interactable = false;
-                }
-            }
-        }*/
+    public void ComprarSkin9()
+    {
+        StartCoroutine("VerificarConexaoComprarSkin9");
+    }
+
+    public void ComprarSkin10()
+    {
+        StartCoroutine("VerificarConexaoComprarSkin10");
+    }
+
+    public void ComprarSkin11()
+    {
+        StartCoroutine("VerificarConexaoComprarSkin11");
+    }
+
+    public void ComprarSkin12()
+    {
+        StartCoroutine("VerificarConexaoComprarSkin12");
+    }
+
+    public void ComprarSkin13()
+    {
+        StartCoroutine("VerificarConexaoComprarSkin13");
     }
 
     public void ComprarLaser()
     {
         StartCoroutine("VerificarConexaoComprarLaser");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Se ainda não comprou o laser, não pode ligar / desligar
-            if (laserToggle.interactable == false)
-            {
-                // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(CUSTO_LASER))
-                {
-                    // Retirar pc
-                    RetirarPowercells(CUSTO_LASER);
-
-                    // Indica no GS que comprou laser
-                    ComprarLaserGS();
-
-                    // Daqui em diante pode ligar / desligar laser
-                    laserToggle.interactable = true;
-
-                    // E não pode comprar mais ele
-                    comprarLaser.interactable = false;
-                }
-            }
-        }*/
     }
 
     public void ComprarMinimapa()
     {
         StartCoroutine("VerificarConexaoComprarMinimapa");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Se ainda não comprou o laser, não pode ligar / desligar
-            if (minimapToggle.interactable == false)
-            {
-                // Verifica se tem powercells suficiente pra compra
-                if (haveEnoughPowercells(CUSTO_MINIMAPA))
-                {
-                    // Retirar pc
-                    RetirarPowercells(CUSTO_MINIMAPA);
+    }
 
-                    // Indica no GS que comprou minimapa
-                    ComprarMinimapaGS();
-
-                    // Daqui em diante pode ligar / desligar minimapa
-                    minimapToggle.interactable = true;
-
-                    // E não pode comprar mais ele
-                    comprarMinimapa.interactable = false;
-                }
-            }
-        }*/
+    public void ComprarMark()
+    {
+        StartCoroutine("VerificarConexaoComprarMark");
     }
 
     public void RetirarPowercells(int value) {
@@ -439,6 +272,7 @@ public class ShopManager : MonoBehaviour {
                         GSData data = response.ScriptData.GetGSData("player_Data");
                         int laser = (int)data.GetInt("laser");
                         int minimapa = (int)data.GetInt("minimap");
+                        int mark = (int)data.GetInt("mark");
 
                         int skin1 = (int)data.GetInt("skin1");
                         int skin2 = (int)data.GetInt("skin2");
@@ -446,6 +280,13 @@ public class ShopManager : MonoBehaviour {
                         int skin4 = (int)data.GetInt("skin4");
                         int skin5 = (int)data.GetInt("skin5");
                         int skin6 = (int)data.GetInt("skin6");
+                        int skin7 = (int)data.GetInt("skin7");
+                        int skin8 = (int)data.GetInt("skin8");
+                        int skin9 = (int)data.GetInt("skin9");
+                        int skin10 = (int)data.GetInt("skin10");
+                        int skin11 = (int)data.GetInt("skin11");
+                        int skin12 = (int)data.GetInt("skin12");
+                        int skin13 = (int)data.GetInt("skin13");
 
                         // Se o laser foi comprado
                         if (laser != 0)
@@ -473,6 +314,20 @@ public class ShopManager : MonoBehaviour {
                             // Só pode ligar / desligar minimapa depois de comprar
                             minimapToggle.interactable = false;
                             comprarMinimapa.interactable = true;
+                        }
+
+                        // Se a marca foi comprada
+                        if (mark != 0)
+                        {
+                            // Pode ligar / desligar marca
+                            markToggle.interactable = true;
+                            comprarMark.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar marca depois de comprar
+                            markToggle.interactable = false;
+                            comprarMark.interactable = true;
                         }
 
                         // Se skin 1 foi comprada
@@ -559,6 +414,104 @@ public class ShopManager : MonoBehaviour {
                             comprarSkin6.interactable = true;
                         }
 
+                        // Se skin 6 foi comprada
+                        if (skin7 != 0)
+                        {
+                            // Pode ligar / desligar skin6
+                            skin7Toggle.interactable = true;
+                            comprarSkin7.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin6 depois de comprar
+                            skin7Toggle.interactable = false;
+                            comprarSkin7.interactable = true;
+                        }
+
+                        // Se skin 6 foi comprada
+                        if (skin8 != 0)
+                        {
+                            // Pode ligar / desligar skin6
+                            skin8Toggle.interactable = true;
+                            comprarSkin8.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin6 depois de comprar
+                            skin8Toggle.interactable = false;
+                            comprarSkin8.interactable = true;
+                        }
+
+                        // Se skin 6 foi comprada
+                        if (skin9 != 0)
+                        {
+                            // Pode ligar / desligar skin6
+                            skin9Toggle.interactable = true;
+                            comprarSkin9.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin6 depois de comprar
+                            skin9Toggle.interactable = false;
+                            comprarSkin9.interactable = true;
+                        }
+
+                        // Se skin 6 foi comprada
+                        if (skin10 != 0)
+                        {
+                            // Pode ligar / desligar skin6
+                            skin10Toggle.interactable = true;
+                            comprarSkin10.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin6 depois de comprar
+                            skin10Toggle.interactable = false;
+                            comprarSkin10.interactable = true;
+                        }
+
+                        // Se skin 6 foi comprada
+                        if (skin11 != 0)
+                        {
+                            // Pode ligar / desligar skin6
+                            skin11Toggle.interactable = true;
+                            comprarSkin11.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin6 depois de comprar
+                            skin11Toggle.interactable = false;
+                            comprarSkin11.interactable = true;
+                        }
+
+                        // Se skin 6 foi comprada
+                        if (skin12 != 0)
+                        {
+                            // Pode ligar / desligar skin6
+                            skin12Toggle.interactable = true;
+                            comprarSkin12.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin6 depois de comprar
+                            skin12Toggle.interactable = false;
+                            comprarSkin12.interactable = true;
+                        }
+
+                        // Se skin 6 foi comprada
+                        if (skin13 != 0)
+                        {
+                            // Pode ligar / desligar skin6
+                            skin13Toggle.interactable = true;
+                            comprarSkin13.interactable = false;
+                        }
+                        else
+                        {
+                            // Só pode ligar / desligar skin6 depois de comprar
+                            skin13Toggle.interactable = false;
+                            comprarSkin13.interactable = true;
+                        }
+
                         //Debug.Log("Recieved Player Laser/Minimap Data From GameSparks...");
                     }
                     else
@@ -592,6 +545,25 @@ public class ShopManager : MonoBehaviour {
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("BUY_MINIMAP")
             .SetEventAttribute("MINIMAP", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Comprou minimapa...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Player Data...");
+                }
+            });
+    }
+
+    private void ComprarMarkGS()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_MARK")
+            .SetEventAttribute("MARK", 1)
             .Send((response) =>
             {
 
@@ -706,6 +678,139 @@ public class ShopManager : MonoBehaviour {
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("BUY_SKIN6")
             .SetEventAttribute("SKIN6", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Comprou skin6...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    public void BuySkin7()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN7")
+            .SetEventAttribute("SKIN7", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Comprou skin6...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    public void BuySkin8()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN8")
+            .SetEventAttribute("SKIN8", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Comprou skin6...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    public void BuySkin9()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN9")
+            .SetEventAttribute("SKIN9", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Comprou skin6...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    public void BuySkin10()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN10")
+            .SetEventAttribute("SKIN10", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Comprou skin6...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    public void BuySkin11()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN11")
+            .SetEventAttribute("SKIN11", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Comprou skin6...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    public void BuySkin12()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN12")
+            .SetEventAttribute("SKIN12", 1)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Comprou skin6...");
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Skin6 Data...");
+                }
+            });
+    }
+
+    public void BuySkin13()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("BUY_SKIN13")
+            .SetEventAttribute("SKIN13", 1)
             .Send((response) =>
             {
 
@@ -1075,6 +1180,272 @@ public class ShopManager : MonoBehaviour {
         }
     }
 
+    IEnumerator VerificarConexaoComprarSkin7()
+    {
+        // Chama o teste de conexão em ModoOffline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Online");
+            // Se ainda não comprou a skin, não pode ligar / desligar
+            if (skin7Toggle.interactable == false)
+            {
+                // Verifica se tem powercells suficiente pra compra
+                if (haveEnoughPowercells(CUSTO_SKIN7))
+                {
+                    // Retirar pc
+                    RetirarPowercells(CUSTO_SKIN7);
+
+                    // Indica no GS que comprou a skin
+                    BuySkin7();
+
+                    // Daqui em diante pode ligar / desligar a skin
+                    skin7Toggle.interactable = true;
+
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin7", 1);
+                    skin7Toggle.isOn = true;
+
+                    // E não pode comprar mais ela
+                    comprarSkin7.interactable = false;
+                }
+            }
+        }
+    }
+
+    IEnumerator VerificarConexaoComprarSkin8()
+    {
+        // Chama o teste de conexão em ModoOffline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Online");
+            // Se ainda não comprou a skin, não pode ligar / desligar
+            if (skin8Toggle.interactable == false)
+            {
+                // Verifica se tem powercells suficiente pra compra
+                if (haveEnoughPowercells(CUSTO_SKIN8))
+                {
+                    // Retirar pc
+                    RetirarPowercells(CUSTO_SKIN8);
+
+                    // Indica no GS que comprou a skin
+                    BuySkin8();
+
+                    // Daqui em diante pode ligar / desligar a skin
+                    skin8Toggle.interactable = true;
+
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin8", 1);
+                    skin8Toggle.isOn = true;
+
+                    // E não pode comprar mais ela
+                    comprarSkin8.interactable = false;
+                }
+            }
+        }
+    }
+
+    IEnumerator VerificarConexaoComprarSkin9()
+    {
+        // Chama o teste de conexão em ModoOffline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Online");
+            // Se ainda não comprou a skin, não pode ligar / desligar
+            if (skin9Toggle.interactable == false)
+            {
+                // Verifica se tem powercells suficiente pra compra
+                if (haveEnoughPowercells(CUSTO_SKIN9))
+                {
+                    // Retirar pc
+                    RetirarPowercells(CUSTO_SKIN9);
+
+                    // Indica no GS que comprou a skin
+                    BuySkin9();
+
+                    // Daqui em diante pode ligar / desligar a skin
+                    skin9Toggle.interactable = true;
+
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin9", 1);
+                    skin9Toggle.isOn = true;
+
+                    // E não pode comprar mais ela
+                    comprarSkin9.interactable = false;
+                }
+            }
+        }
+    }
+
+    IEnumerator VerificarConexaoComprarSkin10()
+    {
+        // Chama o teste de conexão em ModoOffline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Online");
+            // Se ainda não comprou a skin, não pode ligar / desligar
+            if (skin10Toggle.interactable == false)
+            {
+                // Verifica se tem powercells suficiente pra compra
+                if (haveEnoughPowercells(CUSTO_SKIN10))
+                {
+                    // Retirar pc
+                    RetirarPowercells(CUSTO_SKIN10);
+
+                    // Indica no GS que comprou a skin
+                    BuySkin10();
+
+                    // Daqui em diante pode ligar / desligar a skin
+                    skin10Toggle.interactable = true;
+
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin10", 1);
+                    skin10Toggle.isOn = true;
+
+                    // E não pode comprar mais ela
+                    comprarSkin10.interactable = false;
+                }
+            }
+        }
+    }
+
+    IEnumerator VerificarConexaoComprarSkin11()
+    {
+        // Chama o teste de conexão em ModoOffline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Online");
+            // Se ainda não comprou a skin, não pode ligar / desligar
+            if (skin11Toggle.interactable == false)
+            {
+                // Verifica se tem powercells suficiente pra compra
+                if (haveEnoughPowercells(CUSTO_SKIN11))
+                {
+                    // Retirar pc
+                    RetirarPowercells(CUSTO_SKIN11);
+
+                    // Indica no GS que comprou a skin
+                    BuySkin11();
+
+                    // Daqui em diante pode ligar / desligar a skin
+                    skin11Toggle.interactable = true;
+
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin11", 1);
+                    skin11Toggle.isOn = true;
+
+                    // E não pode comprar mais ela
+                    comprarSkin11.interactable = false;
+                }
+            }
+        }
+    }
+
+    IEnumerator VerificarConexaoComprarSkin12()
+    {
+        // Chama o teste de conexão em ModoOffline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Online");
+            // Se ainda não comprou a skin, não pode ligar / desligar
+            if (skin12Toggle.interactable == false)
+            {
+                // Verifica se tem powercells suficiente pra compra
+                if (haveEnoughPowercells(CUSTO_SKIN12))
+                {
+                    // Retirar pc
+                    RetirarPowercells(CUSTO_SKIN12);
+
+                    // Indica no GS que comprou a skin
+                    BuySkin12();
+
+                    // Daqui em diante pode ligar / desligar a skin
+                    skin12Toggle.interactable = true;
+
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin12", 1);
+                    skin12Toggle.isOn = true;
+
+                    // E não pode comprar mais ela
+                    comprarSkin12.interactable = false;
+                }
+            }
+        }
+    }
+
+    IEnumerator VerificarConexaoComprarSkin13()
+    {
+        // Chama o teste de conexão em ModoOffline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Online");
+            // Se ainda não comprou a skin, não pode ligar / desligar
+            if (skin13Toggle.interactable == false)
+            {
+                // Verifica se tem powercells suficiente pra compra
+                if (haveEnoughPowercells(CUSTO_SKIN13))
+                {
+                    // Retirar pc
+                    RetirarPowercells(CUSTO_SKIN13);
+
+                    // Indica no GS que comprou a skin
+                    BuySkin13();
+
+                    // Daqui em diante pode ligar / desligar a skin
+                    skin13Toggle.interactable = true;
+
+                    ZerarSkins();
+                    PlayerPrefs.SetInt("Skin13", 1);
+                    skin13Toggle.isOn = true;
+
+                    // E não pode comprar mais ela
+                    comprarSkin13.interactable = false;
+                }
+            }
+        }
+    }
+
     IEnumerator VerificarConexaoComprarLaser()
     {
         // Chama o teste de conexão em ModoOffline
@@ -1146,6 +1517,44 @@ public class ShopManager : MonoBehaviour {
 
                     // E não pode comprar mais ele
                     comprarMinimapa.interactable = false;
+                }
+            }
+        }
+    }
+
+    IEnumerator VerificarConexaoComprarMark()
+    {
+        // Chama o teste de conexão em ModoOffline
+        gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
+
+        // Aguarda até terminar o teste
+        yield return new WaitUntil(() => gameSparksManager.GetComponent<ModoOffline>().getTestandoConexao() == false);
+
+        // Age de acordo com o resultado, offline ou online
+        if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
+        {
+            //Debug.Log("Acao - Online");
+            // Se ainda não comprou a marca, não pode ligar / desligar
+            if (markToggle.interactable == false)
+            {
+                // Verifica se tem powercells suficiente pra compra
+                if (haveEnoughPowercells(CUSTO_MARK))
+                {
+                    // Retirar pc
+                    RetirarPowercells(CUSTO_MARK);
+
+                    // Indica no GS que comprou marca
+                    ComprarMarkGS();
+
+                    // Daqui em diante pode ligar / desligar minimapa
+                    markToggle.interactable = true;
+
+                    markToggle.isOn = true;
+                    PlayerPrefs.SetInt("Mark", 1);
+                    markToggle.transform.GetChild(1).GetComponent<Text>().text = "     Marca ligada";
+
+                    // E não pode comprar mais ele
+                    comprarMark.interactable = false;
                 }
             }
         }

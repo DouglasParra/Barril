@@ -13,27 +13,38 @@ public class ModoOffline : MonoBehaviour {
     [SerializeField]
     private bool modoOffline;
 
+    private int testeNo;
+
     IEnumerator checkInternetConnection()
     {
         testandoConexao = true;
-        Debug.Log("Testando conexão");
+        //Debug.Log("Testando conexão");
 
         WWW www = new WWW("http://google.com");
         yield return www;
         if (www.error != null)
         {
-            Debug.Log("Sem conexao");
-            modoOffline = true;
-            testandoConexao = false;
+            if (testeNo > 5)
+            {
+                //Debug.Log("Sem conexao");
+                modoOffline = true;
+                testandoConexao = false;
+            }
+            else
+            {
+                testeNo++;
+                yield return new WaitForSeconds(0.5f);
+                StartCoroutine(checkInternetConnection());
+            }
         }
         else
         {
-            Debug.Log("Conectado");
+            //Debug.Log("Conectado");
             modoOffline = false;
             testandoConexao = false;
         }
 
-        Debug.Log("Acabou teste");
+        //Debug.Log("Acabou teste");
     }
 
     void Awake() {
@@ -52,7 +63,8 @@ public class ModoOffline : MonoBehaviour {
     public void TestarConexao()
     {
         modoOffline = false;
-        Debug.Log("Chamando checkInternetConnection");
+        testeNo = 1;
+        //Debug.Log("Chamando checkInternetConnection");
         StartCoroutine("checkInternetConnection");
     }
 

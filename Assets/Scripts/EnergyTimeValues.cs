@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GameSparks.Core;
 
 public class EnergyTimeValues : MonoBehaviour {
 
     private int minutos;
     private int segundos;
     private int vidas;
+    [SerializeField]
+    private int powercells;
 
     private int tempoDesdeInicio;
 
@@ -51,5 +54,55 @@ public class EnergyTimeValues : MonoBehaviour {
 
         PlayerPrefs.SetString("Minutos", minutos.ToString());
         PlayerPrefs.SetString("Segundos", segundos.ToString());
+    }
+
+    public void LoadPowercells()
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("RETRIEVE_RECORDS")
+                .Send((response) =>
+                {
+                    if (!response.HasErrors)
+                    {
+                        GSData data = response.ScriptData.GetGSData("player_Data");
+                        powercells = (int)data.GetInt("powercell");
+
+                        //Debug.Log("Recieved Player Powercells Data From GameSparks...");
+                    }
+                    else
+                    {
+                        //Debug.Log("Error Loading Player Powercell Data...");
+                    }
+                });
+    }
+
+    public void SavePowercells(int value)
+    {
+        new GameSparks.Api.Requests.LogEventRequest()
+            .SetEventKey("SAVE_POWERCELLS")
+            .SetEventAttribute("POWERCELL", value)
+            .Send((response) =>
+            {
+
+                if (!response.HasErrors)
+                {
+                    //Debug.Log("Adicionou " + value + " powercells");
+                    powercells = value;
+                }
+                else
+                {
+                    //Debug.Log("Error Saving Player Data...");
+                }
+            });
+    }
+
+    public int getPowercells()
+    {
+        return powercells;
+    }
+
+    public void setPowercells(int value)
+    {
+        powercells = value;
     }
 }

@@ -57,4 +57,9 @@ public class TutorialMainMenu : MonoBehaviour {
             tutorialCanvas.SetActive(false);
         }
     }
+
+    public void PularTutorial()
+    {
+        tutorialCanvas.SetActive(false);
+    }
 }

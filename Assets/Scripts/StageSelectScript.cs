@@ -41,6 +41,7 @@ public class StageSelectScript : MonoBehaviour
             gameSparksManager.AddComponent<UserManager>();
             gameSparksManager.AddComponent<EnergyTimeValues>();
             gameSparksManager.AddComponent<ModoOffline>();
+            gameSparksManager.AddComponent<GooglePlayOrbe>();
         }
     }
 
@@ -69,7 +70,11 @@ public class StageSelectScript : MonoBehaviour
 
         //mundoAtual = 0;
         LiberarFases();
-        mundoAtual = (PlayerPrefs.GetInt("Fases") - 1) / 10;
+
+        // Mostra mundo mais avançado
+        mundoAtual = ((PlayerPrefs.GetInt("Fases") - 1) / 10) - 1;
+        if (mundoAtual < 0) mundoAtual = 7;
+        nextWorld();
     }
 
     void Update() {
@@ -212,6 +217,11 @@ public class StageSelectScript : MonoBehaviour
         energyTime.GetComponent<EnergyTime>().SaveMinuteSeconds();
     }
 
+    public void ShowAchievementsGooglePlay()
+    {
+        gameSparksManager.GetComponent<GooglePlayOrbe>().ShowAchievementsGooglePlay();
+    }
+
     void OnApplicationQuit() {
         gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
         gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
@@ -219,4 +229,6 @@ public class StageSelectScript : MonoBehaviour
         PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
         //SaveMinuteSeconds();
     }
+
+
 }

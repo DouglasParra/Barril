@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
     public AudioMixer masterMixer;
 
     private int perderVidaFlag;
+    private int powercells;
 
 	void Awake () {
         gameSparksManager = GameObject.Find("GameSparks Manager");
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour {
             gameSparksManager.AddComponent<UserManager>();
             gameSparksManager.AddComponent<EnergyTimeValues>();
             gameSparksManager.AddComponent<ModoOffline>();
+            gameSparksManager.AddComponent<GooglePlayOrbe>();
         }
 
 		startAll ();
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour {
 
         PlayerPrefs.SetInt("MainMenuOff", 1);
 
+        energyText.text = PlayerPrefs.GetInt("Vidas").ToString();
         StartCoroutine("CarregarVida");
         // Se tem conexão com a internet
         /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
@@ -181,8 +184,112 @@ public class GameManager : MonoBehaviour {
             {
                 SalvarFases();
             }
+
+            verifyGoogleAchievements();
         }
 	}
+
+    private void verifyGoogleAchievements()
+    {
+        powercells = gameSparksManager.GetComponent<EnergyTimeValues>().getPowercells();
+
+        if (PlayerPrefs.GetInt("Fases") >= 11)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementClearWorld1();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 5);
+        }
+
+        if (PlayerPrefs.GetInt("Fases") >= 21)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementClearWorld2();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 5);
+        }
+
+        if (PlayerPrefs.GetInt("Fases") >= 31)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementClearWorld3();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 5);
+        }
+
+        if (PlayerPrefs.GetInt("Fases") >= 41)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementClearWorld4();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 5);
+        }
+
+        if (PlayerPrefs.GetInt("Fases") >= 51)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementClearWorld5();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 10);
+        }
+
+        if (PlayerPrefs.GetInt("Fases") >= 61)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementClearWorld6();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 10);
+        }
+
+        if (PlayerPrefs.GetInt("Fases") >= 71)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementClearWorld7();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 15);
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("8-10"))
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementClearWorld8();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 20);
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("1-1") && ClockTimeInt() <= 6589)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementStage1_1Time();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 5);
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("2-9") && ClockTimeInt() <= 14000)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementStage2_9Time();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 5);
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("3-5") && ClockTimeInt() <= 12799)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementStage3_5Time();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 5);
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("4-3") && ClockTimeInt() <= 16733)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementStage4_3Time();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 5);
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("5-4") && ClockTimeInt() <= 12000)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementStage5_4Time();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 5);
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("6-7") && ClockTimeInt() <= 210787)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementStage6_7Time();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 10);
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("7-9") && ClockTimeInt() <= 147830)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementStage7_9Time();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 20);
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("8-10") && ClockTimeInt() <= 935512)
+        {
+            gameSparksManager.GetComponent<GooglePlayOrbe>().UnlockAchievementStage8_10Time();
+            gameSparksManager.GetComponent<EnergyTimeValues>().SavePowercells(powercells + 20);
+        }
+
+    }
 
     void SalvarFases()
     {
@@ -308,8 +415,9 @@ public class GameManager : MonoBehaviour {
 		//Debug.Log ("Venci - " + clockTime.timestring + " -- " + clockTime.timer);
 
         // Transforma o tempo em int
-        int teste2 = ClockTimeInt();
-
+        // int teste2 = ClockTimeInt();
+        string[] m1 = SceneManager.GetActiveScene().name.Split('-');
+        PlayerPrefs.SetInt("LEADERBOARD_" + m1[0] + "_" + m1[1], ClockTimeInt());
         //Debug.Log(teste2);
         //Debug.Log("CT: " + clockTime.RetornaTempoString(teste2));
 
@@ -356,6 +464,7 @@ public class GameManager : MonoBehaviour {
             new GameSparks.Api.Requests.LogEventRequest()
                 .SetEventKey("SAVE_STAGE_" + m1[0] + "_" + m1[1])
                 .SetEventAttribute("TIME_" + m1[0] + "_" + m1[1], ClockTimeInt())
+                .SetDurable(true)
                 .Send((response) =>
                 {
 
@@ -363,6 +472,7 @@ public class GameManager : MonoBehaviour {
                     {
                         //Debug.Log("Player Saved To GameSparks...");
                         //Debug.Log("Score Posted Sucessfully...");
+                        PlayerPrefs.DeleteKey("LEADERBOARD_" + m1[0] + "_" + m1[1]);
                     }
                     else
                     {
@@ -531,6 +641,7 @@ public class GameManager : MonoBehaviour {
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("SAVE_LIFES")
             .SetEventAttribute("LIFE", vida)
+            .SetDurable(true)
             .Send((response) =>
             {
 
@@ -585,6 +696,9 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator PerderVida()
     {
+        energyText.text = (int.Parse(energyText.text) - 1).ToString();
+        PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
+
         // Chama o teste de conexão em ModoOffline
         gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
 
@@ -594,14 +708,13 @@ public class GameManager : MonoBehaviour {
         // Age de acordo com o resultado, offline ou online
         if (gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
-            //Debug.Log("Acao - Offline");
-            energyText.text = (int.Parse(energyText.text) - 1).ToString();
+            Debug.Log("Acao - Offline - PerderVida");
             PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
         }
         else
         {
             //Debug.Log("Acao - Online");
-            LoseLife(int.Parse(energyText.text) - 1);
+            LoseLife(int.Parse(energyText.text));
         }
 
         if ((int.Parse(energyText.text)) <= 0)
@@ -646,4 +759,5 @@ public class GameManager : MonoBehaviour {
             SalvarTempoGameSparks();
         }
     }
+
 }

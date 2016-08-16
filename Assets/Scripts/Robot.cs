@@ -29,6 +29,7 @@ public class Robot : MonoBehaviour {
         GameObject g = Instantiate(Resources.Load("RobotInicial"), transform.position, transform.rotation) as GameObject;
         g.GetComponent<Animator>().SetInteger("Skin", gameObject.GetComponent<RobotSkins>().skinNo);
         g.transform.parent = this.transform.parent;
+
         StartCoroutine("TocarAnimacaoInicial", g);
 	}
 	
@@ -85,6 +86,32 @@ public class Robot : MonoBehaviour {
                 if (PlayerPrefs.GetInt("Laser") == 1)
                 {
                     laser.SetActive(true);
+                }
+            }
+
+            // Marca
+            if (PlayerPrefs.GetInt("Mark") == 1)
+            {
+                if (!coll.gameObject.name.StartsWith("FAL") &&
+                    !coll.gameObject.name.StartsWith("FIN"))
+                {
+                    bool passouMark = false;
+                    for (int i = 0; i < coll.transform.childCount; i++)
+                    {
+                        if (coll.transform.GetChild(i).name.StartsWith("Mark"))
+                        {
+                            passouMark = true;
+                            break;
+                        }
+                    }
+
+                    if (!passouMark)
+                    {
+                        GameObject g = Instantiate(Resources.Load("Mark"), coll.transform.position, coll.transform.rotation) as GameObject;
+                        g.transform.SetParent(coll.transform);
+                        g.transform.localScale = new Vector3(3, 3, 1);
+                    }
+                    
                 }
             }
 

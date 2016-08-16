@@ -55,6 +55,7 @@ public class PowercellsManager : MonoBehaviour {
                     //Debug.Log("Adicionou " + value + " powercells");
                     powercells.text = (int.Parse(powercells.text) + value).ToString();
                     powercellsLoja.text = powercells.text;
+                    gameSparksManager.GetComponent<EnergyTimeValues>().setPowercells(int.Parse(powercells.text));
                 }
                 else
                 {

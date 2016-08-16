@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 public class TitleScene : MonoBehaviour {
 
     public GameObject loadingMini;
+    public GameObject buttonSFX;
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -36,6 +37,11 @@ public class TitleScene : MonoBehaviour {
     }
 
 	public void changeScene() {
+        if (PlayerPrefs.GetInt("soundOnOff") == 1)
+        {
+            buttonSFX.GetComponent<AudioSource>().Play();
+        }
+
 		if (PlayerPrefs.HasKey("tutorialDone") && PlayerPrefs.GetInt("tutorialDone")==1) {
             loadingMini.SetActive(true);
             StartCoroutine("LoadNewScene", "StageSelect");

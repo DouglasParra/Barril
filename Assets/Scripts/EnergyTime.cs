@@ -202,7 +202,7 @@ public class EnergyTime : MonoBehaviour {
 
         time.text = minutos.ToString("00") + ":" + segundos.ToString("00");
 
-        Debug.Log("Entrou initializeEnergyTime");
+        //Debug.Log("Entrou initializeEnergyTime");
 
         if (int.Parse(life.text) < MAX_VIDAS)
         {

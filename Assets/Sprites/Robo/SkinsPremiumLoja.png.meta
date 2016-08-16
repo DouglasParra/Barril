@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: 485f1e712c885b743a9ac3a9e8b25244
+timeCreated: 1470703757
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SkinsPremiumLoja_0
+    21300002: SkinsPremiumLoja_1
+    21300004: SkinsPremiumLoja_2
+    21300006: SkinsPremiumLoja_3
+    21300008: SkinsPremiumLoja_4
+    21300010: SkinsPremiumLoja_5
+    21300012: SkinsPremiumLoja_6
+    21300014: SkinsPremiumLoja_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SkinsPremiumLoja_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 67}
+        - {x: -52, y: 44}
+        - {x: -52, y: -17}
+        - {x: -36, y: -62}
+        - {x: 30, y: -62}
+        - {x: 52, y: -21}
+        - {x: 52, y: 26}
+        - {x: 19, y: 67}
+    - name: SkinsPremiumLoja_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 62}
+        - {x: -52, y: 26}
+        - {x: -52, y: -15}
+        - {x: -28, y: -62}
+        - {x: -23, y: -63}
+        - {x: 18, y: -63}
+        - {x: 52, y: -19}
+        - {x: 52, y: 29}
+        - {x: 11, y: 62}
+    - name: SkinsPremiumLoja_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 62}
+        - {x: -52, y: 29}
+        - {x: -52, y: -23}
+        - {x: -20, y: -63}
+        - {x: 13, y: -63}
+        - {x: 45, y: -34}
+        - {x: 52, y: -21}
+        - {x: 52, y: 30}
+        - {x: 26, y: 62}
+    - name: SkinsPremiumLoja_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 34, y: 62}
+        - {x: -19, y: 62}
+        - {x: -52, y: 45}
+        - {x: -52, y: -28}
+        - {x: -16, y: -63}
+        - {x: 18, y: -63}
+        - {x: 52, y: -17}
+        - {x: 52, y: 26}
+    - name: SkinsPremiumLoja_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 23, y: 62}
+        - {x: -26, y: 62}
+        - {x: -52, y: 25}
+        - {x: -52, y: -10}
+        - {x: -27, y: -60}
+        - {x: -15, y: -63}
+        - {x: 20, y: -63}
+        - {x: 47, y: -41}
+        - {x: 52, y: -17}
+        - {x: 52, y: 39}
+    - name: SkinsPremiumLoja_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 61}
+        - {x: -52, y: 35}
+        - {x: -52, y: -16}
+        - {x: -35, y: -64}
+        - {x: 26, y: -64}
+        - {x: 52, y: -22}
+        - {x: 52, y: 44}
+        - {x: 23, y: 61}
+    - name: SkinsPremiumLoja_6
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 62}
+        - {x: -52, y: 26}
+        - {x: -52, y: -15}
+        - {x: -28, y: -62}
+        - {x: -23, y: -63}
+        - {x: 18, y: -63}
+        - {x: 52, y: -19}
+        - {x: 52, y: 29}
+        - {x: 11, y: 62}
+    - name: SkinsPremiumLoja_7
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38, y: 62}
+        - {x: -52, y: 30}
+        - {x: -52, y: -48}
+        - {x: -38, y: -63}
+        - {x: 15, y: -63}
+        - {x: 52, y: -50}
+        - {x: 52, y: 32}
+        - {x: 17, y: 62}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
