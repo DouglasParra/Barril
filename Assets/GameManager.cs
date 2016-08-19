@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
+using System;
+using Facebook.Unity;
 using GameSparks.Core;
 using System.Collections.Generic;
 using UnityEngine.Audio;
@@ -64,17 +65,6 @@ public class GameManager : MonoBehaviour {
 
         energyText.text = PlayerPrefs.GetInt("Vidas").ToString();
         StartCoroutine("CarregarVida");
-        // Se tem conexão com a internet
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            // Pega vida do GameSparks
-            LoadLife();
-        }
-        else 
-        {
-            // Senão, pega do PlayerPrefs
-            energyText.text = PlayerPrefs.GetInt("Vidas").ToString();
-        }*/
 	}
 
     void Start() {
@@ -117,10 +107,10 @@ public class GameManager : MonoBehaviour {
 
     private void BloquearBotoes()
     {
-        Debug.Log("Chamando BloquearBotoes " + energyText.text);
+        //Debug.Log("Chamando BloquearBotoes " + energyText.text);
         if (int.Parse(energyText.text) <= 1)
         {
-            Debug.Log(pauseModal.transform.GetChild(0).GetChild(2).name);
+            //Debug.Log(pauseModal.transform.GetChild(0).GetChild(2).name);
             pauseModal.transform.GetChild(0).GetChild(2).gameObject.GetComponent<Button>().interactable = false;
         }
     }
@@ -132,7 +122,10 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+        if (gameSparksManager.GetComponent<EnergyTimeValues>().getVidas() >= 5)
+        {
+            gameSparksManager.GetComponent<EnergyTimeValues>().PararCountdownTimer();
+        }
 	}
 
 	public void loseGame () {
@@ -141,24 +134,6 @@ public class GameManager : MonoBehaviour {
 
         perderVidaFlag = 0;
         StartCoroutine("PerderVida");
-        /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-        {
-            //Debug.Log("Conectado, perdendo vida no GS" + (int.Parse(energyText.text) - 1).ToString());
-            LoseLife(int.Parse(energyText.text) - 1);
-        }
-        else
-        {
-            //Debug.Log("Sem conexão, perdendo vida no PlayerPrefs " + (int.Parse(energyText.text) - 1).ToString());
-            energyText.text = (int.Parse(energyText.text) - 1).ToString();
-            PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
-        }*/
-
-        // Desabilita botões de reiniciar fase do começo e do checkpoint
-        /*if ((int.Parse(energyText.text)) <= 0)
-        {
-            loseModal.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
-            loseModal.transform.GetChild(0).GetChild(2).GetComponent<Button>().interactable = false;
-        }*/
 	}
 
 	public void victoryGame () {
@@ -359,15 +334,6 @@ public class GameManager : MonoBehaviour {
         {
             perderVidaFlag = 1;
             StartCoroutine("PerderVida");
-            /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-            {
-                LoseLife(int.Parse(energyText.text) - 1);
-            }
-            else 
-            {
-                energyText.text = (int.Parse(energyText.text) - 1).ToString();
-                PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
-            }*/
         }else{
             loadingMini.SetActive(true);
             StartCoroutine("LoadNewScene", "StageSelect");
@@ -393,15 +359,6 @@ public class GameManager : MonoBehaviour {
         {
             perderVidaFlag = 2;
             StartCoroutine("PerderVida");
-            /*if (!gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
-            {
-                LoseLife(int.Parse(energyText.text) - 1);
-            }
-            else
-            {
-                energyText.text = (int.Parse(energyText.text) - 1).ToString();
-                PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
-            }*/
         }
         else
         {
@@ -636,6 +593,7 @@ public class GameManager : MonoBehaviour {
         // Tira uma vida em jogo
         energyText.text = vida.ToString();
         PlayerPrefs.SetInt("Vidas", vida);
+        gameSparksManager.GetComponent<EnergyTimeValues>().setVidas(vida);
 
         // Tira uma vida no GS
         new GameSparks.Api.Requests.LogEventRequest()
@@ -656,6 +614,7 @@ public class GameManager : MonoBehaviour {
                     else if ((int.Parse(energyText.text)) == 4)
                     {
                         PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
+                        gameSparksManager.GetComponent<EnergyTimeValues>().IniciarCountdownTimer();
                     }
 
                 }
@@ -698,6 +657,7 @@ public class GameManager : MonoBehaviour {
     {
         energyText.text = (int.Parse(energyText.text) - 1).ToString();
         PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
+        gameSparksManager.GetComponent<EnergyTimeValues>().setVidas(int.Parse(energyText.text));
 
         // Chama o teste de conexão em ModoOffline
         gameSparksManager.GetComponent<ModoOffline>().TestarConexao();
@@ -708,8 +668,8 @@ public class GameManager : MonoBehaviour {
         // Age de acordo com o resultado, offline ou online
         if (gameSparksManager.GetComponent<ModoOffline>().getModoOffline())
         {
-            Debug.Log("Acao - Offline - PerderVida");
-            PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
+            //Debug.Log("Acao - Offline - PerderVida");
+            // PlayerPrefs.SetInt("Vidas", int.Parse(energyText.text));
         }
         else
         {
@@ -760,4 +720,31 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void CompartilharTempoFB()
+    {
+        FB.FeedShare(string.Empty, 
+                      new Uri("https://play.google.com/apps/testing/com.SDGStudio.Orb_e"), 
+                     "Record Orb-E", 
+                     "Fase " + SceneManager.GetActiveScene().name, 
+                     "Eu fiz o tempo de " + clockTime.timestring + "! Consegue superar?",
+                     new Uri("https://scontent.fgig1-4.fna.fbcdn.net/v/t1.0-9/14089323_225201597881813_4306982641321836974_n.jpg?oh=315466b6073dd254269e0b908c6f2a84&oe=585E9E9D"),
+                     string.Empty,
+                     ShareCallBack);
+    }
+
+    void ShareCallBack(IResult result)
+    {
+        if (result.Cancelled)
+        {
+            //Debug.Log("Success cancelled!");
+        }
+        else if(!string.IsNullOrEmpty(result.Error))
+        {
+            //Debug.Log("Error on share!");
+        }
+        else if (!string.IsNullOrEmpty(result.RawResult))
+        {
+            //Debug.Log("Success on share!");
+        }
+    }
 }

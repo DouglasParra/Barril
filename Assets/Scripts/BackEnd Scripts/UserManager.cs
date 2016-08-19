@@ -10,7 +10,9 @@ public class UserManager : MonoBehaviour
     public static UserManager instance;
 
     //These are the account details we want to pull in
+    [HideInInspector]
     public string userName;
+    [HideInInspector]
     public string userId;
     private string facebookId;
 

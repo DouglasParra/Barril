@@ -250,6 +250,7 @@ public class ShopManager : MonoBehaviour {
 
                 if (!respons.HasErrors)
                 {
+                    gameSparksManager.GetComponent<EnergyTimeValues>().setVidas(int.Parse(energyText.text) + value);
                     energyText.text = (int.Parse(energyText.text) + value).ToString();
                     energyTextLoja.text = energyText.text;
                     //Debug.Log("Adicionou " + value + " vidas");

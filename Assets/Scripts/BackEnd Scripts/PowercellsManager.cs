@@ -13,12 +13,11 @@ public class PowercellsManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gameSparksManager = GameObject.Find("GameSparks Manager");
-        // Se está online, carrega o valor de powercells
-        StartCoroutine("CarregarPowercells");
-        /*if (!GameObject.Find("GameSparks Manager").GetComponent<ModoOffline>().getModoOffline())
+
+        if (PlayerPrefs.GetInt("tutorialDone") == 1)
         {
-            LoadPowercells();
-        }*/
+            StartCoroutine("CarregarPowercells");
+        }
 	}
 
     private void LoadPowercells()
@@ -33,7 +32,7 @@ public class PowercellsManager : MonoBehaviour {
                         powercells.text = data.GetInt("powercell").ToString();
                         powercellsLoja.text = powercells.text;
 
-                        Debug.Log("Recieved Player Powercells Data From GameSparks...");
+                        //Debug.Log("Recieved Player Powercells Data From GameSparks...");
                     }
                     else
                     {

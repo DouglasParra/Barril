@@ -22,13 +22,18 @@ public class GooglePlayOrbe : MonoBehaviour {
     private string achievementStage7_9Time = "CgkIlq3pg48YEAIQDg";
     private string achievementStage8_10Time = "CgkIlq3pg48YEAIQDw";
 
-    void Start()
+    void Awake()
     {
-        PlayGamesPlatform.Activate();
+        //PlayGamesPlatform.Activate();
+        //GooglePlayLogin();
     }
 
 	public void GooglePlayOrbeActivate(){
-        PlayGamesPlatform.Activate();
+        // recommended for debugging:
+        //PlayGamesPlatform.DebugLogEnabled = true;
+        // Activate the Google Play Games platform
+        //PlayGamesPlatform.Activate();
+
         GooglePlayLogin();
     }
 
@@ -37,8 +42,16 @@ public class GooglePlayOrbe : MonoBehaviour {
         Social.localUser.Authenticate((bool success) =>
         {
             // handle success or failure
-            Debug.Log("Logado google play");
+            if (success == true)
+            {
+                Debug.Log("Logado google play");
+            }
+            else
+            {
+                Debug.Log("Google play login error");
+            }
         });
+
     }
 
     public void ShowAchievementsGooglePlay()

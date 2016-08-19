@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ModoOffline : MonoBehaviour {
 
@@ -15,23 +17,36 @@ public class ModoOffline : MonoBehaviour {
 
     private int testeNo;
 
+    public InputField debugText;
+
     IEnumerator checkInternetConnection()
     {
         testandoConexao = true;
+
+        //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+          //  debugText.text += "\nTestando conexão";
+
         //Debug.Log("Testando conexão");
 
-        WWW www = new WWW("http://google.com");
+        WWW www = new WWW("https://facebook.com");
         yield return www;
+
         if (www.error != null)
         {
             if (testeNo > 5)
             {
                 //Debug.Log("Sem conexao");
+                //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                  //  debugText.text += "\nSem conexao definitiva" + testeNo;
+
                 modoOffline = true;
                 testandoConexao = false;
             }
             else
             {
+                //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                  //  debugText.text += "\nSem conexao. Teste: " + testeNo;
+
                 testeNo++;
                 yield return new WaitForSeconds(0.5f);
                 StartCoroutine(checkInternetConnection());
@@ -65,6 +80,9 @@ public class ModoOffline : MonoBehaviour {
         modoOffline = false;
         testeNo = 1;
         //Debug.Log("Chamando checkInternetConnection");
+        //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+          //  debugText.text += "\nChamando checkInternetConnection";
+
         StartCoroutine("checkInternetConnection");
     }
 

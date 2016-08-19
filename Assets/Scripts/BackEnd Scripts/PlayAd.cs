@@ -4,10 +4,10 @@ using System.Collections;
 
 public class PlayAd : MonoBehaviour {
 
-    private GameObject energyTime;
+    private GameObject gameSparksManager;
 
     void Awake() {
-        energyTime = GetComponent<StageSelectScript>().energyTime;
+        gameSparksManager = GameObject.Find("GameSparks Manager");
     }
 
     public void ShowAd() {
@@ -21,7 +21,7 @@ public class PlayAd : MonoBehaviour {
         switch (result)
         {
             case ShowResult.Finished:
-                energyTime.GetComponent<EnergyTime>().GanharVida();
+                gameSparksManager.GetComponent<EnergyTimeValues>().GanharVida();
                 PlayerPrefs.SetInt("ADLifes", PlayerPrefs.GetInt("ADLifes") - 1);
                 //Debug.Log(PlayerPrefs.GetInt("ADLifes"));
                 //Debug.Log("Player gains 1 life");

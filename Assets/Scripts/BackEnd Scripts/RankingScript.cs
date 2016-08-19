@@ -144,7 +144,7 @@ public class RankingScript : MonoBehaviour {
         // m1[0] = String da cena antes do '-' ; m1[1] = String da cena depois do '-' ; 
         string[] m1 = stageSelected.Split('-');
 
-        Debug.Log("Fetching Leaderboard Data..." + stageSelected);
+        //Debug.Log("Fetching Leaderboard Data..." + stageSelected);
 
         int i = 0;
 

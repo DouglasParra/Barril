@@ -34,7 +34,7 @@ public class ExitGame : MonoBehaviour {
     void OnApplicationFocus(bool focusStatus)
     {
         //Debug.Log("AppFocus - " + focusStatus);
-        if (!focusStatus && SceneManager.GetActiveScene().name.Contains("-"))
+        if (!focusStatus && SceneManager.GetActiveScene().name.Contains("-") && !gameManager.GetComponent<GameManager>().victoryModal.activeInHierarchy && !gameManager.GetComponent<GameManager>().loseModal.activeInHierarchy)
         {
             gameManager.GetComponent<GameManager>().pauseGame();
         }

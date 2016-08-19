@@ -36,7 +36,7 @@ public class TutorialMainMenu : MonoBehaviour {
             textBox.text = texto[index];
         }
 
-        Debug.Log(index);
+        //Debug.Log(index);
 
         if (index == 2)
         {

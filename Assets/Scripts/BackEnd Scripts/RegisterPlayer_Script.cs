@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RegisterPlayer_Script : MonoBehaviour
 {
@@ -18,9 +19,14 @@ public class RegisterPlayer_Script : MonoBehaviour
     public Text warningLabel;
 
     private string userName;
+    
+    [SerializeField]
+    private GameObject gameSparksManager;
 
-    void Start(){
+    public InputField debugText;
 
+    void Awake(){
+        gameSparksManager = GameObject.Find("GameSparks Manager");
     }
 
     private string UsernameGenerator()
@@ -52,10 +58,6 @@ public class RegisterPlayer_Script : MonoBehaviour
         }
     }
 
-    private void ValidateUserName() { 
-        
-    }
-
     public void RegisterPlayerBttn()
     {
         //Debug.Log("Registering Player...");
@@ -63,6 +65,11 @@ public class RegisterPlayer_Script : MonoBehaviour
         userName = UsernameGenerator();
         PlayerPrefs.SetString("UserName", userName);
         PlayerPrefs.SetString("DisplayName", displayNameInput.text);
+
+        /*if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+        {
+            debugText.text += "\nChamou RegisterPlayerBttn com userName = " + userName + " e displayName = " + displayNameInput.text;
+        }*/
 
         new GameSparks.Api.Requests.RegistrationRequest()
             .SetDisplayName(displayNameInput.text)
@@ -73,29 +80,42 @@ public class RegisterPlayer_Script : MonoBehaviour
 
                 if (!response.HasErrors)
                 {
+                    /*if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                    {
+                        debugText.text += "\nRegistrou jogador com sucesso";
+                    }*/
+
                     //Debug.Log("Player Registered \n Player Name: " + response.DisplayName);
                     registerPlayerCanvas.gameObject.SetActive(false);
 
-                    GameObject.Find("GameSparks Manager").GetComponent<GooglePlayOrbe>().GooglePlayOrbeActivate();
+                    // gameSparksManager.GetComponent<GooglePlayOrbe>().GooglePlayOrbeActivate();
 
                     InitiateRecords();
                 }
                 else if (response.Errors.JSON.Equals("{\"USERNAME\":\"TAKEN\"}"))
                 {
                     //Debug.Log("Username iguais, deveria gerar outro...");
-                    
+                    //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                      //  debugText.text += "\nUsername iguais, deveria gerar outro...";
+
                     // Chama de novo até um username válido ser gerado
                     RegisterPlayerBttn();
                 }
                 else
                 {
                     //Debug.Log("Error Registering Player... \n " + response.Errors.JSON.ToString());
+
+                    //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                      //  debugText.text += "\nError Registering Player... \n " + response.Errors.JSON.ToString();
                 }
 
             });
     }
 
     private void InitiateRecords() {
+        //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+          //  debugText.text += "\nEntrou InitiateRecords";
+
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("INITIATE_RECORDS")
             .SetEventAttribute("TIME_1_1", 9999999)
@@ -107,7 +127,7 @@ public class RegisterPlayer_Script : MonoBehaviour
             .SetEventAttribute("TIME_1_7", 9999999)
             .SetEventAttribute("TIME_1_8", 9999999)
             .SetEventAttribute("TIME_1_9", 9999999)
-            .SetEventAttribute("TIME_2_10", 9999999)
+            .SetEventAttribute("TIME_1_10", 9999999)
             .SetEventAttribute("TIME_2_1", 9999999)
             .SetEventAttribute("TIME_2_2", 9999999)
             .SetEventAttribute("TIME_2_3", 9999999)
@@ -184,6 +204,8 @@ public class RegisterPlayer_Script : MonoBehaviour
                 if (!response.HasErrors)
                 {
                     //Debug.Log("Player records initiated to GameSparks...");
+                    //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                      //  debugText.text += "\nPlayer records initiated to GameSparks...";
 
                     // Jogar pro records[] do GameManager
                     GameSparksManager.records = new int[GameSparksManager.NUMERO_FASES];
@@ -196,12 +218,17 @@ public class RegisterPlayer_Script : MonoBehaviour
                 else
                 {
                     //Debug.Log("Error Saving Player Data...");
+                    //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                      //  debugText.text += "\nInitiateRecords - Error saving player data\n" + response.Errors;
                 }
             });
     }
 
     private void InitiateLife()
     {
+        //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+          //  debugText.text += "\nEntrou InitiateLife";
+
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("SAVE_LIFES")
             .SetEventAttribute("LIFE", 5)
@@ -211,9 +238,6 @@ public class RegisterPlayer_Script : MonoBehaviour
                 if (!response.HasErrors)
                 {
                     //Debug.Log("Inicializou vida com 5...");
-
-                    PlayerPrefs.SetString("Minutos", "10");
-                    PlayerPrefs.SetString("Segundos", "00");
 
                     PlayerPrefs.SetFloat("sfxVol", -10.0f);
                     PlayerPrefs.SetFloat("musicVol", -10.0f);
@@ -237,7 +261,6 @@ public class RegisterPlayer_Script : MonoBehaviour
                     PlayerPrefs.SetInt("Skin12", 0);
                     PlayerPrefs.SetInt("Skin13", 0);
 
-                    PlayerPrefs.SetInt("Vidas", 5);
                     PlayerPrefs.SetInt("tutorialDone", 0);
                     PlayerPrefs.SetInt("stageSelectTutorialDone", 0);
 
@@ -257,6 +280,9 @@ public class RegisterPlayer_Script : MonoBehaviour
 
     private void InitiatePowercells()
     {
+        //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+          //  debugText.text += "\nEntrou InitiatePowercells";
+
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("SAVE_POWERCELLS")
             .SetEventAttribute("POWERCELL", 500)
@@ -266,6 +292,7 @@ public class RegisterPlayer_Script : MonoBehaviour
                 if (!response.HasErrors)
                 {
                     //Debug.Log("Inicializou powercells com 5...");
+                    gameSparksManager.GetComponent<EnergyTimeValues>().setPowercells(500);
                     InitiateLaser();
                 }
                 else
@@ -277,6 +304,9 @@ public class RegisterPlayer_Script : MonoBehaviour
 
     private void InitiateLaser()
     {
+        //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+          //  debugText.text += "\nEntrou InitiateLaser";
+
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("BUY_LASER")
             .SetEventAttribute("LASER", 0)
@@ -557,6 +587,9 @@ public class RegisterPlayer_Script : MonoBehaviour
 
     private void InitiateSkin13()
     {
+        //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+          //  debugText.text += "\nEntrou InitiateSkin13";
+
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("BUY_SKIN13")
             .SetEventAttribute("SKIN13", 0)
@@ -577,6 +610,9 @@ public class RegisterPlayer_Script : MonoBehaviour
 
     private void InitiateMark()
     {
+        //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+          //  debugText.text += "\nEntrou InitiateMark";
+
         new GameSparks.Api.Requests.LogEventRequest()
             .SetEventKey("BUY_MARK")
             .SetEventAttribute("MARK", 0)
@@ -586,6 +622,7 @@ public class RegisterPlayer_Script : MonoBehaviour
                 if (!response.HasErrors)
                 {
                     //Debug.Log("Inicializou minimapa com 0...");
+                    //gameSparksManager.GetComponent<GooglePlayOrbe>().GooglePlayOrbeActivate();
                 }
                 else
                 {

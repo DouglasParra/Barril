@@ -75,17 +75,12 @@ public class StageSelectScript : MonoBehaviour
         mundoAtual = ((PlayerPrefs.GetInt("Fases") - 1) / 10) - 1;
         if (mundoAtual < 0) mundoAtual = 7;
         nextWorld();
+
+        //gameSparksManager.GetComponent<GooglePlayOrbe>().GooglePlayOrbeActivate();
     }
 
     void Update() {
-        /*if (GameObject.Find("GameSparks Manager").GetComponent<ModoOffline>().getModoOffline())
-        {
-            rankButton.interactable = false;
-        }
-        else 
-        {
-            rankButton.interactable = true;
-        }*/
+
     }
 
     private void LiberarFases()
@@ -130,17 +125,6 @@ public class StageSelectScript : MonoBehaviour
         return true;
     }
 
-    public void RankScene()
-    {
-        ////Debug.Log(energyTime.GetComponent<EnergyTime>().time.text);
-        gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-        gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-        gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-        PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-        SaveMinuteSeconds();
-        SceneManager.LoadScene("RankScene");
-    }
-
     // The coroutine runs on its own at the same time as Update() and takes an integer indicating which scene to load.
     IEnumerator LoadNewScene(string levelName)
     {
@@ -164,23 +148,11 @@ public class StageSelectScript : MonoBehaviour
     {
         if (scene.Equals("TutorialScene"))
         {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-
             loadingCanvas.SetActive(true);
             StartCoroutine("LoadNewScene", scene);
         }
         else if (canPlay())
         {
-            gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-            gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-            PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-            SaveMinuteSeconds();
-
             loadingCanvas.SetActive(true);
             StartCoroutine("LoadNewScene", scene);
 
@@ -212,23 +184,9 @@ public class StageSelectScript : MonoBehaviour
         backgroundImage.sprite = backgroundMundos[mundoAtual];
     }
 
-    // Chamar ao carregar uma fase
-    private void SaveMinuteSeconds() {
-        energyTime.GetComponent<EnergyTime>().SaveMinuteSeconds();
-    }
-
     public void ShowAchievementsGooglePlay()
     {
         gameSparksManager.GetComponent<GooglePlayOrbe>().ShowAchievementsGooglePlay();
     }
-
-    void OnApplicationQuit() {
-        gameSparksManager.GetComponent<EnergyTimeValues>().setMinutos(energyTime.GetComponent<EnergyTime>().minutos);
-        gameSparksManager.GetComponent<EnergyTimeValues>().setSegundos(energyTime.GetComponent<EnergyTime>().segundos);
-        gameSparksManager.GetComponent<EnergyTimeValues>().setTempoDesdeInicio((int)Time.realtimeSinceStartup);
-        PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
-        //SaveMinuteSeconds();
-    }
-
 
 }

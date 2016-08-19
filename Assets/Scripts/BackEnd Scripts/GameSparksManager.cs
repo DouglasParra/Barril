@@ -26,6 +26,7 @@ public class GameSparksManager : MonoBehaviour
     private string loadedID = "";
     private string loadedTime = "";
 
+    public InputField debugText;
 
     // Use this for initialization
     void Start()
@@ -58,18 +59,6 @@ public class GameSparksManager : MonoBehaviour
     void GSAvailable(bool _isAvalable)
     {
         StartCoroutine("VerificarJogadorRegistrado");
-        /*if (GetComponent<ModoOffline>().getModoOffline())
-        {
-            if (PlayerPrefs.HasKey("DisplayName"))
-            {
-                loadingInfoCanvas.gameObject.SetActive(false);
-            }
-            else
-            {
-                // Tenta recomeçar o jogo se jogador não registrado (aparecer uma tela antes?)
-                SceneManager.LoadScene(0);
-            }
-        }*/
 
         //this method will be called only when the GS service is available or unavailable
         if (_isAvalable)
@@ -90,6 +79,8 @@ public class GameSparksManager : MonoBehaviour
                             GameObject.Find("LoadingBar").SendMessage("goToLoading", 100);
 
                             //Debug.Log("Account Details Found... - Olá, " + response.DisplayName);
+                            //debugText.text += "\nAccount Details Found... - Olá, " + response.DisplayName;
+
                             loadingInfoCanvas.gameObject.SetActive(false);
                         }
 
@@ -98,12 +89,14 @@ public class GameSparksManager : MonoBehaviour
 
                         RetrieveRecords();
 
-                        GetComponent<GooglePlayOrbe>().GooglePlayOrbeActivate();
                     }
                     else
                     {
                         // Não conectou a nenhuma conta, mostra tela de registro
                         //Debug.Log("Error Retrieving Account Details...");
+                        //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                        //debugText.text += "\nError Retrieving Account Details... registrar jogador";
+
                         loadingInfoCanvas.gameObject.SetActive(false);
 
                         registerPlayerCanvas.gameObject.SetActive(true);
@@ -130,6 +123,9 @@ public class GameSparksManager : MonoBehaviour
                     if (!response.HasErrors)
                     {
                         //Debug.Log("Recieved Player Data From GameSparks...");
+                        //if(SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                          //  debugText.text += "\nRecieved Player Data From GameSparks... dados ok";
+
                         GSData data = response.ScriptData.GetGSData("player_Data");
                         loadedID = "Player ID: " + data.GetString("playerID");
 
@@ -144,10 +140,13 @@ public class GameSparksManager : MonoBehaviour
                             }
                         }
 
+                        //GetComponent<GooglePlayOrbe>().GooglePlayOrbeActivate();
                     }
                     else
                     {
                         //Debug.Log("Error Loading Player Data...");
+                        //if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                        //debugText.text += "\nError Loading Player Data... não conseguiu pegar dados do jogador";
                     }
                 });
     }
@@ -209,6 +208,7 @@ public class GameSparksManager : MonoBehaviour
         {
             //Debug.Log("Something wrong with FB");
         }
+
     }
 
     //this is the callback that happens when gamesparks has been connected with FB
@@ -270,7 +270,6 @@ public class GameSparksManager : MonoBehaviour
     void OnApplicationQuit()
     {
         PlayerPrefs.SetInt("MainMenuOff", 0);
-        PlayerPrefs.SetString("DateTime", System.DateTime.Now.ToString());
     }
 
     IEnumerator VerificarJogadorRegistrado()
@@ -291,11 +290,18 @@ public class GameSparksManager : MonoBehaviour
                 if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
                 {
                     loadingInfoCanvas.gameObject.SetActive(false);
+
+                    //debugText.text += "\nJá registrado, modo offline, prossegue...";
                 }
             }
             else
             {
                 // Tenta recomeçar o jogo se jogador não registrado (aparecer uma tela antes?)
+                /*/if (SceneManager.GetActiveScene().name.Equals("TitleScene"))
+                {
+                    debugText.text += "\nSem conexão para registrar jogador";
+                }*/
+
                 SceneManager.LoadScene(0);
             }
         }
@@ -358,7 +364,7 @@ public class GameSparksManager : MonoBehaviour
                 {
                     //Debug.Log("Player Saved To GameSparks...");
                     //Debug.Log("Score Posted Sucessfully...");
-                    Debug.Log("Salvou tempo da fase " + i + "-" + j);
+                    //Debug.Log("Salvou tempo da fase " + i + "-" + j);
                     PlayerPrefs.DeleteKey("LEADERBOARD_" + i + "_" + j);
                 }
                 else
